@@ -1,3 +1,10 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">Smai</string>
+=======
+    <string name="app_name">QuyenGop</string>
+    <string name="home">Trang chủ</string>
+    <string name="upNews">Đăng tin</string>
+    <string name="categories">Danh mục</string>
+>>>>>>> Master
 </resources>

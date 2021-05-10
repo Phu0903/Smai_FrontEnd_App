@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 rootProject.name = "Smai"
 include ':app'
+=======
+include ':app'
+rootProject.name = "QuyenGop"
+>>>>>>> Master
