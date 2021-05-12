@@ -1,4 +1,4 @@
-package com.example.quyengop;
+package com.example.SmaiApp;
 
 import android.content.Context;
 import android.view.LayoutInflater;

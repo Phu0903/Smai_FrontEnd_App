@@ -1,10 +1,8 @@
-package com.example.quyengop;
+package com.example.SmaiApp;
 
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class Helper {

@@ -1,20 +1,19 @@
-package com.example.quyengop;
+package com.example.SmaiApp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+<<<<<<< HEAD:app/src/main/java/com/example/quyengop/HomeFragment.java
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+=======
+>>>>>>> origin/Master:app/src/main/java/com/example/SmaiApp/HomeFragment.java
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +22,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
-import static com.example.quyengop.Helper.setListViewHeightBasedOnChildren;
+import static com.example.SmaiApp.Helper.setListViewHeightBasedOnChildren;
 
 public class HomeFragment extends Fragment {
 
