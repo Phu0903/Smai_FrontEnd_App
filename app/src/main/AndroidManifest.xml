@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".Search_Screen"
+        <activity android:name=".Anouncement_screen"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".Search_Screen"
             android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>

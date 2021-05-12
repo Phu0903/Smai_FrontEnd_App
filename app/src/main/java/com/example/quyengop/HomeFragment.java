@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -35,6 +36,9 @@ public class HomeFragment extends Fragment {
 //    button search
     Button btnSearch;
 
+//    button thông báo
+    ImageButton btnAnouncement;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,7 +56,7 @@ public class HomeFragment extends Fragment {
                         Toast.LENGTH_SHORT).show();
             }
         });
-
+//      listview tin đăng mới
         lvNews = view.findViewById(R.id.listViewNews);
         arrayNews = new ArrayList<News>();
 
@@ -79,7 +83,7 @@ public class HomeFragment extends Fragment {
         lvNews.setAdapter(adapter);
         setListViewHeightBasedOnChildren(lvNews);
 
-
+// open search screen
         btnSearch = view.findViewById(R.id.btn_search);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +93,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+//        open anouncement screen
+        btnAnouncement = view.findViewById(R.id.btn_anouncement);
+
+        btnAnouncement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Anouncement_screen.class);
+                startActivity(intent);
+            }
+        });
 
 
 
