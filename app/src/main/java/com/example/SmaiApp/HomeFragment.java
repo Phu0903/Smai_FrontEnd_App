@@ -6,12 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-<<<<<<< HEAD:app/src/main/java/com/example/quyengop/HomeFragment.java
-import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
-=======
->>>>>>> origin/Master:app/src/main/java/com/example/SmaiApp/HomeFragment.java
+
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -98,7 +94,7 @@ public class HomeFragment extends Fragment {
         btnAnouncement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Anouncement_screen.class);
+                Intent intent = new Intent(getContext(), thongbao.class);
                 startActivity(intent);
             }
         });

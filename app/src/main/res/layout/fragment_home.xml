@@ -246,14 +246,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="40px"
-
         android:orientation="horizontal">
 
         <ListView
             android:id="@+id/listViewNews"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:scrollingCache="false"
             android:smoothScrollbar="true"
             android:dividerHeight="10dp"

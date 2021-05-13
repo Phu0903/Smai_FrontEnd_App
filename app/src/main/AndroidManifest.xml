@@ -9,18 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-<<<<<<< HEAD
-        <activity android:name=".Anouncement_screen"
+        <activity android:name=".thongbao"
             android:parentActivityName=".MainActivity"></activity>
+
         <activity
             android:name=".Search_Screen"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
-=======
-        <activity android:name="com.example.SmaiApp.Search_Screen"
-            android:parentActivityName="com.example.SmaiApp.MainActivity"></activity>
-        <activity android:name="com.example.SmaiApp.MainActivity">
->>>>>>> origin/Master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

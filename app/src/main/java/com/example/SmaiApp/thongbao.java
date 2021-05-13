@@ -1,4 +1,4 @@
-package com.example.quyengop;
+package com.example.SmaiApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -6,12 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import android.graphics.Color;
 import android.os.Bundle;
 
-public class Anouncement_screen extends AppCompatActivity {
+public class thongbao extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anouncement_screen);
+        setContentView(R.layout.activity_thongbao);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
         toolbar.setTitleTextColor(Color.WHITE);
