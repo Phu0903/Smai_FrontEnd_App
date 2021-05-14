@@ -2,7 +2,7 @@
     <string name="app_name">QuyenGop</string>
     <string name="home">Trang chủ</string>
     <string name="upNews">Đăng tin</string>
-    <string name="categories">Danh mục</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="categories">Cá nhân</string>
+
 </resources>

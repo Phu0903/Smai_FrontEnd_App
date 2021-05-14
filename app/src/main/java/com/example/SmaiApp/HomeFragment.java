@@ -16,9 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.SmaiApp.Adapter.NewsAdapter;
+
 import java.util.ArrayList;
 
-import static com.example.SmaiApp.Helper.setListViewHeightBasedOnChildren;
+import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren;
 
 public class HomeFragment extends Fragment {
 

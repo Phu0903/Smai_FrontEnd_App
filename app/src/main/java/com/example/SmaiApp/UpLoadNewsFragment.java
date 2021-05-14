@@ -1,6 +1,5 @@
 package com.example.SmaiApp;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +10,11 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
+import com.example.SmaiApp.Adapter.NewsAdapter;
 
-import static com.example.SmaiApp.Helper.setListViewHeightBasedOnChildren;
+import java.util.ArrayList;
 
 public class UpLoadNewsFragment extends Fragment {
 

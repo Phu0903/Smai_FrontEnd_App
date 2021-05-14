@@ -1,9 +1,11 @@
-package com.example.SmaiApp;
+package com.example.SmaiApp.Helper;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.example.SmaiApp.Adapter.NewsAdapter;
 
 public class Helper {
     public static void setListViewHeightBasedOnChildren(ListView listView) {
