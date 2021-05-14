@@ -84,7 +84,7 @@ public class UserFragment extends Fragment {
 
         return view;
 
-        return inflater.inflate(R.layout.fragment_user, container, false);
+        //return inflater.inflate(R.layout.fragment_user, container, false);
 
     }
 }
