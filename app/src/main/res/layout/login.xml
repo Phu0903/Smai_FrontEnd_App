@@ -37,6 +37,7 @@
             android:id="@+id/signUp"
             android:layout_width="202dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
             android:layout_marginTop="60dp"
             android:text="Đăng nhập" />
 
@@ -44,7 +45,7 @@
             android:id="@+id/signIn"
             android:layout_width="202dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="206dp"
+            android:layout_marginLeft="208dp"
             android:layout_marginTop="-48dp"
             android:text="Đăng ký" />
 
@@ -71,9 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="415dp"
-                android:background="@drawable/edittextdesign"
                 android:hint="Tài Khoản"
-
+                android:background="@drawable/duong_gach_chan"
                 android:inputType="textCapWords"
                 android:textAlignment="center"
                 android:textColor="#333"
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/edittextdesign"
+                android:background="@drawable/duong_gach_chan"
                 android:hint="Mật Khẩu"
                 android:inputType="textPassword"
                 android:textAlignment="center"
@@ -93,6 +93,7 @@
 
 
     </LinearLayout>
+
 
     <CheckBox
         android:id="@+id/checkbox"
@@ -109,7 +110,7 @@
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="35dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="35dp"
         android:background="#fff"
