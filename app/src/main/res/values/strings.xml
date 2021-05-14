@@ -2,6 +2,7 @@
     <string name="app_name">QuyenGop</string>
     <string name="home">Trang chủ</string>
     <string name="upNews">Đăng tin</string>
+
     <string name="categories">Cá nhân</string>
 
 </resources>
