@@ -1,4 +1,4 @@
-package com.example.SmaiApp;
+package com.example.SmaiApp.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.SmaiApp.News;
+import com.example.SmaiApp.R;
 
 import java.util.List;
 
