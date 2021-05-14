@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new UpLoadNewsFragment();
                     break;
                 case R.id.nav_catogories:
-                    selectedFragment = new CategoriesFragment();
+                    selectedFragment = new UserFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
