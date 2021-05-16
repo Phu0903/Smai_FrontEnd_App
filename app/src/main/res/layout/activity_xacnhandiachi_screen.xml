@@ -110,24 +110,21 @@
                 android:textSize="50px" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <FrameLayout
-            android:layout_width="wrap_content"
+
+        <Button
+            android:id="@+id/btnXacNhan"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textSize="50px"
             android:layout_marginTop="30dp"
-            android:paddingRight="60dp"
-            android:paddingLeft="60dp"
-            android:layout_gravity="center"
-            android:background="@drawable/border_radius_4_corners_button_red">
-            <Button
-                android:id="@+id/btnXacNhan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:textSize="50px"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/red"
-                android:text="Xác nhận"/>
-        </FrameLayout>
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/red"
+            android:background="@drawable/border_radius_4_corners_button_red"
+            android:text="Xác nhận"/>
+
 
 
     </LinearLayout>
