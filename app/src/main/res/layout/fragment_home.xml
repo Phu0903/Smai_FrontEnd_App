@@ -43,7 +43,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
-            android:background="@drawable/border_radious_4_corners_bell"
+            android:background="@drawable/border_radious_2_right_corners_bell"
             android:padding="10dp">
 
             <ImageButton
@@ -63,82 +63,46 @@
         android:layout_marginRight="40px"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/tangcongdong"
+        <Button
+            android:id="@+id/button_tangcongdong"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="200px"
-                android:layout_height="200px"
-                android:padding="0px"
-                android:src="@drawable/giftbox"/>
-            <TextView
-                android:layout_width="200px"
-                android:layout_height="wrap_content"
-                android:text="Tặng cộng đồng"
-                android:textAlignment="center"
-                android:textColor="#000000"/>
-        </LinearLayout>
+            android:drawableTop="@drawable/giftbox_64px"
+            android:text="Tặng cộng đồng"
+            android:padding="0px"
+            android:textAllCaps="true" />
+        <Button
+            android:id="@+id/button_tangnguoingheo"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/handgift_64px"
+            android:text="Tặng người nghèo"
+            android:padding="0px"
+            android:textAllCaps="true" />
+        <Button
+            android:id="@+id/button_tangquytuthien"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/handheart_64px"
+            android:text="Tặng quỹ từ thiện"
+            android:padding="0px"
+            android:textAllCaps="true" />
+        <Button
+            android:id="@+id/button_quyengopcongich"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/circlehand_64px"
+            android:text="Quyên góp công ích"
+            android:padding="0px" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="200px"
-                android:layout_height="200px"
-                android:padding="0px"
-                android:src="@drawable/handgift"/>
-            <TextView
-                android:layout_width="200px"
-                android:layout_height="wrap_content"
-                android:text="Tặng người nghèo"
-                android:textAlignment="center"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="200px"
-                android:layout_height="200px"
-                android:padding="0px"
-                android:src="@drawable/handheart"/>
-            <TextView
-                android:layout_width="200px"
-                android:layout_height="wrap_content"
-                android:text="Tặng quỹ từ thiện"
-                android:textAlignment="center"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="200px"
-                android:layout_height="200px"
-                android:padding="0px"
-                android:src="@drawable/circlehand"/>
-            <TextView
-                android:layout_width="200px"
-                android:layout_height="wrap_content"
-                android:text="Quyên góp công ích"
-                android:textAlignment="center"
-                android:textColor="#000000"/>
-        </LinearLayout>
     </LinearLayout>
 
     <FrameLayout

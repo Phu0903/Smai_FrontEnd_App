@@ -18,7 +18,9 @@
             app:titleTextColor="@color/white"
             android:minHeight="?attr/actionBarSize"
             android:background="?attr/colorPrimary"/>
+
     </LinearLayout>
+
 
 
 

@@ -84,6 +84,7 @@
         android:layout_marginTop="25dp"
         android:layout_height="wrap_content"
         android:text="Đăng ký"
+        android:textColor="@color/white"
         android:background="#DD484D"/>
 
     </LinearLayout>

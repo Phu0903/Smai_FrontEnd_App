@@ -24,7 +24,7 @@ import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren
 
 public class HomeFragment extends Fragment {
 
-    LinearLayout linearLayout;
+
 
     ListView lvNews;
     ArrayList<News> arrayNews;
@@ -36,23 +36,55 @@ public class HomeFragment extends Fragment {
 //    button thông báo
     ImageButton btnAnouncement;
 
+
+//    button  top homepage
+    Button btn_tangcongdong, btn_tangnguoingheo, btn_tangquytuthien, btn_quyengopcongich;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        linearLayout = (LinearLayout)view.findViewById(R.id.tangcongdong);
+        btn_tangcongdong = view.findViewById(R.id.button_tangcongdong);
+        btn_tangnguoingheo = view.findViewById(R.id.button_tangnguoingheo);
+        btn_tangquytuthien = view.findViewById(R.id.button_tangquytuthien);
+        btn_quyengopcongich = view.findViewById(R.id.button_quyengopcongich);
 
-
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        btn_tangcongdong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(view.getContext(),
-                        "Tặng cộng đồng",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), xacnhandiachi_screen.class);
+                startActivity(intent);
             }
         });
+
+        btn_tangnguoingheo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), xacnhandiachi_screen.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_tangquytuthien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), xacnhandiachi_screen.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_quyengopcongich.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), xacnhandiachi_screen.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
 //      listview tin đăng mới
         lvNews = view.findViewById(R.id.listViewNews);
         arrayNews = new ArrayList<News>();
@@ -106,5 +138,8 @@ public class HomeFragment extends Fragment {
         return view;
 
     }
+
+
+
 
 }
