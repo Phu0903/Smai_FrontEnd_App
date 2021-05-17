@@ -28,6 +28,8 @@ public class Taikhoan extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
+
+//        toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
