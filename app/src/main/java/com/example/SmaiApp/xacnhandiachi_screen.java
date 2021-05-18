@@ -22,6 +22,7 @@ public class xacnhandiachi_screen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), danhmuc_screen.class);
+
                 startActivity(intent);
             }
         });
