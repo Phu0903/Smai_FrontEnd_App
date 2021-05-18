@@ -25,7 +25,10 @@
             android:id="@+id/dt_title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tiêu đề" />
+            android:fontFamily="@font/open_sans_light"
+            android:text="Tiêu đề*"
+            android:textColor="@color/red"
+            android:textSize="@dimen/siez_1" />
 
         <EditText
             android:layout_width="match_parent"
@@ -33,7 +36,9 @@
             android:layout_below="@+id/dt_title1"
             android:layout_marginTop="10dp"
             android:background="@drawable/dt_custom_edit_text"
-            android:hint="Lời nhắn ..." />
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Lời nhắn ..."
+            android:textSize="@dimen/siez_1" />
 
     </RelativeLayout>
 
@@ -47,7 +52,10 @@
             android:id="@+id/dt_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ghi chú thêm (nếu có)" />
+            android:fontFamily="@font/open_sans_light"
+            android:text="Ghi chú thêm (nếu có)"
+            android:textColor="@color/red"
+            android:textSize="@dimen/siez_1" />
 
         <EditText
             android:layout_width="match_parent"
@@ -55,7 +63,9 @@
             android:layout_below="@+id/dt_title2"
             android:layout_marginTop="10dp"
             android:background="@drawable/dt_custom_edit_text"
-            android:hint="Mô tả hoặc ghi chú ..." />
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Mô tả hoặc ghi chú ..."
+            android:textSize="@dimen/siez_1" />
 
     </RelativeLayout>
 
@@ -69,7 +79,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:text="Hình ảnh" />
+            android:fontFamily="@font/open_sans_light"
+            android:text="Hình ảnh"
+            android:textColor="@color/red"
+            android:textSize="@dimen/siez_1" />
 
         <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -138,13 +151,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_gravity="bottom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/border_radius_4_corners_button_red"
-            android:textSize="50px"
             android:text="Tiếp theo"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="@dimen/siez_3"/>
 
     </RelativeLayout>
 
