@@ -31,14 +31,14 @@ public class Detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        //
+//        Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_dt);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        //        Add back button at toolbar
+//        Add back button at toolbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mChooseBtn = findViewById(R.id.btn_uploadImage);

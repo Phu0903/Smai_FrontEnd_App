@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.SmaiApp">
-
     <!-- storage permission -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -12,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".Detail"></activity>
+        <activity android:name=".ViewHistory"></activity>
+        <activity android:name=".PostDonation" />
+        <activity android:name=".Detail" />
         <activity
             android:name=".danhmuc_screen"
             android:parentActivityName=".MainActivity" />

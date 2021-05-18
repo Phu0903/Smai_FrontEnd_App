@@ -1,227 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:fillViewport="true">
-<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
-    android:scrollbars="vertical"
-    android:orientation="vertical">
-    <FrameLayout
-        android:id="@+id/home_framelayout"
+    android:fillViewport="true">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:background="@drawable/background"
-        />
-
-    <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="-20dp"
-        android:layout_gravity="center"
-        android:background="@drawable/duongvien_bogoctron">
-
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="288dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/border_radious_4_corners"
-            android:hint="Tìm kiếm..."
-            android:paddingStart="10dp"
-            android:singleLine="true"
-            android:textAlignment="textStart"
-            android:textSize="60px" />
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
 
         <FrameLayout
-            android:id="@+id/imageButton"
-            android:layout_width="57dp"
-            android:layout_toEndOf="@id/btn_search"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/border_radious_2_right_corners_bell"
-            android:padding="10dp">
+            android:id="@+id/home_framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@drawable/background" />
 
-            <ImageButton
-                android:id="@+id/btn_anouncement"
-                android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/duongvien_bogoctron">
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="288dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/bell" />
-        </FrameLayout>
-    </RelativeLayout>
+                android:background="@drawable/border_radious_4_corners"
+                android:hint="Tìm kiếm..."
+                android:paddingStart="10dp"
+                android:singleLine="true"
+                android:textAlignment="textStart"
+                android:textSize="60px" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="80px"
-        android:layout_marginLeft="40px"
-        android:layout_marginRight="40px"
-        android:orientation="horizontal">
+            <FrameLayout
+                android:id="@+id/imageButton"
+                android:layout_width="57dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="0dp"
+                android:layout_toEndOf="@id/btn_search"
+                android:background="@drawable/border_radious_2_right_corners_bell"
+                android:padding="10dp">
 
-        <Button
-            android:id="@+id/button_tangcongdong"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/giftbox_64px"
-            android:text="Tặng cộng đồng"
-            android:padding="0px"
-            android:textAllCaps="true" />
-        <Button
-            android:id="@+id/button_tangnguoingheo"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/handgift_64px"
-            android:text="Tặng người nghèo"
-            android:padding="0px"
-            android:textAllCaps="true" />
-        <Button
-            android:id="@+id/button_tangquytuthien"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/handheart_64px"
-            android:text="Tặng quỹ từ thiện"
-            android:padding="0px"
-            android:textAllCaps="true" />
-        <Button
-            android:id="@+id/button_quyengopcongich"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/circlehand_64px"
-            android:text="Quyên góp công ích"
-            android:padding="0px" />
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="10px"
-        android:layout_height="120px"
-        android:paddingTop="15px"
-        android:paddingBottom="15px"
-        android:paddingLeft="40px"
-        android:background="@color/gray">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="KHÁM PHÁ TIN ĐĂNG"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="60px"/>
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:paddingTop="40px"
-        android:paddingBottom="40px"
-        android:orientation="horizontal">
+                <ImageButton
+                    android:id="@+id/btn_anouncement"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bell" />
+            </FrameLayout>
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginLeft="40px"
+            android:layout_marginTop="80px"
+            android:layout_marginRight="40px"
             android:gravity="center"
-            android:orientation="vertical">
-            <ImageButton
-                android:layout_width="300px"
-                android:layout_height="240px"
-                android:padding="0px"
-                android:src="@drawable/bookstore"/>
-            <TextView
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_tangcongdong"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/giftbox_64px"
+                android:padding="0px"
                 android:text="Tặng cộng đồng"
-                android:textAlignment="center"
-                android:textColor="#000000"/>
+                android:textAllCaps="true" />
+
+            <Button
+                android:id="@+id/button_tangnguoingheo"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/handgift_64px"
+                android:padding="0px"
+                android:text="Tặng người nghèo"
+                android:textAllCaps="true" />
+
+            <Button
+                android:id="@+id/button_tangquytuthien"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/handheart_64px"
+                android:padding="0px"
+                android:text="Tặng quỹ từ thiện"
+                android:textAllCaps="true" />
+
+            <Button
+                android:id="@+id/button_quyengopcongich"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/circlehand_64px"
+                android:padding="0px"
+                android:text="Quyên góp công ích" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageButton
-                android:layout_width="300px"
-                android:layout_height="240px"
-                android:padding="0px"
-                android:src="@drawable/docu"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:layout_marginTop="10px"
+            android:background="@color/gray"
+            android:paddingLeft="40px"
+            android:paddingTop="15px"
+            android:paddingBottom="15px">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bán đồ cũ"
-                android:textAlignment="center"
-                android:textColor="#000000"/>
-        </LinearLayout>
+                android:text="KHÁM PHÁ TIN ĐĂNG"
+                android:textColor="@color/black"
+                android:textSize="60px"
+                android:textStyle="bold" />
+        </FrameLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageButton
-                android:layout_width="300px"
-                android:layout_height="240px"
-                android:padding="0px"
-                android:src="@drawable/work"/>
+
+            android:orientation="horizontal"
+            android:paddingTop="40px"
+            android:paddingBottom="40px">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/view_donations"
+                    android:layout_width="300px"
+                    android:layout_height="240px"
+                    android:padding="0px"
+                    android:src="@drawable/bookstore" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tặng cộng đồng"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/view_duds"
+                    android:layout_width="300px"
+                    android:layout_height="240px"
+                    android:padding="0px"
+                    android:src="@drawable/docu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bán đồ cũ"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/view_jobs"
+                    android:layout_width="300px"
+                    android:layout_height="240px"
+                    android:padding="0px"
+                    android:src="@drawable/work" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Việc làm"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:layout_marginTop="10px"
+            android:background="@color/gray"
+            android:paddingLeft="40px"
+            android:paddingTop="15px"
+            android:paddingBottom="15px">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Việc làm"
-                android:textAlignment="center"
-                android:textColor="#000000"/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="10px"
-        android:layout_height="120px"
-        android:paddingTop="15px"
-        android:paddingBottom="15px"
-        android:paddingLeft="40px"
-        android:background="@color/gray">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TIN ĐĂNG MỚI"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="60px"/>
-    </FrameLayout>
-<!--**************TIN ĐĂNG MỚI****************-->
-    <LinearLayout
-        android:id="@+id/linea_layout_lv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="40px"
-        android:orientation="horizontal">
-
-        <ListView
-            android:id="@+id/listViewNews"
+                android:text="TIN ĐĂNG MỚI"
+                android:textColor="@color/black"
+                android:textSize="60px"
+                android:textStyle="bold" />
+        </FrameLayout>
+        <!--**************TIN ĐĂNG MỚI****************-->
+        <LinearLayout
+            android:id="@+id/linea_layout_lv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollingCache="false"
-            android:smoothScrollbar="true"
-            android:dividerHeight="10dp"
-            android:background="@color/white"/>
+            android:orientation="horizontal"
+            android:paddingTop="40px">
+
+            <ListView
+                android:id="@+id/listViewNews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:dividerHeight="10dp"
+                android:scrollingCache="false"
+                android:smoothScrollbar="true" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
 </ScrollView>

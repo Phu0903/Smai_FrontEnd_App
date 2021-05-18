@@ -27,7 +27,7 @@ public class UserFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     Button btn_Logout;
-
+    Button btnHistory;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -80,11 +80,19 @@ public class UserFragment extends Fragment {
             }
         });
 
+//        view History
+        btnHistory = (Button) view.findViewById(R.id.view_history);
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ViewHistory.class);
+                startActivity(intent);
+            }
+        });
 
 
         return view;
-
         //return inflater.inflate(R.layout.fragment_user, container, false);
-
     }
 }

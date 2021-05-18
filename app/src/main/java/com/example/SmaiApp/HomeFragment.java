@@ -25,7 +25,6 @@ import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren
 public class HomeFragment extends Fragment {
 
 
-
     ListView lvNews;
     ArrayList<News> arrayNews;
 
@@ -36,9 +35,13 @@ public class HomeFragment extends Fragment {
 //    button thông báo
     ImageButton btnAnouncement;
 
+//    button khám phá tặng cộng đồng
+    ImageButton btnViewDonation;
 
 //    button  top homepage
     Button btn_tangcongdong, btn_tangnguoingheo, btn_tangquytuthien, btn_quyengopcongich;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,32 +86,28 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-
 //      listview tin đăng mới
         lvNews = view.findViewById(R.id.listViewNews);
         arrayNews = new ArrayList<News>();
 
         arrayNews.add(new News(1, "0906729189", "Đồ dùng",
-                "Dĩ An, Bình Dương", "Bạn cho","Có kệ cũ cần cho","Miễn phí",R.drawable.kesach));
+                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn bán","Sách dư cần bán","Liên hệ giá",R.drawable.sacdoisong));
+                "Dĩ An, Bình Dương", "Bạn bán", "Sách dư cần bán", "Liên hệ giá", R.drawable.sacdoisong));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho","Thanh lý một số sách","400.000đ",R.drawable.sachthanly));
+                "Dĩ An, Bình Dương", "Bạn cho", "Thanh lý một số sách", "400.000đ", R.drawable.sachthanly));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho","Có kệ cũ cần cho","Miễn phí",R.drawable.kesach));
+                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho","Có kệ cũ cần cho","Miễn phí",R.drawable.kesach));
+                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho","Có kệ cũ cần cho","Miễn phí",R.drawable.kesach));
+                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
 
         NewsAdapter adapter = new NewsAdapter(
                 getContext(),
                 R.layout.row_news_listview,
                 arrayNews
         );
-
-
         lvNews.setAdapter(adapter);
         setListViewHeightBasedOnChildren(lvNews);
 
@@ -134,12 +133,19 @@ public class HomeFragment extends Fragment {
         });
 
 
+//        open post donations
+        btnViewDonation = view.findViewById(R.id.view_donations);
+
+        btnViewDonation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PostDonation.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
-
     }
-
-
 
 
 }
