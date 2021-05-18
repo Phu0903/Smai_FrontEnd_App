@@ -6,26 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".Search_Screen">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <EditText
-            android:id="@+id/searchEditText"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginRight="60px"
-            android:layout_marginLeft="20px"
-            android:layout_gravity="center"
-            android:hint="Nhập nội dung tìm kiếm"
-            android:paddingStart="20dp"
-            android:background="@drawable/border_radious_4_corners"
-            />
+            android:layout_height="wrap_content"
+            app:title="Danh mục">
 
-    </androidx.appcompat.widget.Toolbar>
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="60px"
+                android:layout_marginLeft="20px"
+                android:layout_gravity="center"
+                android:hint="Nhập nội dung tìm kiếm"
+                android:paddingStart="20dp"
+                android:background="@drawable/border_radious_4_corners"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,13 +7,28 @@
     android:orientation="vertical"
     tools:context=".danhmuc_screen">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_anouncement"
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Danh mục"
-        app:titleTextColor="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_anouncement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Danh mục"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ExpandableListView
+        android:id="@+id/expandable_listivew_danhmuc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:groupIndicator="@null"
+        android:divider="@color/cardview_dark_background"
+        android:dividerHeight="0.5dp"/>
+
 
 </LinearLayout>

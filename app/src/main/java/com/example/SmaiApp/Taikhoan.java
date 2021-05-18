@@ -29,11 +29,5 @@ public class Taikhoan extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-//        toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 }

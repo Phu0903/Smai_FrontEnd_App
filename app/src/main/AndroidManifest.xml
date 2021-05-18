@@ -13,8 +13,7 @@
             android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".xacnhandiachi_screen" />
         <activity
-            android:name=".Taikhoan"
-            android:parentActivityName=".MainActivity" />
+            android:name=".Taikhoan"/>
         <activity
             android:name=".thongbao"
             android:parentActivityName=".MainActivity" />
