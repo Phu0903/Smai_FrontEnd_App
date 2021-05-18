@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/gray"
     android:gravity="bottom"
+    android:orientation="vertical"
     tools:context=".xacnhandiachi_screen">
 
     <LinearLayout
@@ -15,9 +15,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:paddingBottom="20dp"
         android:background="@drawable/border_radius_4_corner_background_gray"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,31 +46,12 @@
                 android:id="@+id/textview_city"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text"
-                android:textSize="50px"
                 android:completionThreshold="1"
-                android:hint="Tỉnh/thành phố*" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
-            android:layout_marginTop="30dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textview_quanhuyen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40px"
+                android:hint="Tỉnh/thành phố*"
                 android:inputType="text"
-                android:hint="Quận/huyện*"
                 android:textSize="50px" />
-        </com.google.android.material.textfield.TextInputLayout>
 
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -77,8 +59,26 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:paddingLeft="30px"
-            android:paddingRight="30px"
-            android:hint="Phường/xã*">
+            android:paddingRight="30px">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textview_quanhuyen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40px"
+                android:hint="Quận/huyện*"
+                android:inputType="text"
+                android:textSize="50px" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="Phường/xã*"
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textview_phuongxa"
@@ -92,14 +92,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:paddingLeft="30px"
-            android:paddingRight="30px"
-            android:layout_marginTop="30dp">
+            android:paddingRight="30px">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textview_vitricuthe"
@@ -110,22 +108,19 @@
                 android:textSize="50px" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <Button
             android:id="@+id/btnXacNhan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:textSize="50px"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginLeft="60dp"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/red"
+            android:layout_marginRight="40dp"
             android:background="@drawable/border_radius_4_corners_button_red"
-            android:text="Xác nhận"/>
-
-
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Xác nhận"
+            android:textAllCaps="false"
+            android:textSize="@dimen/siez_3" />
 
     </LinearLayout>
 </LinearLayout>

@@ -13,6 +13,7 @@ public class xacnhandiachi_screen extends AppCompatActivity {
 
     Button btn_xacnhan;
     public static final int CANCEL_REQUEST_CODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

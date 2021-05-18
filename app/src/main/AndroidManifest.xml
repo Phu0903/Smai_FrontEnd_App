@@ -11,15 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".ViewHistory"></activity>
+        <activity android:name=".ConfirmInforPost"></activity>
+        <activity android:name=".ViewHistory" />
         <activity android:name=".PostDonation" />
         <activity android:name=".Detail" />
         <activity
             android:name=".danhmuc_screen"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".xacnhandiachi_screen" />
-        <activity
-            android:name=".Taikhoan"/>
+        <activity android:name=".Taikhoan" />
         <activity
             android:name=".thongbao"
             android:parentActivityName=".MainActivity" />

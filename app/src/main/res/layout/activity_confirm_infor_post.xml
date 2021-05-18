@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray">
+    android:background="@color/gray"
+    tools:context=".ConfirmInforPost">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -289,12 +291,17 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:background="#DD484D"
-            android:text="Xác nhận" />
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_margin="25dp"
+            android:background="@drawable/border_radius_4_corners_button_red"
+            android:text="Xác nhận"
+            android:textAllCaps="false"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="@dimen/siez_3"/>
 
     </LinearLayout>
 </ScrollView>

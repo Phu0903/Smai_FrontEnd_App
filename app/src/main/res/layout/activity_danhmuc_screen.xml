@@ -28,7 +28,21 @@
         android:layout_height="match_parent"
         android:groupIndicator="@null"
         android:divider="@color/cardview_dark_background"
-        android:dividerHeight="0.5dp"/>
+        android:dividerHeight="0.5dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/danhmuc_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_margin="25dp"
+        android:background="@drawable/border_radius_4_corners_button_red"
+        android:text="Tiếp theo"
+        android:textAllCaps="false"
+        android:fontFamily="@font/open_sans_bold"
+        android:textSize="@dimen/siez_3"/>
 
 
 </LinearLayout>

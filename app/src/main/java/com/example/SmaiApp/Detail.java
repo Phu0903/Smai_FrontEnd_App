@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class Detail extends AppCompatActivity {
     ImageView imgView1, imgView2, imgView3, imgView4, imgView5;
     ImageView[] listImage = new ImageView[5];
     int count;//image counter
+    Button btnNext;
 
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1000;
@@ -70,6 +72,15 @@ public class Detail extends AppCompatActivity {
                 }
             }
         });
+
+        btnNext = (Button)findViewById(R.id.dt_next);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Detail.this, ConfirmInforPost.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void pickImageFromGallery() {
@@ -100,4 +111,5 @@ public class Detail extends AppCompatActivity {
             count = count + 1;
         }
     }
+
 }

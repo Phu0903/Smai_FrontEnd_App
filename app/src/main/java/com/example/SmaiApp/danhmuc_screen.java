@@ -14,6 +14,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -26,6 +28,8 @@ import java.util.List;
 
 
 public class danhmuc_screen extends AppCompatActivity {
+
+    Button btnNext;
 
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
@@ -51,6 +55,14 @@ public class danhmuc_screen extends AppCompatActivity {
         expandableListView.setAdapter(expandableListAdapter);
 
 
+        btnNext = (Button)findViewById(R.id.danhmuc_next);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(danhmuc_screen.this, Detail.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
