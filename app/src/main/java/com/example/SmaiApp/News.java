@@ -22,7 +22,4 @@ public class News {
         Note = note;
         UrlImage = urlImage;
     }
-
-
-
 }
