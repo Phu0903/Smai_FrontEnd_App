@@ -3,6 +3,8 @@
     package="com.example.SmaiApp">
     <!-- storage permission -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<!--    call permission-->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -11,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".NewpostType"></activity>
+        <activity android:name=".DetailPost"></activity>
+        <activity android:name=".NewpostType" />
         <activity android:name=".who_activity" />
         <activity android:name=".CompleteActivity" />
         <activity android:name=".ConfirmInforPost" />
