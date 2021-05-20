@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="siez_1">40px</dimen>
-    <dimen name="siez_2">50px</dimen>
-    <dimen name="siez_3">60px</dimen>
+    <dimen name="siez_1">20px</dimen>
+    <dimen name="siez_2">25px</dimen>
+    <dimen name="siez_3">30px</dimen>
 
 </resources>

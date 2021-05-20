@@ -1,10 +1,13 @@
 package com.example.SmaiApp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -19,9 +22,10 @@ import java.util.ArrayList;
 public class UpLoadNewsFragment extends Fragment {
 
     private Spinner spinner;
-//list view tin đang
+    //list view tin đang
     ListView lvNews;
     ArrayList<News> arrayNews;
+    Button btnUpload;
 
     @Nullable
     @Override
@@ -30,29 +34,37 @@ public class UpLoadNewsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_uploadnews, container, false);
 
 
-
         spinner = view.findViewById(R.id.spinner_dangtin);
         String[] paths = {"Tất cả", "item 2", "item 3"};
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, paths);
         myAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);
 
+        btnUpload = view.findViewById(R.id.create_post);
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NewpostType.class);
+                startActivity(intent);
+            }
+        });
+
 //      listview tin đăng mới
         lvNews = view.findViewById(R.id.listViewNews);
         arrayNews = new ArrayList<News>();
 
         arrayNews.add(new News(1, "0906729189", "Đồ dùng",
-                "Dĩ An, Bình Dương", "Bạn cho","Có kệ cũ cần cho","Miễn phí",R.drawable.kesach));
+                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn bán","Sách dư cần bán","Liên hệ giá",R.drawable.sacdoisong));
+                "Dĩ An, Bình Dương", "Bạn bán", "Sách dư cần bán", "Liên hệ giá", R.drawable.sacdoisong));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho","Thanh lý một số sách","400.000đ",R.drawable.sachthanly));
+                "Dĩ An, Bình Dương", "Bạn cho", "Thanh lý một số sách", "400.000đ", R.drawable.sachthanly));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho","Có kệ cũ cần cho","Miễn phí",R.drawable.kesach));
+                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho","Có kệ cũ cần cho","Miễn phí",R.drawable.kesach));
+                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
         arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho","Có kệ cũ cần cho","Miễn phí",R.drawable.kesach));
+                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
 
         NewsAdapter adapter = new NewsAdapter(
                 getContext(),
