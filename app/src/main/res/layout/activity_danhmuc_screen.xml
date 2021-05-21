@@ -38,11 +38,12 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:layout_margin="25dp"
-        android:background="@drawable/border_radius_4_corners_button_red"
+        android:background="@color/red"
         android:text="Tiếp theo"
         android:textAllCaps="false"
-        android:fontFamily="@font/open_sans_bold"
-        android:textSize="@dimen/siez_3"/>
+        android:textColor="@color/white"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="@dimen/size_3"/>
 
 
 </LinearLayout>

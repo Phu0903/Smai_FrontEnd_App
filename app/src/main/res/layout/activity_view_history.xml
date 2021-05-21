@@ -37,7 +37,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/img1"
             android:layout_marginTop="10px"
-            android:text="20:05, 20/08/2021" />
+            android:text="20:05, 20/08/2021"
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1"/>
 
         <TextView
             android:id="@+id/danh_muc"
@@ -45,6 +48,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1"
             android:text="Học tập" />
 
         <TextView
@@ -78,7 +84,8 @@
                 android:layout_marginLeft="50px"
                 android:text="Sách lớp 1"
                 android:textColor="@color/black"
-                android:textSize="40px" />
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/size_1"/>
         </LinearLayout>
 
         <TextView
@@ -89,18 +96,20 @@
             android:layout_marginTop="30px"
             android:layout_toRightOf="@+id/img1"
             android:text="Phường Bình Hoà, thị xã Thuận an"
-            android:textColor="@color/black"
-            android:textSize="40px" />
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/size_1" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#55A630"
+            android:textColor="@color/green"
             android:layout_below="@+id/btn_more"
             android:layout_alignParentRight="true"
             android:layout_marginTop="40px"
             android:layout_marginLeft="50px"
             android:text="Miễn phí"
-            android:textSize="40px" />
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -122,6 +131,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/img2"
             android:layout_marginTop="10px"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1"
+            android:textColor="@color/light_gray"
             android:text="20:05, 20/08/2021" />
 
         <TextView
@@ -130,6 +142,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/size_1"
             android:text="Học tập" />
 
         <TextView
@@ -140,7 +155,8 @@
             android:layout_toRightOf="@+id/img2"
             android:text="Có ít sách vở cũ"
             android:textColor="@color/black"
-            android:textSize="60px" />
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_3" />
 
         <ImageButton
             android:id="@+id/btn_more_2"
@@ -163,7 +179,8 @@
                 android:layout_marginLeft="50px"
                 android:text="Sách lớp 1"
                 android:textColor="@color/black"
-                android:textSize="40px" />
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/size_1" />
         </LinearLayout>
 
         <TextView
@@ -174,18 +191,20 @@
             android:layout_marginTop="30px"
             android:layout_toRightOf="@+id/img2"
             android:text="Phường Bình Hoà, thị xã Thuận an"
-            android:textColor="@color/black"
-            android:textSize="40px" />
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#55A630"
             android:layout_below="@+id/btn_more_2"
             android:layout_alignParentRight="true"
             android:layout_marginTop="40px"
             android:layout_marginLeft="50px"
             android:text="Miễn phí"
-            android:textSize="40px" />
+            android:textColor="@color/green"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -206,6 +225,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/img3"
             android:layout_marginTop="10px"
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1"
             android:text="20:05, 20/08/2021" />
 
         <TextView
@@ -214,6 +236,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1"
             android:text="Học tập" />
 
         <TextView
@@ -224,7 +249,8 @@
             android:layout_toRightOf="@+id/img3"
             android:text="Có ít sách vở cũ"
             android:textColor="@color/black"
-            android:textSize="60px" />
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_3"/>
 
         <ImageButton
             android:id="@+id/btn_more_3"
@@ -247,7 +273,8 @@
                 android:layout_marginLeft="50px"
                 android:text="Sách lớp 1"
                 android:textColor="@color/black"
-                android:textSize="40px" />
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/size_1" />
         </LinearLayout>
 
         <TextView
@@ -258,18 +285,20 @@
             android:layout_marginTop="30px"
             android:layout_toRightOf="@+id/img3"
             android:text="Phường Bình Hoà, thị xã Thuận an"
-            android:textColor="@color/black"
-            android:textSize="40px" />
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#55A630"
+            android:textColor="@color/green"
             android:layout_below="@+id/btn_more_3"
             android:layout_alignParentRight="true"
             android:layout_marginTop="40px"
             android:layout_marginLeft="50px"
             android:text="Miễn phí"
-            android:textSize="40px" />
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_1"/>
     </RelativeLayout>
 
 </LinearLayout>

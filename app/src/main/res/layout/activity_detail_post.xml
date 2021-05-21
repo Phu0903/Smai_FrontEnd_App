@@ -200,7 +200,7 @@
             android:text="Gọi điện"
             android:textAllCaps="false"
             android:textColor="#000"
-            android:textSize="@dimen/siez_3"
+            android:textSize="@dimen/size_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintLeft_toLeftOf="parent"

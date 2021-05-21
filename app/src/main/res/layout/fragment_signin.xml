@@ -23,7 +23,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="50px"
+            android:textSize="@dimen/size_2"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
             android:textColorHint="#D6908B"
             android:completionThreshold="1"
             android:hint="Họ tên" />
@@ -39,7 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="number"
-            android:textSize="50px"
+            android:textSize="@dimen/size_2"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
             android:textColorHint="#D6908B"
             android:completionThreshold="1"
             android:hint="Số điện thoại" />
@@ -55,7 +59,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="50px"
+            android:textSize="@dimen/size_2"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
             android:textColorHint="#D6908B"
             android:inputType="textPassword"
             android:hint="Mật khẩu" />
@@ -71,7 +77,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="50px"
+            android:textSize="@dimen/size_2"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
             android:textColorHint="#D6908B"
             android:completionThreshold="1"
             android:inputType="textPassword"
@@ -84,8 +92,10 @@
         android:layout_marginTop="25dp"
         android:layout_height="wrap_content"
         android:text="Đăng ký"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="@dimen/size_1"
         android:textColor="@color/white"
-        android:background="#DD484D"/>
+        android:backgroundTint="#DD484D"/>
 
     </LinearLayout>
 

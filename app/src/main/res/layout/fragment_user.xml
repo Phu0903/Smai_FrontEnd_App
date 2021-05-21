@@ -59,8 +59,8 @@
                         android:layout_margin="10dp"
                         android:text="Nguyễn Duy Phú"
                         android:textColor="@color/black"
-                        android:textSize="50px"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/size_2"
+                        android:fontFamily="@font/open_sans_semibold" />
 
                     <View
                         android:id="@+id/divider"
@@ -88,6 +88,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Cá nhân"
+                            android:textSize="@dimen/size_1"
+                            android:fontFamily="@font/open_sans"
                             android:textColor="@color/black" />
 
                         <ImageView
@@ -104,7 +106,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="8/10"
-                            android:textColor="#4CAF50" />
+                            android:fontFamily="@font/open_sans"
+                            android:textSize="@dimen/size_1"
+                            android:textColor="@color/green" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -119,6 +123,9 @@
                 android:layout_marginRight="5dp"
                 android:background="#FFFFFF"
                 android:padding="20dp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_1"
                 android:text="Lịch sử xem " />
 
             <LinearLayout
@@ -134,16 +141,17 @@
 
                     <Button
                         android:id="@+id/btn_logout"
-                        android:layout_width="179dp"
-                        android:layout_height="52dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_gravity="bottom"
                         android:layout_margin="25dp"
-                        android:background="@drawable/border_radius_4_corners_button_red"
-                        android:fontFamily="@font/open_sans_bold"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:background="@color/red"
                         android:text="Đăng xuất"
                         android:textAllCaps="false"
-                        android:textSize="@dimen/siez_3"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_3"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />

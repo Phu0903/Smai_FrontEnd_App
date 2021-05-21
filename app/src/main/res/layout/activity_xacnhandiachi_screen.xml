@@ -32,8 +32,8 @@
                 android:text="Xác nhận địa chỉ"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="60px"
-                android:textStyle="bold" />
+                android:textSize="@dimen/size_3"
+                android:fontFamily="@font/open_sans_semibold"/>
         </FrameLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -49,7 +49,9 @@
                 android:completionThreshold="1"
                 android:hint="Tỉnh/thành phố*"
                 android:inputType="text"
-                android:textSize="50px" />
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +70,9 @@
                 android:layout_marginTop="40px"
                 android:hint="Quận/huyện*"
                 android:inputType="text"
-                android:textSize="50px" />
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -86,7 +90,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40px"
                 android:inputType="text"
-                android:textSize="50px" />
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +111,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40px"
                 android:hint="Số nhà ấp thôn"
-                android:textSize="50px" />
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -113,14 +121,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/border_radius_4_corners_button_red"
-            android:fontFamily="@font/open_sans_bold"
-            android:text="Xác nhận"
+            android:background="@color/red"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/button_confirm"
             android:textAllCaps="false"
-            android:textSize="@dimen/siez_3" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_3" />
 
     </LinearLayout>
 </LinearLayout>

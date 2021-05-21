@@ -41,9 +41,10 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_extrabold"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/black"
                 android:text="Có đơn hàng mới"
-                android:textSize="20sp" />
+                android:textSize="@dimen/size_3" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -51,7 +52,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
                 android:text="Bạn vừa nhận được đơn hàng mới"
-                android:textSize="16sp" />
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/size_1" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -59,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
                 android:text="05/05/2021"
-                android:textSize="16sp" />
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/size_1" />
         </LinearLayout>
     </LinearLayout>
 
@@ -81,23 +84,108 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_extrabold"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/black"
                 android:text="Có đơn hàng mới"
-                android:textSize="20sp" />
+                android:textSize="@dimen/size_3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
                 android:text="Bạn vừa nhận được đơn hàng mới"
-                android:textSize="16sp" />
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/size_1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
+                android:textColor="@color/light_gray"
                 android:text="05/05/2021"
-                android:textSize="16sp" />
+                android:textSize="@dimen/size_1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            app:srcCompat="@drawable/logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/black"
+                android:text="Có đơn hàng mới"
+                android:textSize="@dimen/size_3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:text="Bạn vừa nhận được đơn hàng mới"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/size_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:textColor="@color/light_gray"
+                android:text="05/05/2021"
+                android:textSize="@dimen/size_1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            app:srcCompat="@drawable/logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/black"
+                android:text="Có đơn hàng mới"
+                android:textSize="@dimen/size_3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:text="Bạn vừa nhận được đơn hàng mới"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/size_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:textColor="@color/light_gray"
+                android:text="05/05/2021"
+                android:textSize="@dimen/size_1" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -118,99 +206,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_extrabold"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/black"
                 android:text="Có đơn hàng mới"
-                android:textSize="20sp" />
+                android:textSize="@dimen/size_3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
                 android:text="Bạn vừa nhận được đơn hàng mới"
-                android:textSize="16sp" />
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/size_1" />
 
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
+                android:textColor="@color/light_gray"
                 android:text="05/05/2021"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="10dp"
-            app:srcCompat="@drawable/logo" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_extrabold"
-                android:text="Có đơn hàng mới"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_light"
-                android:text="Bạn vừa nhận được đơn hàng mới"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_light"
-                android:text="05/05/2021"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="10dp"
-            app:srcCompat="@drawable/logo" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_extrabold"
-                android:text="Có đơn hàng mới"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_light"
-                android:text="Bạn vừa nhận được đơn hàng mới"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_light"
-                android:text="05/05/2021"
-                android:textSize="16sp" />
+                android:textSize="@dimen/size_1" />
         </LinearLayout>
     </LinearLayout>
 

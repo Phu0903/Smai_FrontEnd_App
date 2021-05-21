@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:button="@null"
         android:text="Quần áo trẻ em"
-        android:textSize="@dimen/siez_2"
+        android:textSize="@dimen/size_2"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="10dp"

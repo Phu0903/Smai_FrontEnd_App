@@ -49,6 +49,7 @@
                 android:paddingLeft="30px"
                 android:paddingTop="10px"
                 android:paddingBottom="0px"
+                android:fontFamily="@font/open_sans_semibold"
                 android:text="Tạo tin đăng" />
         </LinearLayout>
 
