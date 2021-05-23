@@ -9,14 +9,18 @@
     tools:context=".ViewHistory"
     android:background="#EFEFE9">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_history"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:title="Lịch sử"
-        app:titleTextColor="@color/white" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Lịch sử"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

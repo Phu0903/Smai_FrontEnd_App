@@ -6,15 +6,18 @@
     android:background="@color/gray"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_user"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Tin đăng"
-        app:titleTextColor="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Tin đăng"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

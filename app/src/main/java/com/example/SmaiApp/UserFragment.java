@@ -75,7 +75,7 @@ public class UserFragment extends Fragment {
         btn_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Taikhoan.class);
+                Intent intent = new Intent(getContext(), Account.class);
                 startActivity(intent);
             }
         });

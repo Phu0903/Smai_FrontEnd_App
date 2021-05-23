@@ -49,8 +49,8 @@
                 android:fontFamily="@font/open_sans_extrabold"
                 android:text="Cần tặng sách cũ cho các bạn có nhu cầu"
                 android:textAllCaps="false"
-                android:textColor="#000"
-                android:textSize="50px"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -64,7 +64,7 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Sách cũ..."
                 android:textAllCaps="false"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:textSize="40px"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_title" />
@@ -80,8 +80,8 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Miễn phí"
                 android:textAllCaps="false"
-                android:textColor="#56DF7A"
-                android:textSize="40px"
+                android:textColor="@color/green"
+                android:textSize="@dimen/size_1"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_title" />
 
@@ -96,8 +96,8 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Đ/c: Khu phố 6, phường Linh Trung, quận Thủ Đức, TP HCM"
                 android:textAllCaps="false"
-                android:textColor="#000"
-                android:textSize="40px"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/detail_type" />
 
@@ -137,8 +137,8 @@
                 android:fontFamily="@font/open_sans_extrabold"
                 android:text="Leo Messi"
                 android:textAllCaps="false"
-                android:textColor="#000"
-                android:textSize="40px"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"
                 app:layout_constraintLeft_toRightOf="@+id/user_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -151,8 +151,8 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Cá nhân"
                 android:textAllCaps="false"
-                android:textColor="#000"
-                android:textSize="40px"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/user_image" />
 
@@ -185,21 +185,23 @@
                 android:text="Cần tặng sách cũ cho các bạn có nhu cầu, sách còn mới cứng. Nếu bạn cần
                           liên hệ với tôi.\nCảm ơn bạn đã quan tâm!!"
                 android:textAllCaps="false"
-                android:textColor="#000"
-                android:textSize="50px"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/call"
-            android:layout_width="359dp"
-            android:layout_height="41dp"
-            android:background="@drawable/border_radius_4_corners_button_red"
-            android:fontFamily="@font/open_sans_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/open_sans_semibold"
             android:text="Gọi điện"
             android:textAllCaps="false"
-            android:textColor="#000"
+            android:textColor="@color/white"
             android:textSize="@dimen/size_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.497"

@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class danhmuc_screen extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity {
 
     Button btnNext;
 
@@ -39,7 +37,7 @@ public class danhmuc_screen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_danhmuc_screen);
+        setContentView(R.layout.activity_category);
 
 //        toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
@@ -59,7 +57,7 @@ public class danhmuc_screen extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(danhmuc_screen.this, Detail.class);
+                Intent intent = new Intent(CategoryActivity.this, Detail.class);
                 startActivity(intent);
             }
         });

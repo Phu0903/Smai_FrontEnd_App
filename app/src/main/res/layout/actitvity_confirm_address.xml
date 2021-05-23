@@ -7,7 +7,7 @@
     android:background="@color/gray"
     android:gravity="bottom"
     android:orientation="vertical"
-    tools:context=".xacnhandiachi_screen">
+    tools:context=".ConfirmAddress">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -124,7 +124,7 @@
             android:layout_marginLeft="30px"
             android:layout_marginRight="30px"
             android:layout_marginTop="30dp"
-            android:background="@color/red"
+            android:backgroundTint="@color/red"
             android:fontFamily="@font/open_sans_semibold"
             android:text="@string/button_confirm"
             android:textAllCaps="false"

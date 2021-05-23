@@ -8,14 +8,18 @@
     android:orientation="vertical"
     tools:context=".ConfirmInforPost">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_anouncement2"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:title="Xác nhận thông tin"
-        app:titleTextColor="@color/white" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Xác nhận thông tin"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -265,8 +269,7 @@
                     android:text="QUAN THU DUC"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_2"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/size_2"/>
 
                 <TextView
                     android:id="@+id/textView27"
@@ -286,8 +289,7 @@
                     android:text="PHUONG LINH TRUNG"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_2"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/size_2" />
 
                 <TextView
                     android:id="@+id/textView30"
@@ -316,9 +318,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
-                android:layout_margin="25dp"
-                android:background="@drawable/border_radius_4_corners_button_red"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:backgroundTint="@color/red"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="@string/button_confirm"
                 android:textAllCaps="false"

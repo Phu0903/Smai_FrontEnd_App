@@ -10,14 +10,18 @@ tools:context=".PostDonation"
 android:background="#EFEFE9">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_dt"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:title="Tin đăng tặng"
-        app:titleTextColor="@color/white" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_dt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Tin đăng tặng"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -55,283 +59,29 @@ android:background="#EFEFE9">
     //Item1
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="420px"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30px"
         android:background="@color/white"
         android:padding="30px">
 
-        <ImageView
-            android:id="@+id/img1"
-            android:layout_width="300px"
-            android:layout_height="300px"
-            android:src="@drawable/pc1" />
-
-        <TextView
-            android:id="@+id/text_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img1"
-            android:layout_marginTop="10px"
-            android:text="20:05, 20/08/2021"
-            android:textSize="@dimen/size_1"
-            android:textColor="@color/black"
-            android:fontFamily="@font/open_sans"/>
-
-        <TextView
-            android:id="@+id/danh_muc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:text="Học tập"
-            android:textSize="@dimen/size_1"
-            android:textColor="@color/light_gray"
-            android:fontFamily="@font/open_sans"/>
-
-        <TextView
-            android:id="@+id/title_post_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50px"
-            android:layout_toRightOf="@+id/img1"
-            android:text="Có ít sách vở cũ"
-            android:textColor="@color/black"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_3" />
-
-        <ImageButton
-            android:id="@+id/btn_more"
-            android:layout_width="60px"
-            android:layout_height="60px"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/custom_more_button"
-            android:src="@drawable/more" />
-
         <LinearLayout
-            android:id="@+id/type_sach_lop_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title_post_1"
-            android:layout_marginTop="20px"
-            android:layout_toRightOf="@+id/img1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50px"
-                android:text="Sách lớp 1"
-                android:textColor="@color/black"
-                android:textSize="40px" />
-        </LinearLayout>
+            android:id="@+id/linea_layout_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="40px">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/type_sach_lop_1"
-            android:layout_marginLeft="50px"
-            android:layout_marginTop="30px"
-            android:layout_toRightOf="@+id/img1"
-            android:text="Phường Bình Hoà, thị xã Thuận an"
-            android:textColor="@color/light_gray"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_1" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/light_gray"
-            android:layout_below="@+id/btn_more"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="40px"
-            android:layout_marginLeft="50px"
-            android:fontFamily="@font/open_sans"
-            android:text="Miễn phí"
-            android:textSize="@dimen/size_1" />
+            <ListView
+                android:id="@+id/listViewNews_New"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:dividerHeight="10dp"
+                android:scrollingCache="false"
+                android:smoothScrollbar="true" />
+
+        </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="420px"
-        android:layout_marginTop="30px"
-        android:background="@color/white"
-        android:padding="30px">
-
-        <ImageView
-            android:id="@+id/img2"
-            android:layout_width="300px"
-            android:layout_height="300px"
-            android:src="@drawable/pc1" />
-
-        <TextView
-            android:id="@+id/text_date2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img2"
-            android:layout_marginTop="10px"
-            android:fontFamily="@font/open_sans"
-            android:text="20:05, 20/08/2021" />
-
-        <TextView
-            android:id="@+id/danh_muc2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_1"
-            android:textColor="@color/light_gray"
-            android:text="Học tập" />
-
-        <TextView
-            android:id="@+id/title_post_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50px"
-            android:layout_toRightOf="@+id/img2"
-            android:text="Có ít sách vở cũ"
-            android:textColor="@color/black"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_3" />
-
-        <ImageButton
-            android:id="@+id/btn_more_2"
-            android:layout_width="60px"
-            android:layout_height="60px"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/custom_more_button"
-            android:src="@drawable/more" />
-
-        <LinearLayout
-            android:id="@+id/type_sach_lop_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title_post_2"
-            android:layout_marginTop="20px"
-            android:layout_toRightOf="@+id/img2">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50px"
-                android:text="Sách lớp 1"
-                android:textColor="@color/black"
-                android:fontFamily="@font/open_sans"
-                android:textSize="@dimen/size_1" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/type_sach_lop_2"
-            android:layout_marginLeft="50px"
-            android:layout_marginTop="30px"
-            android:layout_toRightOf="@+id/img2"
-            android:text="Phường Bình Hoà, thị xã Thuận an"
-            android:textColor="@color/light_gray"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_1" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/green"
-            android:layout_below="@+id/btn_more_2"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="40px"
-            android:layout_marginLeft="50px"
-            android:text="Miễn phí"
-            android:textSize="@dimen/size_1"
-            android:fontFamily="@font/open_sans"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="420px"
-        android:layout_marginTop="30px"
-        android:background="@color/white"
-        android:padding="30px">
-
-        <ImageView
-            android:id="@+id/img3"
-            android:layout_width="300px"
-            android:layout_height="300px"
-            android:src="@drawable/pc1" />
-
-        <TextView
-            android:id="@+id/text_date_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img3"
-            android:layout_marginTop="10px"
-            android:text="20:05, 20/08/2021"
-            android:textColor="@color/light_gray"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_1"/>
-
-        <TextView
-            android:id="@+id/danh_muc_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/light_gray"
-            android:textSize="@dimen/size_1"
-            android:text="Học tập" />
-
-        <TextView
-            android:id="@+id/title_post_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50px"
-            android:layout_toRightOf="@+id/img3"
-            android:text="Có ít sách vở cũ"
-            android:textColor="@color/black"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_3" />
-
-        <ImageButton
-            android:id="@+id/btn_more_3"
-            android:layout_width="60px"
-            android:layout_height="60px"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/custom_more_button"
-            android:src="@drawable/more" />
-
-        <LinearLayout
-            android:id="@+id/type_sach_lop_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title_post_3"
-            android:layout_marginTop="20px"
-            android:layout_toRightOf="@+id/img3">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50px"
-                android:text="Sách lớp 1"
-                android:textColor="@color/black"
-                android:textSize="40px" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/type_sach_lop_3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/img3"
-            android:text="Phường Bình Hoà, thị xã Thuận an"
-            android:textColor="@color/light_gray"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#55A630"
-            android:layout_below="@+id/btn_more_3"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="40px"
-            android:layout_marginLeft="50px"
-            android:text="Miễn phí"
-            android:textSize="@dimen/size_1"
-            android:fontFamily="@font/open_sans"/>
-    </RelativeLayout>
 
 </LinearLayout>

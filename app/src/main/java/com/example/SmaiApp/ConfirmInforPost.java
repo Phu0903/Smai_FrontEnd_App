@@ -18,7 +18,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_infor_post);
 
         //Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement2);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_confirm);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

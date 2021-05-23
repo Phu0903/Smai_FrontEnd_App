@@ -6,12 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 
 
-public class Search_Screen extends AppCompatActivity {
+public class Search extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search__screen);
+        setContentView(R.layout.activity_search);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 

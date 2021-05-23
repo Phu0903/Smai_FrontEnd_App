@@ -8,14 +8,18 @@
     android:orientation="vertical"
     tools:context=".who_activity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_who"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:title="Bạn là ai"
-        app:titleTextColor="@color/white" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_who"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Bạn là ai"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,6 +33,8 @@
             android:padding="20dp"
             android:text="Quỹ/ Nhóm từ thiện"
             android:textAlignment="viewStart"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
             android:textSize="@dimen/size_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +47,8 @@
             android:background="@drawable/custom_button_who"
             android:freezesText="false"
             android:gravity="center_vertical"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
             android:padding="20dp"
             android:text="Cá nhân"
             android:textSize="@dimen/size_1"
@@ -56,6 +64,8 @@
             android:padding="20dp"
             android:text='Tổ chức công ích "Chính quyền nhà thờ, nhà chùa,....'
             android:textAlignment="textStart"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
             android:textSize="@dimen/size_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,8 +96,8 @@
             android:padding="10dp"
             android:paddingLeft="10dp"
             android:text="Lưu ý"
+            android:fontFamily="@font/open_sans_semibold"
             android:textSize="@dimen/size_3"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="parent" />

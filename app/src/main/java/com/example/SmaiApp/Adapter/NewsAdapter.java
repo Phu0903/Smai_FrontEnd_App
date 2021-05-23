@@ -56,6 +56,15 @@ public class NewsAdapter extends BaseAdapter {
         TextView txtNote = convertView.findViewById(R.id.tv_note);
         txtNote.setText(arrayNews.get(position).Note);
 
+        TextView txtAddress = convertView.findViewById(R.id.tv_address);
+        txtAddress.setText(arrayNews.get(position).Address);
+
+        TextView txtTypesNews = convertView.findViewById(R.id.tv_typenews);
+        txtTypesNews.setText(arrayNews.get(position).TypeNews);
+
+        TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
+        txtDatePost.setText(arrayNews.get(position).DatePost);
+
         ImageView imgHinh = convertView.findViewById(R.id.img_hinh);
         imgHinh.setImageResource((arrayNews.get(position).UrlImage));
         return convertView;

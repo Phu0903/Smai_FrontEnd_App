@@ -53,18 +53,16 @@ public class UpLoadNewsFragment extends Fragment {
         lvNews = view.findViewById(R.id.listViewNews);
         arrayNews = new ArrayList<News>();
 
-        arrayNews.add(new News(1, "0906729189", "Đồ dùng",
-                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
-        arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn bán", "Sách dư cần bán", "Liên hệ giá", R.drawable.sacdoisong));
-        arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho", "Thanh lý một số sách", "400.000đ", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
-        arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
-        arrayNews.add(new News(1, "0906729189", "Sách vở",
-                "Dĩ An, Bình Dương", "Bạn cho", "Có kệ cũ cần cho", "Miễn phí", R.drawable.kesach));
+        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
 
         NewsAdapter adapter = new NewsAdapter(
                 getContext(),

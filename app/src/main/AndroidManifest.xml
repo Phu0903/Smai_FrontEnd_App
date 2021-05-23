@@ -18,19 +18,20 @@
         <activity android:name=".who_activity" />
         <activity android:name=".CompleteActivity" />
         <activity android:name=".ConfirmInforPost" />
-        <activity android:name=".ViewHistory" />
-        <activity android:name=".PostDonation" />
+        <activity android:name=".ViewHistory"/>
+        <activity android:name=".PostDonation"
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".Detail" />
         <activity
-            android:name=".danhmuc_screen"
+            android:name=".CategoryActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".xacnhandiachi_screen" />
-        <activity android:name=".Taikhoan" />
+        <activity android:name=".ConfirmAddress" />
+        <activity android:name=".Account" />
         <activity
-            android:name=".thongbao"
+            android:name=".Announce"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Search_Screen"
+            android:name=".Search"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".danhmuc_screen">
+    tools:context=".CategoryActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -37,13 +37,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:layout_margin="25dp"
-        android:background="@color/red"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+
+        android:backgroundTint="@color/red"
         android:text="Tiếp theo"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:fontFamily="@font/open_sans_semibold"
         android:textSize="@dimen/size_3"/>
-
 
 </LinearLayout>

@@ -6,22 +6,20 @@ import androidx.appcompat.widget.Toolbar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.example.SmaiApp.Adapter.NewsAdapter;
 
 import java.util.ArrayList;
 
+import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren;
+
 
 public class PostDonation extends AppCompatActivity {
-    int[] imageIDs = {R.drawable.pc1, R.drawable.pc2, R.drawable.pc3};
-    int image1 = R.drawable.pc1;
-    int image2 = R.drawable.pc2;
-    int image3 = R.drawable.pc3;
 
-    post temp1 = new post(1, image1, "Messi");
-    post temp2 = new post(2, image2, "Messi");
-    post temp3 = new post(3, image3, "Messi");
-
-    post[] listPost = {temp1, temp2, temp3};
+    ListView lvNews_New;
+    ArrayList<News> arrayNews_New;
 
     Spinner spinnerLocation;
     Spinner spinnerType;
@@ -54,43 +52,28 @@ public class PostDonation extends AppCompatActivity {
         spinnerLocation.setAdapter(arrayAdapter1);
         ArrayAdapter arrayAdapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayType);
         spinnerType.setAdapter(arrayAdapter2);
-//        FrameLayout frame = findViewById(R.id.frame_layout);
-//        LinearLayout linearLayout = findViewById(R.id.linearlayout);
-//        linearLayout.setOrientation(LinearLayout.VERTICAL);
-//
-//        for(post p : listPost){
-//            LinearLayout temp = new LinearLayout(this);
-//
-//            ImageView iv = new ImageView(this);
-//            TextView tv = new TextView(this);
-//            tv.setText(p.name);
-//            iv.setImageResource(p.image);
-//            FrameLayout.LayoutParams param1 = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
-//            , ViewGroup.LayoutParams.MATCH_PARENT);
-//            param1.width = 200;
-//            param1.height = 250;
-//            iv.setLayoutParams(param1);
-//
-//            FrameLayout.LayoutParams param2 = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT
-//                    , ViewGroup.LayoutParams.WRAP_CONTENT);
-//            tv.setLayoutParams(param2);
-//            tv.setTextSize(15);
-//            temp.addView(iv);
-//            temp.addView(tv);
-//            linearLayout.addView(temp);
-//        }
+
+
+        //      listview tin đăng mới
+        lvNews_New = findViewById(R.id.listViewNews_New);
+        arrayNews_New = new ArrayList<News>();
+
+        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+
+        NewsAdapter adapter = new NewsAdapter(PostDonation.this, R.layout.row_news_listview, arrayNews_New);
+        lvNews_New.setAdapter(adapter);
+        setListViewHeightBasedOnChildren(lvNews_New);
+
     }
 }
 
-//instance post
-class post {
-    int id;
-    int image;
-    String name;
 
-    public post(int id, int image, String name) {
-        this.id = id;
-        this.image = image;
-        this.name = name;
-    }
-}
