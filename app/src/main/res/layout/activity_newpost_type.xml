@@ -1,87 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".NewpostType">
 
-    <LinearLayout
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/gray"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:text="Cần xin đồ"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:backgroundTint="@color/white"
+      />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="0dp"
-            android:orientation="vertical">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tặng cộng đồng"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="@color/white"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="350dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tặng người nghèo"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="@color/white"/>
 
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:padding="10dp"
-                    android:text="Cần xin đồ"
-                    android:textSize="@dimen/size_3"
-                    android:fontFamily="@font/open_sans"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tặng quỹ nhóm từ thiện"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="@color/white"/>
 
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:text="Tặng cộng đồng"
-                    android:textSize="@dimen/size_3"
-                    android:fontFamily="@font/open_sans"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tặng quyên góp công ích"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="@color/white"/>
 
-                <CheckBox
-                    android:id="@+id/checkBox3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:text="Tặng người nghèo"
-                    android:textSize="@dimen/size_3"
-                    android:fontFamily="@font/open_sans"/>
 
-                <CheckBox
-                    android:id="@+id/checkBox4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:text="Tặng quỹ/nhóm từ thiện"
-                    android:textSize="@dimen/size_3"
-                    android:fontFamily="@font/open_sans"/>
-
-                <CheckBox
-                    android:id="@+id/checkBox5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:text="Tặng quyên góp công ích"
-                    android:textSize="@dimen/size_3"
-                    android:fontFamily="@font/open_sans"/>
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
