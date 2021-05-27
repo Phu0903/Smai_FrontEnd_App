@@ -15,8 +15,8 @@
 
         <LinearLayout
             android:layout_marginTop="20dp"
-            android:layout_width="400px"
-            android:layout_height="300dp"
+            android:layout_width="500px"
+            android:layout_height="200dp"
             android:background="@drawable/logo"
             android:layout_gravity="center"
             android:orientation="horizontal">

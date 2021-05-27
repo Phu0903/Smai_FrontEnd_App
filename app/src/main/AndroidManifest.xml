@@ -19,16 +19,19 @@
         <activity android:name=".NewpostType" />
         <activity android:name=".who_activity" />
         <activity android:name=".CompleteActivity" />
-        <activity android:name=".ConfirmInforPost" />
+        <activity android:name=".ConfirmInforPost"
+            android:parentActivityName=".Detail"/>
         <activity android:name=".ViewHistory"/>
         <activity android:name=".PostDonation"
             android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".Detail" />
+        <activity android:name=".Detail"
+            android:parentActivityName=".CategoryActivity"/>
         <activity
             android:name=".CategoryActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".ConfirmAddress" />
-        <activity android:name=".Account" />
+        <activity android:name=".Account"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".Announce"
             android:parentActivityName=".MainActivity" />

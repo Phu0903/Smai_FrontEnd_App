@@ -35,7 +35,7 @@ public class UpLoadNewsFragment extends Fragment {
 
 
         spinner = view.findViewById(R.id.spinner_dangtin);
-        String[] paths = {"Tất cả", "item 2", "item 3"};
+        String[] paths = {"Tất cả tin đăng", "Tin tặng", "Tin bán"};
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, paths);
         myAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);
@@ -53,15 +53,15 @@ public class UpLoadNewsFragment extends Fragment {
         lvNews = view.findViewById(R.id.listViewNews);
         arrayNews = new ArrayList<News>();
 
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
                 "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
                 "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
                 "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
                 "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
+        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
                 "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
 
         NewsAdapter adapter = new NewsAdapter(

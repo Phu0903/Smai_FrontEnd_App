@@ -82,8 +82,6 @@ public class CategoryActivity extends AppCompatActivity {
             default:
                 break;
         }
-
-
         return true;
     }
 

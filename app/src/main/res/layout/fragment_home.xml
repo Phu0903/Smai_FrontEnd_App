@@ -29,12 +29,12 @@
                 android:id="@+id/btn_search"
                 android:layout_width="288dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border_radious_4_corners"
+                android:background="@drawable/border_radius_2_left_search"
                 android:hint="Tìm kiếm..."
                 android:paddingStart="10dp"
                 android:singleLine="true"
                 android:textAlignment="textStart"
-                android:textSize="60px" />
+                android:textSize="40px" />
 
             <FrameLayout
                 android:id="@+id/imageButton"
@@ -50,7 +50,7 @@
 
                 <ImageButton
                     android:id="@+id/btn_anouncement"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/bell" />
             </FrameLayout>
@@ -71,10 +71,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/giftbox_64px"
-                android:padding="0px"
-                android:text="Tặng cộng đồng"
-                android:textAllCaps="true" />
+                android:drawableTop="@drawable/giftbox_48px"
+                android:text="Tặng cộng \n đồng"
+                android:padding="0dp"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/button_tangnguoingheo"
@@ -82,10 +82,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/handgift_64px"
-                android:padding="0px"
-                android:text="Tặng người nghèo"
-                android:textAllCaps="true" />
+                android:drawableTop="@drawable/handgift_48px"
+                android:text="Tặng người \n nghèo"
+                android:padding="0dp"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/button_tangquytuthien"
@@ -93,10 +93,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/handheart_64px"
-                android:padding="0px"
-                android:text="Tặng quỹ từ thiện"
-                android:textAllCaps="true" />
+                android:drawableTop="@drawable/handheart_48px"
+                android:text="Tặng quỹ\n từ thiện"
+                android:padding="0dp"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/button_quyengopcongich"
@@ -104,9 +104,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/circlehand_64px"
-                android:padding="0px"
-                android:text="Quyên góp công ích" />
+                android:textAllCaps="false"
+                android:padding="0dp"
+                android:drawableTop="@drawable/circlehand_48px"
+                android:text="Quyên góp \n công ích" />
 
         </LinearLayout>
 
@@ -122,8 +123,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="KHÁM PHÁ TIN ĐĂNG"
-                android:textColor="@color/black"
+                android:text="TIN ĐÃ ĐĂNG"
+                android:textColor="@color/light_gray"
                 android:textSize="60px"
                 android:textStyle="bold" />
         </FrameLayout>
@@ -143,12 +144,18 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/view_donations"
-                    android:layout_width="300px"
-                    android:layout_height="240px"
-                    android:padding="0px"
-                    android:src="@drawable/bookstore" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageButton
+                            android:id="@+id/view_donations"
+                            android:layout_width="300px"
+                            android:layout_height="240px"
+                            android:padding="0px"
+                            android:src="@drawable/bookstore"/>
+                    </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,14 +171,18 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp">
 
-                <ImageButton
-                    android:id="@+id/view_duds"
-                    android:layout_width="300px"
-                    android:layout_height="240px"
-                    android:padding="0px"
-                    android:src="@drawable/docu" />
-
+                    <ImageButton
+                        android:id="@+id/view_duds"
+                        android:layout_width="300px"
+                        android:layout_height="240px"
+                        android:padding="0px"
+                        android:src="@drawable/docu" />
+                </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -186,14 +197,18 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp">
 
-                <ImageButton
-                    android:id="@+id/view_jobs"
-                    android:layout_width="300px"
-                    android:layout_height="240px"
-                    android:padding="0px"
-                    android:src="@drawable/work" />
-
+                    <ImageButton
+                        android:id="@+id/view_jobs"
+                        android:layout_width="300px"
+                        android:layout_height="240px"
+                        android:padding="0px"
+                        android:src="@drawable/work" />
+                </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -215,8 +230,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TIN ĐĂNG MỚI"
-                android:textColor="@color/black"
+                android:text="TIN MỚI NHẤT"
+                android:textColor="@color/light_gray"
                 android:textSize="60px"
                 android:textStyle="bold" />
         </FrameLayout>

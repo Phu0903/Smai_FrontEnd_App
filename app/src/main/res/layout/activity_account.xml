@@ -7,14 +7,18 @@
     android:orientation="vertical"
     tools:context=".Account">
 
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_anouncement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Tài khoản"
-        app:titleTextColor="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"/>
+        app:title="Tài khoản"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

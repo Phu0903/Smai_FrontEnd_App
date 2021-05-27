@@ -8,14 +8,18 @@
     tools:context=".Detail"
     android:gravity="center">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_dt"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:title="Mô tả"
-        app:titleTextColor="@color/white" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_dt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Mô tả"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -62,7 +66,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/dt_title2"
             android:layout_marginTop="10dp"
             android:background="@drawable/dt_custom_edit_text"
@@ -70,6 +74,7 @@
             android:textColor="@color/black"
             android:paddingLeft="20px"
             android:hint="Mô tả hoặc ghi chú ..."
+            android:inputType="textMultiLine"
             android:textSize="@dimen/size_1" />
 
     </RelativeLayout>

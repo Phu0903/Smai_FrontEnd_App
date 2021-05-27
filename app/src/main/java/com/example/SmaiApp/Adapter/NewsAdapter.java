@@ -50,8 +50,6 @@ public class NewsAdapter extends BaseAdapter {
         TextView txtName = convertView.findViewById(R.id.tv_tittle);
         txtName.setText(arrayNews.get(position).Tittle);
 
-        TextView txtCatalog = convertView.findViewById(R.id.tv_catalog);
-        txtCatalog.setText(arrayNews.get(position).Catalog);
 
         TextView txtNote = convertView.findViewById(R.id.tv_note);
         txtNote.setText(arrayNews.get(position).Note);

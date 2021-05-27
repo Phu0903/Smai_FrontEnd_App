@@ -28,8 +28,10 @@
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:hint="Tìm kiếm..."
+                android:inputType="text"
                 android:textColorHint="@color/light_gray"
                 android:paddingStart="20dp"
+                android:imeOptions="actionSearch"
                 android:background="@drawable/border_radious_4_corners"
                 />
 

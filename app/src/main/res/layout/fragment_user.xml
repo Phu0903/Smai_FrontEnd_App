@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".UserFragment">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray"
-        android:orientation="vertical"
-        tools:context=".UserFragment">
+        android:orientation="vertical"   >
 
-
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Light">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_user"
@@ -29,6 +25,12 @@
                 android:minHeight="?attr/actionBarSize"
                 app:title="Tài khoản"
                 app:titleTextColor="@color/white" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,8 +42,8 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="148dp"
-                    android:layout_height="144dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:padding="10dp"
                     app:srcCompat="@drawable/user"
                     tools:src="@drawable/user"
@@ -75,120 +77,83 @@
                         android:orientation="horizontal"
                         android:padding="10dp">
 
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_person_24" />
+
 
                         <TextView
                             android:id="@+id/canhan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:text="Cá nhân"
+                            android:layout_marginRight="0dp"
                             android:textSize="@dimen/size_1"
+                            android:paddingTop="5dp"
+                            android:drawablePadding="10dp"
+                            android:drawableLeft="@drawable/ic_baseline_person_24"
                             android:fontFamily="@font/open_sans"
                             android:textColor="@color/black" />
 
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="#00FFFFFF"
-                            android:src="@drawable/ic_baseline_favorite_24" />
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="8/10"
-                            android:fontFamily="@font/open_sans"
-                            android:textSize="@dimen/size_1"
-                            android:textColor="@color/green" />
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
-
-            <Button
-                android:id="@+id/view_history"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="5dp"
-                android:background="#FFFFFF"
-                android:padding="20dp"
-                android:fontFamily="@font/open_sans"
-                android:textColor="@color/black"
-                android:textSize="@dimen/size_1"
-                android:text="Lịch sử xem " />
+                android:text="QUẢN LÝ"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textSize="@dimen/size_2"
+                />
+
+
+                <Button
+                    android:id="@+id/view_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#FFFFFF"
+                    android:padding="20dp"
+                    android:textAlignment="viewStart"
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@drawable/ic_baseline_history_24"
+                    android:fontFamily="@font/open_sans"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_1"
+                    android:text="Lịch sử xem " />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="300dp"
                 android:layout_margin="5dp"
                 android:background="#FFFFFF"
-                android:orientation="vertical">
+                android:gravity="bottom"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
+                android:orientation="horizontal">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="308dp">
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trung tâm hỗ trợ: "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_2"
+                    android:layout_weight="1"/>
 
-                    <Button
-                        android:id="@+id/btn_logout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_gravity="bottom"
-                        android:layout_margin="25dp"
-                        android:fontFamily="@font/open_sans_semibold"
-                        android:background="@color/red"
-                        android:text="Đăng xuất"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/size_3"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="50px"
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0938.51.68.99"
                     android:layout_weight="1"
-                    android:padding="50px"
-                    android:paddingLeft="50px"
-                    android:paddingTop="50px"
-                    android:paddingRight="50px"
-                    android:paddingBottom="50px">
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Trung tâm hỗ trợ: "
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0938.51.68.99"
-                        android:textColor="@color/purple_700"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:textSize="@dimen/size_2"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/purple_700" />
 
             </LinearLayout>
 
