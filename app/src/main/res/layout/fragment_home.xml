@@ -240,8 +240,7 @@
             android:id="@+id/linea_layout_lv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingTop="40px">
+            android:orientation="horizontal">
 
             <ListView
                 android:id="@+id/listViewNews"

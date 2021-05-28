@@ -7,6 +7,7 @@
     tools:context=".NewpostType">
 
     <Button
+        android:id="@+id/btn_canxindo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cần xin đồ"
@@ -20,6 +21,7 @@
       />
 
     <Button
+        android:id="@+id/btn_tangcongdong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tặng cộng đồng"
@@ -33,6 +35,7 @@
         android:backgroundTint="@color/white"/>
 
     <Button
+        android:id="@+id/btn_tangnguoingheo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tặng người nghèo"
@@ -46,6 +49,7 @@
         android:backgroundTint="@color/white"/>
 
     <Button
+        android:id="@+id/btn_tangtuthien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tặng quỹ nhóm từ thiện"
@@ -59,6 +63,7 @@
         android:backgroundTint="@color/white"/>
 
     <Button
+        android:id="@+id/btn_quyengop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tặng quyên góp công ích"
