@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CategoryActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_anouncement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Danh mục"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ExpandableListView
+        android:id="@+id/expandable_listivew_danhmuc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:groupIndicator="@null"
+        android:divider="@color/cardview_dark_background"
+        android:dividerHeight="0.5dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/danhmuc_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/red"
+        android:text="Tiếp theo"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="@dimen/size_3"/>
+
+</LinearLayout>

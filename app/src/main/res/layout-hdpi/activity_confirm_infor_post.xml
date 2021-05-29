@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context=".ConfirmInforPost">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Xác nhận thông tin"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10px"
+                android:paddingStart="50px"
+                android:text="Thông tin chung"
+                android:textSize="@dimen/size_3"
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans_semibold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:paddingStart="50px"
+                android:paddingTop="20px">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10px"
+                    android:text="Dịch vụ *"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_1" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="50px"
+                    android:paddingBottom="50px"
+                    android:text="Tặng cộng đồng"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_1"
+                    android:fontFamily="@font/open_sans" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Danh mục *"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_1" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="50px"
+                    android:paddingBottom="50px"
+                    android:text="Đồ trẻ em nam "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_1"
+                    android:fontFamily="@font/open_sans"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10px"
+                android:paddingStart="50px"
+                android:text="Thông tin mô tả"
+                android:textSize="@dimen/size_3"
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans_semibold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:paddingLeft="50px"
+                android:paddingTop="20px"
+                android:paddingRight="50px">
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tiêu đề *"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_1"/>
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/textview_border"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Hàng mẫu"/>
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ghi chú thêm(nếu có) *"
+                    android:textSize="@dimen/size_1"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/textview_border"
+                    android:padding="50dp"
+                    android:text="Hang mau" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hình ảnh( tối đa 5 hình ảnh)*"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_1" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/image_title">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/dt_imaage_view1"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/ic_baseline_add_24"/>
+
+                        <ImageView
+                            android:id="@+id/dt_imaage_view2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/ic_baseline_add_24" />
+
+                        <ImageView
+                            android:id="@+id/dt_imaage_view3"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/ic_baseline_add_24" />
+
+                        <ImageView
+                            android:id="@+id/dt_imaage_view4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/ic_baseline_add_24" />
+
+                        <ImageView
+                            android:id="@+id/dt_imaage_view5"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/ic_baseline_add_24" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10px"
+                android:paddingStart="50px"
+                android:text="Thông tin địa chỉ"
+                android:textSize="@dimen/size_3"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:paddingLeft="50px"
+                android:paddingRight="50px">
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:text="Tỉnh/Thành phố*"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_1" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginBottom="20px"
+                    android:text="TP HO CHI MINH"
+                    android:textSize="@dimen/size_2"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"/>
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Quận/Huyện*"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_1" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginBottom="20px"
+                    android:text="QUAN THU DUC"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_2"/>
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phường/Xã*"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_1" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginBottom="20px"
+                    android:text="PHUONG LINH TRUNG"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_2" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Số nhà/ ấp/ thôn*"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="@dimen/size_1" />
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginBottom="20px"
+                    android:text="PHUONG LINH TRUNG"
+                    android:textSize="@dimen/size_2"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:backgroundTint="@color/red"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/button_confirm"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_3" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

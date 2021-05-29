@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:id="@+id/linearlayout"
+tools:context=".PostDonation"
+android:background="#EFEFE9">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_dt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Tin đăng tặng"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:gravity="center"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px">
+            <Spinner
+                android:id="@+id/spinner_type"
+                android:layout_width="300px"
+                android:layout_height="100px"
+                android:background="@drawable/border_gray"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center|right">
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="350px"
+                android:layout_height="100px" />
+        </LinearLayout>
+    </RelativeLayout>
+    //Item1
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30px"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/linea_layout_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="40px">
+
+            <ListView
+                android:id="@+id/listViewNews_New"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:dividerHeight="10dp"
+                android:scrollingCache="false"
+                android:smoothScrollbar="true" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

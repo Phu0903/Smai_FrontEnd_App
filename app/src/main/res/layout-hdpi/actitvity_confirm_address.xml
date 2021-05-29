@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    tools:context=".ConfirmAddress">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/border_radius_4_corner_background_gray"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_radius_2_corners_top"
+            android:paddingTop="20px"
+            android:paddingBottom="20px">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Xác nhận địa chỉ"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_3"
+                android:fontFamily="@font/open_sans_semibold"/>
+        </FrameLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textview_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:completionThreshold="1"
+                android:hint="Tỉnh/thành phố*"
+                android:inputType="text"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textview_quanhuyen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40px"
+                android:hint="Quận/huyện*"
+                android:inputType="text"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="Phường/xã*"
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textview_phuongxa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40px"
+                android:inputType="text"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textview_vitricuthe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40px"
+                android:hint="Số nhà ấp thôn"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnXacNhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/red"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/button_confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_3" />
+
+    </LinearLayout>
+</LinearLayout>

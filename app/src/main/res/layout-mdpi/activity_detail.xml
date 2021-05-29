@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Detail"
+    android:gravity="center">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_dt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Mô tả"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/dt_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_light"
+            android:text="Tiêu đề*"
+            android:textColor="@color/red"
+            android:textSize="@dimen/size_1" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/dt_title1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/dt_custom_edit_text"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Lời nhắn ..."
+            android:paddingLeft="20px"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/dt_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_light"
+            android:text="Ghi chú thêm (nếu có)"
+            android:textColor="@color/red"
+            android:textSize="@dimen/size_1" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/dt_title2"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/dt_custom_edit_text"
+            android:fontFamily="@font/open_sans_light"
+            android:textColor="@color/black"
+            android:paddingLeft="20px"
+            android:hint="Mô tả hoặc ghi chú ..."
+            android:inputType="textMultiLine"
+            android:textSize="@dimen/size_1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/image_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/open_sans_light"
+            android:text="Hình ảnh"
+            android:textColor="@color/red"
+            android:textSize="@dimen/size_1" />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_title">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/dt_custom_edit_text"
+                    android:padding="15dp">
+
+                    <ImageButton
+                        android:id="@+id/btn_uploadImage"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@color/white"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_cloud_upload_24" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/dt_imaage_view1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/ic_baseline_add_24" />
+
+                <ImageView
+                    android:id="@+id/dt_imaage_view2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/ic_baseline_add_24" />
+
+                <ImageView
+                    android:id="@+id/dt_imaage_view3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/ic_baseline_add_24" />
+
+                <ImageView
+                    android:id="@+id/dt_imaage_view4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/ic_baseline_add_24" />
+
+                <ImageView
+                    android:id="@+id/dt_imaage_view5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/ic_baseline_add_24" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <Button
+            android:id="@+id/dt_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/red"
+            android:text="Tiếp theo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="@dimen/size_3"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

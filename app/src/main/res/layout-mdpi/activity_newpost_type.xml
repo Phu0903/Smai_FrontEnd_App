@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewpostType">
+
+    <Button
+        android:id="@+id/btn_canxindo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cần xin đồ"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:backgroundTint="@color/white"
+      />
+
+    <Button
+        android:id="@+id/btn_tangcongdong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tặng cộng đồng"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="@color/white"/>
+
+    <Button
+        android:id="@+id/btn_tangnguoingheo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tặng người nghèo"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="@color/white"/>
+
+    <Button
+        android:id="@+id/btn_tangtuthien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tặng quỹ nhóm từ thiện"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="@color/white"/>
+
+    <Button
+        android:id="@+id/btn_quyengop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tặng quyên góp công ích"
+        android:textAllCaps="false"
+        android:textAlignment="viewStart"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="@dimen/size_3"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="@color/white"/>
+
+
+</LinearLayout>
