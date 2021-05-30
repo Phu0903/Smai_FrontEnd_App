@@ -52,7 +52,7 @@
                 android:paddingTop="10px"
                 android:paddingBottom="0px"
                 android:textAlignment="center"
-                android:textSize="@dimen/size_1"
+                android:textSize="@dimen/size_2"
                 android:drawableLeft="@drawable/ic_baseline_add_circle_outline_24"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="Đăng tin" />

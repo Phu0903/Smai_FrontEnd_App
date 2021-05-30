@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="size_1">10px</dimen>
-    <dimen name="size_2">20px</dimen>
+    <dimen name="size_2">15px</dimen>
     <dimen name="size_3">20px</dimen>
 
 </resources>

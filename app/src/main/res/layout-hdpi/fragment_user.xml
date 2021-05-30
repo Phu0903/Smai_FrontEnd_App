@@ -39,7 +39,6 @@
                     android:id="@+id/imageView3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:padding="10dp"
                     app:srcCompat="@drawable/user"
                     tools:src="@drawable/user"
                     tools:srcCompat="@drawable/user" />
