@@ -17,7 +17,7 @@
                 android:layout_width="240px"
                 android:layout_height="240px"
                 android:foregroundGravity="center"
-                android:src="@drawable/pc1"/>
+                android:src="@drawable/sachthanly"/>
         </RelativeLayout>
 
         <LinearLayout

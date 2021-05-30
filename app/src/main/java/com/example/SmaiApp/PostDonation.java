@@ -59,15 +59,15 @@ public class PostDonation extends AppCompatActivity {
         arrayNews_New = new ArrayList<News>();
 
         arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
         arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
         arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
         arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
         arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "23/3/5/2021", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
 
         NewsAdapter adapter = new NewsAdapter(PostDonation.this, R.layout.row_news_listview, arrayNews_New);
         lvNews_New.setAdapter(adapter);
