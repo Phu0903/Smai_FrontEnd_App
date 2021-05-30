@@ -1,6 +1,7 @@
 package com.example.SmaiApp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -12,11 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserFragment extends Fragment {
 
 
     Button btnHistory;
+    Button btn_call;
 
     public UserFragment() {
         // Required empty public constructor
@@ -68,6 +72,16 @@ public class UserFragment extends Fragment {
                 }
 
                 return true;
+            }
+        });
+
+        btn_call = view.findViewById(R.id.call_user);
+//        button call
+        btn_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0938516899"));
+                startActivity(intent);
             }
         });
 

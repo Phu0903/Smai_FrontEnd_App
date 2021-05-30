@@ -133,8 +133,8 @@
                     android:textSize="@dimen/size_1"
                     android:layout_weight="1"/>
 
-                <TextView
-                    android:id="@+id/textView7"
+                <Button
+                    android:id="@+id/call_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0938.51.68.99"
@@ -142,6 +142,7 @@
                     android:textSize="@dimen/size_1"
                     android:fontFamily="@font/open_sans_semibold"
                     android:textAlignment="textEnd"
+                    android:background="@color/gray"
                     android:textColor="#40A6E3" />
 
             </LinearLayout>
