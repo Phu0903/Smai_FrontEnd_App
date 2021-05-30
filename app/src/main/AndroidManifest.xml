@@ -2,11 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.SmaiApp">
     <!-- Internet Permission -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- storage permission -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<!--    call permission-->
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- storage permission -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- call permission -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -15,23 +13,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".DetailPost"></activity>
+        <activity android:name=".CategoryActivity2"></activity>
+        <activity android:name=".ConfirmAddress2" />
+        <activity android:name=".GiveFor" />
+        <activity
+            android:name=".DetailPost"
+            android:parentActivityName=".GiveFor" />
         <activity android:name=".NewpostType" />
         <activity android:name=".who_activity" />
         <activity android:name=".CompleteActivity" />
-        <activity android:name=".ConfirmInforPost"
-            android:parentActivityName=".Detail"/>
-        <activity android:name=".ViewHistory"/>
-        <activity android:name=".PostDonation"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".Detail"
-            android:parentActivityName=".CategoryActivity"/>
+        <activity
+            android:name=".ConfirmInforPost"
+            android:parentActivityName=".Detail" />
+        <activity android:name=".ViewHistory" />
+        <activity
+            android:name=".PostDonation"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Detail"
+            android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".CategoryActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".ConfirmAddress" />
-        <activity android:name=".Account"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Account"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Announce"
             android:parentActivityName=".MainActivity" />

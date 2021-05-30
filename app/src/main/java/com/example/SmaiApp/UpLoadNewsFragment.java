@@ -54,15 +54,15 @@ public class UpLoadNewsFragment extends Fragment {
         arrayNews = new ArrayList<News>();
 
         arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "1h", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
         arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "1h", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
         arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "1h", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
         arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "1h", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
         arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có trà xanh cần bán", "Miễn phí", "1h", R.drawable.pc1));
+                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
 
         NewsAdapter adapter = new NewsAdapter(
                 getContext(),

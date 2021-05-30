@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
         btn_tangnguoingheo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ConfirmAddress.class);
+                Intent intent = new Intent(getContext(), ConfirmAddress2.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
         btn_tangquytuthien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ConfirmAddress.class);
+                Intent intent = new Intent(getContext(), ConfirmAddress2.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
         btn_quyengopcongich.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ConfirmAddress.class);
+                Intent intent = new Intent(getContext(), ConfirmAddress2.class);
                 startActivity(intent);
             }
         });
