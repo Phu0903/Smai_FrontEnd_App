@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".CategoryActivity2"></activity>
+        <activity android:name=".ConfirmAddress3"></activity>
+        <activity android:name=".CategoryActivity2" />
         <activity android:name=".ConfirmAddress2" />
         <activity android:name=".GiveFor" />
         <activity

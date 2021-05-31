@@ -25,7 +25,7 @@ public class NewpostType extends AppCompatActivity {
         btnCanxindo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ConfirmAddress.class);
+                Intent intent = new Intent(getApplicationContext(), ConfirmAddress3.class);
                 startActivity(intent);
             }
         });
@@ -39,21 +39,21 @@ public class NewpostType extends AppCompatActivity {
         btnTangnguoingheo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ConfirmAddress.class);
+                Intent intent = new Intent(getApplicationContext(), ConfirmAddress2.class);
                 startActivity(intent);
             }
         });
         btnTangtuthien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ConfirmAddress.class);
+                Intent intent = new Intent(getApplicationContext(), ConfirmAddress2.class);
                 startActivity(intent);
             }
         });
         btnQuyengop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ConfirmAddress.class);
+                Intent intent = new Intent(getApplicationContext(), ConfirmAddress2.class);
                 startActivity(intent);
             }
         });
