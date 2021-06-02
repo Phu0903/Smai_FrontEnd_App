@@ -15,8 +15,8 @@
 
         <LinearLayout
             android:layout_marginTop="20dp"
-            android:layout_width="500px"
-            android:layout_height="200dp"
+            android:layout_width="80px"
+            android:layout_height="60px"
             android:background="@drawable/logo"
             android:layout_gravity="center"
             android:orientation="horizontal">
@@ -37,10 +37,13 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textview_city"
+                    android:id="@+id/textview_username"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="50px"
+                    android:textSize="@dimen/size_3"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
                     android:textColorHint="#D6908B"
                     android:completionThreshold="1"
                     android:hint="Tài khoản" />
@@ -55,9 +58,13 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textView_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="50px"
+                    android:textSize="@dimen/size_3"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
                     android:textColorHint="#D6908B"
                     android:inputType="textPassword"
                     android:hint="Mật khẩu" />
@@ -70,11 +77,16 @@
                 android:layout_height="wrap_content"
                 android:text="Lưu tài khoản cho lần đăng nhập sau"
                 android:textColor="#333"
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/size_2"
                 android:layout_marginBottom="40dp"/>
 
             <Button
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/size_3"
                 android:text="Đăng nhập"
                 android:textColor="@color/white"
                 android:backgroundTint="#DD484D"/>

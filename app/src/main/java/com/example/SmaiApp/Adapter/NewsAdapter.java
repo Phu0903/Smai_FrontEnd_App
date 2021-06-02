@@ -69,6 +69,7 @@ public class NewsAdapter extends BaseAdapter {
         String sTime = localDateFormat.format(date1);
         String[] s1 = sTime.split(" ");
 
+        Log.d("Date up news", sTime);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date1);
@@ -80,19 +81,19 @@ public class NewsAdapter extends BaseAdapter {
         int hours   = (int) ((hourRest / (1000*60*60)) % 24);
         String getHour = "";
         if (hours < 24) {
-            getHour = hours + "h trước";
+            getHour = hours + " h";
         }
         else if (hours >= 24 && hours < 48) {
-            getHour = "1 ngày trước";
+            getHour = "1 ngày";
         }
         else if (hours >=48 && hours < 72) {
-            getHour = "2 ngày trước";
+            getHour = "2 ngày";
         }
         else if (hours >=72 && hours < 96) {
-            getHour = "3 ngày trước";
+            getHour = "3 ngày";
         }
         else {
-            getHour = "Hơn 3 ngày trước";
+            getHour = "Hơn 3 ngày";
         }
 
 
@@ -132,27 +133,4 @@ public class NewsAdapter extends BaseAdapter {
         return convertView;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static String getTime24String(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat(TIME_FORMAT_24);
-        return format.format(date);}
-    public static String getDateString(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
-        return format.format(date);}
 }

@@ -30,11 +30,14 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textview_city"
+                    android:id="@+id/textview_username"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/size_3"
                     android:fontFamily="@font/open_sans"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
                     android:textColorHint="#D6908B"
                     android:completionThreshold="1"
                     android:hint="Tài khoản" />
@@ -49,9 +52,13 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textView_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColorHint="#D6908B"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
                     android:textSize="@dimen/size_3"
                     android:fontFamily="@font/open_sans"
                     android:inputType="textPassword"
@@ -80,6 +87,7 @@
         android:paddingBottom="20dp"
         android:gravity="bottom">
         <Button
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_2"

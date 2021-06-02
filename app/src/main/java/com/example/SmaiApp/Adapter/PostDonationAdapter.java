@@ -65,34 +65,27 @@ public class PostDonationAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //ngày giờ đăng tin
         Date date1 = arrayNews.get(position).getCreatedAt();
-        SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        String sTime = localDateFormat.format(date1);
-        String[] s1 = sTime.split(" ");
-
-
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date1);
-
-
         long currentTime = Calendar.getInstance().getTimeInMillis();
         long timeUp = calendar.getTimeInMillis();
         long hourRest = currentTime - timeUp;
         int hours   = (int) ((hourRest / (1000*60*60)) % 24);
         String getHour = "";
         if (hours < 24) {
-            getHour = hours + "h trước";
+            getHour = hours + " h";
         }
         else if (hours >= 24 && hours < 48) {
-            getHour = "1 ngày trước";
+            getHour = "1 ngày";
         }
         else if (hours >=48 && hours < 72) {
-            getHour = "2 ngày trước";
+            getHour = "2 ngày";
         }
         else if (hours >=72 && hours < 96) {
-            getHour = "3 ngày trước";
+            getHour = "3 ngày";
         }
         else {
-            getHour = "Hơn 3 ngày trước";
+            getHour = "Hơn 3 ngày";
         }
 
 
