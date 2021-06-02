@@ -115,16 +115,11 @@ public class PostDonationAdapter extends BaseAdapter {
         List<ProductModel> productModels = arrayNews.get(0).getNameProduct();
 
 
+        ProductModel model1 = productModels.get(0);
+        String nameCatogory = model1.getCategory();
 
-        Log.d("Name product", String.valueOf(productModels.size()));
+        txtTypesNews.setText(nameCatogory);
 
-//        if (productModels != null) {
-//
-//            ProductModel model1 = productModels.get(0);
-//            String nameCatogory = model1.getCategory();
-//
-//            txtTypesNews.setText(nameCatogory);
-//        }
 
         TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
         txtDatePost.setText(getHour);
