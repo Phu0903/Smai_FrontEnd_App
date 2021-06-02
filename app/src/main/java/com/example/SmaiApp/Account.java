@@ -24,8 +24,9 @@ public class Account extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.viewPager);
@@ -35,5 +36,11 @@ public class Account extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

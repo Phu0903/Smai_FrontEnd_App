@@ -10,23 +10,33 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
+import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.NetWorKing.ApiServices;
+import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class UpLoadNewsFragment extends Fragment {
 
     private Spinner spinner;
     //list view tin đang
     ListView lvNews;
-    ArrayList<News> arrayNews;
+    ArrayList<PostNewsModel> arrayNews;
     Button btnUpload;
-
+    NewsAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,24 +61,42 @@ public class UpLoadNewsFragment extends Fragment {
 
 //      listview tin đăng mới
         lvNews = view.findViewById(R.id.listViewNews);
-        arrayNews = new ArrayList<News>();
+        arrayNews = new ArrayList<PostNewsModel>();
 
-        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Tin tặng", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
 
-        NewsAdapter adapter = new NewsAdapter(
-                getContext(),
-                R.layout.row_news_listview,
-                arrayNews
-        );
+        // get data
+        Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+        ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
+
+        Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getPost();
+
+        call.enqueue(new Callback<List<PostNewsModel>>() {
+            @Override
+            public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
+                if ( !response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Fail", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                List<PostNewsModel> posts = response.body();
+
+                adapter = new NewsAdapter(
+                        getContext(),
+                        R.layout.row_news_listview,
+                        posts
+                );
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
+                Toast.makeText(getContext(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
 
         lvNews.setAdapter(adapter);
 

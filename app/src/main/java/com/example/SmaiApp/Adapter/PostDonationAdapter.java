@@ -31,10 +31,10 @@ import java.util.Objects;
 
 import okhttp3.internal.Util;
 
-public class NewsAdapter extends BaseAdapter {
+public class PostDonationAdapter extends BaseAdapter {
     private static final String DATE_FORMAT = "dd/MM/yyyy";
     private static final String TIME_FORMAT_24 = "HH:mm";
-    public NewsAdapter(Context context, int layout, List<PostNewsModel> newsList) {
+    public PostDonationAdapter(Context context, int layout, List<PostNewsModel> newsList) {
         myContext = context;
         myLayout = layout;
         arrayNews = newsList;
@@ -114,11 +114,17 @@ public class NewsAdapter extends BaseAdapter {
         TextView txtTypesNews = convertView.findViewById(R.id.tv_typenews);
         List<ProductModel> productModels = arrayNews.get(0).getNameProduct();
 
-        ProductModel model1 = new ProductModel();
-        model1 = productModels.get(0);
-        String nameCatogory = model1.getCategory();
 
-        txtTypesNews.setText(nameCatogory);
+
+        Log.d("Name product", String.valueOf(productModels.size()));
+
+//        if (productModels != null) {
+//
+//            ProductModel model1 = productModels.get(0);
+//            String nameCatogory = model1.getCategory();
+//
+//            txtTypesNews.setText(nameCatogory);
+//        }
 
         TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
         txtDatePost.setText(getHour);
@@ -131,28 +137,4 @@ public class NewsAdapter extends BaseAdapter {
 
         return convertView;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static String getTime24String(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat(TIME_FORMAT_24);
-        return format.format(date);}
-    public static String getDateString(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
-        return format.format(date);}
 }

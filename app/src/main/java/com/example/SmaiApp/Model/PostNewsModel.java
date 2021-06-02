@@ -1,8 +1,6 @@
 package com.example.SmaiApp.Model;
 
-import android.net.Uri;
 
-import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +9,7 @@ public class PostNewsModel {
     private String TypeAuthor;
     private String NameAuthor;
     private String address;
-    private List<ProductModel> NameProdcut;
+    private List<ProductModel> NameProduct;
     private String title;
     private String note;
     private List<String> urlImage;
@@ -50,12 +48,12 @@ public class PostNewsModel {
         this.address = address;
     }
 
-    public List<ProductModel> getNameProdcut() {
-        return NameProdcut;
+    public List<ProductModel> getNameProduct() {
+        return NameProduct;
     }
 
-    public void setNameProdcut(List<ProductModel> nameProdcut) {
-        NameProdcut = nameProdcut;
+    public void setNameProduct(List<ProductModel> nameProduct) {
+        NameProduct = nameProduct;
     }
 
     public String getTitle() {

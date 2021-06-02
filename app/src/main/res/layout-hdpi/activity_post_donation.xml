@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:id="@+id/linearlayout"
-tools:context=".PostDonation"
-android:background="#EFEFE9">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#EFEFE9">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/linearlayout"
+    tools:context=".PostDonation"
+    android:background="#E0E0E0">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -55,31 +49,21 @@ android:background="#EFEFE9">
                 android:layout_height="100px" />
         </LinearLayout>
     </RelativeLayout>
-    //Item1
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30px"
-        android:background="@color/white"
-        android:padding="30px">
 
-        <LinearLayout
-            android:id="@+id/linea_layout_lv"
+
+    <LinearLayout
+        android:id="@+id/linea_layout_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/listViewNews_New"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingTop="40px">
+            android:background="@color/white"
+            android:dividerHeight="10dp"/>
 
-            <ListView
-                android:id="@+id/listViewNews_New"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:dividerHeight="10dp"
-                android:scrollingCache="false"
-                android:smoothScrollbar="true" />
+    </LinearLayout>
 
-        </LinearLayout>
-    </RelativeLayout>
 </LinearLayout>
-</ScrollView>

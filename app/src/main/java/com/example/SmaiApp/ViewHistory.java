@@ -6,18 +6,28 @@ import androidx.appcompat.widget.Toolbar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
+import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.NetWorKing.ApiServices;
+import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren;
 
 public class ViewHistory extends AppCompatActivity {
 
     ListView lvHistory;
-    ArrayList<News> arrayNews;
-
+    ArrayList<PostNewsModel> arrayNews;
+    NewsAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,24 +43,40 @@ public class ViewHistory extends AppCompatActivity {
 
         //      listview tin đăng mới
         lvHistory = findViewById(R.id.listViewHistory);
-        arrayNews = new ArrayList<News>();
+        arrayNews = new ArrayList<PostNewsModel>();
 
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
+        // get data
+        Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+        ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
 
-        NewsAdapter adapter = new NewsAdapter(
-                this,
-                R.layout.row_news_listview,
-                arrayNews
-        );
+        Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getPost();
+
+        call.enqueue(new Callback<List<PostNewsModel>>() {
+            @Override
+            public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
+                if ( !response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                List<PostNewsModel> posts = response.body();
+
+                adapter = new NewsAdapter(
+                        getApplicationContext(),
+                        R.layout.row_news_listview,
+                        posts
+                );
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
         lvHistory.setAdapter(adapter);
         setListViewHeightBasedOnChildren(lvHistory);
     }

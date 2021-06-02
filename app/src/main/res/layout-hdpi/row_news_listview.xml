@@ -5,6 +5,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -33,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Có trà xanh cần bán"
-                android:textSize="@dimen/size_3"
+                android:textSize="@dimen/size_2"
                 android:textColor="@color/black"
                 android:fontFamily="@font/open_sans_semibold"/>
             <LinearLayout
@@ -48,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tin tặng"
                     android:layout_weight="1"
-                    android:textSize="@dimen/size_1"
+                    android:textSize="@dimen/size_2"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"/>
 
@@ -58,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:text="Miễn phí"
                     android:layout_weight="1"
-                    android:textSize="@dimen/size_1"
+                    android:textSize="@dimen/size_2"
                     android:textColor="@color/green"
                     android:fontFamily="@font/open_sans"
                     android:textAlignment="textEnd"/>
@@ -74,10 +76,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="6 phút"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:drawableLeft="@drawable/ic_baseline_access_time_18"
                     android:drawablePadding="20px"
-                    android:textSize="@dimen/size_1"
+                    android:textSize="@dimen/size_2"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"/>
 
@@ -87,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:text="Dĩ An, Bình Dương"
                     android:layout_weight="1"
-                    android:textSize="@dimen/size_1"
+                    android:textSize="@dimen/size_2"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"
                     android:textAlignment="textEnd"/>

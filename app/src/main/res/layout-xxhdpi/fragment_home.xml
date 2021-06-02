@@ -22,7 +22,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="-25dp"
             android:background="@drawable/duongvien_bogoctron">
 
             <Button
@@ -61,7 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40px"
-            android:layout_marginTop="80px"
+            android:layout_marginTop="60px"
+            android:layout_marginBottom="60px"
             android:layout_marginRight="40px"
             android:gravity="center"
             android:orientation="horizontal">
@@ -264,9 +265,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:dividerHeight="10dp"
-                android:scrollingCache="false"
-                android:smoothScrollbar="true" />
+                android:dividerHeight="10dp"/>
 
         </LinearLayout>
 

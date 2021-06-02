@@ -92,6 +92,7 @@
         android:layout_marginTop="25dp"
         android:layout_height="wrap_content"
         android:text="Đăng ký"
+        android:layout_gravity="bottom"
         android:fontFamily="@font/open_sans_semibold"
         android:textSize="@dimen/size_1"
         android:textColor="@color/white"

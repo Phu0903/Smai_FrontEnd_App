@@ -5,13 +5,27 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
+import com.example.SmaiApp.Adapter.PostDonationAdapter;
+import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.NetWorKing.ApiServices;
+import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren;
 
@@ -19,10 +33,11 @@ import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren
 public class PostDonation extends AppCompatActivity {
 
     ListView lvNews_New;
-    ArrayList<News> arrayNews_New;
-
     Spinner spinnerLocation;
     Spinner spinnerType;
+    PostDonationAdapter adapter;
+    public static List<PostNewsModel> posts;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,22 +71,35 @@ public class PostDonation extends AppCompatActivity {
 
         //      listview tin đăng mới
         lvNews_New = findViewById(R.id.listViewNews_New);
-        arrayNews_New = new ArrayList<News>();
 
-        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
-        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
-        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
-        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
-        arrayNews_New.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "23/3/5/2021", R.drawable.sachthanly));
+        // get data
+        Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+        ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
 
-        NewsAdapter adapter = new NewsAdapter(PostDonation.this, R.layout.row_news_listview, arrayNews_New);
-        lvNews_New.setAdapter(adapter);
-        setListViewHeightBasedOnChildren(lvNews_New);
+        Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getPostGiveCommunity("tangcongdong");
+
+
+        call.enqueue(new Callback<List<PostNewsModel>>() {
+            @Override
+            public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
+                if ( !response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                posts = response.body();
+
+                adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
+                lvNews_New.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), call.toString(), Toast.LENGTH_LONG).show();
+                Log.d("Error", t.getMessage());
+
+            }
+        });
 
     }
 }

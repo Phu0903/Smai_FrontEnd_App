@@ -25,7 +25,7 @@
             android:layout_marginLeft="40dp"
             android:layout_gravity="center"
             android:columnCount="6"
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="-26dp"
             android:background="@drawable/duongvien_bogoctron">
 
             <Button
@@ -151,10 +151,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="20px"
+            android:paddingTop="10px"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:paddingBottom="20px">
+            android:paddingBottom="10px">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -169,8 +169,8 @@
 
                         <ImageButton
                             android:id="@+id/view_donations"
-                            android:layout_width="100px"
-                            android:layout_height="100px"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
                             android:padding="0px"
                             android:src="@drawable/bookstore"/>
                     </androidx.cardview.widget.CardView>
@@ -269,9 +269,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:dividerHeight="10dp"
-                android:scrollingCache="false"
-                android:smoothScrollbar="true" />
+                android:dividerHeight="10dp" />
 
         </LinearLayout>
 

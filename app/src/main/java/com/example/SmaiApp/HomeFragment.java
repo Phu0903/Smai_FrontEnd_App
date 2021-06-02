@@ -2,6 +2,7 @@ package com.example.SmaiApp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +10,24 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
+import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.NetWorKing.ApiServices;
+import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren;
 
@@ -24,7 +35,6 @@ public class HomeFragment extends Fragment {
 
 
     ListView lvNews;
-    ArrayList<News> arrayNews;
 
 
 //    button search
@@ -38,7 +48,8 @@ public class HomeFragment extends Fragment {
 
 //    button  top homepage
     Button btn_tangcongdong, btn_tangnguoingheo, btn_tangquytuthien, btn_quyengopcongich;
-
+    NewsAdapter adapter;
+    public static List<PostNewsModel> posts;
 
     @Nullable
     @Override
@@ -84,28 +95,44 @@ public class HomeFragment extends Fragment {
         });
 
 
-//      listview tin đăng mới
+        //      listview tin đăng mới
         lvNews = view.findViewById(R.id.listViewNews);
-        arrayNews = new ArrayList<News>();
+//        ******************************************************************************************
+// get data
+        Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+        ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
 
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
-        arrayNews.add(new News(1, "0971037601", "Học tập", "Dĩ An, Bình Dương", "Sách lớp 1",
-                "Có sách cần thanh lý", "Miễn phí", "1h", R.drawable.sachthanly));
+        Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getPost();
 
-        NewsAdapter adapter = new NewsAdapter(
-                getContext(),
-                R.layout.row_news_listview,
-                arrayNews
-        );
-        lvNews.setAdapter(adapter);
-        setListViewHeightBasedOnChildren(lvNews);
+        call.enqueue(new Callback<List<PostNewsModel>>() {
+            @Override
+            public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
+                if ( !response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Fail", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                posts = response.body();
+
+                adapter = new NewsAdapter(
+                        getContext(),
+                        R.layout.row_news_listview,
+                        posts);
+                lvNews.setAdapter(adapter);
+                lvNews.setEnabled(false);
+                setListViewHeightBasedOnChildren(lvNews);
+            }
+            @Override
+            public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
+                Toast.makeText(getContext(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
+
+
+
 
 // open search screen
         btnSearch = view.findViewById(R.id.btn_search);
@@ -139,6 +166,12 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+
+
+
+
 
         return view;
     }
