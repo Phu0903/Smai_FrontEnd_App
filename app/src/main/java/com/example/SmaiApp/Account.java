@@ -5,13 +5,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import com.example.SmaiApp.Personal.LoginFragment;
 import com.example.SmaiApp.Personal.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-public class Account extends AppCompatActivity {
+public class Account extends AppCompatActivity implements LoginFragment.TextClicked {
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -36,11 +38,11 @@ public class Account extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
+
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    public void sendText(String text) {
+
     }
 }

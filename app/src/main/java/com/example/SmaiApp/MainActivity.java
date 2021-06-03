@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String myData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("message");
+        String token = intent.getStringExtra("Token");
+        myData = message + "," + token;
 
     }
 
@@ -47,4 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    public String getMyData() {
+        return myData;
+    }
 }

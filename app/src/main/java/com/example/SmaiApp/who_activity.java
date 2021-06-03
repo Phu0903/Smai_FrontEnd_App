@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,6 +14,7 @@ public class who_activity extends AppCompatActivity {
 
 
     Button btn_canhan, btn_grouptưthien, btn_tochuc;
+    String address = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +33,21 @@ public class who_activity extends AppCompatActivity {
         btn_grouptưthien = findViewById(R.id.button3);
         btn_tochuc = findViewById(R.id.button8);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            address = bundle.getString("address", "");
+            Log.d("Address", address);
+        }
+
+
         btn_canhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("address", address);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

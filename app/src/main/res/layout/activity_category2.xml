@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".CategoryActivity2">
 
 
@@ -27,8 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:groupIndicator="@null"
-        android:divider="@color/cardview_dark_background"
-        android:dividerHeight="0.5dp"
+        android:divider="@color/white"
+        android:dividerHeight="2dp"
         android:layout_weight="1"/>
 
     <Button

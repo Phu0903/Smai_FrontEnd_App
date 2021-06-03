@@ -37,6 +37,7 @@
         </FrameLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputlayout_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="30px"
@@ -57,6 +58,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputlayout_district"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -77,6 +79,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputlayout_ward"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -99,6 +102,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputlayout_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"

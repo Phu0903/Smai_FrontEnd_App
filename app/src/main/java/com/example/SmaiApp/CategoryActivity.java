@@ -52,6 +52,8 @@ public class CategoryActivity extends AppCompatActivity {
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
 
+        
+
 
         btnNext = (Button)findViewById(R.id.danhmuc_next);
         btnNext.setOnClickListener(new View.OnClickListener() {

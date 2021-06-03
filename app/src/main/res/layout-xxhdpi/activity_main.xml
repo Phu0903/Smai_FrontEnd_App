@@ -24,5 +24,4 @@
         android:background="?android:attr/windowBackground"
         />
 
-
 </RelativeLayout>

@@ -49,8 +49,10 @@
                     tools:srcCompat="@drawable/user" />
 
                 <LinearLayout
+                    android:id="@+id/linearlayout_infor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <TextView
@@ -86,6 +88,25 @@
 
                     </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearlayout_requireUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btn_LILO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đăng nhập/Đăng ký"
+                        android:textAllCaps="false"
+                        android:backgroundTint="#DD484D"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="@dimen/size_3"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
 
             </LinearLayout>
             <TextView

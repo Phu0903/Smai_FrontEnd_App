@@ -88,6 +88,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Thủ Đức, Sài Gòn"
+                    android:singleLine="true"
+                    android:ellipsize="end"
                     android:layout_weight="1"
                     android:textSize="@dimen/size_2"
                     android:textColor="@color/light_gray"

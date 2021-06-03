@@ -13,6 +13,7 @@
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="10dp"
+        android:paddingRight="20dp"
         android:paddingBottom="10dp"/>
 
 </LinearLayout>

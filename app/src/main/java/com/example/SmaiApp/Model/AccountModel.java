@@ -4,11 +4,29 @@ public class AccountModel {
     private String UserName;
     private String Password;
     private String PhoneNumber;
-    private String AccessToken;
 
-    public void setAccessToken(String accessToken) { AccessToken = accessToken; }
+    public String getAccessToken() {
+        return accessToken;
+    }
 
-    public String getAccessToken() { return AccessToken; }
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    private String accessToken;
+
+
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+
 
     public String getUserName() {
         return UserName;

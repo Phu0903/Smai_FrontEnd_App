@@ -91,6 +91,8 @@
                     android:layout_height="wrap_content"
                     android:text="Số 04, Phan Đình Phùng"
                     android:layout_weight="1"
+                    android:singleLine="true"
+                    android:ellipsize="end"
                     android:textSize="@dimen/size_2"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"

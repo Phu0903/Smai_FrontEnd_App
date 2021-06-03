@@ -69,7 +69,7 @@ public class NewsAdapter extends BaseAdapter {
         String sTime = localDateFormat.format(date1);
         String[] s1 = sTime.split(" ");
 
-        Log.d("Date up news", sTime);
+//        Log.d("Date up news", sTime);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date1);

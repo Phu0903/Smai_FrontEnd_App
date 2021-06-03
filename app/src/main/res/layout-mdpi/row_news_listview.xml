@@ -90,6 +90,8 @@
                     android:layout_height="wrap_content"
                     android:text="Dĩ An, Bình Dương"
                     android:layout_weight="1"
+                    android:singleLine="true"
+                    android:ellipsize="end"
                     android:textSize="@dimen/size_1"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"
