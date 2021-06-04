@@ -31,6 +31,5 @@ public interface ApiServices {
     @POST("account/login")
     Call<AccountModel> login(@Body AccountModel accountModel);
 
-    @GET("secretinfo")
-    Call<ResponseBody> getSecret(@Header("Authorization") String authToken);
+
 }

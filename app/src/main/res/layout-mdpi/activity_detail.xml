@@ -36,6 +36,7 @@
             android:textSize="@dimen/size_1" />
 
         <EditText
+            android:id="@+id/edt_loinhan"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_below="@+id/dt_title1"
@@ -65,6 +66,7 @@
             android:textSize="@dimen/size_1" />
 
         <EditText
+            android:id="@+id/edt_mota"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@+id/dt_title2"

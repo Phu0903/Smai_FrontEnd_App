@@ -61,21 +61,6 @@ public class CategoryActivity extends AppCompatActivity {
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
 
-
-
-
-
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        expandableListTitle.get(groupPosition) + " List Collapsed.",
-                        Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
-
         nameProductArrayList = new ArrayList<NameProduct>();
 
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -91,41 +76,53 @@ public class CategoryActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+// Nhận địa chỉ*****************************************************************************
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             address = bundle.getString("address", "");
 //            Log.d("Address", address);
         }
+//*************************************************************************************************
 
+//        *************************Next button
         btnNext = (Button)findViewById(R.id.danhmuc_next);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (nameProductArrayList != null) {
+            btnNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                if (nameProductArrayList != null) {
+                    if (nameProductArrayList != null) {
 
-
-                    ArrayList<String> arrayListName = new ArrayList<>();
-                    ArrayList<String> arrayListCatogory = new ArrayList<>();
-                    for (int i=0; i< nameProductArrayList.size(); i++) {
-                        arrayListName.add(nameProductArrayList.get(i).getNameProduct());
-                        arrayListCatogory.add(nameProductArrayList.get(i).getCategory());
+//Chuyển sang 2 arraylist để dễ pass data to detail********************************************************************
+                        ArrayList<String> arrayListName = new ArrayList<>();
+                        ArrayList<String> arrayListCatogory = new ArrayList<>();
+                        for (int i=0; i< nameProductArrayList.size(); i++) {
+                            arrayListName.add(nameProductArrayList.get(i).getNameProduct());
+                            arrayListCatogory.add(nameProductArrayList.get(i).getCategory());
+                        }
+//                        ********************************************************************
+//gửi data sang activity Detail*************************************************************
+                        Intent intent1 = new Intent(getApplicationContext(), Detail.class);
+                        intent1.putExtra("ListName", arrayListName);
+                        intent1.putExtra("ListCatogary", arrayListCatogory);
+                        intent1.putExtra("address", address);
+                        startActivity(intent1);
+//                        *************************************************************
+    //                    for (int i=0; i< nameProductArrayList.size(); i++) {
+    //                        Log.d("ListProduct: ", nameProductArrayList.get(i).getCategory() + ": " + nameProductArrayList.get(i).getNameProduct());
+    //                    }
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Vui lòng chọn ít nhất 1 mục", Toast.LENGTH_SHORT).show();
                     }
 
-                    Intent intent1 = new Intent(getApplicationContext(), Detail.class);
-                    intent1.putExtra("ListName", arrayListName);
-                    intent1.putExtra("ListCatogary", arrayListCatogory);
-                    intent1.putExtra("address", address);
-                    startActivity(intent1);
-//                    for (int i=0; i< nameProductArrayList.size(); i++) {
-//                        Log.d("ListProduct: ", nameProductArrayList.get(i).getCategory() + ": " + nameProductArrayList.get(i).getNameProduct());
-//                    }
                 }
-
-            }
-        });
+            });
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Vui lòng chọn ít nhất 1 mục", Toast.LENGTH_SHORT).show();
+        }
 
 
 

@@ -5,22 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.Manifest;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.example.SmaiApp.Danhmuc.NameProduct;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Detail extends AppCompatActivity {
 
@@ -30,9 +41,13 @@ public class Detail extends AppCompatActivity {
     ImageView[] listImage = new ImageView[5];
     int count;//image counter
     Button btnNext;
+    EditText edtLoiNhan, edtMoTa;
 
+    List<Bitmap> bitmaps;
+    List<Uri> uris = new ArrayList<>();
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +64,9 @@ public class Detail extends AppCompatActivity {
 //        Add back button at toolbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        edtLoiNhan = findViewById(R.id.edt_loinhan);
+        edtMoTa = findViewById(R.id.edt_mota);
+
         mChooseBtn = findViewById(R.id.btn_uploadImage);
         imgView1 = findViewById(R.id.dt_imaage_view1);
         imgView2 = findViewById(R.id.dt_imaage_view2);
@@ -60,7 +78,16 @@ public class Detail extends AppCompatActivity {
         listImage[2] = imgView3;
         listImage[3] = imgView4;
         listImage[4] = imgView5;
+
         count = 0;
+
+//Nhận data from Catogory: address, list nameproduct
+        Intent intent = getIntent();
+        String address = intent.getStringExtra("address");
+        ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
+        ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
+//********************************************************************
+
 
 
         mChooseBtn.setOnClickListener(new View.OnClickListener() {
@@ -73,8 +100,6 @@ public class Detail extends AppCompatActivity {
                     } else {
                         pickImageFromGallery();
                     }
-                } else {
-
                 }
             }
         });
@@ -83,23 +108,33 @@ public class Detail extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Gửi data sang activity ConfirmInfor
                 Intent intent = new Intent(Detail.this, ConfirmInforPost.class);
+                String loinhan = edtLoiNhan.getText().toString();
+                String mota = edtMoTa.getText().toString();
+                intent.putExtra("loinhan", loinhan);
+                intent.putExtra("mota", mota);
+                intent.putExtra("address", address);
+                intent.putStringArrayListExtra("ListName", listName);
+                intent.putStringArrayListExtra("ListCatogary", listCatogory);
+                intent.putParcelableArrayListExtra("Uri", (ArrayList<Uri>) uris);
+//*******************************************************************************************
                 startActivity(intent);
             }
         });
-//Get data from Catogory: address, list nameproduct
-        Intent intent = getIntent();
-        String address = intent.getStringExtra("address");
-        ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
-        ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
-
-
     }
 
     private void pickImageFromGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
+//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+//        intent.setType("image/*");
+//        startActivityForResult(intent, IMAGE_PICK_CODE);
+
+        Intent intent = new Intent();
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        startActivityForResult(intent, IMAGE_PICK_CODE);
+        startActivityForResult(Intent.createChooser(intent,"Select Picture"), IMAGE_PICK_CODE);
     }
 
     @Override
@@ -120,8 +155,59 @@ public class Detail extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            listImage[count].setImageURI(data.getData());
-            count = count + 1;
+//            listImage[count].setImageURI(data.getData());
+//            count = count + 1;
+            bitmaps = new ArrayList<>();
+            ClipData clipData = data.getClipData();
+
+            if (clipData != null) {
+                //multiple images selecetd
+                for (int i = 0; i < clipData.getItemCount(); i++) {
+                    Uri imageUri = clipData.getItemAt(i).getUri();
+                    uris.add(imageUri);
+                    Log.d("URI", imageUri.toString());
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        bitmaps.add(bitmap);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else {
+                //single image selected
+                Uri imageUri = data.getData();
+                Log.d("URI", imageUri.toString());
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    bitmaps.add(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (final Bitmap b : bitmaps) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                listImage[count].setImageBitmap(b);
+                                count=count+1;
+                            }
+                        });
+
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }).start();
         }
     }
 

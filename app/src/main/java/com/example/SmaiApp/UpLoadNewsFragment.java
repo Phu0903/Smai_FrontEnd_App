@@ -50,12 +50,24 @@ public class UpLoadNewsFragment extends Fragment {
         myAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);
 
+        MainActivity activity = (MainActivity) getActivity();
+        String codeLogin  = activity.getMyData();
+
+        String[] code = codeLogin.split(",");
+
+        String message = code[0];
+        String token = code[1];
+
+
         btnUpload = view.findViewById(R.id.create_post);
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), NewpostType.class);
-                startActivity(intent);
+
+                if (token != null) {
+                    Intent intent = new Intent(getContext(), NewpostType.class);
+                    startActivity(intent);
+                }
             }
         });
 
