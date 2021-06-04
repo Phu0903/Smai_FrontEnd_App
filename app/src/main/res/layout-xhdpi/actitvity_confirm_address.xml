@@ -115,6 +115,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40px"
                 android:hint="Số nhà ấp thôn"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"
                 android:textSize="@dimen/size_2"/>

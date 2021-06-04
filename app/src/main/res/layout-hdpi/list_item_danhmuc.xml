@@ -3,17 +3,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <CheckBox
-        android:id="@+id/Cb_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:button="@null"
+    <CheckedTextView
+        android:id="@+id/checkList"
         android:text="Quần áo trẻ em"
         android:textSize="@dimen/size_2"
-        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:textColor="@color/black"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="10dp"
         android:paddingRight="20dp"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:gravity="center_vertical"/>
 
 </LinearLayout>

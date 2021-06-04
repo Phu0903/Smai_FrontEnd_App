@@ -114,9 +114,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40px"
+                android:imeOptions="actionDone"
                 android:hint="Số nhà ấp thôn"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"
+                android:singleLine="true"
                 android:textSize="@dimen/size_2"/>
         </com.google.android.material.textfield.TextInputLayout>
 

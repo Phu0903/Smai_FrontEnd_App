@@ -10,11 +10,17 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.SmaiApp.Danhmuc.NameProduct;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Detail extends AppCompatActivity {
 
@@ -81,6 +87,13 @@ public class Detail extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//Get data from Catogory: address, list nameproduct
+        Intent intent = getIntent();
+        String address = intent.getStringExtra("address");
+        ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
+        ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
+
+
     }
 
     private void pickImageFromGallery() {

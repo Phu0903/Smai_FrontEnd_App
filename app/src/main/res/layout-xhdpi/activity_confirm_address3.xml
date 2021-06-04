@@ -117,6 +117,8 @@
                 android:hint="Số nhà ấp thôn"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
                 android:textSize="@dimen/size_2"/>
         </com.google.android.material.textfield.TextInputLayout>
 
