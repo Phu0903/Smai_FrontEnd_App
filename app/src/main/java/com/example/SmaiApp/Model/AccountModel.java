@@ -4,6 +4,25 @@ public class AccountModel {
     private String UserName;
     private String Password;
     private String PhoneNumber;
+    private String Address;
+    private String FulllName;
+
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getFulllName() {
+        return FulllName;
+    }
+
+    public void setFulllName(String fulllName) {
+        FulllName = fulllName;
+    }
 
     public String getAccessToken() {
         return accessToken;

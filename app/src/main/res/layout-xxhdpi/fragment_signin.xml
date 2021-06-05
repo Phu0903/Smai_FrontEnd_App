@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:isScrollContainer="false"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Personal.SigninFragment">
 
@@ -17,10 +17,12 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layouthoten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edthoten"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:completionThreshold="1"
@@ -33,11 +35,33 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layouttaikhoan"
             android:layout_width="match_parent"
             android:layout_marginTop="25dp"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edttaikhoan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:completionThreshold="1"
+                android:fontFamily="@font/open_sans"
+                android:hint="Tên tài khoản"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#D6908B"
+                android:textSize="@dimen/size_3" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutsdt"
+            android:layout_width="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtsdt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:completionThreshold="1"
@@ -51,12 +75,34 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutdiachi"
+            android:layout_width="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtdiachi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:completionThreshold="1"
+                android:fontFamily="@font/open_sans"
+                android:hint="Địa chỉ"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#D6908B"
+                android:textSize="@dimen/size_3" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutmatkhau"
             android:layout_width="match_parent"
             android:layout_marginTop="25dp"
             app:passwordToggleEnabled="true"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtmatkhau"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/open_sans"
@@ -69,12 +115,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutmatkhau2"
             android:layout_width="match_parent"
             android:layout_marginTop="25dp"
             app:passwordToggleEnabled="true"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtmatkhau2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:completionThreshold="1"
@@ -85,17 +133,9 @@
                 android:textColorHint="#D6908B"
                 android:textSize="@dimen/size_3" />
         </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:orientation="horizontal">
 
         <Button
-
+            android:id="@+id/btn_signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -104,8 +144,9 @@
             android:text="Đăng ký"
             android:textColor="@color/white"
             android:textSize="@dimen/size_2" />
-
     </LinearLayout>
 
 
-</LinearLayout>
+
+
+</ScrollView>

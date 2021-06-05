@@ -17,10 +17,12 @@
         android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layouthoten"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edthoten"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="@dimen/size_2"
@@ -31,6 +33,24 @@
             android:hint="Họ tên" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:textSize="@dimen/size_2"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textColorHint="#D6908B"
+                android:completionThreshold="1"
+                android:hint="Tên tài khoản" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
