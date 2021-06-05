@@ -115,7 +115,7 @@ public class UserFragment extends Fragment {
             layoutRequired.setVisibility(View.GONE);
         }
 
-        Log.d("Message and token", message + ",    " + token);
+        Log.d("Message, token, user", message + ",    " + token);
 
         return view;
     }

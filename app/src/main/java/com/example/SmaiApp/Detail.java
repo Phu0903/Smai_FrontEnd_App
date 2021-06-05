@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -84,6 +86,9 @@ public class Detail extends AppCompatActivity {
 //Nhận data from Catogory: address, list nameproduct
         Intent intent = getIntent();
         String address = intent.getStringExtra("address");
+        String token = intent.getStringExtra("token");
+        Log.d("Token Detail", token);
+        String TypeAuthor = intent.getStringExtra("TypeAuthor");
         ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
         ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
 //********************************************************************
@@ -115,6 +120,8 @@ public class Detail extends AppCompatActivity {
                 intent.putExtra("loinhan", loinhan);
                 intent.putExtra("mota", mota);
                 intent.putExtra("address", address);
+                intent.putExtra("token", token);
+                intent.putExtra("TypeAuthor", TypeAuthor);
                 intent.putStringArrayListExtra("ListName", listName);
                 intent.putStringArrayListExtra("ListCatogary", listCatogory);
                 intent.putParcelableArrayListExtra("Uri", (ArrayList<Uri>) uris);
@@ -178,6 +185,13 @@ public class Detail extends AppCompatActivity {
                 //single image selected
                 Uri imageUri = data.getData();
                 Log.d("URI", imageUri.toString());
+                String path = getRealPathFromURI(imageUri);
+                if (path != null) {
+                    Log.d("path", path);
+                }
+                else {
+                    Log.d("Message", "Not find filepath");
+                }
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(imageUri);
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
@@ -201,7 +215,7 @@ public class Detail extends AppCompatActivity {
                         });
 
                         try {
-                            Thread.sleep(3000);
+                            Thread.sleep(100);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -209,6 +223,20 @@ public class Detail extends AppCompatActivity {
                 }
             }).start();
         }
+    }
+
+    private String getRealPathFromURI(Uri contentURI) {
+        String result;
+        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
     }
 
 }

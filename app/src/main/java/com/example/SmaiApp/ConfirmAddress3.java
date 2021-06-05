@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class ConfirmAddress3 extends AppCompatActivity {
 
+    private String myDataAddress;
 
     Button btn_xacnhan;
     TextInputLayout layoutCity, layoutDistrict, layoutWard, layoutDetailLocation;
@@ -34,6 +36,11 @@ public class ConfirmAddress3 extends AppCompatActivity {
         ward.addTextChangedListener(new ConfirmWardTextWatcher(ward));
         detailLocation.addTextChangedListener(new ConfirmDetailLocationTextWatcher(detailLocation));
 
+        Intent intent1 = getIntent();
+        String token = intent1.getStringExtra("Token");
+        Log.d("Token address", token);
+
+
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +51,7 @@ public class ConfirmAddress3 extends AppCompatActivity {
                     getTextAction();
                     Bundle bundle = new Bundle();
                     bundle.putString("address", nameDetailLocation + ", " + nameWard + ", " + nameDistrict + ", " + nameCity);
+                    bundle.putString("token", token);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
@@ -185,5 +193,8 @@ public class ConfirmAddress3 extends AppCompatActivity {
         }
     }
 
+    public String getMyDataAddress() {
+        return myDataAddress;
+    }
 
 }

@@ -2,24 +2,57 @@ package com.example.SmaiApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.loader.content.CursorLoader;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.FileUtils;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.Model.ProductModel;
+import com.example.SmaiApp.NetWorKing.ApiServices;
+import com.example.SmaiApp.NetWorKing.RetrofitClient;
+import com.google.gson.Gson;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class ConfirmInforPost extends AppCompatActivity {
+
+    PostNewsModel postNewsModel;
+    List<ProductModel> productModelList = new ArrayList<>();
+    List<Uri> finalUris = new ArrayList<>();
+    List<Uri> uris = new ArrayList<Uri>();
+
+    String mainToken="";
 
     Button btn_confirm;
 
@@ -55,10 +88,10 @@ public class ConfirmInforPost extends AppCompatActivity {
 
 //        Nhận data từ Detail Activity ***************************
         Intent intent = getIntent();
-        List<Uri> uris = new ArrayList<Uri>();
 //        lấy uri của hình ảnh
         uris = intent.getParcelableArrayListExtra("Uri");
         List<Bitmap> bitmaps = new ArrayList<>();
+
 // Chuyển uri sang bitmap
         for (Uri uri: uris) {
             InputStream inputStream = null;
@@ -80,7 +113,10 @@ public class ConfirmInforPost extends AppCompatActivity {
         ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
         String loinhan = intent.getStringExtra("loinhan");
         String mota = intent.getStringExtra("mota");
-
+        String token = intent.getStringExtra("token");
+        Log.d("Token Confirm", token);
+        String TypeAuthor = intent.getStringExtra("TypeAuthor");
+//************************************************************************************************************
 
 //ánh xạ các textview
 
@@ -105,23 +141,133 @@ public class ConfirmInforPost extends AppCompatActivity {
 
 
 
+        List<File> listFile = new ArrayList<>();
+
+        File file1 = new File(uris.get(0).getPath());
+        Log.d("file ảnh 1", file1.toString());
+
+
+
+        for (int i=0;i<uris.size();i++) {
+
+            File file = new File(uris.get(i).getPath());
+            listFile.add(file);
+            Log.d("Uri", String.valueOf(uris.get(i)));
+            Log.d("UriString", String.valueOf(listFile.get(i)));
+        }
+
+        Log.d("Size listFIle path", String.valueOf(listFile.size()));
+//        postNewsModel.setProductImage(listFile);
+
+
+
+//gán giá trị cho postNewModel
+        postNewsModel = new PostNewsModel();
+        postNewsModel.setAddress(address);
+        Log.d("Address", postNewsModel.getAddress());
+        postNewsModel.setTypeAuthor(TypeAuthor);
+        Log.d("TypeAuthor", postNewsModel.getTypeAuthor());
+        postNewsModel.setTitle(loinhan);
+        Log.d("TittlePost", postNewsModel.getTitle());
+        postNewsModel.setNote(mota);
+        Log.d("TittlePost", postNewsModel.getTitle());
+
+
+        Date currentTime = Calendar.getInstance().getTime();
+        postNewsModel.setCreatedAt(currentTime);
+        postNewsModel.setUpdatedAt(currentTime);
+        postNewsModel.setAuthorID(token);
+
+//        chuyển list nameproduct sang list<product
+        for (int i=0;i< listCatogory.size(); i++) {
+            ProductModel productModel = new ProductModel();
+            productModel.setCategory(listCatogory.get(i));
+            productModel.setNameProduct(listName.get(i));
+            productModelList.add(productModel);
+        }
+//        postNewsModel.setNameProduct(productModelList);
 
 
 
 
-
-
-
-
+        mainToken = token;
 
         //Click btn_confirm
         btn_confirm = findViewById(R.id.btn_confirm);
+
+        Uri uri = uris.get(0);
+        String picturePath = getPath(getApplicationContext(),uri);
+        if (picturePath != null) {
+            Log.e("Picture Path", picturePath);
+
+            Log.d("Uri 1111", String.valueOf(uri));
+        }
+        else {
+            Log.d("Errorrr", "lõioooooooooooo");
+        }
+
+//        Log.d("Type Uri", path);
+//        Log.d("uriii 1", String.valueOf(finalUris.get(0)));
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ConfirmInforPost.this, CompleteActivity.class);
-                startActivity(intent);
+                Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+                ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
+
+
+
+//                Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer "+mainToken, postNewsModel);
+//
+//                call.enqueue(new Callback<PostNewsModel>() {
+//                    @Override
+//                    public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
+//                        if (response.isSuccessful()) {
+//                            Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
+//                            startActivity(intent1);
+//                        }
+////                        Log.d("Message", response.body().getMessage());
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<PostNewsModel> call, Throwable t) {
+//
+//                        Log.e("Error", t.getMessage());
+//                    }
+//                });
+
+
             }
         });
+    }
+
+    private String getRealPathFromURI(Uri contentURI) {
+        String result;
+        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
+    }
+
+    public static String getPath(Context context, Uri uri ) {
+        String result = null;
+        String[] proj = { MediaStore.Images.Media.DATA };
+        Cursor cursor = context.getContentResolver( ).query( uri, proj, null, null, null );
+        if(cursor != null){
+            if ( cursor.moveToFirst( ) ) {
+                int column_index = cursor.getColumnIndexOrThrow( proj[0] );
+                result = cursor.getString( column_index );
+            }
+            cursor.close( );
+        }
+        if(result == null) {
+            result = "Not found";
+        }
+        return result;
     }
 }

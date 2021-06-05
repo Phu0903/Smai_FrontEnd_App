@@ -3,6 +3,7 @@ package com.example.SmaiApp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class UpLoadNewsFragment extends Fragment {
 
         String message = code[0];
         String token = code[1];
+        Log.d("Token Upload", token);
 
 
         btnUpload = view.findViewById(R.id.create_post);
@@ -64,10 +66,10 @@ public class UpLoadNewsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (token != null) {
-                    Intent intent = new Intent(getContext(), NewpostType.class);
-                    startActivity(intent);
-                }
+
+                Intent intent = new Intent(getActivity().getBaseContext(), NewpostType.class);
+                intent.putExtra("Token", token);
+                getActivity().startActivity(intent);
             }
         });
 

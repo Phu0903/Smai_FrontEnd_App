@@ -35,6 +35,8 @@ public class who_activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+        String token = bundle.getString("token");
+        Log.d("Token who", token);
         if (bundle != null) {
             address = bundle.getString("address", "");
             Log.d("Address", address);
@@ -44,9 +46,42 @@ public class who_activity extends AppCompatActivity {
         btn_canhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String TypeAuthor = "Cá nhân";
                 Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("address", address);
+                bundle.putString("token", token);
+                bundle.putString("TypeAuthor", TypeAuthor);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        btn_grouptưthien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String TypeAuthor = "Quỹ/nhóm từ thiện";
+                Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("address", address);
+                bundle.putString("token", token);
+                bundle.putString("TypeAuthor", TypeAuthor);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        btn_canhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String TypeAuthor = "Tổ chức công ích";
+                Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("address", address);
+                bundle.putString("token", token);
+                bundle.putString("TypeAuthor", TypeAuthor);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

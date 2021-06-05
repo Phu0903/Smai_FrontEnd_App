@@ -83,6 +83,9 @@ public class CategoryActivity extends AppCompatActivity {
             address = bundle.getString("address", "");
 //            Log.d("Address", address);
         }
+        String TypeAuthor = bundle.getString("TypeAuthor");
+        String token = bundle.getString("token");
+        Log.d("Token catogo", token);
 //*************************************************************************************************
 
 //        *************************Next button
@@ -106,7 +109,9 @@ public class CategoryActivity extends AppCompatActivity {
                         Intent intent1 = new Intent(getApplicationContext(), Detail.class);
                         intent1.putExtra("ListName", arrayListName);
                         intent1.putExtra("ListCatogary", arrayListCatogory);
+                        intent1.putExtra("TypeAuthor", TypeAuthor);
                         intent1.putExtra("address", address);
+                        intent1.putExtra("token", token);
                         startActivity(intent1);
 //                        *************************************************************
     //                    for (int i=0; i< nameProductArrayList.size(); i++) {

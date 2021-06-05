@@ -1,6 +1,9 @@
 package com.example.SmaiApp.Model;
 
 
+import android.net.Uri;
+
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +18,27 @@ public class PostNewsModel {
     private List<String> urlImage;
     private Date createdAt;
     private Date updatedAt;
+
+    public List<File> getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(List<File> productImage) {
+        this.productImage = productImage;
+    }
+
+    private List<File> productImage;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    private String message;
+
 
     public String getAuthorID() {
         return AuthorID;

@@ -22,10 +22,14 @@ public class NewpostType extends AppCompatActivity {
         btnTangtuthien = findViewById(R.id.btn_tangtuthien);
         btnQuyengop = findViewById(R.id.btn_quyengop);
 
+        Intent intent = getIntent();
+        String token = intent.getStringExtra("Token");
+
         btnCanxindo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ConfirmAddress3.class);
+                intent.putExtra("Token", token);
                 startActivity(intent);
             }
         });

@@ -107,7 +107,7 @@ public class LoginFragment extends Fragment {
                                 String message = accountModel1.getMessage();
                                 String tk = accountModel1.getAccessToken();
 
-                                Log.d("Token", tk);
+                                Log.d("Token Login", tk);
 
                                 Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
                                 intent.putExtra("message", message);
