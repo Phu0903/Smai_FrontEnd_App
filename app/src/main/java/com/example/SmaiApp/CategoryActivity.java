@@ -84,6 +84,7 @@ public class CategoryActivity extends AppCompatActivity {
 //            Log.d("Address", address);
         }
         String TypeAuthor = bundle.getString("TypeAuthor");
+        Log.d("typeAuthor cato", TypeAuthor);
         String token = bundle.getString("token");
         Log.d("Token catogo", token);
 //*************************************************************************************************

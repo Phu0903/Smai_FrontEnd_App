@@ -89,6 +89,7 @@ public class Detail extends AppCompatActivity {
         String token = intent.getStringExtra("token");
         Log.d("Token Detail", token);
         String TypeAuthor = intent.getStringExtra("TypeAuthor");
+        Log.d("TypeAuthor detail", TypeAuthor);
         ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
         ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
 //********************************************************************

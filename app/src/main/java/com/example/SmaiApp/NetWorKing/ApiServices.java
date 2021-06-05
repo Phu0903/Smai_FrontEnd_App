@@ -38,11 +38,9 @@ public interface ApiServices {
     @POST("account/login")
     Call<AccountModel> login(@Body AccountModel accountModel);
 
-    @Multipart
+
     @POST("post/CreatePost")
-    Call<PostNewsModel> postNews(@Header("Authorization") String authHeader,
-                                 @Part List<MultipartBody.Part> productImage,
-                                 @Body PostNewsModel model);
+    Call<PostNewsModel> postNews(@Header("Authorization") String authHeader, @Body PostNewsModel model);
 
 //    ,
 //    @Body PostNewsModel model,

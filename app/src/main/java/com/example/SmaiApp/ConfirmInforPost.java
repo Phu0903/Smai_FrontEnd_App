@@ -164,6 +164,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         postNewsModel.setAuthorID(token);
         postNewsModel.setAddress(address);
         postNewsModel.setTypeAuthor(TypeAuthor);
+        Log.d("TypeAuthor cccc", TypeAuthor);
         postNewsModel.setTitle(loinhan);
         postNewsModel.setNote(mota);
 
@@ -262,13 +263,14 @@ public class ConfirmInforPost extends AppCompatActivity {
 //                });
 
 
-                Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer " + token, list,postNewsModel);
+                Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer " + token, postNewsModel);
 
                 call.enqueue(new Callback<PostNewsModel>() {
                     @Override
                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
-                        Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
-                        startActivity(intent1);
+                        if (response.body() != null) {
+                            Log.d("idpost",response.body().getIdpost());
+                        }
                     }
 
                     @Override

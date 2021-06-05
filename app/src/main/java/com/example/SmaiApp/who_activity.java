@@ -46,7 +46,7 @@ public class who_activity extends AppCompatActivity {
         btn_canhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String TypeAuthor = "Cá nhân";
+                String TypeAuthor = btn_canhan.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("address", address);
@@ -60,7 +60,7 @@ public class who_activity extends AppCompatActivity {
         btn_grouptưthien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String TypeAuthor = "Quỹ/nhóm từ thiện";
+                String TypeAuthor = btn_grouptưthien.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
 
                 Bundle bundle = new Bundle();
@@ -72,10 +72,10 @@ public class who_activity extends AppCompatActivity {
             }
         });
 
-        btn_canhan.setOnClickListener(new View.OnClickListener() {
+        btn_tochuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String TypeAuthor = "Tổ chức công ích";
+                String TypeAuthor = btn_tochuc.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
 
                 Bundle bundle = new Bundle();

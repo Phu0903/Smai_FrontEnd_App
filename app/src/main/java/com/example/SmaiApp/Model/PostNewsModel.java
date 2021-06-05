@@ -19,6 +19,16 @@ public class PostNewsModel {
     private Date createdAt;
     private Date updatedAt;
 
+    public String getIdpost() {
+        return idpost;
+    }
+
+    public void setIdpost(String idpost) {
+        this.idpost = idpost;
+    }
+
+    private String idpost;
+
     public List<File> getProductImage() {
         return productImage;
     }

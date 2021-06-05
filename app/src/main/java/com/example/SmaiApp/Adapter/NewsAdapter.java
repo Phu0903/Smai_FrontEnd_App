@@ -130,6 +130,7 @@ public class NewsAdapter extends BaseAdapter {
         txtDatePost.setText(getHour);
 
         List<String> listUrl = arrayNews.get(position).getUrlImage();
+
         String url = listUrl.get(0);
         ImageView imgHinh = convertView.findViewById(R.id.img_hinh);
 
