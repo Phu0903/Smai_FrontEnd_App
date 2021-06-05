@@ -68,6 +68,7 @@ public class CategoryActivity extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                               checkedTextView = v.findViewById(R.id.checkList);
                 checkedTextView.toggle();
+                count++;
                 if (checkedTextView.isChecked()) {
                     NameProduct nameProduct = new NameProduct(expandableListTitle.get(groupPosition), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
                     nameProductArrayList.add(nameProduct);
@@ -76,6 +77,12 @@ public class CategoryActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
+
+
+
 // Nhận địa chỉ*****************************************************************************
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();

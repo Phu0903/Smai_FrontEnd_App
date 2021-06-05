@@ -41,10 +41,9 @@ public interface ApiServices {
 
     @POST("post/CreatePost")
     Call<PostNewsModel> postNews(@Header("Authorization") String authHeader, @Body PostNewsModel model);
-
-//    ,
-//    @Body PostNewsModel model,
-//    @Part List<MultipartBody.Part> productImage
+    @Multipart
+    @POST("post/UpdatePost")
+    Call<PostNewsModel> updateImagePost(@Header("idpost") String idpost, @Part List<MultipartBody.Part> productImage);
 
     @POST("post/TestToken")
     Call<String> testToken(@Header("Authorization") String authHeader);

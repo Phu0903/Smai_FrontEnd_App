@@ -212,7 +212,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         fileList.add(file2);
         fileList.add(file3);
         fileList.add(file4);
-        postNewsModel.setProductImage(fileList);
+//        postNewsModel.setProductImage(fileList);
 
         RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
@@ -264,12 +264,27 @@ public class ConfirmInforPost extends AppCompatActivity {
 
 
                 Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer " + token, postNewsModel);
-
+                final String[] idPost = new String[1];
                 call.enqueue(new Callback<PostNewsModel>() {
                     @Override
                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
                         if (response.body() != null) {
                             Log.d("idpost",response.body().getIdpost());
+                            Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(response.body().getIdpost(), list);
+
+                            call1.enqueue(new Callback<PostNewsModel>() {
+                                @Override
+                                public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
+                                    Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
+                                    startActivity(intent1);
+                                }
+
+                                @Override
+                                public void onFailure(Call<PostNewsModel> call, Throwable t) {
+
+                                }
+                            });
+
                         }
                     }
 
@@ -278,6 +293,7 @@ public class ConfirmInforPost extends AppCompatActivity {
                         Log.e("Error", t.getMessage());
                     }
                 });
+
 
 
             }

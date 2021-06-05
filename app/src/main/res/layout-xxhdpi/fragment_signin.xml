@@ -84,7 +84,6 @@
                 android:textColor="@color/black"
                 android:textColorHint="#D6908B"
                 android:textSize="@dimen/size_3" />
-
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
