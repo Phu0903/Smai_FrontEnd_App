@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.FileUtils;
 import android.provider.MediaStore;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,8 @@ import com.example.SmaiApp.NetWorKing.ApiServices;
 import com.example.SmaiApp.NetWorKing.RetrofitClient;
 import com.google.gson.Gson;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -37,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -49,9 +53,9 @@ import retrofit2.Retrofit;
 
 public class ConfirmInforPost extends AppCompatActivity {
 
-    PostNewsModel postNewsModel;
-    List<ProductModel> productModelList = new ArrayList<>();
-    List<Uri> finalUris = new ArrayList<>();
+
+    List<ProductModel> productModelList;
+
     List<Uri> uris = new ArrayList<Uri>();
 
     String mainToken="";
@@ -140,12 +144,13 @@ public class ConfirmInforPost extends AppCompatActivity {
         detailloction.setText(getAddress[0]);
 
 //gán giá trị cho postNewModel
+        PostNewsModel postNewsModel;
         postNewsModel = new PostNewsModel();
 
 
         Date currentTime = Calendar.getInstance().getTime();
 
-
+        productModelList = new ArrayList<>();
 //        chuyển list nameproduct sang list<product
         for (int i=0;i< listCatogory.size(); i++) {
             ProductModel productModel = new ProductModel();
@@ -158,13 +163,11 @@ public class ConfirmInforPost extends AppCompatActivity {
         postNewsModel.setUpdatedAt(currentTime);
         postNewsModel.setAuthorID(token);
         postNewsModel.setAddress(address);
-        Log.d("Address", postNewsModel.getAddress());
         postNewsModel.setTypeAuthor(TypeAuthor);
-        Log.d("TypeAuthor", postNewsModel.getTypeAuthor());
         postNewsModel.setTitle(loinhan);
-        Log.d("TittlePost", postNewsModel.getTitle());
         postNewsModel.setNote(mota);
-        Log.d("TittlePost", postNewsModel.getTitle());
+
+//        PostNewsModel p1 = new PostNewsModel(mota,);
 
         if (postNewsModel != null) {
             Log.d("Value postnewmodel", String.valueOf(postNewsModel));
@@ -185,7 +188,6 @@ public class ConfirmInforPost extends AppCompatActivity {
         Uri uri2 = uris.get(2);
         Uri uri3 = uris.get(3);
         Uri uri4 = uris.get(4);
-
 
         String fullFilePath = UriUtils.getPathFromUri(this, uri2);
         String filePath = UriUtils.getPathFromUri(this, uri);
@@ -209,7 +211,26 @@ public class ConfirmInforPost extends AppCompatActivity {
         fileList.add(file2);
         fileList.add(file3);
         fileList.add(file4);
+        postNewsModel.setProductImage(fileList);
 
+        RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
+        RequestBody requestFile1 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri1)), file1);
+        MultipartBody.Part body1 = MultipartBody.Part.createFormData("productImage", file1.getName(), requestFile1);
+        RequestBody requestFile2 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri2)), file2);
+        MultipartBody.Part body2 = MultipartBody.Part.createFormData("productImage", file2.getName(), requestFile2);
+        RequestBody requestFile3 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri3)), file3);
+        MultipartBody.Part body3 = MultipartBody.Part.createFormData("productImage", file3.getName(), requestFile3);
+        RequestBody requestFile4 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri4)), file4);
+        MultipartBody.Part body4 = MultipartBody.Part.createFormData("productImage", file4.getName(), requestFile4);
+
+        List<MultipartBody.Part> list = new ArrayList<>();
+
+        list.add(body);
+        list.add(body1);
+        list.add(body2);
+        list.add(body3);
+        list.add(body4);
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -241,41 +262,17 @@ public class ConfirmInforPost extends AppCompatActivity {
 //                });
 
 
-                RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), file);
-                MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
-
-                RequestBody requestFile1 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri1)), file1);
-                MultipartBody.Part body1 = MultipartBody.Part.createFormData("productImage", file1.getName(), requestFile1);
-
-                RequestBody requestFile2 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri2)), file2);
-                MultipartBody.Part body2 = MultipartBody.Part.createFormData("productImage", file2.getName(), requestFile2);
-                RequestBody requestFile3 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri3)), file3);
-                MultipartBody.Part body3 = MultipartBody.Part.createFormData("productImage", file3.getName(), requestFile3);
-                RequestBody requestFile4 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri4)), file4);
-                MultipartBody.Part body4 = MultipartBody.Part.createFormData("productImage", file4.getName(), requestFile4);
-                List<MultipartBody.Part> list = new ArrayList<>();
-
-                list.add(body);
-                list.add(body1);
-                list.add(body2);
-                list.add(body3);
-                list.add(body4);
-
-                Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer "+ mainToken, "postNewsModel");
+                Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer " + token, list,postNewsModel);
 
                 call.enqueue(new Callback<PostNewsModel>() {
                     @Override
                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
-                        if (response.isSuccessful()) {
-                            Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
-                            startActivity(intent1);
-                        }
-//                        Log.d("Message", response.body().getMessage());
+                        Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
+                        startActivity(intent1);
                     }
 
                     @Override
                     public void onFailure(Call<PostNewsModel> call, Throwable t) {
-
                         Log.e("Error", t.getMessage());
                     }
                 });
@@ -284,62 +281,5 @@ public class ConfirmInforPost extends AppCompatActivity {
             }
         });
     }
-
-    private String getRealPathFromURI(Uri contentURI) {
-        String result;
-        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
-        if (cursor == null) { // Source is Dropbox or other similar local file path
-            result = contentURI.getPath();
-        } else {
-            cursor.moveToFirst();
-            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            result = cursor.getString(idx);
-            cursor.close();
-        }
-        return result;
-    }
-
-    public static String getPath(Context context, Uri uri ) {
-        String result = null;
-        String[] proj = { MediaStore.Images.Media.DATA };
-        Cursor cursor = context.getContentResolver( ).query( uri, proj, null, null, null );
-        if(cursor != null){
-            if ( cursor.moveToFirst( ) ) {
-                int column_index = cursor.getColumnIndexOrThrow( proj[0] );
-                result = cursor.getString( column_index );
-            }
-            cursor.close( );
-        }
-        if(result == null) {
-            result = "Not found";
-        }
-        return result;
-    }
-
-    public static String getFileNameByUri(Context context, Uri uri){
-        String fileName="unknown";//default fileName
-        Uri filePathUri = uri;
-//        if (uri.getScheme().toString().compareTo("content")==0) {
-//            Cursor cursor = context.getContentResolver().query(uri, null, null,
-//                    null, null);
-//        if (cursor.moveToFirst()){
-//            int column_index =
-//                    cursor.getColumnIndex(MediaStore.Images.Media.DATA);
-//            filePathUri = Uri.parse(cursor.getString(column_index));
-//            if(filePathUri == null){
-//                fileName = "xxx.png";//load a default Image from server
-//            }else{
-//                fileName = filePathUri.getLastPathSegment().toString();
-//            }
-//        }
-//    }else
-            if (uri.getScheme().compareTo("file")==0){
-                fileName = filePathUri.getLastPathSegment().toString();
-            } else {
-                fileName = fileName+"_"+filePathUri.getLastPathSegment();
-            }
-        return fileName;
-    }
-
 
 }

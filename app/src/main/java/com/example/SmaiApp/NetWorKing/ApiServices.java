@@ -38,11 +38,15 @@ public interface ApiServices {
     @POST("account/login")
     Call<AccountModel> login(@Body AccountModel accountModel);
 
-
+    @Multipart
     @POST("post/CreatePost")
-    Call<PostNewsModel> postNews(
-            @Header("Authorization") String authHeader, @Body String string
-    );
+    Call<PostNewsModel> postNews(@Header("Authorization") String authHeader,
+                                 @Part List<MultipartBody.Part> productImage,
+                                 @Body PostNewsModel model);
+
+//    ,
+//    @Body PostNewsModel model,
+//    @Part List<MultipartBody.Part> productImage
 
     @POST("post/TestToken")
     Call<String> testToken(@Header("Authorization") String authHeader);
