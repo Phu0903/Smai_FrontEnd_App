@@ -12,6 +12,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -38,17 +39,15 @@ public interface ApiServices {
     Call<AccountModel> login(@Body AccountModel accountModel);
 
 
-
     @POST("post/CreatePost")
     Call<PostNewsModel> postNews(
-            @Header("Authorization") String authHeader,
-            @Body PostNewsModel postNewsModel
+            @Header("Authorization") String authHeader, @Body String string
     );
 
     @POST("post/TestToken")
     Call<String> testToken(@Header("Authorization") String authHeader);
-    @Multipart
+
     @POST("post/TestIamge")
-    Call<ResponseBody> postFile( @Header("Authorization") String authHeader,@Part("productImage") RequestBody productImage, @Part MultipartBody.Part file);
+    Call<ResponseBody> postFile( @Header("Authorization") String authHeader, @Part MultipartBody.Part productImage);
 
 }
