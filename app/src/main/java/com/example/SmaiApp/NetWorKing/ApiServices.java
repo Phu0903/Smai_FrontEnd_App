@@ -2,6 +2,7 @@ package com.example.SmaiApp.NetWorKing;
 
 import com.example.SmaiApp.Model.AccountModel;
 import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.Model.UserModel;
 
 import java.io.File;
 import java.util.List;
@@ -26,13 +27,21 @@ import retrofit2.http.QueryMap;
 public interface ApiServices {
 
 //    https://smai-back-end.herokuapp.com/post/getNewPost?fbclid=IwAR3ziFlpeKc4_ksCcr5EkAPA5yGy4Km3N8QUP_AyC09YNYX9IKAUMIM-1dA
-
+//lấy tin đăng mới
     @GET("post/getNewpost")
     Call<List<PostNewsModel>> getPost();
 
+//lấy tin đăng tặng cộng đồng
     //https://smai-back-end.herokuapp.com/post/getPostByTypeAuthor?typeauthor=%7BLoaij
     @GET("post/getPostByTypeAuthor")
     Call<List<PostNewsModel>> getPostGiveCommunity(@Query("typeauthor") String author);
+
+    @GET("post/GetPostByAccountID")
+    Call<List<PostNewsModel>> getUserPost(@Header("Authorization") String authHeader);
+
+// Thông tin user
+    @GET("user/getInForUserByTokenId")
+    Call<UserModel> getInforUser(@Header("Authorization") String authHeader);
 
 //    https://smai-back-end.herokuapp.com/account/login
     @POST("account/login")

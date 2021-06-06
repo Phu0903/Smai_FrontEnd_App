@@ -115,17 +115,15 @@ public class NewsAdapter extends BaseAdapter {
         TextView txtTypesNews = convertView.findViewById(R.id.tv_typenews);
         List<ProductModel> productModels = arrayNews.get(position).getNameProduct();
 
-//        ProductModel model1 = new ProductModel();
-//        String nameCatogory = "";
-//        if (model1 != null) {
-//            model1 = productModels.get(0);
-//            nameCatogory = model1.getCategory();
-//        }
-
-
-
-//        txtTypesNews.setText(nameCatogory);
-
+        if (productModels.size() != 0) {
+            ProductModel model1 = new ProductModel();
+            String nameCatogory = "";
+            if (model1 != null) {
+                model1 = productModels.get(0);
+                nameCatogory = model1.getCategory();
+            }
+            txtTypesNews.setText(nameCatogory);
+        }
         TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
         txtDatePost.setText(getHour);
 

@@ -131,7 +131,7 @@
                     android:drawableLeft="@drawable/ic_baseline_history_24"
                     android:fontFamily="@font/open_sans"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/size_1"
+                    android:textSize="@dimen/size_2"
                     android:text="Lịch sử xem " />
 
             <LinearLayout

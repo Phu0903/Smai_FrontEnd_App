@@ -30,6 +30,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren;
+
 public class UpLoadNewsFragment extends Fragment {
 
     private Spinner spinner;
@@ -38,6 +40,7 @@ public class UpLoadNewsFragment extends Fragment {
     ArrayList<PostNewsModel> arrayNews;
     Button btnUpload;
     NewsAdapter adapter;
+    public static List<PostNewsModel> posts;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -77,42 +80,41 @@ public class UpLoadNewsFragment extends Fragment {
         lvNews = view.findViewById(R.id.listViewNews);
         arrayNews = new ArrayList<PostNewsModel>();
 
+        if (token == null) {
+            Toast.makeText(getContext(), "Đăng nhập để xem tin của bạn", Toast.LENGTH_SHORT);
+        }
+        else {
+            // get data
+            Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+            ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
+            Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getUserPost("Bearer " + token);
 
-        // get data
-        Retrofit retrofit = RetrofitClient.getRetrofitInstance();
-        ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
+            call.enqueue(new Callback<List<PostNewsModel>>() {
+                @Override
+                public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
+                    if ( !response.isSuccessful()) {
+                        Toast.makeText(getContext(), "Fail", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    posts = response.body();
 
-        Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getPost();
-
-        call.enqueue(new Callback<List<PostNewsModel>>() {
-            @Override
-            public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
-                if ( !response.isSuccessful()) {
-                    Toast.makeText(getContext(), "Fail", Toast.LENGTH_LONG).show();
-                    return;
+                    adapter = new NewsAdapter(
+                            getContext(),
+                            R.layout.row_news_listview,
+                            posts);
+                    lvNews.setAdapter(adapter);
                 }
-
-                List<PostNewsModel> posts = response.body();
-
-                adapter = new NewsAdapter(
-                        getContext(),
-                        R.layout.row_news_listview,
-                        posts
-                );
-
-            }
-
-            @Override
-            public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
-                Toast.makeText(getContext(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
+                    Toast.makeText(getContext(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
 
 
 
 
 
-        lvNews.setAdapter(adapter);
 
 
         return view;
