@@ -9,6 +9,8 @@ import com.example.SmaiApp.Adapter.NewsAdapter;
 
 public class Helper {
     public static void setListViewHeightBasedOnChildren(ListView listView) {
+
+        if (listView != null) {
         NewsAdapter listAdapter = (NewsAdapter) listView.getAdapter();
         if (listAdapter == null)
             return;
@@ -31,6 +33,7 @@ public class Helper {
                 + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
         listView.requestLayout();
+    }
     }
 
 }

@@ -8,15 +8,18 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
+        <activity android:name=".ConfirmInforPost2"></activity>
+        <activity android:name=".Detail2" />
+        <activity android:name=".CategoryActivity3" />
+        <activity android:name=".Catogary3" />
         <activity android:name=".ConfirmAddress3" />
         <activity android:name=".CategoryActivity2" />
         <activity android:name=".ConfirmAddress2" />
@@ -25,8 +28,9 @@
             android:name=".DetailPost"
             android:parentActivityName=".GiveFor" />
         <activity android:name=".NewpostType" />
-        <activity android:name=".who_activity"
-            android:parentActivityName=".ConfirmAddress3"/>
+        <activity
+            android:name=".who_activity"
+            android:parentActivityName=".ConfirmAddress3" />
         <activity android:name=".CompleteActivity" />
         <activity
             android:name=".ConfirmInforPost"
@@ -40,11 +44,9 @@
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".CategoryActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".who_activity" />
         <activity android:name=".ConfirmAddress" />
-        <activity android:name=".Account">
-
-        </activity>
+        <activity android:name=".Account" />
         <activity
             android:name=".Announce"
             android:parentActivityName=".MainActivity" />

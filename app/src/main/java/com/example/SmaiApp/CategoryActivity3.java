@@ -4,19 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -26,13 +23,12 @@ import com.example.SmaiApp.Danhmuc.CustomExpandableListAdapter;
 import com.example.SmaiApp.Danhmuc.ExpandableListDataPump;
 import com.example.SmaiApp.Danhmuc.NameProduct;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 
-public class CategoryActivity extends AppCompatActivity {
+public class CategoryActivity3 extends AppCompatActivity {
 
     String tokenMain;
     Button btnNext;
@@ -50,7 +46,7 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_category3);
 
 //        toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
@@ -70,7 +66,7 @@ public class CategoryActivity extends AppCompatActivity {
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                              checkedTextView = v.findViewById(R.id.checkList);
+                checkedTextView = v.findViewById(R.id.checkList);
 
 
                 if (checkedTextView.isChecked()) {
@@ -105,7 +101,7 @@ public class CategoryActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             address = bundle.getString("address");
-//            Log.d("Address", address);
+            Log.d("Address catogory 3", address);
         }
         if (bundle.getString("TypeAuthor") != null) {
             TypeAuthor = bundle.getString("TypeAuthor");
@@ -132,8 +128,8 @@ public class CategoryActivity extends AppCompatActivity {
 //                            arrayListCatogory.add(nameProductArrayList.get(i).getCategory());
 //                    }
 //                        ********************************************************************
-                        //gửi data sang activity Detail*************************************************************
-                    Intent intent1 = new Intent(getApplicationContext(), Detail.class);
+                    //gửi data sang activity Detail*************************************************************
+                    Intent intent1 = new Intent(getApplicationContext(), Detail2.class);
                     intent1.putExtra("ListName", arrayListName);
                     intent1.putExtra("ListCatogary", arrayListCatogory);
                     intent1.putExtra("TypeAuthor", TypeAuthor);

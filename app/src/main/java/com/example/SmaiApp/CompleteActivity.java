@@ -77,6 +77,9 @@ public class CompleteActivity extends AppCompatActivity {
 //            productModelList.add(productModel);
 //        }
 
+        Intent intent1 = getIntent();
+        String token = intent1.getStringExtra("Token");
+        String message = intent1.getStringExtra("message");
 
 
         btn_complete = findViewById(R.id.btn_complete);
@@ -84,6 +87,8 @@ public class CompleteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("Token", token);
+                intent.putExtra("message", message);
                 startActivity(intent);
             }
         });

@@ -66,38 +66,59 @@ public class HomeFragment extends Fragment {
         btn_tangquytuthien = view.findViewById(R.id.button_tangquytuthien);
         btn_quyengopcongich = view.findViewById(R.id.button_quyengopcongich);
 
-        btn_tangcongdong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ConfirmAddress.class);
-                startActivity(intent);
-            }
-        });
 
-        btn_tangnguoingheo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ConfirmAddress2.class);
-                startActivity(intent);
-            }
-        });
+        MainActivity activity = (MainActivity) getActivity();
+        String codeLogin  = activity.getMyData();
 
-        btn_tangquytuthien.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ConfirmAddress2.class);
-                startActivity(intent);
-            }
-        });
+        String[] code = codeLogin.split(",");
 
-        btn_quyengopcongich.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ConfirmAddress2.class);
-                startActivity(intent);
-            }
-        });
+        String message = code[0];
+        String token = code[1];
 
+        if (message.equals("OK")) {
+
+            btn_tangcongdong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), ConfirmAddress.class);
+                    intent.putExtra("Token", token);
+                    intent.putExtra("Message", message);
+                    startActivity(intent);
+                }
+            });
+
+            btn_tangnguoingheo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), ConfirmAddress2.class);
+                    intent.putExtra("Token", token);
+                    intent.putExtra("Message", message);
+                    startActivity(intent);
+                }
+            });
+
+            btn_tangquytuthien.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), ConfirmAddress2.class);
+                    intent.putExtra("Token", token);
+                    intent.putExtra("Message", message);
+                    startActivity(intent);
+                }
+            });
+
+            btn_quyengopcongich.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), ConfirmAddress2.class);
+                    intent.putExtra("Token", token);
+                    intent.putExtra("Message", message);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "Đăng nhập để thực hiện chức năng", Toast.LENGTH_SHORT).show();
+        }
 
         //      listview tin đăng mới
         lvNews = view.findViewById(R.id.listViewNews);

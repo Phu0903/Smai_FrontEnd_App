@@ -65,17 +65,11 @@ public class UserFragment extends Fragment {
 //        view History
         btnHistory = (Button) view.findViewById(R.id.view_history);
 
-        btnHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ViewHistory.class);
-                startActivity(intent);
-            }
-        });
+
 
         setHasOptionsMenu(true);
         Toolbar actionBarToolBar = (Toolbar) view.findViewById(R.id.toolbar_user);
-        actionBarToolBar.inflateMenu(R.menu.menu_toolbar_account);
+
         actionBarToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -116,12 +110,14 @@ public class UserFragment extends Fragment {
             }
         });
 
+//        nhận từ mainactivity
         MainActivity activity = (MainActivity) getActivity();
         String codeLogin  = activity.getMyData();
 
         String[] code = codeLogin.split(",");
 
         String message = code[0];
+
         String token = code[1];
 
         if (message.equals("OK")) {
@@ -150,9 +146,20 @@ public class UserFragment extends Fragment {
                     Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+            btnHistory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext(), ViewHistory.class);
+                    startActivity(intent);
+                }
+            });
             layoutInfor.setVisibility(View.VISIBLE);
             layoutRequired.setVisibility(View.GONE);
+            actionBarToolBar.inflateMenu(R.menu.menu_toolbar_account);
 
+        }
+        else {
+            Toast.makeText(getContext(), "Chưa đăng nhập", Toast.LENGTH_SHORT).show();
         }
 
         Log.d("Message, token, user", message + ",    " + token);

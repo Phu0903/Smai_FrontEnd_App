@@ -35,7 +35,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Detail extends AppCompatActivity {
+public class Detail2 extends AppCompatActivity {
 
     ImageButton mChooseBtn;
     //    Declare variable to upload image
@@ -54,7 +54,7 @@ public class Detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_detail2);
 
 //        Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_dt);
@@ -119,7 +119,7 @@ public class Detail extends AppCompatActivity {
                 else {
 
                     //                Gửi data sang activity ConfirmInfor
-                    Intent intent = new Intent(Detail.this, ConfirmInforPost.class);
+                    Intent intent = new Intent(Detail2.this, ConfirmInforPost2.class);
                     String loinhan = edtLoiNhan.getText().toString();
                     String mota = edtMoTa.getText().toString();
                     intent.putExtra("loinhan", loinhan);
@@ -204,6 +204,7 @@ public class Detail extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    count=0;
                     for (final Bitmap b : bitmaps) {
                         runOnUiThread(new Runnable() {
                             @Override

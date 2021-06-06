@@ -52,7 +52,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ConfirmInforPost extends AppCompatActivity {
+public class ConfirmInforPost2 extends AppCompatActivity {
 
 
     List<ProductModel> productModelList;
@@ -70,7 +70,7 @@ public class ConfirmInforPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_infor_post);
+        setContentView(R.layout.activity_confirm_infor_post2);
 
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_confirm);
@@ -111,9 +111,12 @@ public class ConfirmInforPost extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             bitmaps.add(bitmap);
         }
-        for (final Bitmap b:bitmaps) {
-            listImage[count].setImageBitmap(b);
-            count = count + 1;
+//        for (final Bitmap b:bitmaps) {
+//            listImage[count].setImageBitmap(b);
+//            count = count + 1;
+//        }
+        for (int i=0;i< bitmaps.size();i++) {
+            listImage[i].setImageBitmap(bitmaps.get(i));
         }
 
         String address = intent.getStringExtra("address");
@@ -140,6 +143,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         tieude.setText(loinhan);
         ghichu.setText(mota);
         String[] getAddress = address.split(",");
+        Log.d("addresssss", address);
         city.setText(getAddress[getAddress.length-1]);
         district.setText(getAddress[getAddress.length-2]);
         ward.setText(getAddress[1]);
@@ -184,56 +188,67 @@ public class ConfirmInforPost extends AppCompatActivity {
 
         //Click btn_confirm
         btn_confirm = findViewById(R.id.btn_confirm);
-
-
-        Uri uri = uris.get(0);
-        Uri uri1 = uris.get(1);
-        Uri uri2 = uris.get(2);
-        Uri uri3 = uris.get(3);
-        Uri uri4 = uris.get(4);
-
-        String fullFilePath = UriUtils.getPathFromUri(this, uri2);
-        String filePath = UriUtils.getPathFromUri(this, uri);
-        String filePath1 = UriUtils.getPathFromUri(this, uri1);
-        String filePath2 = UriUtils.getPathFromUri(this, uri2);
-        String filePath3 = UriUtils.getPathFromUri(this, uri3);
-        String filePath4 = UriUtils.getPathFromUri(this, uri4);
-
-        if (fullFilePath != null) {
-            Log.d("Fullfilepath", fullFilePath);
-        }
-        File file = new File(filePath);
-        File file1 = new File(filePath1);
-        File file2 = new File(filePath2);
-        File file3 = new File(filePath3);
-        File file4 = new File(filePath4);
-
+        List<String> listFilePath = new ArrayList<>();
         List<File> fileList = new ArrayList<>();
-        fileList.add(file);
-        fileList.add(file1);
-        fileList.add(file2);
-        fileList.add(file3);
-        fileList.add(file4);
+        for (int i = 0; i< uris.size();i++) {
+            String filePath = UriUtils.getPathFromUri(this, uris.get(i));
+            File file = new File(filePath);
+            fileList.add(file);
+
+        }
+//
+//        Uri uri = uris.get(0);
+//        Uri uri1 = uris.get(1);
+//        Uri uri2 = uris.get(2);
+//        Uri uri3 = uris.get(3);
+//        Uri uri4 = uris.get(4);
+
+//        String fullFilePath = UriUtils.getPathFromUri(this, uri2);
+//        String filePath = UriUtils.getPathFromUri(this, uri);
+//        String filePath1 = UriUtils.getPathFromUri(this, uri1);
+//        String filePath2 = UriUtils.getPathFromUri(this, uri2);
+//        String filePath3 = UriUtils.getPathFromUri(this, uri3);
+//        String filePath4 = UriUtils.getPathFromUri(this, uri4);
+
+
+//        File file = new File(filePath);
+//        File file1 = new File(filePath1);
+//        File file2 = new File(filePath2);
+//        File file3 = new File(filePath3);
+//        File file4 = new File(filePath4);
+
+
+//        fileList.add(file);
+//        fileList.add(file1);
+//        fileList.add(file2);
+//        fileList.add(file3);
+//        fileList.add(file4);
 //        postNewsModel.setProductImage(fileList);
 
-        RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), file);
-        MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
-        RequestBody requestFile1 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri1)), file1);
-        MultipartBody.Part body1 = MultipartBody.Part.createFormData("productImage", file1.getName(), requestFile1);
-        RequestBody requestFile2 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri2)), file2);
-        MultipartBody.Part body2 = MultipartBody.Part.createFormData("productImage", file2.getName(), requestFile2);
-        RequestBody requestFile3 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri3)), file3);
-        MultipartBody.Part body3 = MultipartBody.Part.createFormData("productImage", file3.getName(), requestFile3);
-        RequestBody requestFile4 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri4)), file4);
-        MultipartBody.Part body4 = MultipartBody.Part.createFormData("productImage", file4.getName(), requestFile4);
+
+//        RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), file);
+//        MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
+//        RequestBody requestFile1 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri1)), file1);
+//        MultipartBody.Part body1 = MultipartBody.Part.createFormData("productImage", file1.getName(), requestFile1);
+//        RequestBody requestFile2 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri2)), file2);
+//        MultipartBody.Part body2 = MultipartBody.Part.createFormData("productImage", file2.getName(), requestFile2);
+//        RequestBody requestFile3 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri3)), file3);
+//        MultipartBody.Part body3 = MultipartBody.Part.createFormData("productImage", file3.getName(), requestFile3);
+//        RequestBody requestFile4 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri4)), file4);
+//        MultipartBody.Part body4 = MultipartBody.Part.createFormData("productImage", file4.getName(), requestFile4);
 
         List<MultipartBody.Part> list = new ArrayList<>();
+        for (int i = 0; i< uris.size();i++) {
+            RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uris.get(i))), fileList.get(i));
+            MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", fileList.get(i).getName(), requestFile);
+            list.add(body);
+        }
 
-        list.add(body);
-        list.add(body1);
-        list.add(body2);
-        list.add(body3);
-        list.add(body4);
+//        list.add(body);
+//        list.add(body1);
+//        list.add(body2);
+//        list.add(body3);
+//        list.add(body4);
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -280,7 +295,6 @@ public class ConfirmInforPost extends AppCompatActivity {
                                     Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
                                     intent1.putExtra("Token", token);
                                     intent1.putExtra("message", "OK");
-
                                     startActivity(intent1);
                                 }
 

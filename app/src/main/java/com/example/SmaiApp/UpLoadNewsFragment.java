@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,9 +38,9 @@ public class UpLoadNewsFragment extends Fragment {
     private Spinner spinner;
     //list view tin đang
     ListView lvNews;
-    ArrayList<PostNewsModel> arrayNews;
     Button btnUpload;
     NewsAdapter adapter;
+    TextView tvNotLogin;
     public static List<PostNewsModel> posts;
     @Nullable
     @Override
@@ -65,26 +66,27 @@ public class UpLoadNewsFragment extends Fragment {
 
 
         btnUpload = view.findViewById(R.id.create_post);
-        btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-                Intent intent = new Intent(getActivity().getBaseContext(), NewpostType.class);
-                intent.putExtra("Token", token);
-                getActivity().startActivity(intent);
-            }
-        });
 
 //      listview tin đăng mới
         lvNews = view.findViewById(R.id.listViewNews);
-        arrayNews = new ArrayList<PostNewsModel>();
+        tvNotLogin = view.findViewById(R.id.notlogin);
 
-        if (token == null) {
-            Toast.makeText(getContext(), "Đăng nhập để xem tin của bạn", Toast.LENGTH_SHORT);
-        }
-        else {
+        if (message.equals("OK")) {
+
+            btnUpload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    Intent intent = new Intent(getActivity().getBaseContext(), NewpostType.class);
+                    intent.putExtra("Token", token);
+                    getActivity().startActivity(intent);
+                }
+            });
             // get data
+            tvNotLogin.setVisibility(View.GONE);
+            lvNews.setVisibility(View.VISIBLE);
             Retrofit retrofit = RetrofitClient.getRetrofitInstance();
             ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
             Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getUserPost("Bearer " + token);
