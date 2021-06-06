@@ -43,6 +43,12 @@ public interface ApiServices {
     @GET("user/getInForUserByTokenId")
     Call<UserModel> getInforUser(@Header("Authorization") String authHeader);
 
+//    lấy số điện thoại tin đăng
+    @GET("user/getPhonNumber")
+    Call<AccountModel> getPhoneNumberPost(@Query("AuthorID") String authorId);
+
+
+
 //    https://smai-back-end.herokuapp.com/account/login
     @POST("account/login")
     Call<AccountModel> login(@Body AccountModel accountModel);

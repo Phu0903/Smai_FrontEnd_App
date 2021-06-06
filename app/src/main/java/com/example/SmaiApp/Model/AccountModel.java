@@ -5,7 +5,7 @@ public class AccountModel {
     private String Password;
     private String PhoneNumber;
     private String Address;
-    private String FulllName;
+    private String FullName;
 
 
     public String getAddress() {
@@ -16,12 +16,12 @@ public class AccountModel {
         Address = address;
     }
 
-    public String getFulllName() {
-        return FulllName;
+    public String getFullName() {
+        return FullName;
     }
 
-    public void setFulllName(String fulllName) {
-        FulllName = fulllName;
+    public void setFullName(String fullName) {
+        FullName = fullName;
     }
 
     public String getAccessToken() {

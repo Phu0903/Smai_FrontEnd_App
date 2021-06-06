@@ -92,10 +92,9 @@ public class UpLoadNewsFragment extends Fragment {
             call.enqueue(new Callback<List<PostNewsModel>>() {
                 @Override
                 public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
-                    if ( !response.isSuccessful()) {
-                        Toast.makeText(getContext(), "Fail", Toast.LENGTH_LONG).show();
-                        return;
-                    }
+                    if ( response.isSuccessful()) {
+
+
                     posts = response.body();
 
                     adapter = new NewsAdapter(
@@ -103,6 +102,7 @@ public class UpLoadNewsFragment extends Fragment {
                             R.layout.row_news_listview,
                             posts);
                     lvNews.setAdapter(adapter);
+                    }
                 }
                 @Override
                 public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {

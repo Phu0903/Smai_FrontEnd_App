@@ -2,12 +2,14 @@ package com.example.SmaiApp.Model;
 
 
 import android.net.Uri;
+import android.os.Parcelable;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class PostNewsModel {
+public class PostNewsModel   {
     private String AuthorID;
     private String TypeAuthor;
     private String NameAuthor;

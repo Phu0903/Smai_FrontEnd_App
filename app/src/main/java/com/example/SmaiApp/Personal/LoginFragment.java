@@ -8,7 +8,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,7 @@ import com.example.SmaiApp.NetWorKing.RetrofitClient;
 import com.example.SmaiApp.R;
 import com.example.SmaiApp.UserFragment;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -37,6 +40,7 @@ import retrofit2.Retrofit;
 public class LoginFragment extends Fragment {
 
     TextClicked mCallback;
+
 
     public interface TextClicked{
         void sendText(String text);
@@ -65,6 +69,7 @@ public class LoginFragment extends Fragment {
 
     Button btn_login;
     TextInputEditText edtUserName, edtPassWord;
+    TextInputLayout layoutTaiKhoan, layoutMatKhau;
     CheckBox checkBox;
 
     @Override
@@ -74,9 +79,17 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         btn_login = view.findViewById(R.id.btn_login);
+
         edtUserName = view.findViewById(R.id.textview_username);
         edtPassWord = view.findViewById(R.id.textView_password);
         checkBox = view.findViewById(R.id.checkbox);
+        layoutTaiKhoan = view.findViewById(R.id.layouttentaikhoan);
+        layoutMatKhau = view.findViewById(R.id.layoutpassword);
+
+
+        edtUserName.addTextChangedListener(new ConfirmUserName());
+        edtPassWord.addTextChangedListener(new ConfirmPassword());
+
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,10 +101,7 @@ public class LoginFragment extends Fragment {
                 accountModel.setUserName(userName);
                 accountModel.setPassword(passWord);
 
-                if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(passWord)) {
-                    Toast.makeText(getContext(), "Username or password required", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                if (validate(userName, layoutTaiKhoan, edtUserName) == true && validate(passWord, layoutMatKhau, edtPassWord) == true) {
 
                     Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                     ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
@@ -102,24 +112,20 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
                             if (response.isSuccessful()) {
-
                                 AccountModel accountModel1 = response.body();
                                 String message = accountModel1.getMessage();
                                 String tk = accountModel1.getAccessToken();
-
                                 Log.d("Token Login", tk);
-
                                 Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
                                 intent.putExtra("message", message);
                                 intent.putExtra("Token", tk);
                                 getActivity().startActivity(intent);
-
                             }
                             else {
-                                Toast.makeText(getContext(), "Login is not correct", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Sai tên tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
+
                             }
                         }
-
                         @Override
                         public void onFailure(Call<AccountModel> call, Throwable t) {
                             Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -132,5 +138,49 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
+    private boolean validate(String nameEditText, TextInputLayout textInputLayout, TextInputEditText editText) {
+        if (nameEditText.trim().isEmpty()) {
+            textInputLayout.setError("Vui lòng điển đủ thông tin!");
+            editText.requestFocus();
+            return false;
+        }
+        else {
+            textInputLayout.setErrorEnabled(false);
+        }
+        return true;
+    }
 
+    private class ConfirmUserName implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            validate(edtUserName.getText().toString(), layoutTaiKhoan, edtUserName);
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            layoutTaiKhoan.setErrorEnabled(false);
+        }
+    }
+
+    private class ConfirmPassword implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            validate(edtPassWord.getText().toString(), layoutMatKhau, edtPassWord);
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            layoutMatKhau.setErrorEnabled(false);
+        }
+    }
 }

@@ -2,10 +2,12 @@ package com.example.SmaiApp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -18,9 +20,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
 import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.Model.ProductModel;
 import com.example.SmaiApp.NetWorKing.ApiServices;
 import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,8 +122,46 @@ public class HomeFragment extends Fragment {
                         R.layout.row_news_listview,
                         posts);
                 lvNews.setAdapter(adapter);
-                lvNews.setEnabled(false);
                 setListViewHeightBasedOnChildren(lvNews);
+                lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        Intent intent = new Intent(getActivity().getBaseContext(), DetailPost.class);
+                        PostNewsModel post = posts.get(position);
+                        String title = post.getTitle();
+
+                        List<ProductModel> productModel = post.getNameProduct();
+                        if (productModel.size() != 0) {
+                            String detailType = productModel.get(0).getCategory();
+                            intent.putExtra("detailType", detailType);
+                        }
+                        String address = post.getAddress();
+                        String fullName = post.getNameAuthor();
+                        if (fullName != null) {
+                            Log.d("fullName", fullName);
+                        }
+                        else {
+                            Log.e("Full name", "no fullname");
+                        }
+                        String inforDetail = post.getNote();
+                        String typeAuthor = post.getTypeAuthor();
+                        List<String> listUrl = post.getUrlImage();
+                        String url = listUrl.get(0);
+                        String AuthorID = post.getAuthorID();
+
+                        intent.putExtra("title", title);
+                        intent.putExtra("address", address);
+                        intent.putExtra("fullName", fullName);
+                        intent.putExtra("inforDetail", inforDetail);
+                        intent.putExtra("typeAuthor", typeAuthor);
+                        intent.putExtra("AuthorID", AuthorID);
+                        intent.putExtra("url", url);
+                        getActivity().startActivity(intent);
+
+
+                    }
+                });
             }
             @Override
             public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {

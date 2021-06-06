@@ -27,7 +27,7 @@ public class Account extends AppCompatActivity implements LoginFragment.TextClic
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         tabLayout = findViewById(R.id.tab_layout);

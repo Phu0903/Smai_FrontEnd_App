@@ -8,12 +8,32 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.example.SmaiApp.Model.AccountModel;
+import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.Model.ProductModel;
+import com.example.SmaiApp.NetWorKing.ApiServices;
+import com.example.SmaiApp.NetWorKing.RetrofitClient;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class DetailPost extends AppCompatActivity {
     Button btnCall;
 
+    TextView tittle, detailType, detailPrice, address, fullName, typeAuthor, inforDetail;
+    ImageView productImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,18 +46,86 @@ public class DetailPost extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        getIdComponent();
 
 //        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.light_gray)));
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        btnCall = (Button)findViewById(R.id.call);
+
+        Intent intent = getIntent();
+
+
+        String title = intent.getStringExtra("title");
+        String detailtype = intent.getStringExtra("detailType");
+        String addresss = intent.getStringExtra("address");
+        String fullname = intent.getStringExtra("fullName");
+        if (fullname != null) {
+            Log.e("Fullname", fullname);
+        }
+        else {
+            Log.e("FullName", "no full name");
+        }
+        String infordetail = intent.getStringExtra("inforDetail");
+        String typeauthor = intent.getStringExtra("typeAuthor");
+        String urll = intent.getStringExtra("url");
+        String AuthorID = intent.getStringExtra("AuthorID");
+
+        tittle.setText(title);
+
+        detailType.setText(detailtype);
+        address.setText(addresss);
+        fullName.setText(fullname);
+        inforDetail.setText(infordetail);
+        typeAuthor.setText(typeauthor);
+
+        Glide.with(getApplicationContext()).load(urll).into(productImage);
 
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0868123123"));
-                startActivity(intent);
+
+
+                Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+                ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
+
+                Call<AccountModel> call = jsonPlaceHolderApi.getPhoneNumberPost(AuthorID);
+
+                call.enqueue(new Callback<AccountModel>() {
+                    @Override
+                    public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
+                        if (response.isSuccessful()) {
+                            AccountModel accountModel = response.body();
+
+                            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0"+accountModel.getPhoneNumber()));
+                            startActivity(intent);
+                        }
+                        else {
+                            Log.e("Message", response.message());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AccountModel> call, Throwable t) {
+                        Log.e("Message failll", t.getMessage());
+                    }
+                });
+
             }
         });
     }
+
+    private void getIdComponent() {
+
+        tittle = findViewById(R.id.detail_title);
+        detailType = findViewById(R.id.detail_type);
+        detailPrice = findViewById(R.id.detail_price);
+        address = findViewById(R.id.address);
+        fullName = findViewById(R.id.user_name);
+        typeAuthor = findViewById(R.id.user_type);
+        inforDetail = findViewById(R.id.infor_detail);
+        productImage = findViewById(R.id.product_image);
+        btnCall = (Button)findViewById(R.id.call);
+    }
+
+
 }
