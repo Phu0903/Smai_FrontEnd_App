@@ -30,6 +30,7 @@
         android:groupIndicator="@null"
         android:divider="@color/white"
         android:dividerHeight="2dp"
+        android:childDivider="@color/white"
         android:layout_weight="1"/>
 
     <Button

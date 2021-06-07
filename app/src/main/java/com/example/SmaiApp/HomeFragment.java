@@ -93,6 +93,7 @@ public class HomeFragment extends Fragment {
                     Intent intent = new Intent(getContext(), ConfirmAddress2.class);
                     intent.putExtra("Token", token);
                     intent.putExtra("Message", message);
+                    intent.putExtra("TypeAuthor", "canhan");
                     startActivity(intent);
                 }
             });
@@ -103,6 +104,7 @@ public class HomeFragment extends Fragment {
                     Intent intent = new Intent(getContext(), ConfirmAddress2.class);
                     intent.putExtra("Token", token);
                     intent.putExtra("Message", message);
+                    intent.putExtra("TypeAuthor", "quy");
                     startActivity(intent);
                 }
             });
@@ -113,6 +115,7 @@ public class HomeFragment extends Fragment {
                     Intent intent = new Intent(getContext(), ConfirmAddress2.class);
                     intent.putExtra("Token", token);
                     intent.putExtra("Message", message);
+                    intent.putExtra("TypeAuthor", "tochuc");
                     startActivity(intent);
                 }
             });
@@ -203,6 +206,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), Search.class);
+                intent.putExtra("Token", token);
+                intent.putExtra("Message", message);
                 startActivity(intent);
             }
         });

@@ -51,7 +51,7 @@ public class who_activity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("address", address);
                 bundle.putString("token", token);
-                bundle.putString("TypeAuthor", TypeAuthor);
+                bundle.putString("TypeAuthor", "Cá nhân");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -66,7 +66,7 @@ public class who_activity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("address", address);
                 bundle.putString("token", token);
-                bundle.putString("TypeAuthor", TypeAuthor);
+                bundle.putString("TypeAuthor", "Quỹ/Nhóm từ thiện");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -81,7 +81,7 @@ public class who_activity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("address", address);
                 bundle.putString("token", token);
-                bundle.putString("TypeAuthor", TypeAuthor);
+                bundle.putString("TypeAuthor", "Tổ chức công ích");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
