@@ -171,7 +171,10 @@ public class HomeFragment extends Fragment {
                         String inforDetail = post.getNote();
                         String typeAuthor = post.getTypeAuthor();
                         List<String> listUrl = post.getUrlImage();
-                        String url = listUrl.get(0);
+                        ArrayList<String> arrayListurl = new ArrayList<>();
+                        for (String s: listUrl) {
+                            arrayListurl.add(s);
+                        }
                         String AuthorID = post.getAuthorID();
 
                         intent.putExtra("title", title);
@@ -180,7 +183,7 @@ public class HomeFragment extends Fragment {
                         intent.putExtra("inforDetail", inforDetail);
                         intent.putExtra("typeAuthor", typeAuthor);
                         intent.putExtra("AuthorID", AuthorID);
-                        intent.putExtra("url", url);
+                        intent.putStringArrayListExtra("url", arrayListurl);
                         getActivity().startActivity(intent);
 
 

@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".ConfirmInforPost2"></activity>
+        <activity android:name=".DetailPostTinDang"></activity>
+        <activity android:name=".DetailPostTangCongDong" />
+        <activity android:name=".DetailPostGiveFor" />
+        <activity android:name=".ConfirmInforPost2" />
         <activity android:name=".Detail2" />
         <activity android:name=".CategoryActivity3" />
         <activity android:name=".Catogary3" />

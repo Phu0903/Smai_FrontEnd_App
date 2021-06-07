@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".DetailPostGiveFor">
+    tools:context=".DetailPostTinDang">
 
 
     <LinearLayout
@@ -37,7 +37,7 @@
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/slider"
                 app:delay="0"

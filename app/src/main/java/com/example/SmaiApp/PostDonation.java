@@ -3,9 +3,13 @@ package com.example.SmaiApp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -14,6 +18,7 @@ import android.widget.Toast;
 import com.example.SmaiApp.Adapter.NewsAdapter;
 import com.example.SmaiApp.Adapter.PostDonationAdapter;
 import com.example.SmaiApp.Model.PostNewsModel;
+import com.example.SmaiApp.Model.ProductModel;
 import com.example.SmaiApp.NetWorKing.ApiServices;
 import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
@@ -90,6 +95,49 @@ public class PostDonation extends AppCompatActivity {
 
                 adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
                 lvNews_New.setAdapter(adapter);
+                lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        Intent intent = new Intent(getApplicationContext(), DetailPostTangCongDong.class);
+                        PostNewsModel post = posts.get(position);
+                        String title = post.getTitle();
+
+                        List<ProductModel> productModel = post.getNameProduct();
+                        if (productModel.size() != 0) {
+                            String detailType = productModel.get(0).getCategory();
+                            intent.putExtra("detailType", detailType);
+                        }
+                        String address = post.getAddress();
+                        String fullName = post.getNameAuthor();
+                        if (fullName != null) {
+                            Log.d("fullName", fullName);
+                        }
+                        else {
+                            Log.e("Full name", "no fullname");
+                        }
+                        String inforDetail = post.getNote();
+                        String typeAuthor = post.getTypeAuthor();
+                        List<String> listUrl = post.getUrlImage();
+                        String url = listUrl.get(0);
+                        String AuthorID = post.getAuthorID();
+
+                        ArrayList<String> arrayListurl = new ArrayList<>();
+                        for (String s: listUrl) {
+                            arrayListurl.add(s);
+                        }
+                        intent.putExtra("title", title);
+                        intent.putExtra("address", address);
+                        intent.putExtra("fullName", fullName);
+                        intent.putExtra("inforDetail", inforDetail);
+                        intent.putExtra("typeAuthor", typeAuthor);
+                        intent.putExtra("AuthorID", AuthorID);
+                        intent.putStringArrayListExtra("url", arrayListurl);
+                        startActivity(intent);
+
+
+                    }
+                });
 
             }
 

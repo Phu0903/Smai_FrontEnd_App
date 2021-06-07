@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,7 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class DetailPost extends AppCompatActivity {
+public class DetailPostTangCongDong extends AppCompatActivity {
     Button btnCall;
 
     TextView tittle, detailType, detailPrice, address, fullName, typeAuthor, inforDetail;
@@ -39,7 +40,7 @@ public class DetailPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_post);
+        setContentView(R.layout.activity_detail_post_tang_cong_dong);
 
         //        Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_dt);
@@ -69,8 +70,9 @@ public class DetailPost extends AppCompatActivity {
         }
         String infordetail = intent.getStringExtra("inforDetail");
         String typeauthor = intent.getStringExtra("typeAuthor");
-        ArrayList<String> listUrl = intent.getStringArrayListExtra("url");
+//        List<String> urll = intent.getStringArrayListExtra("url");
         String AuthorID = intent.getStringExtra("AuthorID");
+        ArrayList<String> listUrl = intent.getStringArrayListExtra("url");
 
         tittle.setText(title);
 
@@ -80,12 +82,16 @@ public class DetailPost extends AppCompatActivity {
         inforDetail.setText(infordetail);
         typeAuthor.setText(typeauthor);
 
+//        Glide.with(getApplicationContext()).load(urll).into(productImage);
+
+
         ImageSlider imageSlider = findViewById(R.id.slider);
         List<SlideModel> slideModels = new ArrayList<>();
         for (String uri:listUrl)  {
             slideModels.add(new SlideModel(uri));
         }
         imageSlider.setImageList(slideModels, true);
+
 
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +138,8 @@ public class DetailPost extends AppCompatActivity {
         inforDetail = findViewById(R.id.infor_detail);
         btnCall = (Button)findViewById(R.id.call);
     }
+
+
 
 
 }

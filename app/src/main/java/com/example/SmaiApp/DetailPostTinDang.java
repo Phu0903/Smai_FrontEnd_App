@@ -31,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class DetailPost extends AppCompatActivity {
+public class DetailPostTinDang extends AppCompatActivity {
     Button btnCall;
 
     TextView tittle, detailType, detailPrice, address, fullName, typeAuthor, inforDetail;
@@ -39,7 +39,7 @@ public class DetailPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_post);
+        setContentView(R.layout.activity_detail_post_tin_dang);
 
         //        Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_dt);
@@ -130,6 +130,7 @@ public class DetailPost extends AppCompatActivity {
         fullName = findViewById(R.id.user_name);
         typeAuthor = findViewById(R.id.user_type);
         inforDetail = findViewById(R.id.infor_detail);
+
         btnCall = (Button)findViewById(R.id.call);
     }
 

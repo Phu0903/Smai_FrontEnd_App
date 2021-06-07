@@ -37,7 +37,7 @@
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/slider"
                 app:delay="0"
@@ -60,6 +60,7 @@
                     android:fontFamily="@font/open_sans_semibold"
                     android:text="Cần tặng sách cũ cho các bạn có nhu cầu"
                     android:textAllCaps="false"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_3"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -67,6 +68,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
                     <TextView
                         android:id="@+id/detail_type"
@@ -97,9 +100,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans"
-                    android:text="Đ/c: Khu phố 6, phường Linh Trung, quận Thủ Đức, TP HCM"
+                    android:text="Khu phố 6, phường Linh Trung, quận Thủ Đức, TP HCM"
                     android:textAllCaps="false"
-                    android:textColor="@color/black"
+                    android:textColor="@color/light_gray"
+                    android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                    android:drawablePadding="10dp"
                     android:textSize="@dimen/size_2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/detail_type" />
@@ -153,6 +158,7 @@
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/open_sans_light"
                     android:text="Cá nhân"
+                    android:maxWidth="1000px"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_1"

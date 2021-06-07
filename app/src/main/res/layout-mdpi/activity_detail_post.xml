@@ -35,13 +35,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/product_image"
+            <com.denzcoskun.imageslider.ImageSlider
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/book1"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:id="@+id/slider"
+                app:delay="0"
+                app:period="1000"
+                app:error_image="@drawable/book"
+                app:placeholder="@drawable/book1"/>
 
             <LinearLayout
                 android:id="@+id/product_detail"
