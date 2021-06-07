@@ -48,7 +48,6 @@ public interface ApiServices {
     Call<AccountModel> getPhoneNumberPost(@Query("AuthorID") String authorId);
 
 
-
 //    https://smai-back-end.herokuapp.com/account/login
     @POST("account/login")
     Call<AccountModel> login(@Body AccountModel accountModel);

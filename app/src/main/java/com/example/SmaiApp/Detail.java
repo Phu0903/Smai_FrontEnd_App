@@ -229,4 +229,5 @@ public class Detail extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+    
 }

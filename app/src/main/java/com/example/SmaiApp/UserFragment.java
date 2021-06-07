@@ -120,7 +120,7 @@ public class UserFragment extends Fragment {
 
         String token = code[1];
 
-        if (message.equals("OK")) {
+
 
 
             // get data
@@ -149,10 +149,15 @@ public class UserFragment extends Fragment {
             btnHistory.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), ViewHistory.class);
-                    startActivity(intent);
+                    if (message.equals("OK")) {
+                        Intent intent = new Intent(getContext(), ViewHistory.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getContext(), "Chưa đăng nhập", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
+        if (message.equals("OK")) {
             layoutInfor.setVisibility(View.VISIBLE);
             layoutRequired.setVisibility(View.GONE);
             actionBarToolBar.inflateMenu(R.menu.menu_toolbar_account);
