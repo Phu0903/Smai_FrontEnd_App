@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/linearlayoutGiveFor"
     tools:context=".GiveFor">
 
     <LinearLayout
@@ -35,6 +36,7 @@
                 android:id="@+id/search"
                 android:iconifiedByDefault="false"
                 android:layout_weight="1"
+                android:focusable="false"
                 android:layout_marginRight="20dp"
                 android:queryHint="Nhập tên"/>
 

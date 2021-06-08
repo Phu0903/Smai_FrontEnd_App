@@ -3,6 +3,8 @@ package com.example.SmaiApp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.ClipData;
@@ -26,7 +28,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.example.SmaiApp.Adapter.PhotoAdapter;
 import com.example.SmaiApp.Danhmuc.NameProduct;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -34,6 +39,9 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import gun0912.tedbottompicker.TedBottomPicker;
+import gun0912.tedbottompicker.TedBottomSheetDialogFragment;
 
 public class Detail2 extends AppCompatActivity {
 
@@ -44,11 +52,14 @@ public class Detail2 extends AppCompatActivity {
     int count;//image counter
     Button btnNext;
     EditText edtLoiNhan, edtMoTa;
-
     List<Bitmap> bitmaps;
     List<Uri> uris = new ArrayList<>();
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1000;
+
+    ImageButton btnUpLoadPhoto;
+    PhotoAdapter photoAdapter;
+    RecyclerView recyclerView;
 
 
     @Override
@@ -91,29 +102,13 @@ public class Detail2 extends AppCompatActivity {
         ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
         ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
 //********************************************************************
-
-
-
-        mChooseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                        requestPermissions(permissions, PERMISSION_CODE);
-                    } else {
-                        pickImageFromGallery();
-                    }
-                }
-            }
-        });
         btnNext = (Button) findViewById(R.id.dt_next);
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String loinhann = edtLoiNhan.getText().toString();
-                if (loinhann.isEmpty() &&  edtMoTa.getText().toString().isEmpty() && uris.isEmpty()) {
+
+                if (loinhann.isEmpty() ||  edtMoTa.getText().toString().isEmpty() || uris == null) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -130,99 +125,74 @@ public class Detail2 extends AppCompatActivity {
                     intent.putStringArrayListExtra("ListName", listName);
                     intent.putStringArrayListExtra("ListCatogary", listCatogory);
                     intent.putParcelableArrayListExtra("Uri", (ArrayList<Uri>) uris);
+                    if (uris != null) {
+                        for (int i=0;i<uris.size();i++) {
+                            Log.d("Uri list", String.valueOf(uris.get(i)));
+                        }
+                    }
+                    else {
+                        Log.e("Errer: ", "errer Urii");
+                    }
 //*******************************************************************************************
                     startActivity(intent);
                 }
             }
         });
 
-    }
-
-    private void pickImageFromGallery() {
-//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//        intent.setType("image/*");
-//        startActivityForResult(intent, IMAGE_PICK_CODE);
-
-        Intent intent = new Intent();
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent,"Select Picture"), IMAGE_PICK_CODE);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case PERMISSION_CODE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    pickImageFromGallery();
-                } else {
-                    Toast.makeText(this, "Permission denied...!", Toast.LENGTH_SHORT).show();
-                }
+        btnUpLoadPhoto = findViewById(R.id.btn_uploadImage);
+        btnUpLoadPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestPermissions();
             }
-        }
+        });
+
+        recyclerView = findViewById(R.id.rcv_photo);
+        photoAdapter = new PhotoAdapter(Detail2.this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
+
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(photoAdapter);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-//            listImage[count].setImageURI(data.getData());
-//            count = count + 1;
-            bitmaps = new ArrayList<>();
-            ClipData clipData = data.getClipData();
-
-            if (clipData != null) {
-                //multiple images selecetd
-                for (int i = 0; i < clipData.getItemCount(); i++) {
-                    Uri imageUri = clipData.getItemAt(i).getUri();
-                    uris.add(imageUri);
-                    Log.d("URI", imageUri.toString());
-                    try {
-                        InputStream inputStream = getContentResolver().openInputStream(imageUri);
-                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                        bitmaps.add(bitmap);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-            } else {
-                //single image selected
-                Uri imageUri = data.getData();
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(imageUri);
-                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                    bitmaps.add(bitmap);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+    private void requestPermissions() {
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                selectImageFromGallery();
 
             }
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    count=0;
-                    for (final Bitmap b : bitmaps) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                listImage[count].setImageBitmap(b);
-                                count=count+1;
-                            }
-                        });
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+                Toast.makeText(getApplicationContext(), "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            }
 
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+
+        };
+        TedPermission.with(this)
+                .setPermissionListener(permissionlistener)
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                .check();
+    }
+
+    private void selectImageFromGallery() {
+        TedBottomPicker.with(Detail2.this)
+                .setPeekHeight(1000)
+                .showTitle(false)
+                .setCompleteButtonText("Done")
+                .setTitleBackgroundResId(android.R.color.black)
+                .setEmptySelectionText("No Select")
+                .showMultiImage(new TedBottomSheetDialogFragment.OnMultiImageSelectedListener() {
+                    @Override
+                    public void onImagesSelected(List<Uri> uriList) {
+                        // here is selected image uri list
+                        uris = uriList;
+                        photoAdapter.setData(uriList);
+
                     }
-                }
-            }).start();
-        }
+                });
     }
 
     @Override

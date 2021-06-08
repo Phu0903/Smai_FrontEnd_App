@@ -37,6 +37,8 @@ public class NewpostType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ConfirmAddress.class);
+                intent.putExtra("Token", token);
+                intent.putExtra("Message", "OK");
                 startActivity(intent);
             }
         });
@@ -44,6 +46,9 @@ public class NewpostType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ConfirmAddress2.class);
+                intent.putExtra("Token", token);
+                intent.putExtra("Message", "OK");
+                intent.putExtra("TypeAuthor", "canhan");
                 startActivity(intent);
             }
         });
@@ -51,6 +56,9 @@ public class NewpostType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ConfirmAddress2.class);
+                intent.putExtra("Token", token);
+                intent.putExtra("Message", "OK");
+                intent.putExtra("TypeAuthor", "quy");
                 startActivity(intent);
             }
         });
@@ -58,6 +66,9 @@ public class NewpostType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ConfirmAddress2.class);
+                intent.putExtra("Token", token);
+                intent.putExtra("Message", "OK");
+                intent.putExtra("TypeAuthor", "tochuc");
                 startActivity(intent);
             }
         });

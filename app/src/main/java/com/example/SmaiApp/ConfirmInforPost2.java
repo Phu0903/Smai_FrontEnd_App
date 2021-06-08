@@ -239,7 +239,7 @@ public class ConfirmInforPost2 extends AppCompatActivity {
 
         List<MultipartBody.Part> list = new ArrayList<>();
         for (int i = 0; i< uris.size();i++) {
-            RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uris.get(i))), fileList.get(i));
+            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), fileList.get(i));
             MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", fileList.get(i).getName(), requestFile);
             list.add(body);
         }

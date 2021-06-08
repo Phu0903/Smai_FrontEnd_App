@@ -57,15 +57,16 @@ public class ConfirmInforPost extends AppCompatActivity {
 
     List<ProductModel> productModelList;
 
-    List<Uri> uris = new ArrayList<Uri>();
+    ArrayList<Uri> uris;
 
     String mainToken="";
 
     Button btn_confirm;
 
-    TextView danhmuc, tieude, ghichu, city, district, ward, detailloction;
+    TextView dichvu, danhmuc, tieude, ghichu, city, district, ward, detailloction;
     ImageView imgView1, imgView2, imgView3, imgView4, imgView5;
-    ImageView[] listImage = new ImageView[5];
+//    ImageView[] listImage = new ImageView[5];
+    ArrayList<ImageView> listImage = new ArrayList<>();
     int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,18 +87,29 @@ public class ConfirmInforPost extends AppCompatActivity {
         imgView3 = findViewById(R.id.dt_imaage_view3);
         imgView4 = findViewById(R.id.dt_imaage_view4);
         imgView5 = findViewById(R.id.dt_imaage_view5);
-        listImage[0] = imgView1;
-        listImage[1] = imgView2;
-        listImage[2] = imgView3;
-        listImage[3] = imgView4;
-        listImage[4] = imgView5;
+        listImage.add(imgView1);
+        listImage.add(imgView2);
+        listImage.add(imgView3);
+        listImage.add(imgView4);
+        listImage.add(imgView5);
+//        listImage[0] = imgView1;
+//        listImage[1] = imgView2;
+//        listImage[2] = imgView3;
+//        listImage[3] = imgView4;
+//        listImage[4] = imgView5;
         count=0;
 
 
 //        Nhận data từ Detail Activity ***************************
         Intent intent = getIntent();
 //        lấy uri của hình ảnh
+        uris = new ArrayList<>();
         uris = intent.getParcelableArrayListExtra("Uri");
+        if (uris != null) {
+            Log.d("messss uri", String.valueOf(uris.size()));
+        } else {
+            Log.d("messss loiii", String.valueOf(uris.size()));
+        }
         List<Bitmap> bitmaps = new ArrayList<>();
 
 // Chuyển uri sang bitmap
@@ -111,9 +123,12 @@ public class ConfirmInforPost extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             bitmaps.add(bitmap);
         }
-        for (final Bitmap b:bitmaps) {
-            listImage[count].setImageBitmap(b);
-            count = count + 1;
+//        for (final Bitmap b:bitmaps) {
+//            listImage[count].setImageBitmap(b);
+//            count = count + 1;
+//        }
+        for (int i=0;i<bitmaps.size();i++) {
+            listImage.get(i).setImageBitmap(bitmaps.get(i));
         }
 
         String address = intent.getStringExtra("address");
@@ -128,6 +143,7 @@ public class ConfirmInforPost extends AppCompatActivity {
 
 //ánh xạ các textview
 
+        dichvu = findViewById(R.id.textView10);
         danhmuc = findViewById(R.id.textView12);
         tieude = findViewById(R.id.textView15);
         ghichu = findViewById(R.id.textView19);
@@ -149,7 +165,6 @@ public class ConfirmInforPost extends AppCompatActivity {
         PostNewsModel postNewsModel;
         postNewsModel = new PostNewsModel();
 
-
         Date currentTime = Calendar.getInstance().getTime();
 
         productModelList = new ArrayList<>();
@@ -170,101 +185,62 @@ public class ConfirmInforPost extends AppCompatActivity {
         postNewsModel.setTitle(loinhan);
         postNewsModel.setNote(mota);
 
-//        PostNewsModel p1 = new PostNewsModel(mota,);
-
-        if (postNewsModel != null) {
-            Log.d("Value postnewmodel", String.valueOf(postNewsModel));
-        }
-        else {
-            Log.e("Value postnewmodel", "model nulll");
-        }
-
-
         mainToken = token;
-
         //Click btn_confirm
         btn_confirm = findViewById(R.id.btn_confirm);
-
-
-//        Uri uri = uris.get(0);
-//        Uri uri1 = uris.get(1);
-//        Uri uri2 = uris.get(2);
-//        Uri uri3 = uris.get(3);
-//        Uri uri4 = uris.get(4);
-//
-//        String fullFilePath = UriUtils.getPathFromUri(this, uri2);
-//        String filePath = UriUtils.getPathFromUri(this, uri);
-//        String filePath1 = UriUtils.getPathFromUri(this, uri1);
-//        String filePath2 = UriUtils.getPathFromUri(this, uri2);
-//        String filePath3 = UriUtils.getPathFromUri(this, uri3);
-//        String filePath4 = UriUtils.getPathFromUri(this, uri4);
-//
-//        if (fullFilePath != null) {
-//            Log.d("Fullfilepath", fullFilePath);
-//        }
-//        File file = new File(filePath);
-//        File file1 = new File(filePath1);
-//        File file2 = new File(filePath2);
-//        File file3 = new File(filePath3);
-//        File file4 = new File(filePath4);
-
 
         List<File> fileList = new ArrayList<>();
         for (int i = 0; i< uris.size();i++) {
             String filePath = UriUtils.getPathFromUri(this, uris.get(i));
             File file = new File(filePath);
             fileList.add(file);
+            Log.d("file list", String.valueOf(fileList.get(i)));
+            Log.d("file list Name", String.valueOf(fileList.get(i).getName()));
+            Log.d("Uri lisst", String.valueOf(uris.get(i)));
 
         }
-//        postNewsModel.setProductImage(fileList);
 
-//        RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), file);
-//        MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
-//        RequestBody requestFile1 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri1)), file1);
-//        MultipartBody.Part body1 = MultipartBody.Part.createFormData("productImage", file1.getName(), requestFile1);
-//        RequestBody requestFile2 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri2)), file2);
-//        MultipartBody.Part body2 = MultipartBody.Part.createFormData("productImage", file2.getName(), requestFile2);
-//        RequestBody requestFile3 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri3)), file3);
-//        MultipartBody.Part body3 = MultipartBody.Part.createFormData("productImage", file3.getName(), requestFile3);
-//        RequestBody requestFile4 = RequestBody.create(MediaType.parse(getContentResolver().getType(uri4)), file4);
-//        MultipartBody.Part body4 = MultipartBody.Part.createFormData("productImage", file4.getName(), requestFile4);
 
-        List<MultipartBody.Part> list = new ArrayList<>();
-        for (int i = 0; i< uris.size();i++) {
-            RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uris.get(i))), fileList.get(i));
-            MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", fileList.get(i).getName(), requestFile);
-            list.add(body);
-        }
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                 ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
-
-//                File file = new File(fullFilePath);
-//                RequestBody requestFile =
-//                        RequestBody.create(MediaType.parse(getContentResolver().getType(uri2)), file);
-//                MultipartBody.Part body =
-//                        MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
+                List<MultipartBody.Part> list = new ArrayList<>();
+                if (uris.size() != 0) {
+                    for (int i = 0; i < uris.size(); i++) {
+                        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), fileList.get(i));
+                        MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", fileList.get(i).getName(), requestFile);
+                        list.add(body);
+                    }
+                }
+                else {
+                    Log.e("Error", "Uri nulllll");
+                }
+//////                File file = new File(fullFilePath);
+//////                RequestBody requestFile =
+//////                        RequestBody.create(MediaType.parse(getContentResolver().getType(uri2)), file);
+//////                MultipartBody.Part body =
+//////                        MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
+//////
+//////                String descriptionString = "hello, this is description speaking";
+//////                RequestBody description =
+//////                        RequestBody.create(
+//////                                okhttp3.MultipartBody.FORM, descriptionString);
+//////                Call<ResponseBody> call = jsonPlaceHolderApi.postFile("Bearer " + mainToken, body);
+//////
+//////                call.enqueue(new Callback<ResponseBody>() {
+//////                    @Override
+//////                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//////                            Log.d("Upload", "success messs");
+//////                    }
+//////
+//////                    @Override
+//////                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+//////                        Log.e("Upload error:", t.getMessage());
+//////                    }
+//////                });
 //
-//                String descriptionString = "hello, this is description speaking";
-//                RequestBody description =
-//                        RequestBody.create(
-//                                okhttp3.MultipartBody.FORM, descriptionString);
-//                Call<ResponseBody> call = jsonPlaceHolderApi.postFile("Bearer " + mainToken, body);
-//
-//                call.enqueue(new Callback<ResponseBody>() {
-//                    @Override
-//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                            Log.d("Upload", "success messs");
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                        Log.e("Upload error:", t.getMessage());
-//                    }
-//                });
-
 
                 Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer " + token, postNewsModel);
                 final String[] idPost = new String[1];

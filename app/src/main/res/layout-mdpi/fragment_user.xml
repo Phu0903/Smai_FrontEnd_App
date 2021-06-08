@@ -102,7 +102,7 @@
                         android:text="Đăng nhập/Đăng ký"
                         android:background="@drawable/border_red_backround_white"
                         android:fontFamily="@font/open_sans"
-                        android:textSize="@dimen/size_3"
+                        android:textSize="@dimen/size_2"
                         android:textColor="#DD484D"/>
                 </LinearLayout>
 

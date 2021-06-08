@@ -1,5 +1,6 @@
 package com.example.SmaiApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -7,9 +8,14 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -35,38 +41,57 @@ public class GiveFor extends AppCompatActivity {
     ListView lvNews_New;
     Spinner spinnerLocation;
     Spinner spinnerType;
-    SearchView searchView;
+    EditText searchView;
     GiveforAdapter adaptergivfor;
     String address = "";
     String tokenMain;
     String TypeAuthor;
     public static List<PostNewsModel> posts;
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_give_for);
+
+        if (savedInstanceState != null) {
+            TypeAuthor = savedInstanceState.getString("TypeAuthor");
+            Log.d("TypeAuthoronSaveonget", TypeAuthor);
+            address = savedInstanceState.getString("address");
+            tokenMain = savedInstanceState.getString("token");
+        }
+        else {
+            Log.d("savedinstantcestate", "is nulllllll");
+        }
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_dt);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
+        linearLayout = findViewById(R.id.linearlayoutGiveFor);
+        linearLayout.requestFocus();
         lvNews_New = findViewById(R.id.listView_givefor);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             address = bundle.getString("address");
 //            Log.d("Address", address);
-        }
-        if (bundle.getString("TypeAuthor") != null) {
             TypeAuthor = bundle.getString("TypeAuthor");
-
+            tokenMain = bundle.getString("token");
             Log.d("typeAuthor cato", TypeAuthor);
         }
-        String token = bundle.getString("token");
-        tokenMain = token;
-        Log.d("Token catogo", token);
+//        String token = bundle.getString("token");
+//        tokenMain = token;
+//        Log.d("Token catogo", tokenMain);
 
 
 
@@ -150,21 +175,26 @@ public class GiveFor extends AppCompatActivity {
 
     }
 
+
     private void initSearchWidgets() {
         searchView = findViewById(R.id.search);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
 
                 for (PostNewsModel post: posts) {
-                    if( post.getNameAuthor().toLowerCase().contains(newText.toLowerCase())) {
+                    if( post.getNameAuthor().toLowerCase().contains(s.toString().toLowerCase())) {
                         postNewsModelArrayList.add(post);
                     }
                 }
@@ -172,8 +202,33 @@ public class GiveFor extends AppCompatActivity {
                 adaptergivfor = new GiveforAdapter(getApplicationContext(), R.layout.row_givefor, postNewsModelArrayList);
                 lvNews_New.setAdapter(adaptergivfor);
 
-                return false;
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d("TypeAuthor on Save", TypeAuthor);
+        outState.putString("TypeAuthor", TypeAuthor);
+        outState.putString("token", tokenMain);
+        outState.putString("address", address);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        TypeAuthor = savedInstanceState.getString("TypeAuthor");
+        Log.d("TypeAuthor on Restore", TypeAuthor);
+        address = savedInstanceState.getString("address");
+        tokenMain = savedInstanceState.getString("token");
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

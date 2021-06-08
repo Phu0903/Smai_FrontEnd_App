@@ -15,7 +15,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_anouncement"
+            android:id="@+id/toolbar_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Danh mục"/>

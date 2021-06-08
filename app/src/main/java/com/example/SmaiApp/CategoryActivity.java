@@ -53,7 +53,7 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
 //        toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_category);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -149,12 +149,11 @@ public class CategoryActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override

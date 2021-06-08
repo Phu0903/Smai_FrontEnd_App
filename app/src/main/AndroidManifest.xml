@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- call permission -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -17,12 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
         <activity android:name=".DetailPostTinDang"></activity>
-        <activity android:name=".DetailPostTangCongDong" />
-        <activity android:name=".DetailPostGiveFor" />
+        <activity android:name=".DetailPostTangCongDong"
+            android:parentActivityName=".PostDonation"/>
+        <activity android:name=".DetailPostGiveFor"
+            android:parentActivityName=".GiveFor"/>
         <activity android:name=".ConfirmInforPost2" />
         <activity android:name=".Detail2" />
         <activity android:name=".CategoryActivity3" />
-        <activity android:name=".Catogary3" />
+
         <activity android:name=".ConfirmAddress3" />
         <activity android:name=".CategoryActivity2" />
         <activity android:name=".ConfirmAddress2" />
@@ -47,7 +50,7 @@
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".CategoryActivity"
-            android:parentActivityName=".who_activity" />
+            android:parentActivityName=".who_activity"/>
         <activity android:name=".ConfirmAddress" />
         <activity android:name=".Account" />
         <activity

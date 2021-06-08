@@ -102,6 +102,7 @@ public class LoginFragment extends Fragment {
                 accountModel.setPassword(passWord);
 
                 if (validate(userName, layoutTaiKhoan, edtUserName) == true && validate(passWord, layoutMatKhau, edtPassWord) == true) {
+                    btn_login.setEnabled(false);
 
                     Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                     ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
