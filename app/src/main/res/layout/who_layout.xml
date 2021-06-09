@@ -87,7 +87,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_report_problem_24" />
+            android:src="@drawable/priority_preview"/>
 
         <TextView
             android:id="@+id/textView22"
@@ -117,38 +117,12 @@
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:paddingBottom="10dp"
-            android:text="- Thông tin trước khi hiển thị sẽ được kiểm duyệt và xác thực."
-            android:textColor="@color/black"
+            android:text="Tổ chức công ích bao gồm: Trường học, Bệnh viện, UBND, Hội Chữ Thập Đỏ, Chùa, Nhà thờ,... cần quyên góp xây dựng \u0022 đường, cầu cống, nhà tình thương\u0022"            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gray"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:paddingBottom="10dp"
-            android:text="- Tìn đăng cá nhân sau 03 ngày sẽ hết hạn hiển thị."
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
-        <TextView
-            android:id="@+id/textView40"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gray"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:text='- Tin đăng "quỹ/ nhóm từ thiện, các tổ chức công ích được hỗ trợ hiển thị.'
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

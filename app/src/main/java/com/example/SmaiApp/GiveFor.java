@@ -209,7 +209,6 @@ public class GiveFor extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.d("TypeAuthor on Save", TypeAuthor);
         outState.putString("TypeAuthor", TypeAuthor);
         outState.putString("token", tokenMain);
         outState.putString("address", address);

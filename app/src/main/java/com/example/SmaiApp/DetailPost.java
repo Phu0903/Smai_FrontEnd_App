@@ -5,7 +5,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
+import android.icu.number.Scale;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +32,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+
+import static android.widget.ImageView.ScaleType.FIT_XY;
 
 public class DetailPost extends AppCompatActivity {
     Button btnCall;
@@ -81,11 +85,12 @@ public class DetailPost extends AppCompatActivity {
         typeAuthor.setText(typeauthor);
 
         ImageSlider imageSlider = findViewById(R.id.slider);
+
         List<SlideModel> slideModels = new ArrayList<>();
         for (String uri:listUrl)  {
             slideModels.add(new SlideModel(uri));
         }
-        imageSlider.setImageList(slideModels, true);
+        imageSlider.setImageList(slideModels, false);
 
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override

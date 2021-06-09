@@ -173,17 +173,17 @@
                 android:layout_height="match_parent"
                 android:paddingRight="20dp"
                 android:paddingLeft="20dp"
-                android:paddingTop="10dp"
+
                 android:paddingBottom="20dp"
                 android:orientation="vertical">
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/straight_line"
                     app:layout_constraintTop_toBottomOf="@+id/address" />
                 <TextView
+                    android:layout_marginTop="10dp"
                     android:id="@+id/infor_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -3,6 +3,8 @@ package com.example.SmaiApp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,8 +60,8 @@ public class Detail2 extends AppCompatActivity {
     private static final int PERMISSION_CODE = 1000;
 
     ImageButton btnUpLoadPhoto;
-    PhotoAdapter photoAdapter;
-    RecyclerView recyclerView;
+    PhotoAdapter photoAdapter, photoAdapter2;
+    RecyclerView recyclerView, recyclerView2;
 
 
     @Override
@@ -148,11 +150,19 @@ public class Detail2 extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.rcv_photo);
+        recyclerView2 = findViewById(R.id.rcv_photo2);
+        photoAdapter2 = new PhotoAdapter(Detail2.this);
         photoAdapter = new PhotoAdapter(Detail2.this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
-
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(this, 3);
+        recyclerView2.setLayoutManager(gridLayoutManager2);
+        recyclerView2.setAdapter(photoAdapter2);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(photoAdapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(Detail2.this, DividerItemDecoration.HORIZONTAL);
+        dividerItemDecoration.setDrawable(getDrawable(R.drawable.recyclerview_divider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView2.addItemDecoration(dividerItemDecoration);
     }
 
     private void requestPermissions() {
@@ -189,7 +199,26 @@ public class Detail2 extends AppCompatActivity {
                     public void onImagesSelected(List<Uri> uriList) {
                         // here is selected image uri list
                         uris = uriList;
-                        photoAdapter.setData(uriList);
+                        List<Uri> urisList1 = new ArrayList<>();
+                        List<Uri> urisList2 = new ArrayList<>();
+                        if (uriList.size() > 3) {
+
+                            urisList1.add(uriList.get(0));
+                            urisList1.add(uriList.get(1));
+                            urisList2.add(uriList.get(2));
+                            urisList2.add(uriList.get(3));
+
+                            if (uriList.size() == 5) {
+                                urisList2.add(uriList.get(4));
+                            }
+                            photoAdapter.setData(urisList1);
+                            photoAdapter2.setData(urisList2);
+
+
+                        }
+                        else {
+                            photoAdapter.setData(uriList);
+                        }
 
                     }
                 });

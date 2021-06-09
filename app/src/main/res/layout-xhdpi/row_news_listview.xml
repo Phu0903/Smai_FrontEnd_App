@@ -5,8 +5,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -20,7 +20,8 @@
                 android:layout_width="240px"
                 android:layout_height="wrap_content"
                 android:foregroundGravity="center"
-                android:src="@drawable/sachthanly" />
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_image_24" />
         </RelativeLayout>
 
         <LinearLayout
@@ -36,12 +37,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Có sách cần thanh lý"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:textSize="@dimen/size_2"
                 android:textColor="@color/black"
                 android:fontFamily="@font/open_sans_semibold"/>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 

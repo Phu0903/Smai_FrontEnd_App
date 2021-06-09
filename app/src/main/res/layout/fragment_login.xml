@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="80px"
-            android:layout_height="60px"
+            android:layout_height="100px"
             android:background="@drawable/logo"
             android:layout_gravity="center"
             android:orientation="horizontal">
@@ -26,7 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="50dp"
+            android:paddingTop="20dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingBottom="20dp"

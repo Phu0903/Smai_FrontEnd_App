@@ -5,6 +5,8 @@
     <padding android:right="10px" android:bottom="0px" android:top="0px"
         android:left="10px"/>
 
+
+    <corners android:radius="20px"/>
     <stroke android:color="#DD484D" android:width="1dp"/>
 
 </shape>

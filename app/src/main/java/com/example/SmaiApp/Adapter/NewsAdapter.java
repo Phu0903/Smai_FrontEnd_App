@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.SmaiApp.Model.PostNewsModel;
 import com.example.SmaiApp.Model.ProductModel;
 import com.example.SmaiApp.News;
@@ -63,6 +64,7 @@ public class NewsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
 //ngày giờ đăng tin
         Date date1 = arrayNews.get(position).getCreatedAt();
         SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -129,10 +131,16 @@ public class NewsAdapter extends BaseAdapter {
 
         List<String> listUrl = arrayNews.get(position).getUrlImage();
 
-        String url = listUrl.get(0);
-        ImageView imgHinh = convertView.findViewById(R.id.img_hinh);
+        if (listUrl.size() != 0) {
+            String url = listUrl.get(0);
+            ImageView imgHinh = convertView.findViewById(R.id.img_hinh);
 
-        Glide.with(convertView).load(url).into(imgHinh);
+            Glide.with(convertView).load(url)
+                    .placeholder(R.drawable.ic_baseline_image_24)
+                    .fitCenter()
+                    .apply(new RequestOptions().override(240,240))
+                    .into(imgHinh);
+        }
 
         return convertView;
     }

@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
+import com.example.SmaiApp.Helper.LVHelper;
 import com.example.SmaiApp.Model.PostNewsModel;
 import com.example.SmaiApp.Model.ProductModel;
 import com.example.SmaiApp.NetWorKing.ApiServices;
@@ -159,6 +160,7 @@ public class HomeFragment extends Fragment {
                         posts);
                 lvNews.setAdapter(adapter);
                 setListViewHeightBasedOnChildren(lvNews);
+//                LVHelper.getListViewSize(lvNews);
                 lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -204,7 +206,7 @@ public class HomeFragment extends Fragment {
             }
             @Override
             public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
-                Toast.makeText(getContext(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -249,11 +251,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
-
-
 
 
         return view;

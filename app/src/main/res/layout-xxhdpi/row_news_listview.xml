@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -19,8 +19,9 @@
                 android:id="@+id/img_hinh"
                 android:layout_width="260px"
                 android:layout_height="260px"
+                android:scaleType="centerInside"
                 android:foregroundGravity="center"
-                android:src="@drawable/sachthanly"/>
+                android:src="@drawable/ic_baseline_image_24"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -35,14 +36,19 @@
                 android:id="@+id/tv_tittle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Có sách cần thanh lý"
+                android:text="Có sách cần thanh lý "
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:inputType="textCapWords"
                 android:textSize="@dimen/size_2"
+                android:layout_weight="1"
                 android:textColor="@color/black"
                 android:fontFamily="@font/open_sans_semibold"/>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
@@ -70,6 +76,7 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
@@ -81,6 +88,7 @@
                     android:drawableLeft="@drawable/ic_baseline_access_time_18"
                     android:drawablePadding="20px"
                     android:textSize="@dimen/size_2"
+                    android:layout_gravity="bottom"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"/>
 
@@ -93,6 +101,7 @@
                     android:ellipsize="end"
                     android:layout_weight="1"
                     android:textSize="@dimen/size_2"
+                    android:layout_gravity="bottom"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"
                     android:textAlignment="textEnd"/>

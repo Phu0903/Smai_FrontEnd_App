@@ -167,6 +167,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10px"
                         app:cardCornerRadius="8dp">
 
                         <ImageButton
@@ -174,7 +175,7 @@
                             android:layout_width="200px"
                             android:layout_height="200px"
                             android:layout_gravity="center"
-                            android:padding="0px"
+                            android:paddingTop="5px"
                             android:src="@drawable/bookstore"/>
                     </androidx.cardview.widget.CardView>
 
@@ -183,6 +184,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tặng cộng đồng"
                     android:layout_gravity="center"
+                    android:layout_marginTop="20px"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_2"
                     android:textAlignment="center"
@@ -248,7 +250,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px"
+
             android:background="@color/gray"
             android:paddingLeft="40px"
             android:paddingTop="15px"

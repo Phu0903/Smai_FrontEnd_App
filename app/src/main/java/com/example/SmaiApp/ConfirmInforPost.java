@@ -241,7 +241,7 @@ public class ConfirmInforPost extends AppCompatActivity {
 //////                    }
 //////                });
 //
-
+                btn_confirm.setEnabled(false);
                 Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer " + token, postNewsModel);
                 final String[] idPost = new String[1];
                 call.enqueue(new Callback<PostNewsModel>() {

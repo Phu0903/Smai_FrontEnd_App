@@ -124,6 +124,7 @@ public class LoginFragment extends Fragment {
                             }
                             else {
                                 Toast.makeText(getContext(), "Sai tên tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
+                                btn_login.setEnabled(true);
 
                             }
                         }

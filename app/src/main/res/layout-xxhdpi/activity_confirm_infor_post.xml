@@ -36,9 +36,10 @@
                 android:layout_height="wrap_content"
                 android:padding="10px"
                 android:paddingStart="50px"
+                android:textAllCaps="true"
                 android:text="Thông tin chung"
                 android:textSize="@dimen/size_3"
-                android:textColor="@color/black"
+                android:textColor="@color/graylight"
                 android:fontFamily="@font/open_sans_semibold" />
 
             <LinearLayout
@@ -55,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="10px"
                     android:text="Dịch vụ *"
-                    android:textColor="@color/black"
+                    android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_1" />
 
@@ -67,7 +68,7 @@
                     android:paddingBottom="50px"
                     android:text="Tặng cộng đồng"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/size_1"
+                    android:textSize="@dimen/size_3"
                     android:fontFamily="@font/open_sans" />
 
                 <TextView
@@ -75,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Danh mục *"
-                    android:textColor="@color/black"
+                    android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_1" />
 
@@ -87,20 +88,21 @@
                     android:paddingBottom="50px"
                     android:text="Đồ trẻ em nam "
                     android:textColor="@color/black"
-                    android:textSize="@dimen/size_1"
+                    android:textSize="@dimen/size_3"
                     android:fontFamily="@font/open_sans"/>
 
             </LinearLayout>
 
             <TextView
                 android:id="@+id/textView14"
+                android:textAllCaps="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10px"
                 android:paddingStart="50px"
                 android:text="Thông tin mô tả"
                 android:textSize="@dimen/size_3"
-                android:textColor="@color/black"
+                android:textColor="@color/graylight"
                 android:fontFamily="@font/open_sans_semibold" />
 
             <LinearLayout
@@ -117,7 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tiêu đề *"
-                    android:textColor="@color/black"
+                    android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_1"/>
 
@@ -129,6 +131,7 @@
                     android:layout_marginBottom="20px"
                     android:background="@drawable/textview_border"
                     android:padding="10dp"
+                    android:textSize="@dimen/size_3"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"
                     android:text="Hàng mẫu"/>
@@ -139,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:text="Ghi chú thêm(nếu có) *"
                     android:textSize="@dimen/size_1"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/graylight"/>
 
                 <TextView
                     android:id="@+id/textView19"
@@ -149,14 +152,16 @@
                     android:layout_marginBottom="20px"
                     android:background="@drawable/textview_border"
                     android:padding="50dp"
-                    android:text="Hang mau" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_3"
+                    android:text="Hàng mẫu" />
 
                 <TextView
                     android:id="@+id/textView20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hình ảnh( tối đa 5 hình ảnh)*"
-                    android:textColor="@color/black"
+                    android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_1" />
 
@@ -216,11 +221,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10px"
+                android:textAllCaps="true"
                 android:paddingStart="50px"
                 android:text="Thông tin địa chỉ"
                 android:textSize="@dimen/size_3"
                 android:fontFamily="@font/open_sans_semibold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/graylight"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -236,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20px"
                     android:text="Tỉnh/Thành phố*"
-                    android:textColor="@color/black"
+                    android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_1" />
 
@@ -256,7 +262,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Quận/Huyện*"
-                    android:textColor="@color/black"
+                    android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_1" />
 
@@ -276,7 +282,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Phường/Xã*"
-                    android:textColor="@color/black"
+                    android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_1" />
 
@@ -296,7 +302,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Số nhà/ ấp/ thôn*"
-                    android:textColor="@color/black"
+                    android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_1" />
 
@@ -319,8 +325,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginLeft="40dp"
                 android:backgroundTint="@color/red"

@@ -19,7 +19,7 @@
             android:background="@drawable/banner" />
 
         <RelativeLayout
-            android:layout_width="350dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="-20dp"
@@ -27,7 +27,7 @@
 
             <Button
                 android:id="@+id/btn_search"
-                android:layout_width="288dp"
+                android:layout_width="208dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border_radius_2_left_search"
                 android:hint="Tìm kiếm..."
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40px"
-            android:layout_marginTop="80px"
+            android:layout_marginTop="20px"
             android:layout_marginRight="40px"
             android:gravity="center"
             android:orientation="horizontal">
@@ -123,7 +123,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="20px"
             android:background="@color/gray"
             android:paddingLeft="40px"
             android:paddingTop="15px"
@@ -135,7 +135,7 @@
                 android:text="TIN ĐÃ ĐĂNG"
                 android:fontFamily="@font/open_sans_bold"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/size_1"
+                android:textSize="@dimen/size_3"
                 android:textStyle="bold" />
         </FrameLayout>
 
@@ -151,7 +151,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+
                 android:gravity="left"
                 android:orientation="vertical">
 
@@ -162,8 +162,8 @@
 
                         <ImageButton
                             android:id="@+id/view_donations"
-                            android:layout_width="300px"
-                            android:layout_height="240px"
+                            android:layout_width="50px"
+                            android:layout_height="50px"
                             android:padding="0px"
                             android:src="@drawable/bookstore"/>
                     </androidx.cardview.widget.CardView>

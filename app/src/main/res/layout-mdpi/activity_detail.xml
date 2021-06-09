@@ -24,7 +24,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/dt_title1"
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_light"
             android:text="Tiêu đề*"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textSize="@dimen/size_1" />
 
         <EditText
@@ -46,13 +48,14 @@
             android:hint="Lời nhắn ..."
             android:paddingLeft="20px"
             android:textColor="@color/black"
-            android:textSize="@dimen/size_1" />
+            android:textSize="@dimen/size_2" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="10dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
@@ -62,29 +65,37 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_light"
             android:text="Ghi chú thêm (nếu có)"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textSize="@dimen/size_1" />
 
         <EditText
             android:id="@+id/edt_mota"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:lines="4"
+            android:gravity="top"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_below="@+id/dt_title2"
             android:layout_marginTop="10dp"
             android:background="@drawable/dt_custom_edit_text"
             android:fontFamily="@font/open_sans_light"
             android:textColor="@color/black"
-            android:paddingLeft="20px"
+            android:paddingLeft="10px"
+            android:paddingRight="10px"
             android:hint="Mô tả hoặc ghi chú ..."
             android:inputType="textMultiLine"
-            android:textSize="@dimen/size_1" />
+            android:textSize="@dimen/size_2" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/image_title"
@@ -93,35 +104,51 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/open_sans_light"
             android:text="Hình ảnh"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textSize="@dimen/size_1" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:padding="15dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/dt_custom_edit_text"
-                android:padding="15dp">
-                <ImageButton
-                    android:id="@+id/btn_uploadImage"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@color/white"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_baseline_cloud_upload_24" />
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/dt_custom_edit_text"
+                    android:padding="5dp">
+                    <ImageButton
+                        android:id="@+id/btn_uploadImage"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@color/white"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_cloud_upload_24" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/rcv_photo">
+                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/rcv_photo"/>
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:id="@+id/rcv_photo2">
+            </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
 
         <Button
