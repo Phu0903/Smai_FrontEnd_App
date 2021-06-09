@@ -61,4 +61,7 @@ dependencies {
 
     implementation 'gun0912.ted:tedbottompicker:2.0.1'
     implementation 'gun0912.ted:tedpermission:2.2.3'
+
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
 }

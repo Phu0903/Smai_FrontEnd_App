@@ -4,13 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+
+    android:id="@+id/lnLogin"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Personal.LoginFragment">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
     <LinearLayout
         android:layout_marginTop="20dp"
-        android:layout_width="300px"
-        android:layout_height="700px"
+        android:layout_width="180px"
+        android:layout_height="300px"
         android:background="@drawable/logo"
         android:layout_gravity="center"
         android:orientation="horizontal">
@@ -20,12 +34,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"
+        android:paddingTop="15dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layouttentaikhoan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -33,21 +48,21 @@
                 android:id="@+id/textview_username"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/size_2"
+                android:textSize="@dimen/size_3"
                 android:fontFamily="@font/open_sans"
-                android:textColorHint="#D6908B"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:imeOptions="actionNext"
-                android:completionThreshold="1"
+                android:textColorHint="#D6908B"
                 android:hint="Tài khoản" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutpassword"
             android:layout_width="match_parent"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             app:passwordToggleEnabled="true"
             android:layout_height="wrap_content">
 
@@ -59,7 +74,7 @@
                 android:singleLine="true"
                 android:maxLines="1"
                 android:imeOptions="actionDone"
-                android:textSize="@dimen/size_2"
+                android:textSize="@dimen/size_3"
                 android:fontFamily="@font/open_sans"
                 android:inputType="textPassword"
                 android:hint="Mật khẩu" />
@@ -74,7 +89,7 @@
             android:textColor="#333"
             android:textSize="@dimen/size_2"
             android:fontFamily="@font/open_sans"
-            android:layout_marginBottom="40dp"/>
+            android:layout_marginBottom="20dp"/>
 
     </LinearLayout>
 
@@ -97,6 +112,6 @@
             android:backgroundTint="#DD484D"/>
     </LinearLayout>
 
-
+    </LinearLayout>
 
 </LinearLayout>

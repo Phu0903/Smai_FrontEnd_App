@@ -57,9 +57,7 @@ public class SigninFragment extends Fragment {
 
 
         edtHoTen.addTextChangedListener(new ConfirmHoTen());
-        edtTenTaiKhoan.addTextChangedListener(new ConfirmTenTaiKhoan());
         edtSDT.addTextChangedListener(new ConfirmPhoneNumber());
-        edtDiaChi.addTextChangedListener(new ConfirmAddress());
         edtMatKhau.addTextChangedListener(new ConfirmPassWord());
         edtMatKhau2.addTextChangedListener(new ConfirmPassWord2());
 
@@ -76,52 +74,63 @@ public class SigninFragment extends Fragment {
 
                     Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                     ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
-                    String userName = edtTenTaiKhoan.getText().toString();
                     String passWord = edtMatKhau.getText().toString();
                     String passWord2 = edtMatKhau2.getText().toString();
                     String phoneNumber = edtSDT.getText().toString();
                     String fullName = edtHoTen.getText().toString();
-                    String address = edtDiaChi.getText().toString();
 
 
-                    if (validate(fullName, layouthoten, edtHoTen) == true && validate(userName, layouttaikhoan,edtTenTaiKhoan)==true && validate(passWord, layoutmk, edtMatKhau) == true &&
-                    validate(phoneNumber, layoutsdt, edtSDT) == true && validate(address, layoutdiachi, edtDiaChi) == true && validate(passWord2, layoutmk2, edtMatKhau2) == true) {
+                    if (validate(fullName, layouthoten, edtHoTen) == true && validate(passWord, layoutmk, edtMatKhau) == true &&
+                    validate(phoneNumber, layoutsdt, edtSDT) == true == true && validate(passWord2, layoutmk2, edtMatKhau2) == true) {
 
-                        AccountModel accountModel = new AccountModel();
-                        accountModel.setUserName(userName);
-                        accountModel.setPassword(passWord);
-                        accountModel.setFullName(fullName);
-                        accountModel.setAddress(address);
-                        accountModel.setPhoneNumber(phoneNumber);
-                        Call<AccountModel> call = jsonPlaceHolderApi.signup(accountModel);
+                        if (phoneNumber.length() != 10) {
+                            layoutsdt.setError("Số điện thoại không đúng");
+                            return;
+                        }
+                        if (passWord.equals(passWord2)) {
+                            btnSignin.setEnabled(false);
+                            AccountModel accountModel = new AccountModel();
+                            accountModel.setPassword(passWord);
+                            accountModel.setFullName(fullName);
+                            accountModel.setPhoneNumber(phoneNumber);
+                            Call<AccountModel> call = jsonPlaceHolderApi.signup(accountModel);
 
-                        call.enqueue(new Callback<AccountModel>() {
-                            @Override
-                            public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
-                                if (response.isSuccessful()) {
+                            call.enqueue(new Callback<AccountModel>() {
+                                @Override
+                                public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
+                                    if (response.isSuccessful()) {
 
-                                    AccountModel accountModel1 = response.body();
-                                    String message = accountModel1.getMessage();
-                                    String tk = accountModel1.getAccessToken();
+                                        AccountModel accountModel1 = response.body();
+                                        String message = accountModel1.getMessage();
+                                        String tk = accountModel1.getAccessToken();
 
-                                    Log.d("Token Login", tk);
+                                        Log.d("Token Login", tk);
 
-                                    Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
-                                    intent.putExtra("message", message);
-                                    intent.putExtra("Token", tk);
-                                    getActivity().startActivity(intent);
+                                            Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
+                                            intent.putExtra("message", message);
+                                            intent.putExtra("Token", tk);
+                                            getActivity().startActivity(intent);
 
-                                } else {
-                                    Log.e("Message", response.message());
+
+                                    } else {
+                                        layoutsdt.setError("Số điện thoại đã đăng ký");
+                                        btnSignin.setEnabled(true);
+                                        Log.e("Message error", response.message());
+                                    }
                                 }
-                            }
 
-                            @Override
-                            public void onFailure(Call<AccountModel> call, Throwable t) {
-                                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                @Override
+                                public void onFailure(Call<AccountModel> call, Throwable t) {
+                                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        else {
+                            layoutmk2.setError("Sai mật khẩu");
+                            btnSignin.setEnabled(true);
+                        }
                     }
+
 
             }
 
@@ -134,16 +143,12 @@ public class SigninFragment extends Fragment {
 
         btnSignin = v.findViewById(R.id.btn_signin);
         edtHoTen = v.findViewById(R.id.edthoten);
-        edtTenTaiKhoan = v.findViewById(R.id.edttaikhoan);
         edtSDT = v.findViewById(R.id.edtsdt);
         edtMatKhau = v.findViewById(R.id.edtmatkhau);
-        edtDiaChi = v.findViewById(R.id.edtdiachi);
         edtMatKhau2 = v.findViewById(R.id.edtmatkhau2);
 
         layouthoten = v.findViewById(R.id.layouthoten);
-        layouttaikhoan = v.findViewById(R.id.layouttaikhoan);
         layoutsdt = v.findViewById(R.id.layoutsdt);
-        layoutdiachi = v.findViewById(R.id.layoutdiachi);
         layoutmk = v.findViewById(R.id.layoutmatkhau);
         layoutmk2 = v.findViewById(R.id.layoutmatkhau2);
 
@@ -179,24 +184,6 @@ public class SigninFragment extends Fragment {
         }
     }
 
-    private class ConfirmTenTaiKhoan implements TextWatcher {
-        private View view;
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            this.view = view;;
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            validate(edtTenTaiKhoan.getText().toString(), layouttaikhoan, edtTenTaiKhoan);
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            layouttaikhoan.setErrorEnabled(false);
-        }
-    }
-
     private class ConfirmPhoneNumber implements TextWatcher {
         private View view;
         @Override
@@ -212,23 +199,6 @@ public class SigninFragment extends Fragment {
         @Override
         public void afterTextChanged(Editable s) {
             layoutsdt.setErrorEnabled(false);
-        }
-    }
-
-    private class ConfirmAddress implements TextWatcher {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            validate(edtDiaChi.getText().toString(), layoutdiachi, edtDiaChi);
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            layoutdiachi.setErrorEnabled(false);
         }
     }
 

@@ -197,6 +197,9 @@ public class CategoryActivity3 extends AppCompatActivity {
         alerDialog.show();
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

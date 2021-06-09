@@ -22,6 +22,7 @@ public class Helper {
         View view = null;
         for (int i = 0; i < listAdapter.getCount(); i++) {
             view = listAdapter.getView(i, view, listView);
+
             if (i == 0)
                 view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth,
                         LinearLayout.LayoutParams.MATCH_PARENT));

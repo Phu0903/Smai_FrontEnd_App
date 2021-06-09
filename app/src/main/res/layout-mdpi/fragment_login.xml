@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Personal.LoginFragment">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:orientation="vertical">
+
     <LinearLayout
         android:layout_marginTop="20dp"
-        android:layout_width="100px"
-        android:layout_height="200dp"
+        android:layout_width="70px"
+        android:layout_height="120px"
         android:background="@drawable/logo"
         android:layout_gravity="center"
         android:orientation="horizontal">
 
     </LinearLayout>
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layouttentaikhoan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -32,12 +34,12 @@
                 android:id="@+id/textview_username"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/size_2"
+                android:textSize="@dimen/size_3"
                 android:fontFamily="@font/open_sans"
-                android:textColorHint="#D6908B"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:imeOptions="actionNext"
+                android:textColorHint="#D6908B"
                 android:completionThreshold="1"
                 android:hint="Tài khoản" />
 
@@ -45,8 +47,9 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutpassword"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             app:passwordToggleEnabled="true"
             android:layout_height="wrap_content">
 
@@ -58,7 +61,7 @@
                 android:singleLine="true"
                 android:maxLines="1"
                 android:imeOptions="actionDone"
-                android:textSize="@dimen/size_2"
+                android:textSize="@dimen/size_3"
                 android:fontFamily="@font/open_sans"
                 android:inputType="textPassword"
                 android:hint="Mật khẩu" />
@@ -71,31 +74,31 @@
             android:layout_height="wrap_content"
             android:text="Lưu tài khoản cho lần đăng nhập sau"
             android:textColor="#333"
-            android:textSize="@dimen/size_1"
+            android:textSize="@dimen/size_2"
             android:fontFamily="@font/open_sans"
             android:layout_marginBottom="20dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:paddingBottom="20dp"
-            android:gravity="bottom">
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/size_1"
-                android:fontFamily="@font/open_sans_semibold"
-                android:text="Đăng nhập"
-                android:textColor="@color/white"
-                android:backgroundTint="#DD484D"/>
-        </LinearLayout>
 
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_2"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="Đăng nhập"
+            android:textColor="@color/white"
+            android:backgroundTint="#DD484D"/>
+    </LinearLayout>
 
 
 
-
-</ScrollView>
+</LinearLayout>

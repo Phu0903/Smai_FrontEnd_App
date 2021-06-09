@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
 import com.example.SmaiApp.Helper.LVHelper;
@@ -44,6 +45,7 @@ public class HomeFragment extends Fragment {
 
 //    button search
     Button btnSearch;
+
 
 //    button thông báo
     ImageButton btnAnouncement;
@@ -75,6 +77,9 @@ public class HomeFragment extends Fragment {
 
         String message = code[0];
         String token = code[1];
+
+
+
 
 
         btn_tangcongdong.setOnClickListener(new View.OnClickListener() {
@@ -159,8 +164,9 @@ public class HomeFragment extends Fragment {
                         R.layout.row_news_listview,
                         posts);
                 lvNews.setAdapter(adapter);
-                setListViewHeightBasedOnChildren(lvNews);
-//                LVHelper.getListViewSize(lvNews);
+//                setListViewHeightBasedOnChildren(lvNews);
+
+
                 lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

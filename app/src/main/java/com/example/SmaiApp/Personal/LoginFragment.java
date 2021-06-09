@@ -13,10 +13,14 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.SmaiApp.Account;
@@ -31,11 +35,14 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class LoginFragment extends Fragment {
 
@@ -91,6 +98,8 @@ public class LoginFragment extends Fragment {
         edtPassWord.addTextChangedListener(new ConfirmPassword());
 
 
+
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +107,7 @@ public class LoginFragment extends Fragment {
                 String userName = edtUserName.getText().toString();
                 String passWord = edtPassWord.getText().toString();
                 AccountModel accountModel = new AccountModel();
-                accountModel.setUserName(userName);
+                accountModel.setPhoneNumber(userName);
                 accountModel.setPassword(passWord);
 
                 if (validate(userName, layoutTaiKhoan, edtUserName) == true && validate(passWord, layoutMatKhau, edtPassWord) == true) {
@@ -185,4 +194,6 @@ public class LoginFragment extends Fragment {
             layoutMatKhau.setErrorEnabled(false);
         }
     }
+
+
 }

@@ -143,12 +143,18 @@ public class CategoryActivity2 extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.button_cancel:
-                ConfirmCancel();
-                break;
-            default:
-                break;
+//        switch (item.getItemId()) {
+//            case R.id.button_cancel:
+//                ConfirmCancel();
+//                break;
+//            default:
+//                break;
+//        }
+        if (item.getItemId() == R.id.button_cancel) {
+            ConfirmCancel();
+        }
+        else {
+            finish();
         }
         return true;
     }
@@ -175,4 +181,6 @@ public class CategoryActivity2 extends AppCompatActivity {
         });
         alerDialog.show();
     }
+
+
 }

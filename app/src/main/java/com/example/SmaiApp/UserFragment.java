@@ -163,9 +163,7 @@ public class UserFragment extends Fragment {
             actionBarToolBar.inflateMenu(R.menu.menu_toolbar_account);
 
         }
-        else {
-            Toast.makeText(getContext(), "Chưa đăng nhập", Toast.LENGTH_SHORT).show();
-        }
+
 
         Log.d("Message, token, user", message + ",    " + token);
 

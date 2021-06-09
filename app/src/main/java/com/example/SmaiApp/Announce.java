@@ -1,10 +1,12 @@
 package com.example.SmaiApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 public class Announce extends AppCompatActivity {
 
@@ -18,5 +20,10 @@ public class Announce extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        finish();
+        return true;
     }
 }

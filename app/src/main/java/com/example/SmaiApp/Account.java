@@ -1,5 +1,6 @@
 package com.example.SmaiApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -8,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.SmaiApp.Personal.LoginFragment;
 import com.example.SmaiApp.Personal.ViewPagerAdapter;
@@ -26,6 +28,9 @@ public class Account extends AppCompatActivity implements LoginFragment.TextClic
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -44,5 +49,9 @@ public class Account extends AppCompatActivity implements LoginFragment.TextClic
     @Override
     public void sendText(String text) {
 
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        finish();
+        return true;
     }
 }

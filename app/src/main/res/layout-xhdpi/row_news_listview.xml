@@ -13,12 +13,13 @@
             android:layout_width="fill_parent"
             android:layout_height="92dp"
             android:layout_weight="3"
+            android:layout_marginLeft="20px"
             android:gravity="center">
 
             <ImageView
                 android:id="@+id/img_hinh"
-                android:layout_width="240px"
-                android:layout_height="wrap_content"
+                android:layout_width="260px"
+                android:layout_height="260px"
                 android:foregroundGravity="center"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_baseline_image_24" />

@@ -52,7 +52,7 @@
                     android:id="@+id/linearlayout_infor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:orientation="vertical">
 
                     <TextView
@@ -61,8 +61,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:textColor="@color/black"
+                        android:text="Nguyễn Anh Khang"
                         android:textSize="@dimen/size_2"
-                        android:fontFamily="@font/open_sans_extrabold" />
+                        android:fontFamily="@font/open_sans" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -97,6 +98,7 @@
                         android:id="@+id/btn_LILO"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textAllCaps="false"
                         android:text="Đăng nhập/Đăng ký"
                         android:background="@drawable/border_red_backround_white"
                         android:fontFamily="@font/open_sans"
@@ -126,6 +128,7 @@
                     android:layout_marginTop="0dp"
                     android:background="#FFFFFF"
                     android:padding="20dp"
+                    android:textAllCaps="false"
                     android:textAlignment="viewStart"
                     android:drawablePadding="10dp"
                     android:drawableLeft="@drawable/ic_baseline_history_24"

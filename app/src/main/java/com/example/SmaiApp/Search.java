@@ -1,9 +1,11 @@
 package com.example.SmaiApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 
 public class Search extends AppCompatActivity {
@@ -19,5 +21,9 @@ public class Search extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        finish();
+        return true;
     }
 }

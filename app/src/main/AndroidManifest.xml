@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,10 +27,12 @@
             android:parentActivityName=".GiveFor"/>
         <activity android:name=".ConfirmInforPost2" />
         <activity android:name=".Detail2" />
-        <activity android:name=".CategoryActivity3" />
+        <activity android:name=".CategoryActivity3"
+            android:parentActivityName=".ConfirmAddress"/>
 
         <activity android:name=".ConfirmAddress3" />
-        <activity android:name=".CategoryActivity2" />
+        <activity android:name=".CategoryActivity2"
+            android:parentActivityName=".ConfirmAddress2"/>
         <activity android:name=".ConfirmAddress2" />
         <activity android:name=".GiveFor" />
         <activity

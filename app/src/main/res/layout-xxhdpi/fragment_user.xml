@@ -62,7 +62,7 @@
                         android:layout_margin="10dp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/size_2"
-                        android:fontFamily="@font/open_sans_extrabold" />
+                        android:fontFamily="@font/open_sans" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -100,10 +100,10 @@
                         android:layout_height="wrap_content"
                         android:text="Đăng nhập/Đăng ký"
                         android:textAllCaps="false"
-                        android:backgroundTint="#DD484D"
+                        android:background="@drawable/border_red_backround_white"
                         android:fontFamily="@font/open_sans"
                         android:textSize="@dimen/size_3"
-                        android:textColor="@color/white"/>
+                        android:textColor="#DD484D"/>
                 </LinearLayout>
 
 
@@ -128,6 +128,7 @@
                     android:background="#FFFFFF"
                     android:padding="20dp"
                     android:textAlignment="viewStart"
+                    android:textAllCaps="false"
                     android:drawablePadding="10dp"
                     android:drawableLeft="@drawable/ic_baseline_history_24"
                     android:fontFamily="@font/open_sans"

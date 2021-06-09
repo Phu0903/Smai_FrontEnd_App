@@ -4,13 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lnLogin"
     tools:context=".Personal.LoginFragment">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="300px"
-            android:layout_height="700px"
+            android:layout_height="500px"
             android:background="@drawable/logo"
             android:layout_gravity="center"
             android:orientation="horizontal">
@@ -40,7 +49,6 @@
                     android:maxLines="1"
                     android:imeOptions="actionNext"
                     android:textColorHint="#D6908B"
-                    android:completionThreshold="1"
                     android:hint="Tài khoản" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -99,6 +107,6 @@
             android:backgroundTint="#DD484D"/>
     </LinearLayout>
 
-
+    </LinearLayout>
 
 </LinearLayout>
