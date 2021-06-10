@@ -1,6 +1,7 @@
 package com.example.SmaiApp;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -16,11 +17,18 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
+import com.example.SmaiApp.Adapter.NewsRecyclerviewAdapter;
 import com.example.SmaiApp.Helper.LVHelper;
+
+import com.example.SmaiApp.Helper.SpaceDividerItemDecoration;
 import com.example.SmaiApp.Model.PostNewsModel;
 import com.example.SmaiApp.Model.ProductModel;
 import com.example.SmaiApp.NetWorKing.ApiServices;
@@ -56,7 +64,11 @@ public class HomeFragment extends Fragment {
 //    button  top homepage
     Button btn_tangcongdong, btn_tangnguoingheo, btn_tangquytuthien, btn_quyengopcongich;
     NewsAdapter adapter;
+    RecyclerView recyclerView;
     public static List<PostNewsModel> posts;
+    String message = "";
+    String token ="";
+    NewsRecyclerviewAdapter recyclerviewAdapter;
 
     @Nullable
     @Override
@@ -72,15 +84,17 @@ public class HomeFragment extends Fragment {
 
         MainActivity activity = (MainActivity) getActivity();
         String codeLogin  = activity.getMyData();
-
         String[] code = codeLogin.split(",");
 
-        String message = code[0];
-        String token = code[1];
+        if (code.length != 0) {
+            message = code[0];
+            token = code[1];
+        }
 
 
 
 
+        recyclerView = view.findViewById(R.id.recyclerview);
 
         btn_tangcongdong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +103,7 @@ public class HomeFragment extends Fragment {
                     Intent intent = new Intent(getContext(), ConfirmAddress.class);
                     intent.putExtra("Token", token);
                     intent.putExtra("Message", message);
+                    intent.putExtra("TypeAuthor", "tangcongdong");
                     startActivity(intent);
                 } else {
                     Toast.makeText(getContext(), "Đăng nhập để thực hiện chức năng", Toast.LENGTH_SHORT).show();
@@ -159,56 +174,69 @@ public class HomeFragment extends Fragment {
                 }
                 posts = response.body();
 
-                adapter = new NewsAdapter(
-                        getContext(),
-                        R.layout.row_news_listview,
-                        posts);
-                lvNews.setAdapter(adapter);
+//                adapter = new NewsAdapter(
+//                        getContext(),
+//                        R.layout.row_news_listview,
+//                        posts);
+//                lvNews.setAdapter(adapter);
 //                setListViewHeightBasedOnChildren(lvNews);
 
+                recyclerviewAdapter = new NewsRecyclerviewAdapter(getContext());
 
-                lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        Intent intent = new Intent(getActivity().getBaseContext(), DetailPost.class);
-                        PostNewsModel post = posts.get(position);
-                        String title = post.getTitle();
-
-                        List<ProductModel> productModel = post.getNameProduct();
-                        if (productModel.size() != 0) {
-                            String detailType = productModel.get(0).getCategory();
-                            intent.putExtra("detailType", detailType);
-                        }
-                        String address = post.getAddress();
-                        String fullName = post.getNameAuthor();
-                        if (fullName != null) {
-                            Log.d("fullName", fullName);
-                        }
-                        else {
-                            Log.e("Full name", "no fullname");
-                        }
-                        String inforDetail = post.getNote();
-                        String typeAuthor = post.getTypeAuthor();
-                        List<String> listUrl = post.getUrlImage();
-                        ArrayList<String> arrayListurl = new ArrayList<>();
-                        for (String s: listUrl) {
-                            arrayListurl.add(s);
-                        }
-                        String AuthorID = post.getAuthorID();
-
-                        intent.putExtra("title", title);
-                        intent.putExtra("address", address);
-                        intent.putExtra("fullName", fullName);
-                        intent.putExtra("inforDetail", inforDetail);
-                        intent.putExtra("typeAuthor", typeAuthor);
-                        intent.putExtra("AuthorID", AuthorID);
-                        intent.putStringArrayListExtra("url", arrayListurl);
-                        getActivity().startActivity(intent);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                DividerItemDecoration  mDividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                        DividerItemDecoration.VERTICAL);
+                SpaceDividerItemDecoration a = new SpaceDividerItemDecoration(10, false);
+                recyclerView.addItemDecoration(a);
+                recyclerView.addItemDecoration(mDividerItemDecoration);
+                recyclerView.setLayoutManager(linearLayoutManager);
+                recyclerView.setAdapter(recyclerviewAdapter);
+                recyclerviewAdapter.setData(posts);
 
 
-                    }
-                });
+
+//                lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                        Intent intent = new Intent(getActivity().getBaseContext(), DetailPost.class);
+//                        PostNewsModel post = posts.get(position);
+//                        String title = post.getTitle();
+//
+//                        List<ProductModel> productModel = post.getNameProduct();
+//                        if (productModel.size() != 0) {
+//                            String detailType = productModel.get(0).getCategory();
+//                            intent.putExtra("detailType", detailType);
+//                        }
+//                        String address = post.getAddress();
+//                        String fullName = post.getNameAuthor();
+//                        if (fullName != null) {
+//                            Log.d("fullName", fullName);
+//                        }
+//                        else {
+//                            Log.e("Full name", "no fullname");
+//                        }
+//                        String inforDetail = post.getNote();
+//                        String typeAuthor = post.getTypeAuthor();
+//                        List<String> listUrl = post.getUrlImage();
+//                        ArrayList<String> arrayListurl = new ArrayList<>();
+//                        for (String s: listUrl) {
+//                            arrayListurl.add(s);
+//                        }
+//                        String AuthorID = post.getAuthorID();
+//
+//                        intent.putExtra("title", title);
+//                        intent.putExtra("address", address);
+//                        intent.putExtra("fullName", fullName);
+//                        intent.putExtra("inforDetail", inforDetail);
+//                        intent.putExtra("typeAuthor", typeAuthor);
+//                        intent.putExtra("AuthorID", AuthorID);
+//                        intent.putStringArrayListExtra("url", arrayListurl);
+//                        getActivity().startActivity(intent);
+//
+//
+//                    }
+//                });
             }
             @Override
             public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {

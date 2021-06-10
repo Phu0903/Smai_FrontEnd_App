@@ -36,10 +36,8 @@ public class who_activity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String token = bundle.getString("token");
-        Log.d("Token who", token);
         if (bundle != null) {
             address = bundle.getString("address", "");
-            Log.d("Address", address);
         }
 
 

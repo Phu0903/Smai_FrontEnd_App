@@ -78,7 +78,7 @@ public class ConfirmAddress extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     bundle.putString("address", nameDetailLocation + ", " + nameWard + ", " + nameDistrict + ", " + nameCity);
                     bundle.putString("token", token);
-                    bundle.putString("TypeAuthor", "Cá nhân");
+                    bundle.putString("TypeAuthor", "tangcongdong");
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

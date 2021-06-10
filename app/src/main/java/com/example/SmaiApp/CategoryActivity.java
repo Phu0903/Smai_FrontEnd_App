@@ -78,12 +78,10 @@ public class CategoryActivity extends AppCompatActivity {
                     arrayListName.remove(count-1);
                     arrayListCatogory.remove(count-1);
                     count = count-1;
-                    Log.e("Count", String.valueOf(count));
                 }
                 else {
                     checkedTextView.setChecked(true);
                     count = count+1;
-                    Log.e("Count", String.valueOf(count));
                     NameProduct nameProduct = new NameProduct(expandableListTitle.get(groupPosition), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
                     nameProductArrayList.add(nameProduct);
                     arrayListName.add(nameProduct.getNameProduct());
@@ -105,20 +103,15 @@ public class CategoryActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             address = bundle.getString("address");
-//            Log.d("Address", address);
         }
         if (bundle.getString("TypeAuthor") != null) {
             TypeAuthor = bundle.getString("TypeAuthor");
 
-            Log.d("typeAuthor cato", TypeAuthor);
         }
         String token = bundle.getString("token");
         tokenMain = token;
-        Log.d("Token catogo", token);
 //*************************************************************************************************
-
 //        *************************Next button
-
         btnNext = (Button)findViewById(R.id.danhmuc_next);
 
         btnNext.setOnClickListener(new View.OnClickListener() {

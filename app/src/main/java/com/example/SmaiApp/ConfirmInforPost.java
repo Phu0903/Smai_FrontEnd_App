@@ -204,6 +204,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_confirm.setEnabled(false);
                 Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                 ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
                 List<MultipartBody.Part> list = new ArrayList<>();
@@ -248,8 +249,8 @@ public class ConfirmInforPost extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
                         if (response.body() != null) {
-                            Log.d("idpost",response.body().getIdpost());
-                            Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(response.body().getIdpost(), list);
+                            idPost[0] = response.body().getIdpost();
+                            Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(idPost[0], list);
 
                             call1.enqueue(new Callback<PostNewsModel>() {
                                 @Override

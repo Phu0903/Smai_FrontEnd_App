@@ -125,7 +125,6 @@ public class ConfirmInforPost2 extends AppCompatActivity {
         String loinhan = intent.getStringExtra("loinhan");
         String mota = intent.getStringExtra("mota");
         String token = intent.getStringExtra("token");
-        Log.d("Token Confirm", token);
         String TypeAuthor = intent.getStringExtra("TypeAuthor");
 //************************************************************************************************************
 
@@ -143,7 +142,6 @@ public class ConfirmInforPost2 extends AppCompatActivity {
         tieude.setText(loinhan);
         ghichu.setText(mota);
         String[] getAddress = address.split(",");
-        Log.d("addresssss", address);
         city.setText(getAddress[getAddress.length-1]);
         district.setText(getAddress[getAddress.length-2]);
         ward.setText(getAddress[1]);
@@ -170,18 +168,12 @@ public class ConfirmInforPost2 extends AppCompatActivity {
         postNewsModel.setAuthorID(token);
         postNewsModel.setAddress(address);
         postNewsModel.setTypeAuthor(TypeAuthor);
-        Log.d("TypeAuthor cccc", TypeAuthor);
         postNewsModel.setTitle(loinhan);
         postNewsModel.setNote(mota);
 
 //        PostNewsModel p1 = new PostNewsModel(mota,);
 
-        if (postNewsModel != null) {
-            Log.d("Value postnewmodel", String.valueOf(postNewsModel));
-        }
-        else {
-            Log.e("Value postnewmodel", "model nulll");
-        }
+
 
 
         mainToken = token;
@@ -252,6 +244,7 @@ public class ConfirmInforPost2 extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_confirm.setEnabled(false);
                 Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                 ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
 
@@ -286,8 +279,9 @@ public class ConfirmInforPost2 extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
                         if (response.body() != null) {
-                            Log.d("idpost",response.body().getIdpost());
-                            Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(response.body().getIdpost(), list);
+
+                            idPost[0] = response.body().getIdpost();
+                            Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(idPost[0], list);
 
                             call1.enqueue(new Callback<PostNewsModel>() {
                                 @Override

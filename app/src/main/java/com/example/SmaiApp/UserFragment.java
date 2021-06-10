@@ -2,6 +2,7 @@ package com.example.SmaiApp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -33,6 +34,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class UserFragment extends Fragment {
 
     private  static final String IS_LOGIN_USER = "OK";
@@ -42,7 +45,8 @@ public class UserFragment extends Fragment {
     LinearLayout layoutInfor, layoutRequired;
     TextView fullName;
     Button btnLilo;
-
+    String message="", token="";
+    SharedPreferences sharedPreferences;
     public UserFragment() {
         // Required empty public constructor
     }
@@ -64,18 +68,35 @@ public class UserFragment extends Fragment {
 
 //        view History
         btnHistory = (Button) view.findViewById(R.id.view_history);
+        sharedPreferences = getActivity().getSharedPreferences("datalogin", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
 
 
 
         setHasOptionsMenu(true);
         Toolbar actionBarToolBar = (Toolbar) view.findViewById(R.id.toolbar_user);
 
+        //        nhận từ mainactivity
+        MainActivity activity = (MainActivity) getActivity();
+        String codeLogin  = activity.getMyData();
+
+        String[] code = codeLogin.split(",");
+
+
+        if (code.length != 0) {
+            message = code[0];
+            token = code[1];
+        }
         actionBarToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.log_out:
                         Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.putExtra("message", "");
+                        intent.putExtra("Token", "");
+                        intent.putExtra("ISLOGINED", "");
                         startActivity(intent);
                         break;
                     default:
@@ -110,15 +131,7 @@ public class UserFragment extends Fragment {
             }
         });
 
-//        nhận từ mainactivity
-        MainActivity activity = (MainActivity) getActivity();
-        String codeLogin  = activity.getMyData();
 
-        String[] code = codeLogin.split(",");
-
-        String message = code[0];
-
-        String token = code[1];
 
 
 

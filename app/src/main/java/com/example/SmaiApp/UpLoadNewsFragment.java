@@ -43,6 +43,7 @@ public class UpLoadNewsFragment extends Fragment {
     Button btnUpload;
     NewsAdapter adapter;
     TextView tvNotLogin;
+    String message="", token="";
     public static List<PostNewsModel> posts;
     @Nullable
     @Override
@@ -62,9 +63,12 @@ public class UpLoadNewsFragment extends Fragment {
 
         String[] code = codeLogin.split(",");
 
-        String message = code[0];
-        String token = code[1];
-        Log.d("Token Upload", token);
+        if (code.length != 0) {
+            message = code[0];
+            token = code[1];
+            Log.d("Token Upload", token);
+        }
+
 
 
         btnUpload = view.findViewById(R.id.create_post);

@@ -54,7 +54,7 @@ public class ConfirmAddress3 extends AppCompatActivity {
 
         Intent intent1 = getIntent();
         String token = intent1.getStringExtra("Token");
-        Log.d("Token address", token);
+
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(getApplicationContext(),

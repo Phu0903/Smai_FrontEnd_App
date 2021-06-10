@@ -109,6 +109,7 @@ public class SigninFragment extends Fragment {
                                             Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
                                             intent.putExtra("message", message);
                                             intent.putExtra("Token", tk);
+                                            intent.putExtra("ISLOGINED", "NO");
                                             getActivity().startActivity(intent);
 
 

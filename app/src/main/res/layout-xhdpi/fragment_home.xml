@@ -167,15 +167,15 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10px"
                         app:cardCornerRadius="8dp">
 
                         <ImageButton
                             android:id="@+id/view_donations"
-                            android:layout_width="200px"
-                            android:layout_height="200px"
+                            android:layout_width="160px"
+                            android:layout_height="160px"
                             android:layout_gravity="center"
-                            android:paddingTop="5px"
+
+
                             android:src="@drawable/bookstore"/>
                     </androidx.cardview.widget.CardView>
 
@@ -269,14 +269,14 @@
             android:id="@+id/linea_layout_lv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ListView
-                android:id="@+id/listViewNews"
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:dividerHeight="10dp"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/recyclerview">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 

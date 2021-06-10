@@ -3,11 +3,13 @@ package com.example.SmaiApp.Personal;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -43,11 +45,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
+import static android.content.Context.MODE_PRIVATE;
 
 public class LoginFragment extends Fragment {
 
     TextClicked mCallback;
 
+    SharedPreferences sp;
 
     public interface TextClicked{
         void sendText(String text);
@@ -97,9 +101,6 @@ public class LoginFragment extends Fragment {
         edtUserName.addTextChangedListener(new ConfirmUserName());
         edtPassWord.addTextChangedListener(new ConfirmPassword());
 
-
-
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,10 +126,21 @@ public class LoginFragment extends Fragment {
                                 AccountModel accountModel1 = response.body();
                                 String message = accountModel1.getMessage();
                                 String tk = accountModel1.getAccessToken();
+                                String islogined;
                                 Log.d("Token Login", tk);
+
+
                                 Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
                                 intent.putExtra("message", message);
                                 intent.putExtra("Token", tk);
+                                if (checkBox.isChecked()) {
+                                    islogined = "DONE";
+                                    intent.putExtra("ISLOGINED", islogined);
+                                }
+                                else {
+                                    intent.putExtra("ISLOGINED", "NO");
+                                }
+
                                 getActivity().startActivity(intent);
                             }
                             else {

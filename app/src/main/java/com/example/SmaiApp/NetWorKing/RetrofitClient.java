@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "https://smai-back-end.herokuapp.com/";//Link api
+    private static final String BASE_URL = "https://smai-app-api.herokuapp.com/";//Link api
 
     //Using Retrofit
     public static Retrofit getRetrofitInstance(){
