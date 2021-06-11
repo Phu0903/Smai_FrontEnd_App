@@ -80,7 +80,12 @@ public class DetailPostTangCongDong extends AppCompatActivity {
         address.setText(addresss);
         fullName.setText(fullname);
         inforDetail.setText(infordetail);
-        typeAuthor.setText(typeauthor);
+        if (typeauthor.equals("tangcongdong")) {
+            typeAuthor.setText("Tặng cộng đồng");
+        }
+        else {
+            typeAuthor.setText(typeauthor);
+        }
 
 //        Glide.with(getApplicationContext()).load(urll).into(productImage);
 

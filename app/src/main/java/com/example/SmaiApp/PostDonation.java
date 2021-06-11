@@ -26,8 +26,10 @@ import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +45,7 @@ public class PostDonation extends AppCompatActivity {
     Spinner spinnerLocation;
     Spinner spinnerType;
     PostDonationAdapter adapter;
+    ArrayAdapter arrayAdapter1, arrayAdapter2;
     public static List<PostNewsModel> posts;
 
 
@@ -60,20 +63,23 @@ public class PostDonation extends AppCompatActivity {
 
         spinnerLocation = findViewById(R.id.spinner);
         ArrayList<String> arrayLocation = new ArrayList<String>();
-        arrayLocation.add("Tp.HCM");
-        arrayLocation.add("Đồng Nai");
-        arrayLocation.add("Thủ Đức");
+        ArrayList<String> arrayLocation2 = new ArrayList<String>();
+        arrayLocation.add("Tất cả");
         spinnerType = findViewById(R.id.spinner_type);
         ArrayList<String> arrayType = new ArrayList<String>();
         arrayType.add("Tất cả");
-        arrayType.add("Đồ dùng");
-        arrayType.add("Giấy vụn");
-        arrayType.add("Đồ gia dụng");
+        arrayType.add("Quần áo");
+        arrayType.add("Học tập");
+        arrayType.add("Xe cộ");
+        arrayType.add("Nội thất");
+        arrayType.add("Nội trợ");
 
-        ArrayAdapter arrayAdapter1 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayLocation);
-        spinnerLocation.setAdapter(arrayAdapter1);
-        ArrayAdapter arrayAdapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayType);
+        arrayAdapter2 = new ArrayAdapter(PostDonation.this, R.layout.support_simple_spinner_dropdown_item, arrayType);
+        arrayAdapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerType.setAdapter(arrayAdapter2);
+
+
+
 
 
         //      listview tin đăng mới
@@ -94,7 +100,14 @@ public class PostDonation extends AppCompatActivity {
                     return;
                 }
                 posts = response.body();
-
+                for (int i=0;i<posts.size();i++) {
+                    String[] address = posts.get(0).getAddress().split(", ");
+                    arrayLocation.add(address[address.length-1]);
+                }
+                Set<String> set = new HashSet<>(arrayLocation);
+                arrayLocation.clear();
+                arrayLocation.addAll(set);
+                Log.d("Tỉnh/thành phố", String.valueOf(arrayLocation.size()));
                 adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
                 lvNews_New.setAdapter(adapter);
                 lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -140,6 +153,84 @@ public class PostDonation extends AppCompatActivity {
 
                     }
                 });
+                if (posts != null) {
+                    spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
+
+                            if (arrayType.get(position) == "Quần áo") {
+                                for (int i = 0; i < posts.size(); i++) {
+                                    List<ProductModel> postNewsModels = posts.get(i).getNameProduct();
+                                    if (postNewsModels.get(0).getCategory().equals("Quần áo")) {
+                                        Log.d("Name Catogory", postNewsModels.get(0).getCategory());
+                                        postNewsModelArrayList.add(posts.get(i));
+                                    }
+                                }
+                                adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
+                                lvNews_New.setAdapter(adapter);
+                            }
+                            else {
+                                if (arrayType.get(position).equals("Học tập")) {
+                                    for (int i = 0; i < posts.size(); i++) {
+                                        if (posts.get(i).getNameProduct().get(0).getCategory().equals("Học tập")) {
+                                            postNewsModelArrayList.add(posts.get(i));
+                                        }
+                                    }
+                                    adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
+                                    lvNews_New.setAdapter(adapter);
+                                }
+                                else {
+                                    if (arrayType.get(position).equals("Xe cộ") || arrayType.get(position).equals("Nội thất") ||
+                                            arrayType.get(position).equals("Nội trợ")) {
+                                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
+                                        lvNews_New.setAdapter(adapter);
+                                    }
+                                    else {
+                                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
+                                        lvNews_New.setAdapter(adapter);
+                                    }
+                                }
+                            }
+
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+                            adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
+                            lvNews_New.setAdapter(adapter);
+                        }
+                    });
+                }
+                spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
+                        if (arrayLocation.get(position).equals("Tất cả")) {
+                            adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
+                            lvNews_New.setAdapter(adapter);
+                        } else {
+                            for (int i = 0; i < posts.size(); i++) {
+                                String[] address = posts.get(i).getAddress().split(", ");
+                                String city = address[address.length - 1];
+                                if (arrayLocation.get(position).equals(city)) {
+                                    postNewsModelArrayList.add(posts.get(i));
+                                }
+                            }
+                            adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
+                            lvNews_New.setAdapter(adapter);
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
+                        lvNews_New.setAdapter(adapter);
+                    }
+                });
+
+
 
             }
 
@@ -150,6 +241,58 @@ public class PostDonation extends AppCompatActivity {
 
             }
         });
+
+
+
+        arrayAdapter1 = new ArrayAdapter(PostDonation.this, R.layout.support_simple_spinner_dropdown_item, arrayLocation);
+        arrayAdapter1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerLocation.setAdapter(arrayAdapter1);
+
+
+
+//        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
+//
+//                for (PostNewsModel post: posts) {
+//                    if(post.getAddress().trim().equals(arrayLocation.get(position))) {
+//                        postNewsModelArrayList.add(post);
+//                    }
+//                }
+//                adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
+//                lvNews_New.setAdapter(adapter);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//                adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
+//                lvNews_New.setAdapter(adapter);
+//            }
+//        });
+
+        if (posts != null) {
+            spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
+
+                    for (int i = 0; i < posts.size(); i++) {
+                        if (posts.get(i).getNameProduct().get(0).getCategory() == arrayType.get(position)) {
+                            postNewsModelArrayList.add(posts.get(i));
+                        }
+                    }
+                    adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
+                    lvNews_New.setAdapter(adapter);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
+                    lvNews_New.setAdapter(adapter);
+                }
+            });
+        }
 
     }
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

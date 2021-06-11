@@ -111,7 +111,7 @@ public class Detail extends AppCompatActivity {
                 String loinhann = edtLoiNhan.getText().toString();
                 Log.d("Size uriiiiii", String.valueOf(uris.size()));
                 Log.d("Loi nhan", loinhann);
-                if (loinhann.isEmpty() ||  edtMoTa.getText().toString().isEmpty() || uris.size() == 0) {
+                if (loinhann.isEmpty() || uris.size() == 0) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -218,7 +218,18 @@ public class Detail extends AppCompatActivity {
 
                         }
                         else {
-                            photoAdapter.setData(uriList);
+                            if (uriList.size() == 3) {
+                                urisList1.add(uriList.get(0));
+                                urisList1.add(uriList.get(1));
+                                urisList2.add(uriList.get(2));
+                                photoAdapter.setData(uriList);
+                                photoAdapter2.setData(urisList2);
+                            }
+                            else {
+                                photoAdapter.setData(uriList);
+                                photoAdapter2.setData(urisList2);
+                            }
+
                         }
 
                     }

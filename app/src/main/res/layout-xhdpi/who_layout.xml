@@ -29,7 +29,7 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button_who"
+            android:backgroundTint="@color/white"
             android:padding="20dp"
             android:text="Quỹ/ Nhóm từ thiện"
             android:textAlignment="viewStart"
@@ -44,7 +44,7 @@
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button_who"
+            android:backgroundTint="@color/white"
             android:freezesText="false"
             android:gravity="center_vertical"
             android:fontFamily="@font/open_sans_semibold"
@@ -60,7 +60,7 @@
             android:id="@+id/button8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button_who"
+           android:backgroundTint="@color/white"
             android:padding="20dp"
             android:text='Tổ chức công ích "Chính quyền nhà thờ, nhà chùa,....'
             android:textAlignment="textStart"
@@ -82,8 +82,8 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

@@ -37,13 +37,14 @@ import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren
 
 public class UpLoadNewsFragment extends Fragment {
 
-    private Spinner spinner;
+    Spinner spinner;
     //list view tin đang
     ListView lvNews;
     Button btnUpload;
     NewsAdapter adapter;
     TextView tvNotLogin;
     String message="", token="";
+
     public static List<PostNewsModel> posts;
     @Nullable
     @Override
@@ -93,6 +94,7 @@ public class UpLoadNewsFragment extends Fragment {
             // get data
             tvNotLogin.setVisibility(View.GONE);
             lvNews.setVisibility(View.VISIBLE);
+            List<PostNewsModel> postsTinBan = new ArrayList<>();
             Retrofit retrofit = RetrofitClient.getRetrofitInstance();
             ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
             Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getUserPost("Bearer " + token);
@@ -103,13 +105,30 @@ public class UpLoadNewsFragment extends Fragment {
                     if ( response.isSuccessful()) {
 
 
-                    posts = response.body();
+                        posts = response.body();
+                        adapter = new NewsAdapter(getContext(), R.layout.row_news_listview, posts);
+                        lvNews.setAdapter(adapter);
+                        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                if(paths[position] == "Tin bán") {
+                                    adapter = new NewsAdapter(getContext(), R.layout.row_news_listview, postsTinBan);
+                                    lvNews.setAdapter(adapter);
+                                }
+                                else if (paths[position] == "Tất cả tin đăng" || paths[position] == "Tin tặng") {
+                                    adapter = new NewsAdapter(getContext(), R.layout.row_news_listview, posts);
+                                    lvNews.setAdapter(adapter);
+                                }
+                            }
 
-                    adapter = new NewsAdapter(
-                            getContext(),
-                            R.layout.row_news_listview,
-                            posts);
-                    lvNews.setAdapter(adapter);
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+                                adapter = new NewsAdapter(getContext(), R.layout.row_news_listview, posts);
+                                lvNews.setAdapter(adapter);
+                            }
+                        });
+
+
                         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

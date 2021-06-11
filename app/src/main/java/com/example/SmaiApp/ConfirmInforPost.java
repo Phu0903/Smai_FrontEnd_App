@@ -7,6 +7,7 @@ import androidx.loader.content.CursorLoader;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -43,6 +44,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import dmax.dialog.SpotsDialog;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -53,25 +55,24 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class ConfirmInforPost extends AppCompatActivity {
-
+    public AlertDialog waitingDialog;
 
     List<ProductModel> productModelList;
 
-    ArrayList<Uri> uris;
+    List<Uri> uris = new ArrayList<Uri>();
 
     String mainToken="";
 
     Button btn_confirm;
 
-    TextView dichvu, danhmuc, tieude, ghichu, city, district, ward, detailloction;
+    TextView danhmuc, tieude, ghichu, city, district, ward, detailloction;
     ImageView imgView1, imgView2, imgView3, imgView4, imgView5;
-//    ImageView[] listImage = new ImageView[5];
-    ArrayList<ImageView> listImage = new ArrayList<>();
+    ImageView[] listImage = new ImageView[5];
     int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_infor_post);
+        setContentView(R.layout.activity_confirm_infor_post2);
 
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_confirm);
@@ -87,29 +88,18 @@ public class ConfirmInforPost extends AppCompatActivity {
         imgView3 = findViewById(R.id.dt_imaage_view3);
         imgView4 = findViewById(R.id.dt_imaage_view4);
         imgView5 = findViewById(R.id.dt_imaage_view5);
-        listImage.add(imgView1);
-        listImage.add(imgView2);
-        listImage.add(imgView3);
-        listImage.add(imgView4);
-        listImage.add(imgView5);
-//        listImage[0] = imgView1;
-//        listImage[1] = imgView2;
-//        listImage[2] = imgView3;
-//        listImage[3] = imgView4;
-//        listImage[4] = imgView5;
+        listImage[0] = imgView1;
+        listImage[1] = imgView2;
+        listImage[2] = imgView3;
+        listImage[3] = imgView4;
+        listImage[4] = imgView5;
         count=0;
 
 
 //        Nhận data từ Detail Activity ***************************
         Intent intent = getIntent();
 //        lấy uri của hình ảnh
-        uris = new ArrayList<>();
         uris = intent.getParcelableArrayListExtra("Uri");
-        if (uris != null) {
-            Log.d("messss uri", String.valueOf(uris.size()));
-        } else {
-            Log.d("messss loiii", String.valueOf(uris.size()));
-        }
         List<Bitmap> bitmaps = new ArrayList<>();
 
 // Chuyển uri sang bitmap
@@ -127,8 +117,8 @@ public class ConfirmInforPost extends AppCompatActivity {
 //            listImage[count].setImageBitmap(b);
 //            count = count + 1;
 //        }
-        for (int i=0;i<bitmaps.size();i++) {
-            listImage.get(i).setImageBitmap(bitmaps.get(i));
+        for (int i=0;i< bitmaps.size();i++) {
+            listImage[i].setImageBitmap(bitmaps.get(i));
         }
 
         String address = intent.getStringExtra("address");
@@ -137,13 +127,11 @@ public class ConfirmInforPost extends AppCompatActivity {
         String loinhan = intent.getStringExtra("loinhan");
         String mota = intent.getStringExtra("mota");
         String token = intent.getStringExtra("token");
-        Log.d("Token Confirm", token);
         String TypeAuthor = intent.getStringExtra("TypeAuthor");
 //************************************************************************************************************
 
 //ánh xạ các textview
 
-        dichvu = findViewById(R.id.textView10);
         danhmuc = findViewById(R.id.textView12);
         tieude = findViewById(R.id.textView15);
         ghichu = findViewById(R.id.textView19);
@@ -165,6 +153,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         PostNewsModel postNewsModel;
         postNewsModel = new PostNewsModel();
 
+
         Date currentTime = Calendar.getInstance().getTime();
 
         productModelList = new ArrayList<>();
@@ -181,90 +170,70 @@ public class ConfirmInforPost extends AppCompatActivity {
         postNewsModel.setAuthorID(token);
         postNewsModel.setAddress(address);
         postNewsModel.setTypeAuthor(TypeAuthor);
-        Log.d("TypeAuthor cccc", TypeAuthor);
         postNewsModel.setTitle(loinhan);
         postNewsModel.setNote(mota);
 
+//        PostNewsModel p1 = new PostNewsModel(mota,);
+
+
+
+
         mainToken = token;
+
         //Click btn_confirm
         btn_confirm = findViewById(R.id.btn_confirm);
-
+        List<String> listFilePath = new ArrayList<>();
         List<File> fileList = new ArrayList<>();
         for (int i = 0; i< uris.size();i++) {
             String filePath = UriUtils.getPathFromUri(this, uris.get(i));
             File file = new File(filePath);
             fileList.add(file);
-            Log.d("file list", String.valueOf(fileList.get(i)));
-            Log.d("file list Name", String.valueOf(fileList.get(i).getName()));
-            Log.d("Uri lisst", String.valueOf(uris.get(i)));
 
         }
 
 
+        List<MultipartBody.Part> list = new ArrayList<>();
+        for (int i = 0; i< uris.size();i++) {
+            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), fileList.get(i));
+            MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", fileList.get(i).getName(), requestFile);
+            list.add(body);
+        }
+        waitingDialog = new SpotsDialog.Builder()
+                .setContext(ConfirmInforPost.this)
+                .setMessage("Đang đăng bài")
+                .build();
+
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                waitingDialog.show();
                 btn_confirm.setEnabled(false);
                 Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                 ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
-                List<MultipartBody.Part> list = new ArrayList<>();
-                if (uris.size() != 0) {
-                    for (int i = 0; i < uris.size(); i++) {
-                        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), fileList.get(i));
-                        MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", fileList.get(i).getName(), requestFile);
-                        list.add(body);
-                    }
-                }
-                else {
-                    Log.e("Error", "Uri nulllll");
-                }
-//////                File file = new File(fullFilePath);
-//////                RequestBody requestFile =
-//////                        RequestBody.create(MediaType.parse(getContentResolver().getType(uri2)), file);
-//////                MultipartBody.Part body =
-//////                        MultipartBody.Part.createFormData("productImage", file.getName(), requestFile);
-//////
-//////                String descriptionString = "hello, this is description speaking";
-//////                RequestBody description =
-//////                        RequestBody.create(
-//////                                okhttp3.MultipartBody.FORM, descriptionString);
-//////                Call<ResponseBody> call = jsonPlaceHolderApi.postFile("Bearer " + mainToken, body);
-//////
-//////                call.enqueue(new Callback<ResponseBody>() {
-//////                    @Override
-//////                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//////                            Log.d("Upload", "success messs");
-//////                    }
-//////
-//////                    @Override
-//////                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-//////                        Log.e("Upload error:", t.getMessage());
-//////                    }
-//////                });
-//
-                btn_confirm.setEnabled(false);
                 Call<PostNewsModel> call = jsonPlaceHolderApi.postNews("Bearer " + token, postNewsModel);
                 final String[] idPost = new String[1];
                 call.enqueue(new Callback<PostNewsModel>() {
                     @Override
                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
                         if (response.body() != null) {
+
+
                             idPost[0] = response.body().getIdpost();
                             Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(idPost[0], list);
 
                             call1.enqueue(new Callback<PostNewsModel>() {
                                 @Override
                                 public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
+
                                     Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
                                     intent1.putExtra("Token", token);
                                     intent1.putExtra("message", "OK");
-
                                     startActivity(intent1);
                                 }
 
                                 @Override
                                 public void onFailure(Call<PostNewsModel> call, Throwable t) {
-
+                                    Log.e("errer", t.getMessage());
                                 }
                             });
 

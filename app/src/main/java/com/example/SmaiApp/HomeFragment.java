@@ -95,7 +95,16 @@ public class HomeFragment extends Fragment {
 
 
         recyclerView = view.findViewById(R.id.recyclerview);
-
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(recyclerView.getContext());
+        DividerItemDecoration  mDividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+        SpaceDividerItemDecoration a = new SpaceDividerItemDecoration(10, false);
+        recyclerviewAdapter = new NewsRecyclerviewAdapter(recyclerView.getContext(), posts);
+        recyclerView.setAdapter(recyclerviewAdapter);
+        recyclerviewAdapter.notifyDataSetChanged();
+        recyclerView.addItemDecoration(a);
+        recyclerView.addItemDecoration(mDividerItemDecoration);
+        recyclerView.setLayoutManager(linearLayoutManager);
         btn_tangcongdong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,69 +183,10 @@ public class HomeFragment extends Fragment {
                 }
                 posts = response.body();
 
-//                adapter = new NewsAdapter(
-//                        getContext(),
-//                        R.layout.row_news_listview,
-//                        posts);
-//                lvNews.setAdapter(adapter);
-//                setListViewHeightBasedOnChildren(lvNews);
-
-                recyclerviewAdapter = new NewsRecyclerviewAdapter(getContext());
-
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                DividerItemDecoration  mDividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                        DividerItemDecoration.VERTICAL);
-                SpaceDividerItemDecoration a = new SpaceDividerItemDecoration(10, false);
-                recyclerView.addItemDecoration(a);
-                recyclerView.addItemDecoration(mDividerItemDecoration);
-                recyclerView.setLayoutManager(linearLayoutManager);
+                recyclerviewAdapter = new NewsRecyclerviewAdapter(recyclerView.getContext(), posts);
                 recyclerView.setAdapter(recyclerviewAdapter);
-                recyclerviewAdapter.setData(posts);
+                recyclerviewAdapter.notifyDataSetChanged();
 
-
-
-//                lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                        Intent intent = new Intent(getActivity().getBaseContext(), DetailPost.class);
-//                        PostNewsModel post = posts.get(position);
-//                        String title = post.getTitle();
-//
-//                        List<ProductModel> productModel = post.getNameProduct();
-//                        if (productModel.size() != 0) {
-//                            String detailType = productModel.get(0).getCategory();
-//                            intent.putExtra("detailType", detailType);
-//                        }
-//                        String address = post.getAddress();
-//                        String fullName = post.getNameAuthor();
-//                        if (fullName != null) {
-//                            Log.d("fullName", fullName);
-//                        }
-//                        else {
-//                            Log.e("Full name", "no fullname");
-//                        }
-//                        String inforDetail = post.getNote();
-//                        String typeAuthor = post.getTypeAuthor();
-//                        List<String> listUrl = post.getUrlImage();
-//                        ArrayList<String> arrayListurl = new ArrayList<>();
-//                        for (String s: listUrl) {
-//                            arrayListurl.add(s);
-//                        }
-//                        String AuthorID = post.getAuthorID();
-//
-//                        intent.putExtra("title", title);
-//                        intent.putExtra("address", address);
-//                        intent.putExtra("fullName", fullName);
-//                        intent.putExtra("inforDetail", inforDetail);
-//                        intent.putExtra("typeAuthor", typeAuthor);
-//                        intent.putExtra("AuthorID", AuthorID);
-//                        intent.putStringArrayListExtra("url", arrayListurl);
-//                        getActivity().startActivity(intent);
-//
-//
-//                    }
-//                });
             }
             @Override
             public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {

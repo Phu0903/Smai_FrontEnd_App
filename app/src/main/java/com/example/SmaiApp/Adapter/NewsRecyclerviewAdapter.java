@@ -29,18 +29,14 @@ import java.util.List;
 
 public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclerviewAdapter.ViewHolder> {
 
-    public NewsRecyclerviewAdapter(Context myContext) {
-        this.myContext = myContext;
 
+    public NewsRecyclerviewAdapter(Context myContext, List<PostNewsModel> arrayNews) {
+        this.myContext = myContext;
+        this.arrayNews = arrayNews;
     }
 
     Context myContext;
     List<PostNewsModel> arrayNews;
-
-    public void setData(List<PostNewsModel> list) {
-        this.arrayNews = list;
-        notifyDataSetChanged();
-    }
 
 
     @NonNull
@@ -161,7 +157,10 @@ public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclervi
 
     @Override
     public int getItemCount() {
-        return arrayNews.size();
+        if (arrayNews != null) {
+            return arrayNews.size();
+        }
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

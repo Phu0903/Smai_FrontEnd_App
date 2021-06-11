@@ -162,7 +162,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
                         android:layout_marginTop="10px"
                         android:fontFamily="@font/open_sans_light"
                         android:maxWidth="1000px"

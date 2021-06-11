@@ -54,7 +54,7 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Bạn vừa nhận được đơn hàng mới"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/size_1" />
+                android:textSize="@dimen/size_2" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -97,7 +97,7 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Bạn vừa nhận được đơn hàng mới"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/size_1" />
+                android:textSize="@dimen/size_2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -139,7 +139,7 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Bạn vừa nhận được đơn hàng mới"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/size_1" />
+                android:textSize="@dimen/size_2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -181,7 +181,7 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Bạn vừa nhận được đơn hàng mới"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/size_1" />
+                android:textSize="@dimen/size_2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -222,7 +222,7 @@
                 android:fontFamily="@font/open_sans_light"
                 android:text="Bạn vừa nhận được đơn hàng mới"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/size_1" />
+                android:textSize="@dimen/size_2" />
 
             <TextView
                 android:layout_width="wrap_content"
