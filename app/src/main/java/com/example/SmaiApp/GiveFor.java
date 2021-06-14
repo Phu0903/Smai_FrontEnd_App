@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -28,9 +29,17 @@ import com.example.SmaiApp.Model.ProductModel;
 import com.example.SmaiApp.NetWorKing.ApiServices;
 import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.utkala.searchablespinner.SearchableSpinner;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,8 +48,8 @@ import retrofit2.Retrofit;
 public class GiveFor extends AppCompatActivity {
 
     ListView lvNews_New;
-    Spinner spinnerLocation;
-    Spinner spinnerType;
+    JSONArray jsonCityArray;
+    SearchableSpinner searchableSpinner;
     EditText searchView;
     GiveforAdapter adaptergivfor;
     String address = "";
@@ -84,15 +93,10 @@ public class GiveFor extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             address = bundle.getString("address");
-//            Log.d("Address", address);
             TypeAuthor = bundle.getString("TypeAuthor");
             tokenMain = bundle.getString("token");
-            Log.d("typeAuthor cato", TypeAuthor);
-        }
-//        String token = bundle.getString("token");
-//        tokenMain = token;
-//        Log.d("Token catogo", tokenMain);
 
+        }
 
 
 
@@ -111,13 +115,10 @@ public class GiveFor extends AppCompatActivity {
                 }
                 posts = response.body();
 
-                if (posts.size() != 0) {
-                    Log.d("post size", String.valueOf(posts.size()));
-                }
-                else {
-                    Log.d("post size", "Loioiiiiiii");
-                }
                 initSearchWidgets();
+                initFilter();
+
+
                 adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, posts);
                 lvNews_New.setAdapter(adaptergivfor);
                 lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -135,12 +136,6 @@ public class GiveFor extends AppCompatActivity {
                         }
                         String address = post.getAddress();
                         String fullName = post.getNameAuthor();
-                        if (fullName != null) {
-                            Log.d("fullName", fullName);
-                        }
-                        else {
-                            Log.e("Full name", "no fullname");
-                        }
                         String inforDetail = post.getNote();
                         String typeAuthor = post.getTypeAuthor();
                         List<String> listUrl = post.getUrlImage();
@@ -206,6 +201,57 @@ public class GiveFor extends AppCompatActivity {
         });
     }
 
+    private void initFilter() {
+        searchableSpinner = findViewById(R.id.searchableSpinner);
+
+        try {
+            jsonCityArray = new JSONObject(loadJSONFromAsset()).optJSONArray("province");
+
+            ArrayList<String> cityList = new ArrayList<String>();
+            cityList.add(0, "Tỉnh/thành phố");
+
+
+            for (int i = 0; i < jsonCityArray.length(); i++) {
+                cityList.add(jsonCityArray.optJSONObject(i).optString("name").trim());
+            }
+            searchableSpinner.setAdapter(new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, cityList));
+
+            searchableSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    List<PostNewsModel> postsFilter = new ArrayList<>();
+
+                    if (posts != null && posts.size() != 0) {
+
+                        if (!cityList.get(position).equals("Tỉnh/thành phố")) {
+                            for (int i = 0; i < posts.size(); i++) {
+                                String[] address = posts.get(i).getAddress().split(", ");
+                                if (cityList.get(position).contains(address[address.length - 1])) {
+                                    postsFilter.add(posts.get(i));
+                                }
+                            }
+
+                            GiveforAdapter adapter1 = new GiveforAdapter(GiveFor.this,  R.layout.row_givefor, postsFilter);
+                            lvNews_New.setAdapter(adapter1);
+                        } else  {
+                            adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, posts);
+                            lvNews_New.setAdapter(adaptergivfor);
+                        }
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -224,7 +270,21 @@ public class GiveFor extends AppCompatActivity {
         tokenMain = savedInstanceState.getString("token");
     }
 
-
+    public String loadJSONFromAsset() {
+        String json;
+        try {
+            InputStream is = getAssets().open("db.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
 
     @Override
     public void onBackPressed() {

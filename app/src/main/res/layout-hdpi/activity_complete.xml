@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/open_sans_bold"
             android:padding="40px"
-            android:text="Đã được yêu cầu thành công!\nVui lòng chờ xác thực"
+            android:text="Đã được yêu cầu thành công!"
             android:textColor="@color/black"
             android:textSize="@dimen/size_2"
             app:layout_constraintBottom_toBottomOf="parent"

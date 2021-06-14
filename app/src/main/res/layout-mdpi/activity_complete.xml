@@ -26,7 +26,7 @@
             android:paddingLeft="20px"
             android:paddingRight="20px"
             android:paddingBottom="15dp"
-            android:text="Đã được yêu cầu thành công!\nVui lòng chờ xác thực"
+            android:text="Đã được yêu cầu thành công!"
             android:textColor="@color/black"
             android:textSize="@dimen/size_2" />
 

@@ -37,7 +37,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/dt_title1"
             android:layout_marginTop="10dp"
             android:background="@drawable/dt_custom_edit_text"
@@ -66,12 +66,13 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70px"
             android:layout_below="@+id/dt_title2"
             android:layout_marginTop="10dp"
             android:background="@drawable/dt_custom_edit_text"
             android:fontFamily="@font/open_sans_light"
             android:textColor="@color/black"
+            android:maxLines="4"
             android:paddingLeft="20px"
             android:hint="Mô tả hoặc ghi chú ..."
             android:inputType="textMultiLine"

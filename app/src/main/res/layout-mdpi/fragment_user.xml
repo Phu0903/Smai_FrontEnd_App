@@ -90,16 +90,20 @@
 
                 <LinearLayout
                     android:id="@+id/linearlayout_requireUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_red_backround_white"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
 
                     <Button
                         android:id="@+id/btn_LILO"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Đăng nhập/Đăng ký"
-                        android:background="@drawable/border_red_backround_white"
+                        android:textAllCaps="false"
+                        style="@style/Widget.AppCompat.Button.Borderless"
                         android:fontFamily="@font/open_sans"
                         android:textSize="@dimen/size_2"
                         android:textColor="#DD484D"/>

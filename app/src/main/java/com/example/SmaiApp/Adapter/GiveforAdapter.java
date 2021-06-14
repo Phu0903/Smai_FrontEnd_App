@@ -53,10 +53,10 @@ public class GiveforAdapter extends BaseAdapter {
         TextView mota = convertView.findViewById(R.id.mota_givefor);
 
 
-//        if (arrayNews.get(position).getNameAuthor() != null) {
+        if (arrayNews.get(position).getNameAuthor() != null) {
             String nameAuthor = arrayNews.get(position).getNameAuthor();
             fullName.setText(nameAuthor);
-//        }
+        }
 
 //        if (arrayNews.get(position).getAddress() != null) {
             String address = arrayNews.get(position).getAddress();

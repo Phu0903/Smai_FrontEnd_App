@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -15,7 +16,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -24,57 +30,60 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class ConfirmAddress extends AppCompatActivity {
     private String myDataAddress;
     Button btn_xacnhan;
-    public static final int CANCEL_REQUEST_CODE = 1;
-    TextInputLayout layoutCity, layoutDistrict, layoutWard, layoutDetailLocation;
-    TextInputEditText city, district, ward, detailLocation;
     String nameCity, nameDistrict, nameWard, nameDetailLocation;
-    FusedLocationProviderClient fusedLocationProviderClient;
-    Double getLongtitude, getLatitude;
+    EditText edt_DetailLocation;
+    private final static String TAG = "countryspinnerexample";
+    private JSONArray jsonCityArray, jsonDistrictArray, jsonCommuneArray;
+    private Spinner citySpinner;
+    private Spinner districtSpinner;
+    private Spinner communeSpinner;
+
+    TextView tvCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actitvity_confirm_address);
 
-        findAction(); // get id each of components
-        getTextAction(); // get value each of components
-
-        city.addTextChangedListener(new ConfirmCityTextWatcher(city));
-        district.addTextChangedListener(new ConfirmDistrictTextWatcher(district));
-        ward.addTextChangedListener(new ConfirmWardTextWatcher(ward));
-        detailLocation.addTextChangedListener(new ConfirmDetailLocationTextWatcher(detailLocation));
+        citySpinner = findViewById(R.id.spinner_country);
+        districtSpinner = findViewById(R.id.spinner_state);
+        communeSpinner = findViewById(R.id.spinner_city);
+        edt_DetailLocation = findViewById(R.id.textview_detailLocation);
+        btn_xacnhan = findViewById(R.id.btnXacNhan);
+        tvCity = findViewById(R.id.tv_city);
 
         Intent intent1 = getIntent();
         String token = intent1.getStringExtra("Token");
         Log.d("Token address", token);
+        populateSpinner();
+
+
 
 
         btn_xacnhan = findViewById(R.id.btnXacNhan);
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(getApplicationContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            getLocation();
-
-        } else {
-            ActivityCompat.requestPermissions(ConfirmAddress.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
-        }
-
-
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate(nameCity, layoutCity, city) == true && validate(nameDistrict, layoutDistrict, district) == true
-                        && validate(nameWard, layoutWard, ward) && validate(nameDetailLocation, layoutDetailLocation, detailLocation) == true) {
+                nameCity = citySpinner.getSelectedItem().toString();
+                nameDistrict = districtSpinner.getSelectedItem().toString();
+                nameWard = communeSpinner.getSelectedItem().toString();
+                nameDetailLocation = edt_DetailLocation.getText().toString();
+                if (validate(edt_DetailLocation.getText().toString()) == true && nameCity != "Tỉnh/thành phố") {
+
                     Intent intent = new Intent(getApplicationContext(), CategoryActivity3.class);
-                    getTextAction();
                     Bundle bundle = new Bundle();
                     bundle.putString("address", nameDetailLocation + ", " + nameWard + ", " + nameDistrict + ", " + nameCity);
                     bundle.putString("token", token);
@@ -82,195 +91,141 @@ public class ConfirmAddress extends AppCompatActivity {
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
+                else {
+                    tvCity.setError("Vui lòng chọn Tỉnh/thành phố");
+                }
 
             }
         });
 
     }
 
-    private void findAction() {
-
-        btn_xacnhan = findViewById(R.id.btnXacNhan);
-        city = findViewById(R.id.textview_city);
-        district = findViewById(R.id.textview_quanhuyen);
-        ward = findViewById(R.id.textview_phuongxa);
-        detailLocation = findViewById(R.id.textview_vitricuthe);
-        layoutCity = findViewById(R.id.inputlayout_city);
-        layoutDistrict = findViewById(R.id.inputlayout_district);
-        layoutWard = findViewById(R.id.inputlayout_ward);
-        layoutDetailLocation = findViewById(R.id.inputlayout_detail);
-
-    }
-
-    private void getTextAction() {
-        nameCity = city.getText().toString();
-        nameDistrict = district.getText().toString();
-        nameWard = ward.getText().toString();
-        nameDetailLocation = detailLocation.getText().toString();
-    }
-
-    private boolean validate(String nameEditText, TextInputLayout textInputLayout, TextInputEditText editText) {
-        if (nameEditText.trim().isEmpty()) {
-            textInputLayout.setError("Vui lòng điển đủ thông tin!");
-            editText.requestFocus();
-            return false;
-        } else {
-            textInputLayout.setErrorEnabled(false);
-        }
-        return true;
-    }
-
-    private class ConfirmCityTextWatcher implements TextWatcher {
-
-        private View view;
-
-        private ConfirmCityTextWatcher(View view) {
-            this.view = view;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            getTextAction();
-            validate(nameCity, layoutCity, city);
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            layoutCity.setErrorEnabled(false);
-        }
-    }
-
-    private class ConfirmDistrictTextWatcher implements TextWatcher {
-
-        private View view;
-
-        private ConfirmDistrictTextWatcher(View view) {
-            this.view = view;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            getTextAction();
-            validate(nameDistrict, layoutDistrict, district);
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            layoutDistrict.setErrorEnabled(false);
-        }
-    }
-
-    private class ConfirmWardTextWatcher implements TextWatcher {
-
-        private View view;
-
-        private ConfirmWardTextWatcher(View view) {
-            this.view = view;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            getTextAction();
-            validate(nameWard, layoutWard, ward);
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            layoutWard.setErrorEnabled(false);
-        }
-    }
-
-    private class ConfirmDetailLocationTextWatcher implements TextWatcher {
-
-        private View view;
-
-        private ConfirmDetailLocationTextWatcher(View view) {
-            this.view = view;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            getTextAction();
-            validate(nameDetailLocation, layoutDetailLocation, detailLocation);
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            layoutDetailLocation.setErrorEnabled(false);
-        }
-    }
 
     public String getMyDataAddress() {
         return myDataAddress;
     }
 
-    private void getLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+    private boolean validate(String s) {
+        if (s.trim().equals("")) {
+            edt_DetailLocation.setError("Vui lòng điền thông tin");
+            return false;
         }
-        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-
-//                initialize location
-                Location location = task.getResult();
-                getLatitude = location.getLatitude();
-                getLongtitude = location.getLongitude();
-                if (location != null) {
-
-                    try {
-                        Geocoder geocoder = new Geocoder(ConfirmAddress.this, Locale.getDefault());
-
-//                    initialaze address list
-                        List<Address> addresses = geocoder.getFromLocation(
-                                location.getLatitude(), location.getLongitude(), 1
-                        );
-
-                        String vitri = addresses.get(0).getAddressLine(0);
-                        String quocgia = "", thanhpho = "", tendiachi = "", quan = "";
-                        quocgia = addresses.get(0).getCountryName();
-                        thanhpho = addresses.get(0).getAdminArea();
-                        quan = addresses.get(0).getSubAdminArea();
-                        tendiachi = addresses.get(0).getFeatureName();
-                        String[] diachi = vitri.split(",");
-                        city.setText(diachi[diachi.length - 2]);
-                        Log.d("Thanh pho", vitri);
-                        district.setText(diachi[diachi.length - 3]);
-                        ward.setText(diachi[diachi.length - 4]);
-                        detailLocation.setText(tendiachi);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+        return true;
     }
+
+    private void populateSpinner() {
+        try {
+            jsonCityArray = new JSONObject(loadJSONFromAsset()).optJSONArray("province");
+            jsonDistrictArray = new JSONObject(loadJSONFromAsset()).optJSONArray("district");
+            jsonCommuneArray = new JSONObject(loadJSONFromAsset()).optJSONArray("commune");
+
+            ArrayList<String> cityList = new ArrayList<>();
+            ArrayList<String> cityIdList = new ArrayList<>();
+            cityList.add(0, "Tỉnh/thành phố");
+
+
+            for (int i = 0; i < jsonCityArray.length(); i++) {
+                cityList.add(jsonCityArray.optJSONObject(i).optString("name").trim());
+                cityIdList.add(jsonCityArray.optJSONObject(i).optString("idProvince"));
+            }
+            ArrayAdapter<String> cityListAdapter = new ArrayAdapter<>(ConfirmAddress.this,
+                    R.layout.row_spinner, cityList);
+
+            citySpinner.setAdapter(cityListAdapter);
+
+            citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    tvCity.setError(null);
+                    final ArrayList<String> districtList = new ArrayList<>();
+                    if (position != 0 ) {
+
+                        String idProvince = "";
+
+                        final ArrayList<String> districtIdList = new ArrayList<>();
+                        for (int i = 0; i < jsonDistrictArray.length(); i++) {
+                            if (cityIdList.get(position-1)
+                                    .equals(jsonDistrictArray.optJSONObject(i).optString("idProvince"))) {
+                                districtList.add(jsonDistrictArray.optJSONObject(i).optString("name").trim());
+                                districtIdList.add(jsonDistrictArray.optJSONObject(i).optString("idDistrict"));
+                            }
+                        }
+
+                        ArrayAdapter<String> districtListAdapter = new ArrayAdapter<>(ConfirmAddress.this,
+                                R.layout.row_spinner, districtList);
+
+                        districtSpinner.setAdapter(districtListAdapter);
+
+                        districtSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                final ArrayList<String> communeList = new ArrayList<>();
+                                Log.d("District", (String) parent.getItemAtPosition(position) + ", " + districtIdList.get(position));
+
+                                for (int i = 0; i < jsonCommuneArray.length(); i++) {
+
+                                    if (districtIdList.get(position)
+                                            .equals(jsonCommuneArray.optJSONObject(i).optString("idDistrict"))) {
+
+                                        communeList.add(jsonCommuneArray.optJSONObject(i).optString("name").trim());
+                                    }
+                                }
+
+                                ArrayAdapter<String> communeListAdapter = new ArrayAdapter<>(ConfirmAddress.this,
+                                        R.layout.row_spinner, communeList);
+
+                                communeSpinner.setAdapter(communeListAdapter);
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+                    } else {
+
+                        final ArrayList<String> districtList2 = new ArrayList<>();
+                        districtList2.add("Quận/huyên");
+                        ArrayAdapter<String> districtListAdapter2 = new ArrayAdapter<>(ConfirmAddress.this,
+                                R.layout.row_spinner_default, districtList2);
+                        districtSpinner.setAdapter(districtListAdapter2);
+                        final ArrayList<String> communeList2 = new ArrayList<>();
+                        communeList2.add("Phường/Thị trấn/xã");
+                        ArrayAdapter<String> communeListAdapter2 = new ArrayAdapter<>(ConfirmAddress.this,
+                                R.layout.row_spinner_default, communeList2);
+                        communeSpinner.setAdapter(communeListAdapter2);
+                    }
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "error=" + e.getMessage());
+        }
+    }
+
+
+    public String loadJSONFromAsset() {
+        String json;
+        try {
+            InputStream is = getAssets().open("db.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
 }

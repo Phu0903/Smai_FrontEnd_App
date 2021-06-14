@@ -89,9 +89,12 @@
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linearlayout_requireUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_red_backround_white"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
 
                     <Button
                         android:id="@+id/btn_LILO"
@@ -99,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:textAllCaps="false"
                         android:text="Đăng nhập/Đăng ký"
-                        android:background="@drawable/border_red_backround_white"
+                        style="@style/Widget.AppCompat.Button.Borderless"
                         android:fontFamily="@font/open_sans"
                         android:textSize="@dimen/size_3"
                         android:textColor="#DD484D"/>

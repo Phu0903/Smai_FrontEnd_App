@@ -41,7 +41,7 @@
         <EditText
             android:id="@+id/edt_loinhan"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/dt_title1"
             android:layout_marginTop="10dp"
             android:imeOptions="actionNext"

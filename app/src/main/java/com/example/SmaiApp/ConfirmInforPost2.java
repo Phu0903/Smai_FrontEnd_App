@@ -217,23 +217,30 @@ public class ConfirmInforPost2 extends AppCompatActivity {
                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
                         if (response.body() != null) {
 
-                            idPost[0] = response.body().getIdpost();
-                            Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(idPost[0], list);
+                            if (fileList.size() != 0 ) {
+                                idPost[0] = response.body().getIdpost();
+                                Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(idPost[0], list);
 
-                            call1.enqueue(new Callback<PostNewsModel>() {
-                                @Override
-                                public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
-                                    Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
-                                    intent1.putExtra("Token", token);
-                                    intent1.putExtra("message", "OK");
-                                    startActivity(intent1);
-                                }
+                                call1.enqueue(new Callback<PostNewsModel>() {
+                                    @Override
+                                    public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
+                                        Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
+                                        intent1.putExtra("Token", token);
+                                        intent1.putExtra("message", "OK");
+                                        startActivity(intent1);
+                                    }
 
-                                @Override
-                                public void onFailure(Call<PostNewsModel> call, Throwable t) {
+                                    @Override
+                                    public void onFailure(Call<PostNewsModel> call, Throwable t) {
 
-                                }
-                            });
+                                    }
+                                });
+                            } else {
+                                Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
+                                intent1.putExtra("Token", token);
+                                intent1.putExtra("message", "OK");
+                                startActivity(intent1);
+                            }
 
                         }
                     }

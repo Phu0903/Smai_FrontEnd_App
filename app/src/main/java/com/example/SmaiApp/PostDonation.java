@@ -13,17 +13,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
 import com.example.SmaiApp.Adapter.PostDonationAdapter;
+import com.example.SmaiApp.Danhmuc.NameProduct;
 import com.example.SmaiApp.Model.PostNewsModel;
 import com.example.SmaiApp.Model.ProductModel;
 import com.example.SmaiApp.NetWorKing.ApiServices;
 import com.example.SmaiApp.NetWorKing.RetrofitClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,6 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import pl.utkala.searchablespinner.SearchableSpinner;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,11 +55,13 @@ public class PostDonation extends AppCompatActivity {
 
     ListView lvNews_New;
     Spinner spinnerLocation;
-    Spinner spinnerType;
     PostDonationAdapter adapter;
     ArrayAdapter arrayAdapter1, arrayAdapter2;
+    Button imgBtnFilter;
+    TextView txtFilter;
     public static List<PostNewsModel> posts;
-
+    JSONArray jsonCityArray;
+    SearchableSpinner searchableSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,24 +75,99 @@ public class PostDonation extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        spinnerLocation = findViewById(R.id.spinner);
+        imgBtnFilter = findViewById(R.id.btn_filter_postdonation);
+        searchableSpinner = findViewById(R.id.searchableSpinner);
+
+        try {
+            jsonCityArray = new JSONObject(loadJSONFromAsset()).optJSONArray("province");
+
+            ArrayList<String> cityList = new ArrayList<String>();
+            cityList.add(0, "Tỉnh/thành phố");
+
+
+            for (int i = 0; i < jsonCityArray.length(); i++) {
+                cityList.add(jsonCityArray.optJSONObject(i).optString("name").trim());
+            }
+            searchableSpinner.setAdapter(new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, cityList));
+
+            searchableSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    List<PostNewsModel> postsFilter = new ArrayList<>();
+
+                    if (posts != null && posts.size() != 0) {
+
+                        if (!cityList.get(position).equals("Tỉnh/thành phố")) {
+                            for (int i = 0; i < posts.size(); i++) {
+                                String[] address = posts.get(i).getAddress().split(", ");
+                                if (cityList.get(position).contains(address[address.length - 1])) {
+                                    postsFilter.add(posts.get(i));
+                                }
+                            }
+
+                            PostDonationAdapter adapter1 = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postsFilter);
+                            lvNews_New.setAdapter(adapter1);
+                        } else {
+                            adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
+                            lvNews_New.setAdapter(adapter);
+                        }
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
         ArrayList<String> arrayLocation = new ArrayList<String>();
-        ArrayList<String> arrayLocation2 = new ArrayList<String>();
-        arrayLocation.add("Tất cả");
-        spinnerType = findViewById(R.id.spinner_type);
-        ArrayList<String> arrayType = new ArrayList<String>();
-        arrayType.add("Tất cả");
-        arrayType.add("Quần áo");
-        arrayType.add("Học tập");
-        arrayType.add("Xe cộ");
-        arrayType.add("Nội thất");
-        arrayType.add("Nội trợ");
+        arrayLocation.add("Tỉnh/thành phố");
 
-        arrayAdapter2 = new ArrayAdapter(PostDonation.this, R.layout.support_simple_spinner_dropdown_item, arrayType);
-        arrayAdapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerType.setAdapter(arrayAdapter2);
+        imgBtnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(PostDonation.this, FilterPostDonation.class);
+                startActivity(intent);
+            }
+        });
 
+//        ArrayList<String> listName = new ArrayList<>();
+        ArrayList<String> listCatogory = new ArrayList<>();
+        Intent intent = getIntent();
+        if (intent != null) {
+            ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
+            listCatogory = intent.getStringArrayListExtra("ListCatogary");
+            List<PostNewsModel> postsFilter2 = new ArrayList<>();
+
+            if (listName != null && listName.size() != 0) {
+
+                for (int k = 0; k < listName.size(); k++) {
+                    for (int i = 0; i < posts.size(); i++) {
+                        for (int j = 0; j < posts.get(i).getNameProduct().size(); j++) {
+
+                            if (listName.get(k).equals(posts.get(i).getNameProduct().get(j).getNameProduct())) {
+                                postsFilter2.add(posts.get(i));
+
+                            }
+                        }
+                    }
+                    Log.d("Listfilter", listName.get(k));
+                }
+                for (int l=0;l<postsFilter2.size();l++) {
+                    Log.d("Name product", postsFilter2.get(l).getNameProduct().get(l).getNameProduct());
+                }
+
+            }
+        }
 
 
 
@@ -100,14 +189,6 @@ public class PostDonation extends AppCompatActivity {
                     return;
                 }
                 posts = response.body();
-                for (int i=0;i<posts.size();i++) {
-                    String[] address = posts.get(0).getAddress().split(", ");
-                    arrayLocation.add(address[address.length-1]);
-                }
-                Set<String> set = new HashSet<>(arrayLocation);
-                arrayLocation.clear();
-                arrayLocation.addAll(set);
-                Log.d("Tỉnh/thành phố", String.valueOf(arrayLocation.size()));
                 adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
                 lvNews_New.setAdapter(adapter);
                 lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -134,7 +215,7 @@ public class PostDonation extends AppCompatActivity {
                         String inforDetail = post.getNote();
                         String typeAuthor = post.getTypeAuthor();
                         List<String> listUrl = post.getUrlImage();
-                        String url = listUrl.get(0);
+
                         String AuthorID = post.getAuthorID();
 
                         ArrayList<String> arrayListurl = new ArrayList<>();
@@ -153,85 +234,6 @@ public class PostDonation extends AppCompatActivity {
 
                     }
                 });
-                if (posts != null) {
-                    spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
-
-                            if (arrayType.get(position) == "Quần áo") {
-                                for (int i = 0; i < posts.size(); i++) {
-                                    List<ProductModel> postNewsModels = posts.get(i).getNameProduct();
-                                    if (postNewsModels.get(0).getCategory().equals("Quần áo")) {
-                                        Log.d("Name Catogory", postNewsModels.get(0).getCategory());
-                                        postNewsModelArrayList.add(posts.get(i));
-                                    }
-                                }
-                                adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
-                                lvNews_New.setAdapter(adapter);
-                            }
-                            else {
-                                if (arrayType.get(position).equals("Học tập")) {
-                                    for (int i = 0; i < posts.size(); i++) {
-                                        if (posts.get(i).getNameProduct().get(0).getCategory().equals("Học tập")) {
-                                            postNewsModelArrayList.add(posts.get(i));
-                                        }
-                                    }
-                                    adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
-                                    lvNews_New.setAdapter(adapter);
-                                }
-                                else {
-                                    if (arrayType.get(position).equals("Xe cộ") || arrayType.get(position).equals("Nội thất") ||
-                                            arrayType.get(position).equals("Nội trợ")) {
-                                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
-                                        lvNews_New.setAdapter(adapter);
-                                    }
-                                    else {
-                                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
-                                        lvNews_New.setAdapter(adapter);
-                                    }
-                                }
-                            }
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-                            adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
-                            lvNews_New.setAdapter(adapter);
-                        }
-                    });
-                }
-                spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
-                        if (arrayLocation.get(position).equals("Tất cả")) {
-                            adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
-                            lvNews_New.setAdapter(adapter);
-                        } else {
-                            for (int i = 0; i < posts.size(); i++) {
-                                String[] address = posts.get(i).getAddress().split(", ");
-                                String city = address[address.length - 1];
-                                if (arrayLocation.get(position).equals(city)) {
-                                    postNewsModelArrayList.add(posts.get(i));
-                                }
-                            }
-                            adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
-                            lvNews_New.setAdapter(adapter);
-                        }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
-                        lvNews_New.setAdapter(adapter);
-                    }
-                });
-
-
-
             }
 
             @Override
@@ -244,60 +246,28 @@ public class PostDonation extends AppCompatActivity {
 
 
 
-        arrayAdapter1 = new ArrayAdapter(PostDonation.this, R.layout.support_simple_spinner_dropdown_item, arrayLocation);
-        arrayAdapter1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerLocation.setAdapter(arrayAdapter1);
 
-
-
-//        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
-//
-//                for (PostNewsModel post: posts) {
-//                    if(post.getAddress().trim().equals(arrayLocation.get(position))) {
-//                        postNewsModelArrayList.add(post);
-//                    }
-//                }
-//                adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
-//                lvNews_New.setAdapter(adapter);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
-//                lvNews_New.setAdapter(adapter);
-//            }
-//        });
-
-        if (posts != null) {
-            spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    ArrayList<PostNewsModel> postNewsModelArrayList = new ArrayList<>();
-
-                    for (int i = 0; i < posts.size(); i++) {
-                        if (posts.get(i).getNameProduct().get(0).getCategory() == arrayType.get(position)) {
-                            postNewsModelArrayList.add(posts.get(i));
-                        }
-                    }
-                    adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postNewsModelArrayList);
-                    lvNews_New.setAdapter(adapter);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
-                    lvNews_New.setAdapter(adapter);
-                }
-            });
-        }
 
     }
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         finish();
         return true;
+    }
+
+    public String loadJSONFromAsset() {
+        String json;
+        try {
+            InputStream is = getAssets().open("db.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }
 

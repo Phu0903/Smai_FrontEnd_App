@@ -22,34 +22,63 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150px"
-        android:gravity="center"
-        android:background="@color/white">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:background="@color/white"
+        android:gravity="center">
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20px">
-            <Spinner
-                android:id="@+id/spinner_type"
-                android:layout_width="300px"
-                android:layout_height="100px"
-                android:background="@drawable/border_gray"/>
+            android:layout_marginLeft="20px"
+            android:layout_weight="3"
+            android:layout_marginRight="20px"
+            android:background="@drawable/border_filter_postdonation"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:text="Tất cả"
+                android:textAllCaps="false"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:id="@+id/btn_filter_postdonation"
+                android:textSize="@dimen/size_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10px"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:drawableRight="@drawable/visualization" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_weight="4"
+            android:layout_marginRight="20px"
             android:gravity="center|right">
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="350px"
-                android:layout_height="100px" />
-        </LinearLayout>
-    </RelativeLayout>
 
+            <pl.utkala.searchablespinner.SearchableSpinner
+                android:id="@+id/searchableSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:layout_gravity="center"
+                android:prompt="@string/app_name"
+                android:spinnerMode="dialog"
+                app:closeText="Đóng"
+                app:dialogTitle="Chọn tỉnh/thành phố" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
 
     <LinearLayout
         android:id="@+id/linea_layout_lv"

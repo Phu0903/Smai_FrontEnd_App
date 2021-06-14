@@ -190,7 +190,7 @@ public class HomeFragment extends Fragment {
             }
             @Override
             public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
-                Toast.makeText(getActivity(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
+
             }
         });
 

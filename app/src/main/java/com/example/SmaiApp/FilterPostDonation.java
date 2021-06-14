@@ -1,17 +1,12 @@
 package com.example.SmaiApp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckedTextView;
@@ -27,8 +22,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+public class FilterPostDonation extends AppCompatActivity {
 
-public class CategoryActivity3 extends AppCompatActivity {
 
     String tokenMain;
     Button btnNext;
@@ -46,9 +41,9 @@ public class CategoryActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category3);
+        setContentView(R.layout.activity_filter_post_donation);
 
-//        toolbar
+        //        toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
@@ -74,12 +69,10 @@ public class CategoryActivity3 extends AppCompatActivity {
                     arrayListName.remove(count-1);
                     arrayListCatogory.remove(count-1);
                     count = count-1;
-                    Log.e("Count", String.valueOf(count));
                 }
                 else {
                     checkedTextView.setChecked(true);
                     count = count+1;
-                    Log.e("Count", String.valueOf(count));
                     NameProduct nameProduct = new NameProduct(expandableListTitle.get(groupPosition), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
                     nameProductArrayList.add(nameProduct);
                     arrayListName.add(nameProduct.getNameProduct());
@@ -94,25 +87,6 @@ public class CategoryActivity3 extends AppCompatActivity {
 
 
 
-
-
-// Nhận địa chỉ*****************************************************************************
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            address = bundle.getString("address");
-            Log.d("Address catogory 3", address);
-        }
-        if (bundle.getString("TypeAuthor") != null) {
-            TypeAuthor = bundle.getString("TypeAuthor");
-
-            Log.d("typeAuthor cato", TypeAuthor);
-        }
-        String token = bundle.getString("token");
-        tokenMain = token;
-        Log.d("Token catogo", token);
-//*************************************************************************************************
-
 //        *************************Next button
 
         btnNext = (Button)findViewById(R.id.danhmuc_next);
@@ -123,19 +97,12 @@ public class CategoryActivity3 extends AppCompatActivity {
 
                 if (count != 0) {
 
-//                        for (int i=0; i< nameProductArrayList.size(); i++) {
-//                            arrayListName.add(nameProductArrayList.get(i).getNameProduct());
-//                            arrayListCatogory.add(nameProductArrayList.get(i).getCategory());
-//                    }
-//                        ********************************************************************
                     //gửi data sang activity Detail*************************************************************
-                    Intent intent1 = new Intent(getApplicationContext(), Detail2.class);
+                    Intent intent1 = new Intent(getApplicationContext(), PostDonation.class);
                     intent1.putExtra("ListName", arrayListName);
                     intent1.putExtra("ListCatogary", arrayListCatogory);
-                    intent1.putExtra("TypeAuthor", TypeAuthor);
-                    intent1.putExtra("address", address);
-                    intent1.putExtra("token", token);
                     startActivity(intent1);
+                    finish();
 //                        *************************************************************
                 }
                 else {
@@ -144,63 +111,5 @@ public class CategoryActivity3 extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_toolbar_danhmuc, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-//        switch (item.getItemId()) {
-//            case R.id.button_cancel:
-//                ConfirmCancel();
-//                break;
-//            default:
-//                break;
-//        }
-        if (item.getItemId() == R.id.button_cancel) {
-            ConfirmCancel();
-        }
-        else {
-            finish();
-        }
-        return true;
-    }
-
-    private void ConfirmCancel() {
-        AlertDialog.Builder alerDialog = new AlertDialog.Builder(this);
-        alerDialog.setTitle("Thông báo!");
-        alerDialog.setMessage("Bạn có chắc muốn hủy không?");
-
-        alerDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                i.putExtra("Token", tokenMain);
-                i.putExtra("message", "OK");
-                startActivity(i);
-            }
-        });
-        alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        alerDialog.show();
-    }
-
 }

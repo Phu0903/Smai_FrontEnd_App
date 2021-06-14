@@ -73,6 +73,7 @@
             android:text="Lưu tài khoản cho lần đăng nhập sau"
             android:textColor="#333"
             android:textSize="@dimen/size_2"
+            android:checked="true"
             android:fontFamily="@font/open_sans"
             android:layout_marginBottom="40dp"/>
 

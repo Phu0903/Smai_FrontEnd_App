@@ -111,7 +111,7 @@ public class Detail extends AppCompatActivity {
                 String loinhann = edtLoiNhan.getText().toString();
                 Log.d("Size uriiiiii", String.valueOf(uris.size()));
                 Log.d("Loi nhan", loinhann);
-                if (loinhann.isEmpty() || uris.size() == 0) {
+                if (loinhann.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else {

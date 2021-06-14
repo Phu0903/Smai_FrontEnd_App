@@ -118,11 +118,12 @@ public class PostDonationAdapter extends BaseAdapter {
         txtDatePost.setText(getHour);
 
         List<String> listUrl = arrayNews.get(position).getUrlImage();
-        String url = listUrl.get(0);
-        ImageView imgHinh = convertView.findViewById(R.id.img_hinh);
+        if (listUrl.size() != 0) {
+            String url = listUrl.get(0);
+            ImageView imgHinh = convertView.findViewById(R.id.img_hinh);
 
-        Glide.with(convertView).load(url).into(imgHinh);
-
+            Glide.with(convertView).load(url).into(imgHinh);
+        }
         return convertView;
     }
 }

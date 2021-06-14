@@ -55,10 +55,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="10px"
-                    android:text="Dịch vụ *"
+                    android:text="Bạn là ai *"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_1" />
+                    android:textSize="@dimen/size_2" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="50px"
                     android:paddingBottom="50px"
-                    android:text="Tặng cộng đồng"
+                    android:text="Quỹ/Nhóm từ thiện"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_3"
                     android:fontFamily="@font/open_sans" />
@@ -78,7 +78,7 @@
                     android:text="Danh mục *"
                     android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_1" />
+                    android:textSize="@dimen/size_2" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -121,7 +121,7 @@
                     android:text="Tiêu đề *"
                     android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_1"/>
+                    android:textSize="@dimen/size_2"/>
 
                 <TextView
                     android:id="@+id/textView15"
@@ -141,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ghi chú thêm(nếu có) *"
-                    android:textSize="@dimen/size_1"
+                    android:textSize="@dimen/size_2"
                     android:textColor="@color/graylight"/>
 
                 <TextView
@@ -163,7 +163,7 @@
                     android:text="Hình ảnh( tối đa 5 hình ảnh)*"
                     android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_1" />
+                    android:textSize="@dimen/size_2" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -244,7 +244,7 @@
                     android:text="Tỉnh/Thành phố*"
                     android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_1" />
+                    android:textSize="@dimen/size_2" />
 
                 <TextView
                     android:id="@+id/textView24"
@@ -253,7 +253,7 @@
                     android:layout_marginTop="20px"
                     android:layout_marginBottom="20px"
                     android:text="TP HO CHI MINH"
-                    android:textSize="@dimen/size_2"
+                    android:textSize="@dimen/size_3"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"/>
 
@@ -264,7 +264,7 @@
                     android:text="Quận/Huyện*"
                     android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_1" />
+                    android:textSize="@dimen/size_2" />
 
                 <TextView
                     android:id="@+id/textView26"
@@ -275,7 +275,7 @@
                     android:text="QUAN THU DUC"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_2"/>
+                    android:textSize="@dimen/size_3"/>
 
                 <TextView
                     android:id="@+id/textView27"
@@ -284,7 +284,7 @@
                     android:text="Phường/Xã*"
                     android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_1" />
+                    android:textSize="@dimen/size_2" />
 
                 <TextView
                     android:id="@+id/textView28"
@@ -295,7 +295,7 @@
                     android:text="PHUONG LINH TRUNG"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_2" />
+                    android:textSize="@dimen/size_3" />
 
                 <TextView
                     android:id="@+id/textView30"
@@ -304,7 +304,7 @@
                     android:text="Số nhà/ ấp/ thôn*"
                     android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
-                    android:textSize="@dimen/size_1" />
+                    android:textSize="@dimen/size_2" />
 
                 <TextView
                     android:id="@+id/textView31"
@@ -313,7 +313,7 @@
                     android:layout_marginTop="20px"
                     android:layout_marginBottom="20px"
                     android:text="PHUONG LINH TRUNG"
-                    android:textSize="@dimen/size_2"
+                    android:textSize="@dimen/size_3"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"/>
 
@@ -327,8 +327,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:backgroundTint="@color/red"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="@string/button_confirm"

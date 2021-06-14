@@ -3,12 +3,12 @@
     package="com.example.SmaiApp">
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- storage permission -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- call permission -->
+    <!-- call permission -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -16,23 +16,28 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".DetailPostTinDang"></activity>
-        <activity android:name=".DetailPostTangCongDong"
-            android:parentActivityName=".PostDonation"/>
-        <activity android:name=".DetailPostGiveFor"
-            android:parentActivityName=".GiveFor"/>
+        <activity android:name=".FilterPostDonation"></activity>
+        <activity android:name=".DetailPostTinDang" />
+        <activity
+            android:name=".DetailPostTangCongDong"
+            android:parentActivityName=".PostDonation" />
+        <activity
+            android:name=".DetailPostGiveFor"
+            android:parentActivityName=".GiveFor" />
         <activity android:name=".ConfirmInforPost2" />
         <activity android:name=".Detail2" />
-        <activity android:name=".CategoryActivity3"
-            android:parentActivityName=".ConfirmAddress"/>
-
+        <activity
+            android:name=".CategoryActivity3"
+            android:parentActivityName=".ConfirmAddress" />
         <activity android:name=".ConfirmAddress3" />
-        <activity android:name=".CategoryActivity2"
-            android:parentActivityName=".ConfirmAddress2"/>
+        <activity
+            android:name=".CategoryActivity2"
+            android:parentActivityName=".ConfirmAddress2" />
         <activity android:name=".ConfirmAddress2" />
         <activity android:name=".GiveFor" />
         <activity
@@ -55,7 +60,7 @@
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".CategoryActivity"
-            android:parentActivityName=".who_activity"/>
+            android:parentActivityName=".who_activity" />
         <activity android:name=".ConfirmAddress" />
         <activity android:name=".Account" />
         <activity
@@ -64,7 +69,8 @@
         <activity
             android:name=".Search"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

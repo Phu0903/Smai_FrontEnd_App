@@ -29,6 +29,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.internal.Util;
 
@@ -67,7 +68,7 @@ public class NewsAdapter extends BaseAdapter {
 
 //ngày giờ đăng tin
         Date date1 = arrayNews.get(position).getCreatedAt();
-        SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm"); //format ngày giờ thành dd/mm/yyyy hh:mm
         String sTime = localDateFormat.format(date1);
         String[] s1 = sTime.split(" ");
 
@@ -81,24 +82,27 @@ public class NewsAdapter extends BaseAdapter {
         long timeUp = calendar.getTimeInMillis();
         long hourRest = currentTime - timeUp;
         int hours   = (int) ((hourRest / (1000*60*60)) % 24);
+
+        Date dat1 = Calendar.getInstance().getTime();
+
         String getHour = "";
-        if (hours < 24) {
+        int day=0;
+        if (hours < 23) {
             getHour = hours + " h";
-        }
-        else if (hours >= 24 && hours < 48) {
-            getHour = "1 ngày";
-        }
-        else if (hours >=48 && hours < 72) {
-            getHour = "2 ngày";
-        }
-        else if (hours >=72 && hours < 96) {
-            getHour = "3 ngày";
-        }
-        else {
-            getHour = "Hơn 3 ngày";
-        }
+        } else if (hours == 23) {
+            hours = hours + 24;
 
+            if (hours >= 24 && hours < 48) {
+                getHour = "1 ngày";
+            } else if (hours >= 48 && hours < 72) {
+                getHour = "2 ngày";
+            } else if (hours >= 72 && hours < 96) {
+                getHour = "3 ngày";
+            } else {
+                getHour = "Hơn 3 ngày";
+            }
 
+        }
         String address = arrayNews.get(position).getAddress();
         String[] mainAddress = address.split(",");
 
@@ -143,6 +147,11 @@ public class NewsAdapter extends BaseAdapter {
         }
 
         return convertView;
+    }
+
+    public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
+        long diffInMillies = date2.getTime() - date1.getTime();
+        return timeUnit.convert(diffInMillies,TimeUnit.HOURS);
     }
 
 }

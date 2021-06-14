@@ -65,7 +65,7 @@ public class ConfirmInforPost extends AppCompatActivity {
 
     Button btn_confirm;
 
-    TextView danhmuc, tieude, ghichu, city, district, ward, detailloction;
+    TextView danhmuc, tieude, ghichu, city, district, ward, detailloction, banlaai, who;
     ImageView imgView1, imgView2, imgView3, imgView4, imgView5;
     ImageView[] listImage = new ImageView[5];
     int count;
@@ -88,6 +88,8 @@ public class ConfirmInforPost extends AppCompatActivity {
         imgView3 = findViewById(R.id.dt_imaage_view3);
         imgView4 = findViewById(R.id.dt_imaage_view4);
         imgView5 = findViewById(R.id.dt_imaage_view5);
+
+
         listImage[0] = imgView1;
         listImage[1] = imgView2;
         listImage[2] = imgView3;
@@ -101,6 +103,7 @@ public class ConfirmInforPost extends AppCompatActivity {
 //        lấy uri của hình ảnh
         uris = intent.getParcelableArrayListExtra("Uri");
         List<Bitmap> bitmaps = new ArrayList<>();
+
 
 // Chuyển uri sang bitmap
         for (Uri uri: uris) {
@@ -139,7 +142,15 @@ public class ConfirmInforPost extends AppCompatActivity {
         district = findViewById(R.id.textView26);
         ward = findViewById(R.id.textView28);
         detailloction = findViewById(R.id.textView31);
+        banlaai = findViewById(R.id.textView9);
+        banlaai.setText("Bạn là ai*");
 
+        who = findViewById(R.id.textView10);
+        if (TypeAuthor.equals("Cá nhân")) {
+            who.setText("Người nghèo/hoàn cảnh khó khăn");
+        } else {
+            who.setText(TypeAuthor);
+        }
         danhmuc.setText(listCatogory.get(0));
         tieude.setText(loinhan);
         ghichu.setText(mota);
@@ -217,25 +228,32 @@ public class ConfirmInforPost extends AppCompatActivity {
                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
                         if (response.body() != null) {
 
+                            if (fileList.size() != 0) {
 
-                            idPost[0] = response.body().getIdpost();
-                            Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(idPost[0], list);
+                                idPost[0] = response.body().getIdpost();
+                                Call<PostNewsModel> call1 = jsonPlaceHolderApi.updateImagePost(idPost[0], list);
 
-                            call1.enqueue(new Callback<PostNewsModel>() {
-                                @Override
-                                public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
+                                call1.enqueue(new Callback<PostNewsModel>() {
+                                    @Override
+                                    public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
 
-                                    Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
-                                    intent1.putExtra("Token", token);
-                                    intent1.putExtra("message", "OK");
-                                    startActivity(intent1);
-                                }
+                                        Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
+                                        intent1.putExtra("Token", token);
+                                        intent1.putExtra("message", "OK");
+                                        startActivity(intent1);
+                                    }
 
-                                @Override
-                                public void onFailure(Call<PostNewsModel> call, Throwable t) {
-                                    Log.e("errer", t.getMessage());
-                                }
-                            });
+                                    @Override
+                                    public void onFailure(Call<PostNewsModel> call, Throwable t) {
+                                        Log.e("errer", t.getMessage());
+                                    }
+                                });
+                            } else {
+                                Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
+                                intent1.putExtra("Token", token);
+                                intent1.putExtra("message", "OK");
+                                startActivity(intent1);
+                            }
 
                         }
                     }

@@ -110,7 +110,7 @@ public class Detail2 extends AppCompatActivity {
             public void onClick(View v) {
                 String loinhann = edtLoiNhan.getText().toString();
 
-                if (loinhann.isEmpty() ||  edtMoTa.getText().toString().isEmpty() || uris == null) {
+                if (loinhann.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else {
