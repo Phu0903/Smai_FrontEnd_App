@@ -30,10 +30,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button_who"
-            android:padding="20dp"
             android:textAllCaps="false"
             android:backgroundTint="@color/white"
             android:text="Quỹ/ Nhóm từ thiện"
+            android:paddingLeft="20dp"
             android:textAlignment="viewStart"
             android:fontFamily="@font/open_sans"
             android:textColor="@color/black"
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:backgroundTint="@color/white"
-            android:text='Tổ chức công ích "Chính quyền nhà thờ, nhà chùa,....'
+            android:text='Tổ chức công ích'
             android:textAlignment="textStart"
             android:fontFamily="@font/open_sans"
             android:textAllCaps="false"
@@ -82,7 +82,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/gray"
-        android:padding="25dp">
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <ImageView
             android:id="@+id/imageView5"
@@ -100,7 +102,7 @@
             android:fontFamily="@font/open_sans_semibold"
             android:paddingTop="10dp"
             android:paddingLeft="10dp"
-            android:paddingBottom="10dp"
+            android:paddingBottom="10px"
             android:text="Lưu ý"
             android:textSize="@dimen/size_3"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -125,7 +127,7 @@
             android:paddingBottom="10dp"
             android:text="Tổ chức công ích bao gồm: Trường học, Bệnh viện, UBND, Hội Chữ Thập Đỏ, Chùa, Nhà thờ,... cần quyên góp xây dựng \u0022 đường, cầu cống, nhà tình thương\u0022"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            android:fontFamily="@font/open_sans"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

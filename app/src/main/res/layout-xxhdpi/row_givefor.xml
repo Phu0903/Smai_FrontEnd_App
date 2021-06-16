@@ -48,7 +48,7 @@
                         android:fontFamily="@font/open_sans"
                         android:textSize="@dimen/size_1"
                         android:drawableLeft="@drawable/ic_baseline_location_on_24"
-                        android:text="Lũng Cũ - Điện Biên"/>
+                        android:text="Châu Đức, Bà Rịa-Vũng Tàu"/>
 
                 </LinearLayout>
 

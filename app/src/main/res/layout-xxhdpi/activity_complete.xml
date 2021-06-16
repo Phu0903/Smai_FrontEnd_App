@@ -26,7 +26,7 @@
             android:fontFamily="@font/open_sans_bold"
             android:paddingLeft="40px"
             android:paddingRight="40px"
-            android:text="Đã được yêu cầu thành công!"
+            android:text="Đã nhận được yêu cầu, vui lòng chờ xác thực.\nCảm ơn bạn!"
             android:textColor="@color/black"
             android:textSize="@dimen/size_2"
             app:layout_constraintBottom_toBottomOf="parent"

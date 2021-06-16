@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
@@ -29,58 +30,23 @@ import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren
 public class CompleteActivity extends AppCompatActivity {
     Button btn_complete;
 
-//    PostNewsModel postNewsModel;
-//    List<ProductModel> productModelList = new ArrayList<>();
+    TextView textComplete;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete);
 
-//        postNewsModel = new PostNewsModel();
-//
-//        Intent intent = getIntent();
-//        String address = intent.getStringExtra("address");
-//        ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
-//        ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
-//        String loinhan = intent.getStringExtra("loinhan");
-//        String mota = intent.getStringExtra("mota");
-//        String token = intent.getStringExtra("token");
-//        if (token != null) {
-//            Log.d("Token complete", token);
-//        }
-//        String TypeAuthor = intent.getStringExtra("TypeAuthor");
-//        List<Uri> uris = new ArrayList<Uri>();
-////        lấy uri của hình ảnh
-//        uris = intent.getParcelableArrayListExtra("Uri");
-//        List<String> listUri = new ArrayList<>();
-//        for (int i=0;i<uris.size();i++) {
-//            listUri.add(uris.get(i).toString());
-//
-//            Log.d("Uri", String.valueOf(uris.get(i)));
-//            Log.d("UriString", String.valueOf(listUri.get(i)));
-//        }
-//
-//
-//
-//        postNewsModel.setAddress(address);
-//        postNewsModel.setTypeAuthor(TypeAuthor);
-//        postNewsModel.setTitle(loinhan);
-//        postNewsModel.setNote(mota);
-//        postNewsModel.setUrlImage(listUri);
-//
-//        Log.d("List UrlImage", String.valueOf(listUri.size()));
-//
-//        for (int i=0;i< listCatogory.size(); i++) {
-//            ProductModel productModel = new ProductModel();
-//            productModel.setCategory(listCatogory.get(i));
-//            productModel.setNameProduct(listName.get(i));
-//            productModelList.add(productModel);
-//        }
+        textComplete = findViewById(R.id.textView8);
 
         Intent intent1 = getIntent();
         String token = intent1.getStringExtra("Token");
         String message = intent1.getStringExtra("message");
+        String require = intent1.getStringExtra("Require");
 
+        if (require != null && require.equals("tang")) {
+            textComplete.setText("Đã được yêu cầu thành công!");
+        }
 
         btn_complete = findViewById(R.id.btn_complete);
         btn_complete.setOnClickListener(new View.OnClickListener() {

@@ -46,7 +46,10 @@ public class PostDonationAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return arrayNews.size();
+        if (arrayNews != null) {
+            return arrayNews.size();
+        }
+        return 0;
     }
 
     @Override

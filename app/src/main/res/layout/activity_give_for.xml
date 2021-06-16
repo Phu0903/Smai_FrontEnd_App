@@ -27,7 +27,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="5dp"
             android:background="#FAFAFA"
             android:orientation="horizontal">
 
@@ -59,7 +59,6 @@
                     android:id="@+id/searchableSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="8dp"
                     android:layout_gravity="center"
                     android:prompt="@string/app_name"
                     android:spinnerMode="dialog"

@@ -1,5 +1,6 @@
 package com.example.SmaiApp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -22,6 +25,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,6 +52,7 @@ import gun0912.tedbottompicker.TedBottomSheetDialogFragment;
 
 public class Detail extends AppCompatActivity {
 
+    String tokenMain;
     ImageButton mChooseBtn;
     //    Declare variable to upload image
     ImageView imgView1, imgView2, imgView3, imgView4, imgView5;
@@ -103,6 +109,7 @@ public class Detail extends AppCompatActivity {
         Log.d("TypeAuthor detail", TypeAuthor);
         ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
         ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogary");
+        tokenMain = token;
 //********************************************************************
         btnNext = (Button) findViewById(R.id.dt_next);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -240,5 +247,48 @@ public class Detail extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_toolbar_danhmuc, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.button_cancel) {
+            ConfirmCancel();
+        }
+        else {
+            finish();
+        }
+        return true;
+    }
+
+    private void ConfirmCancel() {
+        AlertDialog.Builder alerDialog = new AlertDialog.Builder(this);
+        alerDialog.setTitle("Thông báo!");
+        alerDialog.setMessage("Bạn có chắc muốn hủy không?");
+
+        alerDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("Token", tokenMain);
+                i.putExtra("message", "OK");
+                startActivity(i);
+            }
+        });
+        alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alerDialog.show();
     }
 }

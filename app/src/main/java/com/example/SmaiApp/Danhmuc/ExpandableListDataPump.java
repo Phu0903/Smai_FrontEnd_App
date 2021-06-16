@@ -85,8 +85,8 @@ public class ExpandableListDataPump {
         expandableListDetail.put("Đồ nội thất", noithat);
         expandableListDetail.put("Đồ nội trợ, điện dân dụng", noitro);
         expandableListDetail.put("Đồ điện tử", dodientu);
-//        expandableListDetail.put("Xe cộ", xeco);
-//        expandableListDetail.put("Đồ khác", dokhac);
+        expandableListDetail.put("Xe cộ", xeco);
+        expandableListDetail.put("Đồ khác", dokhac);
 
         return expandableListDetail;
     }

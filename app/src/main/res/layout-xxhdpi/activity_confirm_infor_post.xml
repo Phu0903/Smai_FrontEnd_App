@@ -148,13 +148,19 @@
                     android:id="@+id/textView19"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/dt_title2"
+                    android:padding="20px"
                     android:layout_marginTop="20px"
                     android:layout_marginBottom="20px"
-                    android:background="@drawable/textview_border"
-                    android:padding="50dp"
+                    android:gravity="top"
+                    android:background="@drawable/dt_custom_edit_text"
+                    android:maxLines="4"
+                    android:lines="4"
+                    android:fontFamily="@font/open_sans_light"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/size_3"
-                    android:text="Hàng mẫu" />
+                    android:paddingLeft="20px"
+                    android:hint="Mô tả hoặc ghi chú ... "
+                    android:textSize="@dimen/size_2" />
 
                 <TextView
                     android:id="@+id/textView20"

@@ -26,7 +26,7 @@
             android:paddingLeft="20px"
             android:paddingRight="20px"
             android:paddingBottom="15dp"
-            android:text="Đã được yêu cầu thành công!"
+            android:text="Đã nhận được yêu cầu, vui lòng chờ xác thực.\nCảm ơn bạn!"
             android:textColor="@color/black"
             android:textSize="@dimen/size_2" />
 
@@ -51,7 +51,7 @@
             android:background="@drawable/border_radius_4_corners_button_red"
             android:fontFamily="@font/open_sans_semibold"
             android:padding="7dp"
-            android:text="@string/button_confirm"
+            android:text="Xong"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/size_3"/>

@@ -1,12 +1,17 @@
 package com.example.SmaiApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,6 +20,7 @@ public class who_activity extends AppCompatActivity {
 
     Button btn_canhan, btn_grouptưthien, btn_tochuc;
     String address = "";
+    String tokenMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,7 @@ public class who_activity extends AppCompatActivity {
             address = bundle.getString("address", "");
         }
 
+        tokenMain = token;
 
         btn_canhan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,5 +91,54 @@ public class who_activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_toolbar_danhmuc, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.button_cancel) {
+            ConfirmCancel();
+        }
+        else {
+            finish();
+        }
+        return true;
+    }
+
+    private void ConfirmCancel() {
+        AlertDialog.Builder alerDialog = new AlertDialog.Builder(this);
+        alerDialog.setTitle("Thông báo!");
+        alerDialog.setMessage("Bạn có chắc muốn hủy không?");
+
+        alerDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("Token", tokenMain);
+                i.putExtra("message", "OK");
+                startActivity(i);
+            }
+        });
+        alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alerDialog.show();
     }
 }

@@ -9,6 +9,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -20,6 +21,8 @@ import android.os.FileUtils;
 import android.provider.MediaStore;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -63,6 +66,7 @@ public class ConfirmInforPost extends AppCompatActivity {
 
     String mainToken="";
 
+    String tokenMain;
     Button btn_confirm;
 
     TextView danhmuc, tieude, ghichu, city, district, ward, detailloction, banlaai, who;
@@ -131,6 +135,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         String mota = intent.getStringExtra("mota");
         String token = intent.getStringExtra("token");
         String TypeAuthor = intent.getStringExtra("TypeAuthor");
+        tokenMain = token;
 //************************************************************************************************************
 
 //ánh xạ các textview
@@ -274,5 +279,48 @@ public class ConfirmInforPost extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_toolbar_danhmuc, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.button_cancel) {
+            ConfirmCancel();
+        }
+        else {
+            finish();
+        }
+        return true;
+    }
+
+    private void ConfirmCancel() {
+        AlertDialog.Builder alerDialog = new AlertDialog.Builder(this);
+        alerDialog.setTitle("Thông báo!");
+        alerDialog.setMessage("Bạn có chắc muốn hủy không?");
+
+        alerDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("Token", tokenMain);
+                i.putExtra("message", "OK");
+                startActivity(i);
+            }
+        });
+        alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alerDialog.show();
     }
 }

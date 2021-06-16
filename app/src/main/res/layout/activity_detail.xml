@@ -73,8 +73,10 @@
             android:fontFamily="@font/open_sans_light"
             android:hint="Mô tả hoặc ghi chú ..."
             android:inputType="textMultiLine"
-            android:lines="4"
-            android:paddingLeft="20px"
+            android:gravity="top"
+            android:paddingTop="10px"
+            android:lines="5"
+            android:paddingLeft="10px"
             android:textColor="@color/black"
             android:textSize="@dimen/size_2" />
 

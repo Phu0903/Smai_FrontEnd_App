@@ -1,5 +1,6 @@
 package com.example.SmaiApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckedTextView;
@@ -101,6 +103,7 @@ public class FilterPostDonation extends AppCompatActivity {
                     Intent intent1 = new Intent(getApplicationContext(), PostDonation.class);
                     intent1.putExtra("ListName", arrayListName);
                     intent1.putExtra("ListCatogary", arrayListCatogory);
+                    intent1.putExtra("Filter", "loc");
                     startActivity(intent1);
                     finish();
 //                        *************************************************************
@@ -111,5 +114,10 @@ public class FilterPostDonation extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        finish();
+        return true;
     }
 }

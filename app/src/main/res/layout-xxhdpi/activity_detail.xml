@@ -83,7 +83,6 @@
             android:textColor="@color/black"
             android:paddingLeft="20px"
             android:hint="Mô tả hoặc ghi chú ... "
-
             android:textSize="@dimen/size_2" />
 
     </RelativeLayout>

@@ -62,12 +62,14 @@ public class PostDonation extends AppCompatActivity {
     public static List<PostNewsModel> posts;
     JSONArray jsonCityArray;
     SearchableSpinner searchableSpinner;
-
+    ArrayList<PostNewsModel> listName = new ArrayList<>();
+    ArrayList<String> listCatogory = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_donation);
-
+//      listview tin đăng mới
+        lvNews_New = findViewById(R.id.listViewNews_New);
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_dt);
         toolbar.setTitleTextColor(Color.WHITE);
@@ -77,6 +79,12 @@ public class PostDonation extends AppCompatActivity {
 
         imgBtnFilter = findViewById(R.id.btn_filter_postdonation);
         searchableSpinner = findViewById(R.id.searchableSpinner);
+
+
+
+
+
+
 
         try {
             jsonCityArray = new JSONObject(loadJSONFromAsset()).optJSONArray("province");
@@ -140,46 +148,15 @@ public class PostDonation extends AppCompatActivity {
             }
         });
 
-//        ArrayList<String> listName = new ArrayList<>();
-        ArrayList<String> listCatogory = new ArrayList<>();
+
+
         Intent intent = getIntent();
-        if (intent != null) {
-            ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
-            listCatogory = intent.getStringArrayListExtra("ListCatogary");
-            List<PostNewsModel> postsFilter2 = new ArrayList<>();
-
-            if (listName != null && listName.size() != 0) {
-
-                for (int k = 0; k < listName.size(); k++) {
-                    for (int i = 0; i < posts.size(); i++) {
-                        for (int j = 0; j < posts.get(i).getNameProduct().size(); j++) {
-
-                            if (listName.get(k).equals(posts.get(i).getNameProduct().get(j).getNameProduct())) {
-                                postsFilter2.add(posts.get(i));
-
-                            }
-                        }
-                    }
-                    Log.d("Listfilter", listName.get(k));
-                }
-                for (int l=0;l<postsFilter2.size();l++) {
-                    Log.d("Name product", postsFilter2.get(l).getNameProduct().get(l).getNameProduct());
-                }
-
-            }
-        }
-
-
-
-        //      listview tin đăng mới
-        lvNews_New = findViewById(R.id.listViewNews_New);
 
         // get data
         Retrofit retrofit = RetrofitClient.getRetrofitInstance();
         ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
 
         Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getPostGiveCommunity("tangcongdong");
-
 
         call.enqueue(new Callback<List<PostNewsModel>>() {
             @Override
@@ -191,6 +168,29 @@ public class PostDonation extends AppCompatActivity {
                 posts = response.body();
                 adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
                 lvNews_New.setAdapter(adapter);
+                if (intent != null) {
+                    String loc =intent.getStringExtra("loc");
+                    listCatogory = intent.getStringArrayListExtra("ListName");
+                    if (listCatogory != null) {
+                        for (String s : listCatogory) {
+                            Log.d("Name catogory", s);
+                            for (int i=0;i<posts.size();i++) {
+                                List<ProductModel> list = posts.get(i).getNameProduct();
+                                for (int j=0;j<list.size();j++) {
+                                    String nameCategory = list.get(j).getNameProduct();
+                                    Log.d("Đồ khác trẻ em", nameCategory);
+                                    if (nameCategory.equals(s)) {
+                                        listName.add(posts.get(i));
+                                    }
+                                }
+                            }
+                        }
+
+                        Log.d("Size list name", String.valueOf(listName.size()));
+                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, listName);
+                        lvNews_New.setAdapter(adapter);
+                    }
+                }
                 lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -208,8 +208,7 @@ public class PostDonation extends AppCompatActivity {
                         String fullName = post.getNameAuthor();
                         if (fullName != null) {
                             Log.d("fullName", fullName);
-                        }
-                        else {
+                        } else {
                             Log.e("Full name", "no fullname");
                         }
                         String inforDetail = post.getNote();
@@ -219,7 +218,7 @@ public class PostDonation extends AppCompatActivity {
                         String AuthorID = post.getAuthorID();
 
                         ArrayList<String> arrayListurl = new ArrayList<>();
-                        for (String s: listUrl) {
+                        for (String s : listUrl) {
                             arrayListurl.add(s);
                         }
                         intent.putExtra("title", title);
@@ -234,6 +233,7 @@ public class PostDonation extends AppCompatActivity {
 
                     }
                 });
+
             }
 
             @Override
@@ -243,6 +243,9 @@ public class PostDonation extends AppCompatActivity {
 
             }
         });
+
+
+
 
 
 

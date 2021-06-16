@@ -67,6 +67,7 @@ public class ConfirmAddress2 extends AppCompatActivity {
 
         Intent intent1 = getIntent();
         String token = intent1.getStringExtra("Token");
+        String TypeAuthor = intent1.getStringExtra("TypeAuthor");
         Log.d("Token address", token);
         populateSpinner();
 
@@ -87,7 +88,7 @@ public class ConfirmAddress2 extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     bundle.putString("address", nameDetailLocation + ", " + nameWard + ", " + nameDistrict + ", " + nameCity);
                     bundle.putString("token", token);
-                    bundle.putString("TypeAuthor", "tangcongdong");
+                    bundle.putString("TypeAuthor", TypeAuthor);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

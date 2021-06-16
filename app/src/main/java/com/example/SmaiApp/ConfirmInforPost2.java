@@ -239,6 +239,7 @@ public class ConfirmInforPost2 extends AppCompatActivity {
                                 Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
                                 intent1.putExtra("Token", token);
                                 intent1.putExtra("message", "OK");
+                                intent1.putExtra("Require", "tang");
                                 startActivity(intent1);
                             }
 

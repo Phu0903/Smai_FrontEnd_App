@@ -60,7 +60,8 @@ public class GiveforAdapter extends BaseAdapter {
 
 //        if (arrayNews.get(position).getAddress() != null) {
             String address = arrayNews.get(position).getAddress();
-            Address.setText(address);
+            String[] city = address.split(", ");
+            Address.setText(city[city.length-1] + city[city.length-2]);
 //        }
 
 //        if (arrayNews.get(position).getTitle() != null) {

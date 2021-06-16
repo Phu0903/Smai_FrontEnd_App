@@ -72,7 +72,8 @@
         <EditText
             android:id="@+id/edt_mota"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
+            android:lines="4"
             android:gravity="top"
             android:layout_below="@+id/dt_title2"
             android:layout_marginTop="10dp"
