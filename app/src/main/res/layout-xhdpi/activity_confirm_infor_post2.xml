@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     android:orientation="vertical"
-    tools:context=".ConfirmInforPost">
+    tools:context=".ConfirmInforPost2">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="vertical"
+                android:paddingEnd="50px"
                 android:paddingStart="50px"
                 android:paddingTop="20px">
 
@@ -80,16 +81,25 @@
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_2" />
 
-                <TextView
-                    android:id="@+id/textView12"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="50px"
-                    android:paddingBottom="50px"
-                    android:text="Đồ trẻ em nam "
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/size_3"
-                    android:fontFamily="@font/open_sans"/>
+                    android:layout_marginTop="50px"
+                    android:layout_marginBottom="50px"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Đồ trẻ em nam "
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/size_3"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 

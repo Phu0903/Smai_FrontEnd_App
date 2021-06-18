@@ -1,14 +1,17 @@
 package com.example.SmaiApp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,6 +56,7 @@ import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren
 
 public class PostDonation extends AppCompatActivity {
 
+    String tokenMain;
     ListView lvNews_New;
     Spinner spinnerLocation;
     PostDonationAdapter adapter;
@@ -79,13 +83,9 @@ public class PostDonation extends AppCompatActivity {
 
         imgBtnFilter = findViewById(R.id.btn_filter_postdonation);
         searchableSpinner = findViewById(R.id.searchableSpinner);
-
-
-
-
-
-
-
+        Intent intent = getIntent();
+        String token = intent.getStringExtra("Token");
+        tokenMain =token;
         try {
             jsonCityArray = new JSONObject(loadJSONFromAsset()).optJSONArray("province");
 
@@ -133,24 +133,18 @@ public class PostDonation extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
-
         ArrayList<String> arrayLocation = new ArrayList<String>();
         arrayLocation.add("Tỉnh/thành phố");
 
         imgBtnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(PostDonation.this, FilterPostDonation.class);
                 startActivity(intent);
             }
         });
 
 
-
-        Intent intent = getIntent();
 
         // get data
         Retrofit retrofit = RetrofitClient.getRetrofitInstance();
@@ -252,9 +246,59 @@ public class PostDonation extends AppCompatActivity {
 
 
     }
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        finish();
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
         return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_toolbar_danhmuc, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.button_cancel) {
+            ConfirmCancel();
+        }
+        else {
+            finish();
+        }
+        return true;
+    }
+
+    private void ConfirmCancel() {
+        AlertDialog.Builder alerDialog = new AlertDialog.Builder(this);
+        alerDialog.setTitle("Thông báo!");
+        alerDialog.setMessage("Bạn có chắc muốn hủy không?");
+
+        alerDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("Token", tokenMain);
+                i.putExtra("message", "OK");
+                startActivity(i);
+            }
+        });
+        alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alerDialog.show();
     }
 
     public String loadJSONFromAsset() {

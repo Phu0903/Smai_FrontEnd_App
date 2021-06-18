@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.SmaiApp.Adapter.NewsAdapter;
+import com.example.SmaiApp.Adapter.UpLoadNewsAdapter;
 import com.example.SmaiApp.Model.PostNewsModel;
 import com.example.SmaiApp.Model.ProductModel;
 import com.example.SmaiApp.NetWorKing.ApiServices;
@@ -41,7 +42,7 @@ public class UpLoadNewsFragment extends Fragment {
     //list view tin đang
     ListView lvNews;
     Button btnUpload;
-    NewsAdapter adapter;
+    UpLoadNewsAdapter adapter;
     TextView tvNotLogin;
     String message="", token="";
 
@@ -106,24 +107,24 @@ public class UpLoadNewsFragment extends Fragment {
 
 
                         posts = response.body();
-                        adapter = new NewsAdapter(getContext(), R.layout.row_news_listview, posts);
+                        adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, posts);
                         lvNews.setAdapter(adapter);
                         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if(paths[position] == "Tin bán") {
-                                    adapter = new NewsAdapter(getContext(), R.layout.row_news_listview, postsTinBan);
+                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_news_listview, postsTinBan);
                                     lvNews.setAdapter(adapter);
                                 }
                                 else if (paths[position] == "Tất cả tin đăng" || paths[position] == "Tin tặng") {
-                                    adapter = new NewsAdapter(getContext(), R.layout.row_news_listview, posts);
+                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_news_listview, posts);
                                     lvNews.setAdapter(adapter);
                                 }
                             }
 
                             @Override
                             public void onNothingSelected(AdapterView<?> parent) {
-                                adapter = new NewsAdapter(getContext(), R.layout.row_news_listview, posts);
+                                adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_news_listview, posts);
                                 lvNews.setAdapter(adapter);
                             }
                         });
@@ -175,7 +176,7 @@ public class UpLoadNewsFragment extends Fragment {
                 }
                 @Override
                 public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
-                    Toast.makeText(getContext(), "Failllllllllllllllll", Toast.LENGTH_LONG).show();
+
                 }
             });
         }

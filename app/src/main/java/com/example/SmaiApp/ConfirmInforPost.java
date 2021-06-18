@@ -67,7 +67,7 @@ public class ConfirmInforPost extends AppCompatActivity {
     String mainToken="";
 
     String tokenMain;
-    Button btn_confirm;
+    Button btn_confirm, btnPopup;
 
     TextView danhmuc, tieude, ghichu, city, district, ward, detailloction, banlaai, who;
     ImageView imgView1, imgView2, imgView3, imgView4, imgView5;
@@ -76,7 +76,7 @@ public class ConfirmInforPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_infor_post2);
+        setContentView(R.layout.activity_confirm_infor_post);
 
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_confirm);
@@ -139,7 +139,7 @@ public class ConfirmInforPost extends AppCompatActivity {
 //************************************************************************************************************
 
 //ánh xạ các textview
-
+        btnPopup = findViewById(R.id.popupDanhmuc);
         danhmuc = findViewById(R.id.textView12);
         tieude = findViewById(R.id.textView15);
         ghichu = findViewById(R.id.textView19);
@@ -156,7 +156,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         } else {
             who.setText(TypeAuthor);
         }
-        danhmuc.setText(listCatogory.get(0));
+        danhmuc.setText("Danh mục nhận tặng" + listCatogory.size());
         tieude.setText(loinhan);
         ghichu.setText(mota);
         String[] getAddress = address.split(",");
@@ -271,6 +271,17 @@ public class ConfirmInforPost extends AppCompatActivity {
 
 
 
+            }
+        });
+
+
+
+        btnPopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ConfirmInforPost.this, PopupCategory.class);
+                intent1.putExtra("listname", listName);
+                startActivity(intent1);
             }
         });
     }

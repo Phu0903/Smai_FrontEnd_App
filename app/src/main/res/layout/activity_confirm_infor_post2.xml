@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     android:orientation="vertical"
-    tools:context=".ConfirmInforPost">
+    tools:context=".ConfirmInforPost2">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -35,7 +35,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10px"
-                android:paddingStart="30px"
                 android:textAllCaps="true"
                 android:text="Thông tin chung"
                 android:textSize="@dimen/size_3"
@@ -47,14 +46,15 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="vertical"
-                android:paddingStart="30px"
-                android:paddingTop="20px">
+                android:paddingStart="10px"
+                android:paddingEnd="10px"
+                android:paddingTop="10px">
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10px"
+
                     android:text="Dịch vụ *"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"
@@ -80,16 +80,25 @@
                     android:fontFamily="@font/open_sans"
                     android:textSize="@dimen/size_2" />
 
-                <TextView
-                    android:id="@+id/textView12"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="5px"
-                    android:paddingBottom="5px"
-                    android:text="Đồ trẻ em nam "
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/size_3"
-                    android:fontFamily="@font/open_sans"/>
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Đồ trẻ em nam "
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/size_3"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -99,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10px"
-                android:paddingStart="30px"
+                android:paddingStart="10px"
                 android:text="Thông tin mô tả"
                 android:textSize="@dimen/size_3"
                 android:textColor="@color/graylight"
@@ -110,9 +119,9 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="vertical"
-                android:paddingLeft="30px"
-                android:paddingTop="20px"
-                android:paddingRight="50px">
+                android:paddingLeft="10px"
+                android:paddingTop="10px"
+                android:paddingRight="10px">
 
                 <TextView
                     android:id="@+id/textView17"
@@ -127,8 +136,8 @@
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
                     android:background="@drawable/textview_border"
                     android:padding="10dp"
                     android:textSize="@dimen/size_3"
@@ -149,16 +158,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/dt_title2"
-                    android:padding="20px"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
+                    android:padding="10px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
                     android:gravity="top"
                     android:background="@drawable/dt_custom_edit_text"
                     android:maxLines="4"
                     android:lines="4"
                     android:fontFamily="@font/open_sans_light"
                     android:textColor="@color/black"
-                    android:paddingLeft="20px"
                     android:hint="Mô tả hoặc ghi chú ... "
                     android:textSize="@dimen/size_2" />
 
@@ -228,7 +236,6 @@
                 android:layout_weight="1"
                 android:padding="10px"
                 android:textAllCaps="true"
-                android:paddingStart="30px"
                 android:text="Thông tin địa chỉ"
                 android:textSize="@dimen/size_3"
                 android:fontFamily="@font/open_sans_semibold"
@@ -239,14 +246,14 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="vertical"
-                android:paddingLeft="30px"
-                android:paddingRight="50px">
+                android:paddingLeft="10px"
+                android:paddingRight="10px">
 
                 <TextView
                     android:id="@+id/textView23"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20px"
+                    android:layout_marginTop="10px"
                     android:text="Tỉnh/Thành phố*"
                     android:textColor="@color/graylight"
                     android:fontFamily="@font/open_sans"
@@ -256,8 +263,8 @@
                     android:id="@+id/textView24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
                     android:text="TP HO CHI MINH"
                     android:textSize="@dimen/size_3"
                     android:textColor="@color/black"
@@ -276,8 +283,8 @@
                     android:id="@+id/textView26"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
                     android:text="QUAN THU DUC"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"
@@ -296,8 +303,8 @@
                     android:id="@+id/textView28"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
                     android:text="PHUONG LINH TRUNG"
                     android:textColor="@color/black"
                     android:fontFamily="@font/open_sans"
@@ -316,8 +323,8 @@
                     android:id="@+id/textView31"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
                     android:text="PHUONG LINH TRUNG"
                     android:textSize="@dimen/size_3"
                     android:textColor="@color/black"
@@ -333,8 +340,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:backgroundTint="@color/red"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="@string/button_confirm"

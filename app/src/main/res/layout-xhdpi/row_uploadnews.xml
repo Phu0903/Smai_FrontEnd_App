@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/cardview_recyclerview"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="92dp"
+            android:layout_marginLeft="20px"
+            android:gravity="center"
+            android:layout_weight="3">
+            <ImageView
+                android:id="@+id/img_hinh"
+                android:layout_width="260px"
+                android:layout_height="260px"
+                android:scaleType="centerInside"
+                android:foregroundGravity="center"
+                android:src="@drawable/ic_baseline_image_24"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingRight="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_tittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Có sách cần thanh lý "
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:inputType="textCapWords"
+                android:textSize="@dimen/size_2"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/ellipsis"
+                android:fontFamily="@font/open_sans_semibold"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_typenews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tin tặng"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_2"
+                    android:textColor="@color/light_gray"
+                    android:fontFamily="@font/open_sans"/>
+
+                <TextView
+                    android:id="@+id/tv_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Miễn phí"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_2"
+                    android:textColor="@color/green"
+                    android:fontFamily="@font/open_sans"
+                    android:textAlignment="textEnd"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_datepost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="6 phút"
+                    android:layout_weight="2"
+                    android:drawableLeft="@drawable/ic_baseline_access_time_18"
+                    android:drawablePadding="20px"
+                    android:textSize="@dimen/size_2"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/light_gray"
+                    android:fontFamily="@font/open_sans"/>
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thủ Đức, Sài Gòn"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_2"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/light_gray"
+                    android:fontFamily="@font/open_sans"
+                    android:textAlignment="textEnd"/>
+
+
+
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_centerInParent="true"
+                android:background="@color/light_gray"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/typePost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tặng cộng đồng"
+                android:textColor="@color/light_gray"
+                android:layout_weight="1"
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/size_2"/>
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đang hiển thị"
+                android:textAlignment="textEnd"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/size_2"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

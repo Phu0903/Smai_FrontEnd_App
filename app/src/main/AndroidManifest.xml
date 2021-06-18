@@ -4,8 +4,7 @@
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- storage permission -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- call permission -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- call permission -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,12 +15,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".FilterPostDonation"></activity>
+        <activity android:name=".PopupCategory"
+            android:theme="@style/Theme.AppCompat.CustomTheme"></activity>
+        <activity android:name=".FilterPostDonation" />
         <activity android:name=".DetailPostTinDang" />
         <activity
             android:name=".DetailPostTangCongDong"
@@ -69,7 +69,8 @@
         <activity
             android:name=".Search"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

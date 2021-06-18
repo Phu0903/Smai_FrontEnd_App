@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/border_radious_4_corners"
+    tools:context=".PopupCategory">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_radius_2_corners_top"
+            android:paddingTop="20px"
+            android:paddingLeft="20px"
+            android:paddingRight="20px"
+            android:paddingBottom="20px">
+
+            <ImageButton
+                android:id="@+id/closePopup"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_close_24"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Danh mục chọn"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_3" />
+        </FrameLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="5dp"
+        android:background="@color/gray"
+        android:id="@+id/listpopupdanhmuc"/>
+
+
+</LinearLayout>

@@ -61,6 +61,8 @@ public class GiveFor extends AppCompatActivity {
     String TypeAuthor;
     public static List<PostNewsModel> posts;
     LinearLayout linearLayout;
+    ArrayList<PostNewsModel> listName = new ArrayList<>();
+    ArrayList<String> listCatogory = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +104,6 @@ public class GiveFor extends AppCompatActivity {
 
         }
 
-
-
         Retrofit retrofit = RetrofitClient.getRetrofitInstance();
         ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
 
@@ -125,6 +125,27 @@ public class GiveFor extends AppCompatActivity {
 
                 adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, posts);
                 lvNews_New.setAdapter(adaptergivfor);
+                listCatogory = intent.getStringArrayListExtra("ListName");
+                if (listCatogory != null) {
+                    for (String s : listCatogory) {
+                        Log.d("Name catogory", s);
+                        for (int i=0;i<posts.size();i++) {
+                            List<ProductModel> list = posts.get(i).getNameProduct();
+                            for (int j=0;j<list.size();j++) {
+                                String nameCategory = list.get(j).getNameProduct();
+                                Log.d("Đồ khác trẻ em", nameCategory);
+                                if (nameCategory.equals(s)) {
+                                    listName.add(posts.get(i));
+                                }
+                            }
+                        }
+                    }
+
+                    Log.d("Size list name", String.valueOf(listName.size()));
+                    adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, listName);
+                    lvNews_New.setAdapter(adaptergivfor);
+                }
+
                 lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
