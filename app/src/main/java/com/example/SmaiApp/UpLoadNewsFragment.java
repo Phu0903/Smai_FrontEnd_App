@@ -109,31 +109,98 @@ public class UpLoadNewsFragment extends Fragment {
                         posts = response.body();
                         adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, posts);
                         lvNews.setAdapter(adapter);
+
+                        Log.d("onResponse: ", "hhhh");
+
                         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if(paths[position] == "Tin bán") {
-                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_news_listview, postsTinBan);
+                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, postsTinBan);
                                     lvNews.setAdapter(adapter);
                                 }
                                 else if (paths[position] == "Tất cả tin đăng" || paths[position] == "Tin tặng") {
-                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_news_listview, posts);
+                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, posts);
                                     lvNews.setAdapter(adapter);
                                 }
                             }
 
                             @Override
                             public void onNothingSelected(AdapterView<?> parent) {
-                                adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_news_listview, posts);
+                                adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, posts);
                                 lvNews.setAdapter(adapter);
                             }
                         });
 
+                        lvNews.setItemsCanFocus(true);
 
                         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Log.d("onResponse: ", "yeu bong beo");
+                                Intent intent = new Intent(getActivity().getBaseContext(), DetailPostTinDang.class);
+                                PostNewsModel post = posts.get(position);
+                                String title = post.getTitle();
 
+                                List<ProductModel> productModel = post.getNameProduct();
+                                ArrayList<String> listNameCategory = new ArrayList<>();
+                                if (productModel.size() != 0) {
+                                    String detailType = productModel.get(0).getCategory();
+                                    for (int i=0;i<productModel.size();i++) {
+                                        listNameCategory.add(productModel.get(i).getCategory());
+                                    }
+                                    intent.putExtra("detailType", detailType);
+                                    intent.putStringArrayListExtra("ListName", listNameCategory);
+                                }
+                                String address = post.getAddress();
+                                String fullName = post.getNameAuthor();
+                                String inforDetail = post.getNote();
+                                String typeAuthor = post.getTypeAuthor();
+                                List<String> listUrl = post.getUrlImage();
+                                ArrayList<String> arrayListurl = new ArrayList<>();
+                                for (String s: listUrl) {
+                                    arrayListurl.add(s);
+                                }
+                                String AuthorID = post.getAuthorID();
+
+                                intent.putExtra("title", title);
+                                intent.putExtra("address", address);
+                                intent.putExtra("fullName", fullName);
+                                intent.putExtra("inforDetail", inforDetail);
+                                intent.putExtra("typeAuthor", typeAuthor);
+                                intent.putExtra("AuthorID", AuthorID);
+                                intent.putStringArrayListExtra("url", arrayListurl);
+                                getActivity().startActivity(intent);
+
+                            }
+                        });
+
+                    }
+                }
+                @Override
+                public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
+
+                }
+            });
+        }
+
+
+
+
+
+
+
+        return view;
+
+
+    }
+}
+/*
+lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                Log.d("Message", "Bông béooooo");
                                 Intent intent = new Intent(getActivity().getBaseContext(), DetailPostTinDang.class);
                                 PostNewsModel post = posts.get(position);
                                 String title = post.getTitle();
@@ -172,23 +239,4 @@ public class UpLoadNewsFragment extends Fragment {
 
                             }
                         });
-                    }
-                }
-                @Override
-                public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
-
-                }
-            });
-        }
-
-
-
-
-
-
-
-        return view;
-
-
-    }
-}
+ */

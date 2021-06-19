@@ -104,7 +104,7 @@
             android:layout_marginLeft="30px"
             android:layout_marginRight="30px"
             android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_1"
+            android:textSize="@dimen/size_2"
             android:layout_marginTop="20px"
             android:singleLine="true"/>
         <Button

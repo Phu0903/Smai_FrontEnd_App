@@ -26,8 +26,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="20px"
-        android:paddingBottom="20px"
         android:background="@color/white"
         android:gravity="center">
 

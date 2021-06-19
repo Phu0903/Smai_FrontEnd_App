@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.List;
 
 public class PostNewsModel   {
+
+    private String idpost;
+    private String _id;
     private String AuthorID;
     private String TypeAuthor;
     private String NameAuthor;
@@ -21,6 +24,14 @@ public class PostNewsModel   {
     private Date createdAt;
     private Date updatedAt;
 
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
     public String getIdpost() {
         return idpost;
     }
@@ -29,7 +40,7 @@ public class PostNewsModel   {
         this.idpost = idpost;
     }
 
-    private String idpost;
+
 
     public List<File> getProductImage() {
         return productImage;

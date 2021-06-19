@@ -63,6 +63,22 @@ public class CategoryActivity3 extends AppCompatActivity {
 
         nameProductArrayList = new ArrayList<NameProduct>();
 
+        // Nhận địa chỉ*****************************************************************************
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            address = bundle.getString("address");
+            Log.d("Address catogory 3", address);
+        }
+        if (bundle.getString("TypeAuthor") != null) {
+            TypeAuthor = bundle.getString("TypeAuthor");
+
+            Log.d("typeAuthor cato", TypeAuthor);
+        }
+        String token = bundle.getString("token");
+        tokenMain = token;
+        Log.d("Token catogo", token);
+//*************************************************************************************************
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
@@ -84,8 +100,15 @@ public class CategoryActivity3 extends AppCompatActivity {
                     nameProductArrayList.add(nameProduct);
                     arrayListName.add(nameProduct.getNameProduct());
                     arrayListCatogory.add(nameProduct.getCategory());
-
+                    Intent intent1 = new Intent(getApplicationContext(), Detail2.class);
+                    intent1.putExtra("ListName", arrayListName);
+                    intent1.putExtra("ListCatogary", arrayListCatogory);
+                    intent1.putExtra("TypeAuthor", TypeAuthor);
+                    intent1.putExtra("address", address);
+                    intent1.putExtra("token", token);
+                    startActivity(intent1);
                 }
+
 
                 return true;
             }
@@ -96,53 +119,34 @@ public class CategoryActivity3 extends AppCompatActivity {
 
 
 
-// Nhận địa chỉ*****************************************************************************
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            address = bundle.getString("address");
-            Log.d("Address catogory 3", address);
-        }
-        if (bundle.getString("TypeAuthor") != null) {
-            TypeAuthor = bundle.getString("TypeAuthor");
 
-            Log.d("typeAuthor cato", TypeAuthor);
-        }
-        String token = bundle.getString("token");
-        tokenMain = token;
-        Log.d("Token catogo", token);
-//*************************************************************************************************
 
 //        *************************Next button
 
-        btnNext = (Button)findViewById(R.id.danhmuc_next);
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count != 0) {
-
-//                        for (int i=0; i< nameProductArrayList.size(); i++) {
-//                            arrayListName.add(nameProductArrayList.get(i).getNameProduct());
-//                            arrayListCatogory.add(nameProductArrayList.get(i).getCategory());
-//                    }
-//                        ********************************************************************
-                    //gửi data sang activity Detail*************************************************************
-                    Intent intent1 = new Intent(getApplicationContext(), Detail2.class);
-                    intent1.putExtra("ListName", arrayListName);
-                    intent1.putExtra("ListCatogary", arrayListCatogory);
-                    intent1.putExtra("TypeAuthor", TypeAuthor);
-                    intent1.putExtra("address", address);
-                    intent1.putExtra("token", token);
-                    startActivity(intent1);
-//                        *************************************************************
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Vui lòng chọn ít nhất 1 mục", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        btnNext = (Button)findViewById(R.id.danhmuc_next);
+//
+//        btnNext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (count != 0) {
+//
+//
+//                    //gửi data sang activity Detail*************************************************************
+//                    Intent intent1 = new Intent(getApplicationContext(), Detail2.class);
+//                    intent1.putExtra("ListName", arrayListName);
+//                    intent1.putExtra("ListCatogary", arrayListCatogory);
+//                    intent1.putExtra("TypeAuthor", TypeAuthor);
+//                    intent1.putExtra("address", address);
+//                    intent1.putExtra("token", token);
+//                    startActivity(intent1);
+////                        *************************************************************
+//                }
+//                else {
+//                    Toast.makeText(getApplicationContext(), "Vui lòng chọn ít nhất 1 mục", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
 
 

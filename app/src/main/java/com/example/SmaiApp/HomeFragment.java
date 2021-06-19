@@ -48,9 +48,6 @@ import static com.example.SmaiApp.Helper.Helper.setListViewHeightBasedOnChildren
 public class HomeFragment extends Fragment {
 
 
-    ListView lvNews;
-
-
 //    button search
     Button btnSearch;
 
@@ -166,7 +163,7 @@ public class HomeFragment extends Fragment {
         });
 
         //      listview tin đăng mới
-        lvNews = view.findViewById(R.id.listViewNews);
+
 //        ******************************************************************************************
 // get data
         Retrofit retrofit = RetrofitClient.getRetrofitInstance();

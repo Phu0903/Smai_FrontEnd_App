@@ -111,6 +111,7 @@ public class SigninFragment extends Fragment {
                                             intent.putExtra("Token", tk);
                                             intent.putExtra("ISLOGINED", "NO");
                                             getActivity().startActivity(intent);
+                                            getActivity().finish();
 
 
                                     } else {

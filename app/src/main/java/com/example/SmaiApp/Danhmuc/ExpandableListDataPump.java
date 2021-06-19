@@ -68,7 +68,7 @@ public class ExpandableListDataPump {
         List<String> xeco = new ArrayList<String>();
         xeco.add("Xe đạp, ô tô, ...cho trẻ em");
         xeco.add("Xe đẩy, xe năn,.. người cao tuổi");   //rồi
-        xeco.add("Xe đạp, xe điện, xe má");
+        xeco.add("Xe đạp, xe điện, xe máy");
         xeco.add("Xe khác");
 
         List<String> dokhac = new ArrayList<String>();

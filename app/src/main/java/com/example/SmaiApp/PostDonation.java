@@ -141,6 +141,7 @@ public class PostDonation extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PostDonation.this, FilterPostDonation.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -167,12 +168,10 @@ public class PostDonation extends AppCompatActivity {
                     listCatogory = intent.getStringArrayListExtra("ListName");
                     if (listCatogory != null) {
                         for (String s : listCatogory) {
-                            Log.d("Name catogory", s);
                             for (int i=0;i<posts.size();i++) {
                                 List<ProductModel> list = posts.get(i).getNameProduct();
                                 for (int j=0;j<list.size();j++) {
                                     String nameCategory = list.get(j).getNameProduct();
-                                    Log.d("Đồ khác trẻ em", nameCategory);
                                     if (nameCategory.equals(s)) {
                                         listName.add(posts.get(i));
                                     }
@@ -259,47 +258,14 @@ public class PostDonation extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_toolbar_danhmuc, menu);
-
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        if (item.getItemId() == R.id.button_cancel) {
-            ConfirmCancel();
-        }
-        else {
+
             finish();
-        }
+
         return true;
     }
 
-    private void ConfirmCancel() {
-        AlertDialog.Builder alerDialog = new AlertDialog.Builder(this);
-        alerDialog.setTitle("Thông báo!");
-        alerDialog.setMessage("Bạn có chắc muốn hủy không?");
-
-        alerDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                i.putExtra("Token", tokenMain);
-                i.putExtra("message", "OK");
-                startActivity(i);
-            }
-        });
-        alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        alerDialog.show();
-    }
 
     public String loadJSONFromAsset() {
         String json;

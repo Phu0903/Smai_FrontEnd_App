@@ -156,7 +156,7 @@ public class ConfirmInforPost extends AppCompatActivity {
         } else {
             who.setText(TypeAuthor);
         }
-        danhmuc.setText("Danh mục nhận tặng" + listCatogory.size());
+        danhmuc.setText("Danh mục nhận tặng     " + listCatogory.size());
         tieude.setText(loinhan);
         ghichu.setText(mota);
         String[] getAddress = address.split(",");

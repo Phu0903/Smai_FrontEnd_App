@@ -13,6 +13,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -62,6 +63,11 @@ public interface ApiServices {
     @Multipart
     @POST("post/UpdatePost")
     Call<PostNewsModel> updateImagePost(@Header("idpost") String idpost, @Part List<MultipartBody.Part> productImage);
+
+
+//    delete post
+    @DELETE("post/deletePostbyUser")
+    Call<String> deleteNews(@Query("_id") String id);
 
 
     @POST("post/TestToken")

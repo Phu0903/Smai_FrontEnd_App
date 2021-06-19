@@ -81,7 +81,7 @@ public class DetailPostTangCongDong extends AppCompatActivity {
         fullName.setText(fullname);
         inforDetail.setText(infordetail);
         if (typeauthor.equals("tangcongdong")) {
-            typeAuthor.setText("Tặng cộng đồng");
+            typeAuthor.setText("Cá nhân");
         }
         else {
             typeAuthor.setText(typeauthor);

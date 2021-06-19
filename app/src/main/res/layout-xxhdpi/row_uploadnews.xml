@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:id="@+id/cardview_recyclerview"
     android:layout_height="wrap_content">
 
@@ -9,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
@@ -40,19 +41,31 @@
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_tittle"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Có sách cần thanh lý "
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:inputType="textCapWords"
-                android:textSize="@dimen/size_2"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:drawableRight="@drawable/ellipsis"
-                android:fontFamily="@font/open_sans_semibold"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_tittle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Có sách cần thanh lý "
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:inputType="textCapWords"
+                    android:textSize="@dimen/size_2"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans_semibold"/>
+
+                <ImageButton
+                    android:id="@+id/btnSettitngNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ellipsis"
+                    android:backgroundTint="@color/white"/>
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -113,23 +126,24 @@
                     android:layout_gravity="bottom"
                     android:textColor="@color/light_gray"
                     android:fontFamily="@font/open_sans"
-                    android:textAlignment="textEnd"/>
-
-
+                    android:gravity="right"/>
 
             </LinearLayout>
 
-            <Button
+            <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_centerInParent="true"
+                android:layout_height="1dp"
                 android:background="@color/light_gray"/>
+
 
         </LinearLayout>
 
 
+
+
     </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -154,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đang hiển thị"
-                android:textAlignment="textEnd"
+                android:gravity="right"
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:fontFamily="@font/open_sans"
@@ -162,5 +176,6 @@
 
 
         </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

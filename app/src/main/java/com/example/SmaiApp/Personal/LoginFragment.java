@@ -142,6 +142,7 @@ public class LoginFragment extends Fragment {
                                 }
 
                                 getActivity().startActivity(intent);
+                                getActivity().finish();
                             }
                             else {
                                 Toast.makeText(getContext(), "Sai tên tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();

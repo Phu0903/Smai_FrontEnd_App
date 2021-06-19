@@ -34,7 +34,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class DetailPostTinDang extends AppCompatActivity {
-    Button btnCall;
+    Button btnCall, btnPopup;
 
     TextView tittle, detailType, detailPrice, address, fullName, typeAuthor, inforDetail;
     ImageView productImage;
@@ -58,7 +58,7 @@ public class DetailPostTinDang extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-
+        ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
         String title = intent.getStringExtra("title");
         String detailtype = intent.getStringExtra("detailType");
         String addresss = intent.getStringExtra("address");
@@ -71,16 +71,39 @@ public class DetailPostTinDang extends AppCompatActivity {
         }
         String infordetail = intent.getStringExtra("inforDetail");
         String typeauthor = intent.getStringExtra("typeAuthor");
+        Log.d("tặng cộng đồng", typeauthor);
         ArrayList<String> listUrl = intent.getStringArrayListExtra("url");
         String AuthorID = intent.getStringExtra("AuthorID");
 
         tittle.setText(title);
 
-        detailType.setText(detailtype);
+
         address.setText(addresss);
         fullName.setText(fullname);
         inforDetail.setText(infordetail);
-        typeAuthor.setText(typeauthor);
+
+        if (typeauthor.equals("tangcongdong")) {
+            typeAuthor.setText("Cá nhân");
+            detailType.setText(detailtype);
+        }
+        else {
+            typeAuthor.setText(typeauthor);
+            detailType.setText("Danh mục nhân:   " + listName.size());
+            btnPopup.setVisibility(View.VISIBLE);
+            detailPrice.setVisibility(View.GONE);
+            btnPopup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent1 = new Intent(DetailPostTinDang.this, PopupCategory.class);
+                    intent1.putExtra("listname", listName);
+                    startActivity(intent1);
+                }
+            });
+
+
+
+        }
+
 
         ImageSlider imageSlider = findViewById(R.id.slider);
         List<SlideModel> slideModels = new ArrayList<>();
@@ -92,7 +115,6 @@ public class DetailPostTinDang extends AppCompatActivity {
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                 ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
@@ -140,8 +162,9 @@ public class DetailPostTinDang extends AppCompatActivity {
         fullName = findViewById(R.id.user_name);
         typeAuthor = findViewById(R.id.user_type);
         inforDetail = findViewById(R.id.infor_detail);
-
+        btnPopup = findViewById(R.id.popupDanhmuc);
         btnCall = (Button)findViewById(R.id.call);
+
     }
 
 

@@ -121,7 +121,10 @@ public class FilterPostDonation extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
         super.onBackPressed();
+        Intent intent = new Intent(FilterPostDonation.this, PostDonation.class);
+        startActivity(intent);
     }
 
     @Override
@@ -130,46 +133,5 @@ public class FilterPostDonation extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_toolbar_danhmuc, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if (item.getItemId() == R.id.button_cancel) {
-            ConfirmCancel();
-        }
-        else {
-            finish();
-        }
-        return true;
-    }
-
-    private void ConfirmCancel() {
-        AlertDialog.Builder alerDialog = new AlertDialog.Builder(this);
-        alerDialog.setTitle("Thông báo!");
-        alerDialog.setMessage("Bạn có chắc muốn hủy không?");
-
-        alerDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                i.putExtra("Token", tokenMain);
-                i.putExtra("message", "OK");
-                startActivity(i);
-            }
-        });
-        alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        alerDialog.show();
-    }
 }

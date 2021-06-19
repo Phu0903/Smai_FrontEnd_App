@@ -1,18 +1,28 @@
 package com.example.SmaiApp.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.SmaiApp.MainActivity;
 import com.example.SmaiApp.Model.PostNewsModel;
 import com.example.SmaiApp.Model.ProductModel;
+import com.example.SmaiApp.NetWorKing.ApiServices;
+import com.example.SmaiApp.NetWorKing.RetrofitClient;
 import com.example.SmaiApp.R;
 
 import java.text.SimpleDateFormat;
@@ -20,10 +30,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class UpLoadNewsAdapter extends BaseAdapter {
 
-    private static final String DATE_FORMAT = "dd/MM/yyyy";
-    private static final String TIME_FORMAT_24 = "HH:mm";
     public UpLoadNewsAdapter(Context context, int layout, List<PostNewsModel> newsList) {
         myContext = context;
         myLayout = layout;
@@ -100,18 +113,14 @@ public class UpLoadNewsAdapter extends BaseAdapter {
         txtName.setText(arrayNews.get(position).getTitle());
 
 
-//        TextView txtNote = convertView.findViewById(R.id.tv_note);
-//        txtNote.setText(arrayNews.get(position).get);
-
         TextView txtAddress = convertView.findViewById(R.id.tv_address);
         txtAddress.setText(mainAddress[0] + ", " + mainAddress[1]);
 
-
-        TextView typePost = convertView.findViewById(R.id.typePost);
-        TextView status = convertView.findViewById(R.id.status);
         TextView txtTypesNews = convertView.findViewById(R.id.tv_typenews);
         TextView note = convertView.findViewById(R.id.tv_note);
         if (arrayNews.get(position).getTypeAuthor().equals("Cá nhân")) {
+            TextView status = convertView.findViewById(R.id.status);
+            TextView typePost = convertView.findViewById(R.id.typePost);
             typePost.setText("Cần xin đồ");
             status.setText("Chờ xác thực");
             status.setTextColor(Color.RED);
@@ -137,8 +146,6 @@ public class UpLoadNewsAdapter extends BaseAdapter {
         TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
         txtDatePost.setText(getHour);
 
-
-
         List<String> listUrl = arrayNews.get(position).getUrlImage();
 
         if (listUrl.size() != 0) {
@@ -152,6 +159,106 @@ public class UpLoadNewsAdapter extends BaseAdapter {
                     .into(imgHinh);
         }
 
+        ImageButton btnSetting = convertView.findViewById(R.id.btnSettitngNews);
+
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMenu(v, position);
+            }
+        });
+
+
         return convertView;
     }
+
+    public void showMenu (View view, int position)
+    {
+        PopupMenu menu = new PopupMenu (myContext, view);
+        menu.setOnMenuItemClickListener (new PopupMenu.OnMenuItemClickListener ()
+        {
+            @Override
+            public boolean onMenuItemClick (MenuItem item)
+            {
+                int id = item.getItemId();
+                switch (id)
+                {
+                    case R.id.deleteNews:
+                        ConfirmCancel(view, position);
+                        break;
+                }
+                return true;
+            }
+        });
+        menu.inflate (R.menu.popup_menu_action_news);
+        menu.show();
+    }
+
+    private void ConfirmCancel(View v, int position) {
+        AlertDialog.Builder alerDialog = new AlertDialog.Builder(myContext);
+        alerDialog.setTitle("Thông báo!");
+        alerDialog.setMessage("Bạn có chắc muốn xóa không?");
+
+        alerDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                deleteNews(position);
+                arrayNews.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+        alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alerDialog.show();
+    }
+
+    public void deleteNews(int position) {
+
+        Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+        ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
+
+        String id = arrayNews.get(position).get_id();
+
+        Call<String> call = jsonPlaceHolderApi.deleteNews(id);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                if (response.isSuccessful()) {
+                    AlertDialog.Builder alerDialog = new AlertDialog.Builder(myContext);
+                    alerDialog.setTitle("Thông báo!");
+                    alerDialog.setMessage("Đã xóa thành công");
+
+                    alerDialog.setPositiveButton("Xong", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    alerDialog.show();
+                } else {
+                    Log.d("Tra ve gì đấy", response.message());
+                }
+
+                notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+                Log.d("Tra cai dech gì đấy", t.getMessage());
+
+            }
+        });
+
+    }
 }
+
+

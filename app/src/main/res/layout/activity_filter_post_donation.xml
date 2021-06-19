@@ -39,15 +39,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/red"
         android:text="Tìm theo"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:fontFamily="@font/open_sans_semibold"
-        android:textSize="@dimen/size_3"/>
+        android:textSize="@dimen/size_1"/>
 
 </LinearLayout>

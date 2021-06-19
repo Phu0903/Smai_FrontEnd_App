@@ -98,6 +98,7 @@ public class UserFragment extends Fragment {
                         intent.putExtra("Token", "");
                         intent.putExtra("ISLOGINED", "");
                         startActivity(intent);
+                        getActivity().finish();
                         break;
                     default:
                         break;
@@ -156,7 +157,7 @@ public class UserFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<UserModel> call, Throwable t) {
-                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+
                 }
             });
             btnHistory.setOnClickListener(new View.OnClickListener() {
@@ -177,8 +178,6 @@ public class UserFragment extends Fragment {
 
         }
 
-
-        Log.d("Message, token, user", message + ",    " + token);
 
         return view;
     }

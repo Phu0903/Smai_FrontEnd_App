@@ -82,7 +82,12 @@ public class DetailPost extends AppCompatActivity {
         address.setText(addresss);
         fullName.setText(fullname);
         inforDetail.setText(infordetail);
-        typeAuthor.setText(typeauthor);
+        if (typeauthor.equals("tangcongdong")) {
+            typeAuthor.setText("Cá nhân");
+        }
+        else {
+            typeAuthor.setText(typeauthor);
+        }
 
         ImageSlider imageSlider = findViewById(R.id.slider);
 
