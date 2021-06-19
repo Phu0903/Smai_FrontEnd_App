@@ -20,6 +20,7 @@ import com.example.SmaiApp.Model.AccountModel;
 import com.example.SmaiApp.NetWorKing.ApiServices;
 import com.example.SmaiApp.NetWorKing.RetrofitClient;
 import com.example.SmaiApp.R;
+import com.example.SmaiApp.VerifyOTP;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -93,25 +94,23 @@ public class SigninFragment extends Fragment {
                             accountModel.setPassword(passWord);
                             accountModel.setFullName(fullName);
                             accountModel.setPhoneNumber(phoneNumber);
-                            Call<AccountModel> call = jsonPlaceHolderApi.signup(accountModel);
+                            Call<String> call = jsonPlaceHolderApi.checkPhoneNumber(accountModel);
 
-                            call.enqueue(new Callback<AccountModel>() {
+                            call.enqueue(new Callback<String>() {
                                 @Override
-                                public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
+                                public void onResponse(Call<String> call, Response<String> response) {
                                     if (response.isSuccessful()) {
 
-                                        AccountModel accountModel1 = response.body();
-                                        String message = accountModel1.getMessage();
-                                        String tk = accountModel1.getAccessToken();
+                                        if (response.body() != null) {
+                                            Intent intent = new Intent(getActivity().getBaseContext(), VerifyOTP.class);
+                                            intent.putExtra("FullName", fullName);
+                                            intent.putExtra("PhoneNumber", phoneNumber);
+                                            Log.d("phone number", phoneNumber);
+                                            intent.putExtra("Password", passWord);
 
-                                        Log.d("Token Login", tk);
-
-                                            Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
-                                            intent.putExtra("message", message);
-                                            intent.putExtra("Token", tk);
-                                            intent.putExtra("ISLOGINED", "NO");
                                             getActivity().startActivity(intent);
                                             getActivity().finish();
+                                        }
 
 
                                     } else {
@@ -122,7 +121,7 @@ public class SigninFragment extends Fragment {
                                 }
 
                                 @Override
-                                public void onFailure(Call<AccountModel> call, Throwable t) {
+                                public void onFailure(Call<String> call, Throwable t) {
                                     Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -132,7 +131,6 @@ public class SigninFragment extends Fragment {
                             btnSignin.setEnabled(true);
                         }
                     }
-
 
             }
 

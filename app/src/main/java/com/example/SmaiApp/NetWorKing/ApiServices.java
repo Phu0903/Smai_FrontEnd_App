@@ -56,10 +56,14 @@ public interface ApiServices {
     @POST("account/register")
     Call<AccountModel> signup(@Body AccountModel accountModel);
 
+    @POST("account/getPhone")
+    Call<String> checkPhoneNumber(@Body AccountModel accountModel);
 
+//create news
     @POST("post/CreatePost")
     Call<PostNewsModel> postNews(@Header("Authorization") String authHeader, @Body PostNewsModel model);
 
+//    up news
     @Multipart
     @POST("post/UpdatePost")
     Call<PostNewsModel> updateImagePost(@Header("idpost") String idpost, @Part List<MultipartBody.Part> productImage);

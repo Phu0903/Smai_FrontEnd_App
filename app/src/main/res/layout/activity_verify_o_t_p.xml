@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/imageView6"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/otp_description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/open_sans"
+            android:includeFontPadding="false"
+            android:text="Xác thực mã OTP"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <com.goodiebag.pinview.Pinview
+            android:id="@+id/pin_view"
+            app:pinWidth="40dp"
+            app:pinHeight="40dp"
+            app:pinLength="6"
+            app:cursorVisible="false"
+            app:forceKeyboard="true"
+            app:password="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:cursorVisible="true"
+            android:inputType="number"
+            android:itemBackground="#65EAEAEA" />
+
+
+
+        <Button
+            android:id="@+id/btn_OTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="?android:attr/colorPressedHighlight"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/size_2"
+            android:textAllCaps="false"
+            android:text="Gửi"
+            android:textColor="@color/white"
+            android:transitionName="transition_OTP_screen"
+            app:backgroundTint="#DD484D" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

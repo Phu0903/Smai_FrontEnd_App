@@ -19,8 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".PopupCategory"
-            android:theme="@style/Theme.AppCompat.CustomTheme"></activity>
+        <activity android:name=".VerifyOTP"></activity>
+        <activity
+            android:name=".PopupCategory"
+            android:theme="@style/Theme.AppCompat.CustomTheme" />
         <activity android:name=".FilterPostDonation" />
         <activity android:name=".DetailPostTinDang" />
         <activity

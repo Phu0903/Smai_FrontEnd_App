@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "427630103026",
+    "project_id": "smaiapp-4e655",
+    "storage_bucket": "smaiapp-4e655.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427630103026:android:9d8c619df359353015c36b",
+        "android_client_info": {
+          "package_name": "com.example.quyengop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427630103026-gj036hkr7pqd4oqdj7fae6iuf664r4an.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quyengop",
+            "certificate_hash": "b14561109aa16662ad0b4ffb4e2586e5f29a96e2"
+          }
+        },
+        {
+          "client_id": "427630103026-9ptiaahf3lgnbdgrtmhnotd1h05t8u0e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0JGfOyL-6SFxBHAbjihM9EWcmCcAd98g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427630103026-9ptiaahf3lgnbdgrtmhnotd1h05t8u0e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
