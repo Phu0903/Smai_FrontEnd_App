@@ -19,58 +19,97 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name=".VerifyOTP"></activity>
+        <activity android:name=".GetNewPassword"></activity>
+        <activity android:name=".ForgotPassword" />
+        <activity
+            android:name=".VerifyOTP"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PopupCategory"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.CustomTheme" />
-        <activity android:name=".FilterPostDonation" />
-        <activity android:name=".DetailPostTinDang" />
+        <activity
+            android:name=".FilterPostDonation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DetailPostTinDang"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DetailPostTangCongDong"
-            android:parentActivityName=".PostDonation" />
+            android:parentActivityName=".PostDonation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DetailPostGiveFor"
-            android:parentActivityName=".GiveFor" />
-        <activity android:name=".ConfirmInforPost2" />
-        <activity android:name=".Detail2" />
+            android:parentActivityName=".GiveFor"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfirmInforPost2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Detail2"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CategoryActivity3"
-            android:parentActivityName=".ConfirmAddress" />
-        <activity android:name=".ConfirmAddress3" />
+            android:parentActivityName=".ConfirmAddress"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfirmAddress3"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CategoryActivity2"
-            android:parentActivityName=".ConfirmAddress2" />
-        <activity android:name=".ConfirmAddress2" />
-        <activity android:name=".GiveFor" />
+            android:parentActivityName=".ConfirmAddress2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfirmAddress2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GiveFor"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DetailPost"
-            android:parentActivityName=".GiveFor" />
-        <activity android:name=".NewpostType" />
+            android:parentActivityName=".GiveFor"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewpostType"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".who_activity"
-            android:parentActivityName=".ConfirmAddress3" />
+            android:parentActivityName=".ConfirmAddress3"
+            android:screenOrientation="portrait" />
         <activity android:name=".CompleteActivity" />
         <activity
             android:name=".ConfirmInforPost"
-            android:parentActivityName=".Detail" />
-        <activity android:name=".ViewHistory" />
+            android:parentActivityName=".Detail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewHistory"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PostDonation"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Detail"
-            android:parentActivityName=".CategoryActivity" />
+            android:parentActivityName=".CategoryActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CategoryActivity"
-            android:parentActivityName=".who_activity" />
-        <activity android:name=".ConfirmAddress" />
-        <activity android:name=".Account" />
+            android:parentActivityName=".who_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfirmAddress"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Account"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Announce"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Search"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">

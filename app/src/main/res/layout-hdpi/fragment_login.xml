@@ -4,101 +4,131 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lnLogin"
     tools:context=".Personal.LoginFragment">
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="200px"
-        android:layout_height="300dp"
-        android:background="@drawable/logo"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textview_username"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="@dimen/size_2"
-                android:fontFamily="@font/open_sans"
-                android:textColorHint="#D6908B"
-                android:singleLine="true"
-                android:maxLines="1"
-                android:imeOptions="actionNext"
-                android:completionThreshold="1"
-                android:hint="Tài khoản" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="25dp"
-            app:passwordToggleEnabled="true"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textView_password"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColorHint="#D6908B"
-                android:textSize="@dimen/size_2"
-                android:fontFamily="@font/open_sans"
-                android:singleLine="true"
-                android:maxLines="1"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:hint="Mật khẩu" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <CheckBox
-            android:id="@+id/checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lưu tài khoản cho lần đăng nhập sau"
-            android:textColor="#333"
-            android:textSize="@dimen/size_2"
-            android:checked="true"
-            android:fontFamily="@font/open_sans"
-            android:layout_marginBottom="40dp"/>
-
-    </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="20dp"
-        android:gravity="bottom">
-        <Button
-            android:id="@+id/btn_login"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300px"
+            android:layout_height="500px"
+            android:background="@drawable/logo"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/size_2"
-            android:padding="15dp"
-            android:fontFamily="@font/open_sans_semibold"
-            android:text="Đăng nhập"
-            android:textColor="@color/white"
-            android:backgroundTint="#DD484D"/>
+            android:paddingTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layouttentaikhoan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textview_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/size_3"
+                    android:fontFamily="@font/open_sans"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:textColorHint="#D6908B"
+                    android:hint="Tài khoản" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutpassword"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                app:passwordToggleEnabled="true"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textView_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColorHint="#D6908B"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:textSize="@dimen/size_3"
+                    android:fontFamily="@font/open_sans"
+                    android:inputType="textPassword"
+                    android:hint="Mật khẩu" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lưu tài khoản cho lần đăng nhập sau"
+                    android:textColor="#333"
+                    android:textSize="@dimen/size_2"
+                    android:layout_marginTop="10dp"
+                    android:checked="true"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/open_sans"
+                    />
+
+                <Button
+                    android:id="@+id/btn_forgotpassword"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quên mật khẩu ?"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/size_1"
+                    android:textColor="#3D6EF6"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:fontFamily="@font/open_sans"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:gravity="bottom">
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_2"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Đăng nhập"
+                android:textColor="@color/white"
+                android:backgroundTint="#DD484D"/>
+        </LinearLayout>
+
     </LinearLayout>
-
-
 
 </LinearLayout>

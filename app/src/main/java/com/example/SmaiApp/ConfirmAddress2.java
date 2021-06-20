@@ -91,6 +91,7 @@ public class ConfirmAddress2 extends AppCompatActivity {
                     bundle.putString("TypeAuthor", TypeAuthor);
                     intent.putExtras(bundle);
                     startActivity(intent);
+                    finish();
                 }
                 else {
                     tvCity.setError("Vui lòng chọn Tỉnh/thành phố");

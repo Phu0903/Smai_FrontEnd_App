@@ -67,7 +67,6 @@ public class ConfirmAddress extends AppCompatActivity {
 
         Intent intent1 = getIntent();
         String token = intent1.getStringExtra("Token");
-        Log.d("Token address", token);
         populateSpinner();
 
 
@@ -90,6 +89,7 @@ public class ConfirmAddress extends AppCompatActivity {
                     bundle.putString("TypeAuthor", "tangcongdong");
                     intent.putExtras(bundle);
                     startActivity(intent);
+                    finish();
                 }
                 else {
                     tvCity.setError("Vui lòng chọn Tỉnh/thành phố");

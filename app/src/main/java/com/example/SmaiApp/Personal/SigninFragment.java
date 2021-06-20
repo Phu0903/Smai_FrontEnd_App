@@ -61,26 +61,15 @@ public class SigninFragment extends Fragment {
         edtSDT.addTextChangedListener(new ConfirmPhoneNumber());
         edtMatKhau.addTextChangedListener(new ConfirmPassWord());
         edtMatKhau2.addTextChangedListener(new ConfirmPassWord2());
-
-
-
-
-
-
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                     Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                     ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
                     String passWord = edtMatKhau.getText().toString();
                     String passWord2 = edtMatKhau2.getText().toString();
                     String phoneNumber = edtSDT.getText().toString();
                     String fullName = edtHoTen.getText().toString();
-
-
                     if (validate(fullName, layouthoten, edtHoTen) == true && validate(passWord, layoutmk, edtMatKhau) == true &&
                     validate(phoneNumber, layoutsdt, edtSDT) == true == true && validate(passWord2, layoutmk2, edtMatKhau2) == true) {
 
@@ -101,13 +90,12 @@ public class SigninFragment extends Fragment {
                                 public void onResponse(Call<String> call, Response<String> response) {
                                     if (response.isSuccessful()) {
 
-                                        if (response.body() != null) {
+                                        if (response.body().equals("Oke")) {
                                             Intent intent = new Intent(getActivity().getBaseContext(), VerifyOTP.class);
                                             intent.putExtra("FullName", fullName);
                                             intent.putExtra("PhoneNumber", phoneNumber);
                                             Log.d("phone number", phoneNumber);
                                             intent.putExtra("Password", passWord);
-
                                             getActivity().startActivity(intent);
                                             getActivity().finish();
                                         }

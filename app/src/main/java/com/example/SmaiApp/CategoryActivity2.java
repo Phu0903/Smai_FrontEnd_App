@@ -171,6 +171,7 @@ public class CategoryActivity2 extends AppCompatActivity {
                 i.putExtra("Token", tokenMain);
                 i.putExtra("message", "OK");
                 startActivity(i);
+                finish();
             }
         });
         alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {

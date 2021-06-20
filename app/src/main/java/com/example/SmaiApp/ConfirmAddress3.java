@@ -90,11 +90,11 @@ public class ConfirmAddress3 extends AppCompatActivity {
                     bundle.putString("TypeAuthor", "tangcongdong");
                     intent.putExtras(bundle);
                     startActivity(intent);
+                    finish();
                 }
                 else {
                     tvCity.setError("Vui lòng chọn Tỉnh/thành phố");
                 }
-
             }
         });
 

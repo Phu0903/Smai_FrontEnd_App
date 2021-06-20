@@ -73,6 +73,10 @@ public interface ApiServices {
     @DELETE("post/deletePostbyUser")
     Call<String> deleteNews(@Query("_id") String id);
 
+//    reset password  account/Forgot
+
+    @POST("account/Forgot")
+    Call<String> getNewPassword(@Body AccountModel accountModel);
 
     @POST("post/TestToken")
     Call<String> testToken(@Header("Authorization") String authHeader);

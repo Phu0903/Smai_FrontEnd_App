@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.SmaiApp.Model.AccountModel;
@@ -17,7 +18,6 @@ import com.example.SmaiApp.NetWorKing.RetrofitClient;
 import com.goodiebag.pinview.Pinview;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,40 +33,85 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class VerifyOTP extends AppCompatActivity {
+public class ForgotPassword extends AppCompatActivity {
 
+    EditText phoneNumber;
+    Button btn_GetOTP, btn_SendOTP;
     Pinview pinview;
-    Button btnOTP;
+    String phonenumber, number;
     FirebaseAuth mAuth;
-    String verificationId, fullName, phoneNumber, passWord;
-
+    String verificationId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify_o_t_p);
-
+        setContentView(R.layout.activity_forgot_password);
         mAuth = FirebaseAuth.getInstance();
-        pinview = findViewById(R.id.pin_view);
-        btnOTP = findViewById(R.id.btn_OTP);
+        phoneNumber = findViewById(R.id.edt_phonenumber);
+        btn_GetOTP = findViewById(R.id.btn_getOTP);
+        btn_SendOTP = findViewById(R.id.btn_OTP_changePassword);
+        pinview =  findViewById(R.id.pin_view);
 
-        Intent intent = getIntent();
 
-        fullName  = intent.getStringExtra("FullName");
-        phoneNumber = intent.getStringExtra("PhoneNumber");
-        passWord = intent.getStringExtra("Password");
 
-        String phone = phoneNumber.substring(1, 10);
-        sendVerificationCode(phone);
-
-        btnOTP.setOnClickListener(new View.OnClickListener() {
+        btn_GetOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnOTP.setEnabled(false);
+                btn_GetOTP.setEnabled(false);
+                phonenumber = phoneNumber.getText().toString();
+                number = phonenumber;
+                if (phonenumber.length() != 10) {
+                    phoneNumber.setError("Số điện thoại không hợp lệ");
+                    btn_GetOTP.setEnabled(true);
+                } else {
+                    Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+                    ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
+                    AccountModel accountModel = new AccountModel();
+                    accountModel.setPhoneNumber(phonenumber);
+                    Log.d("PhoneNumber", accountModel.getPhoneNumber());
+                    Call<String> call = jsonPlaceHolderApi.checkPhoneNumber(accountModel);
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            if (response.isSuccessful()) {
+                                String s = response.body();
+                                Log.d("Boddy", s);
+                                if (s.equals("Oke")) {
+                                    phoneNumber.setError("Số điện thoại chưa đăng ký");
+                                    btn_GetOTP.setEnabled(true);
+                                } else {
+                                    String phone = phonenumber.substring(1, 10);
+                                    sendVerificationCode(phone);
+                                }
+
+                            } else {
+                                Log.d("Message error", response.message());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Toast.makeText(ForgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("sadfsd", String.valueOf(call));
+                            btn_GetOTP.setEnabled(true);
+                        }
+                    });
+
+                }
+            }
+        });
+
+        btn_SendOTP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_SendOTP.setEnabled(false);
                 verifyPhoneNumberWithCode(pinview.getValue());
             }
         });
-        
+
+
+
     }
+
 
     private void verifyPhoneNumberWithCode(String code) {
         // [START verify_with_code]
@@ -101,12 +146,15 @@ public class VerifyOTP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            registration();
+                            Intent intent  = new Intent(ForgotPassword.this, GetNewPassword.class);
+                            intent.putExtra("Number", number);
+                            startActivity(intent);
+                            finish();
                         } else {
                             // Sign in failed, display a message and update the UI;
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 // The verification code entered was invalid
-                                Toast.makeText(VerifyOTP.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(ForgotPassword.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     }
@@ -130,102 +178,13 @@ public class VerifyOTP extends AppCompatActivity {
         @Override
         //Hàm này được gọi khi không gửi được mã code. Chúng ta cần thông báo cho người dùng biết. Ở ví dụ này mình đơn giản là hiển thị một Toast thông báo.
         public void onVerificationFailed(FirebaseException e) {
-            Toast.makeText(VerifyOTP.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(ForgotPassword.this, e.getMessage(), Toast.LENGTH_LONG).show();
             Log.d("Lỗi",e.getMessage());
 
         }
 
     };
 
-    private void registration() {
-        Retrofit retrofit = RetrofitClient.getRetrofitInstance();
-        ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
-        AccountModel accountModel = new AccountModel();
-        accountModel.setPassword(passWord);
-        accountModel.setFullName(fullName);
-        accountModel.setPhoneNumber(phoneNumber);
-        Call<AccountModel> call = jsonPlaceHolderApi.signup(accountModel);
-
-        call.enqueue(new Callback<AccountModel>() {
-            @Override
-            public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
-                if (response.isSuccessful()) {
-
-                    AccountModel accountModel1 = response.body();
-                    String message = accountModel1.getMessage();
-                    String tk = accountModel1.getAccessToken();
-                    Intent intent = new Intent(VerifyOTP.this, MainActivity.class);
-                    intent.putExtra("message", message);
-                    intent.putExtra("Token", tk);
-                    intent.putExtra("ISLOGINED", "NO");
-                    startActivity(intent);
-                    finish();
 
 
-                } else {
-                    Log.e("Message error", response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AccountModel> call, Throwable t) {
-                Toast.makeText(VerifyOTP.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
-
-
-/*
-Retrofit retrofit = RetrofitClient.getRetrofitInstance();
-                    ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
-                    AccountModel accountModel = new AccountModel();
-                    accountModel.setPhoneNumber(phonenumber);
-                    Log.d("PhoneNumber", accountModel.getPhoneNumber());
-                    Call<String> call = jsonPlaceHolderApi.checkPhoneNumber(accountModel);
-                    call.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            if (response.isSuccessful()) {
-                                String s = response.body();
-                                Log.d("Boddy", s);
-                                if (s.equals("Oke")) {
-                                    phoneNumber.setError("Số điện thoại chưa đăng ký");
-                                } else {
-                                    btn_SendOTP.setEnabled(true);
-                                    String phone = phonenumber.substring(1, 10);
-                                    sendVerificationCode(phone);
-                                }
-
-                            } else {
-                                Log.d("Message error", response.message());
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-                            Toast.makeText(ForgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.d("sadfsd", String.valueOf(call));
-                            btn_GetOTP.setEnabled(true);
-                        }
-                    });
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

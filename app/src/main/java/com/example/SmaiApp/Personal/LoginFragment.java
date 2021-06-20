@@ -26,6 +26,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.SmaiApp.Account;
+import com.example.SmaiApp.ForgotPassword;
 import com.example.SmaiApp.MainActivity;
 import com.example.SmaiApp.Model.AccountModel;
 import com.example.SmaiApp.Model.PostNewsModel;
@@ -52,6 +53,8 @@ public class LoginFragment extends Fragment {
     TextClicked mCallback;
 
     SharedPreferences sp;
+
+    Button forgotPassword;
 
     public interface TextClicked{
         void sendText(String text);
@@ -90,7 +93,7 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         btn_login = view.findViewById(R.id.btn_login);
-
+        forgotPassword = view.findViewById(R.id.btn_forgotpassword);
         edtUserName = view.findViewById(R.id.textview_username);
         edtPassWord = view.findViewById(R.id.textView_password);
         checkBox = view.findViewById(R.id.checkbox);
@@ -100,6 +103,15 @@ public class LoginFragment extends Fragment {
 
         edtUserName.addTextChangedListener(new ConfirmUserName());
         edtPassWord.addTextChangedListener(new ConfirmPassword());
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getBaseContext(), ForgotPassword.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

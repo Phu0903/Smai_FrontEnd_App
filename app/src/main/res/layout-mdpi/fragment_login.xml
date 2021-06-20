@@ -76,8 +76,20 @@
             android:textColor="#333"
             android:textSize="@dimen/size_2"
             android:checked="true"
+            android:fontFamily="@font/open_sans" />
+
+        <Button
+            android:id="@+id/btn_forgotpassword"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quên mật khẩu ?"
+            android:textAllCaps="false"
+            android:textSize="@dimen/size_1"
+            android:textColor="#3D6EF6"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:fontFamily="@font/open_sans"
-            android:layout_marginBottom="20dp"/>
+            />
 
     </LinearLayout>
 
