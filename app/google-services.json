@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:427630103026:android:9d8c619df359353015c36b",
         "android_client_info": {
-          "package_name": "com.example.quyengop"
+          "package_name": "com.smait.quyengop"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "427630103026-gj036hkr7pqd4oqdj7fae6iuf664r4an.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.quyengop",
+            "package_name": "com.smait.quyengop",
             "certificate_hash": "b14561109aa16662ad0b4ffb4e2586e5f29a96e2"
           }
         },
