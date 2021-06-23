@@ -3,6 +3,7 @@ package com.smait.SmaiApp.Personal;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.LongDef;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -62,6 +63,7 @@ public class SigninFragment extends Fragment {
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Đăng ký", "Bug gì đấy");
                     Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                     ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
                     String passWord = edtMatKhau.getText().toString();
@@ -75,7 +77,9 @@ public class SigninFragment extends Fragment {
                             layoutsdt.setError("Số điện thoại không đúng");
                             return;
                         }
+                        Log.d("Đăng ký2222", "Bug gì đấy");
                         if (passWord.equals(passWord2)) {
+                            Log.d("Đăng k 33333ý", "Bug gì đấy");
                             btnSignin.setEnabled(false);
                             AccountModel accountModel = new AccountModel();
                             accountModel.setPassword(passWord);
@@ -86,6 +90,7 @@ public class SigninFragment extends Fragment {
                             call.enqueue(new Callback<String>() {
                                 @Override
                                 public void onResponse(Call<String> call, Response<String> response) {
+                                    Log.d("Đăng ký444444", "Bug gì đấy");
                                     if (response.isSuccessful()) {
 
                                         if (response.body().equals("Oke")) {
@@ -96,6 +101,11 @@ public class SigninFragment extends Fragment {
                                             intent.putExtra("Password", passWord);
                                             getActivity().startActivity(intent);
                                             getActivity().finish();
+                                        } else {
+                                            layoutsdt.setError("Số điện thoại đã đăng ký");
+                                            btnSignin.setEnabled(true);
+                                            Log.d("Ôi noo", "lỗi chỗ này");
+                                            Log.d("Ca sĩ", response.body());
                                         }
 
 

@@ -177,6 +177,16 @@ public class UpLoadNewsFragment extends Fragment {
 
                 }
             });
+        } else {
+            btnUpload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getContext(), Account.class);
+                    startActivity(intent);
+
+                }
+            });
         }
 
 

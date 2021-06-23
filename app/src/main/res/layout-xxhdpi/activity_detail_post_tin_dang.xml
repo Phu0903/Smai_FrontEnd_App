@@ -202,6 +202,7 @@
                     android:background="@drawable/straight_line"
                     app:layout_constraintTop_toBottomOf="@+id/address" />
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/infor_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -77,7 +77,6 @@
             android:layout_marginTop="10dp"
             android:gravity="top"
             android:background="@drawable/dt_custom_edit_text"
-            android:maxLines="4"
             android:lines="4"
             android:fontFamily="@font/open_sans_light"
             android:textColor="@color/black"

@@ -27,6 +27,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/white"
+        android:paddingTop="5px"
+        android:paddingBottom="5px"
         android:gravity="center">
 
         <LinearLayout
@@ -47,7 +49,7 @@
                 android:id="@+id/btn_filter_postdonation"
                 android:textSize="@dimen/size_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40px"
                 android:paddingRight="10px"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:drawableRight="@drawable/visualization" />
@@ -56,7 +58,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40px"
             android:layout_weight="4"
             android:layout_marginRight="10px"
             android:gravity="center|right">
@@ -65,7 +67,6 @@
                 android:id="@+id/searchableSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
                 android:layout_gravity="center"
                 android:prompt="@string/app_name"
                 android:spinnerMode="dialog"

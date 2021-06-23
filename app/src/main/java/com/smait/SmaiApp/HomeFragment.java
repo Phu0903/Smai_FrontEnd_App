@@ -99,7 +99,8 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("TypeAuthor", "tangcongdong");
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getContext(), "Đăng nhập để thực hiện chức năng", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), Account.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -114,7 +115,8 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("TypeAuthor", "canhan");
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getContext(), "Đăng nhập để thực hiện chức năng", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), Account.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -129,7 +131,8 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("TypeAuthor", "quy");
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getContext(), "Đăng nhập để thực hiện chức năng", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), Account.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -144,7 +147,8 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("TypeAuthor", "tochuc");
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getContext(), "Đăng nhập để thực hiện chức năng", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), Account.class);
+                    startActivity(intent);
                 }
             }
         });
