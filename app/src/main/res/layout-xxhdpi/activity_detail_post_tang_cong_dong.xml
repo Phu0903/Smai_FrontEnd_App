@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".DetailPostTangCongDong">
 
 
@@ -35,20 +36,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--            <ImageView-->
-            <!--                android:id="@+id/product_image"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="200dp"-->
-            <!--                android:layout_marginTop="10dp"-->
-            <!--                android:src="@drawable/book1"-->
-            <!--                />-->
-
-
             <com.denzcoskun.imageslider.ImageSlider
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/slider"
+
+                android:background="@drawable/kesach"
                 app:delay="0"
                 app:period="1000"
                 app:error_image="@drawable/book"
@@ -102,6 +96,17 @@
                         android:textAllCaps="false"
                         android:textColor="@color/green"
                         android:textSize="@dimen/size_1"/>
+
+                    <Button
+                        android:visibility="gone"
+                        android:id="@+id/popupDanhmuc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Chi tiết"
+                        android:textAllCaps="false"
+                        android:textColor="#2B99CA" />
                 </LinearLayout>
 
 
@@ -188,6 +193,7 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="20dp"
                 android:paddingLeft="20dp"
+
                 android:paddingBottom="20dp"
                 android:orientation="vertical">
                 <Button
@@ -197,18 +203,18 @@
                     android:background="@drawable/straight_line"
                     app:layout_constraintTop_toBottomOf="@+id/address" />
                 <TextView
+
                     android:id="@+id/infor_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/open_sans"
+                    android:layout_marginTop="10dp"
                     android:text="Cần tặng sách cũ cho các bạn có nhu cầu, sách còn mới cứng. Nếu bạn cần
 liên hệ với tôi.\nCảm ơn bạn đã quan tâm!!"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/size_2"/>
-
 
             </LinearLayout>
 
@@ -230,10 +236,11 @@ liên hệ với tôi.\nCảm ơn bạn đã quan tâm!!"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="Gọi điện"
                 android:textAllCaps="false"
+                android:layout_gravity="bottom"
                 android:textColor="@color/white"
                 android:textSize="@dimen/size_3"/>
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

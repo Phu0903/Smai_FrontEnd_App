@@ -2,6 +2,7 @@ package com.smait.SmaiApp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,10 @@ public class HomeFragment extends Fragment {
 //    button search
     Button btnSearch;
 
+    private static String realDataFragment;
+    public static String sendMyDataHome() {
+        return realDataFragment;
+    }
 
 //    button thông báo
     ImageButton btnAnouncement;
@@ -68,6 +73,8 @@ public class HomeFragment extends Fragment {
 
         MainActivity activity = (MainActivity) getActivity();
         String codeLogin  = activity.getMyData();
+        realDataFragment = codeLogin;
+
         String[] code = codeLogin.split(",");
 
         if (code.length != 0) {
@@ -117,6 +124,7 @@ public class HomeFragment extends Fragment {
                 } else {
                     Intent intent = new Intent(getContext(), Account.class);
                     startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
@@ -133,6 +141,7 @@ public class HomeFragment extends Fragment {
                 } else {
                     Intent intent = new Intent(getContext(), Account.class);
                     startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
@@ -149,6 +158,7 @@ public class HomeFragment extends Fragment {
                 } else {
                     Intent intent = new Intent(getContext(), Account.class);
                     startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
@@ -182,14 +192,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
-
-
-
-
-// open search screen
+        // open search screen
         btnSearch = view.findViewById(R.id.btn_search);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override

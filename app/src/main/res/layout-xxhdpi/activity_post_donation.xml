@@ -28,6 +28,8 @@ android:background="#E0E0E0">
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/white"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
         android:gravity="center">
 
         <LinearLayout
@@ -67,7 +69,6 @@ android:background="#E0E0E0">
                 android:id="@+id/searchableSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
                 android:layout_gravity="center"
                 android:prompt="@string/app_name"
                 android:spinnerMode="dialog"

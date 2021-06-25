@@ -7,12 +7,17 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static String realData;
+    public static String sendMyData() {
+        return realData;
+    }
     private String myData;
     SharedPreferences sharedPreferences;
     String message, token;
@@ -34,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         token = intent.getStringExtra("Token");
         isLoged = intent.getStringExtra("ISLOGINED");
         myData = message + "," + token;
+
+        realData = myData;
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (message != null) {
 
@@ -49,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             myData = message + "," + token;
+            realData = myData;
         } else {
             if (sharedPreferences != null) {
                 message = sharedPreferences.getString("message", "");
@@ -58,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 myData="";
+                realData = myData;
             }
         }
 
@@ -89,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
     public String getMyData() {
         return myData;
     }
-    public void setMyData(String s) {
-        this.myData = s;
-        this.message=s;
-    }
+
 
 }

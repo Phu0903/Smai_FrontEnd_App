@@ -20,6 +20,7 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.smait.SmaiApp.Danhmuc.CustomExpandableListAdapter;
+import com.smait.SmaiApp.Danhmuc.CustomExpandableNoCheckBoxListAdapter;
 import com.smait.SmaiApp.Danhmuc.ExpandableListDataPump;
 import com.smait.SmaiApp.Danhmuc.NameProduct;
 
@@ -52,42 +53,6 @@ public class CategoryActivity2 extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandable_listivew_danhmuc);
-        expandableListDetail = ExpandableListDataPump.getData();
-        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
-        expandableListView.setAdapter(expandableListAdapter);
-        nameProductArrayList = new ArrayList<NameProduct>();
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                checkedTextView = v.findViewById(R.id.checkList);
-
-
-                if (checkedTextView.isChecked()) {
-                    checkedTextView.setChecked(false);
-                    arrayListName.remove(count-1);
-                    arrayListCatogory.remove(count-1);
-                    count = count-1;
-                    Log.e("Count", String.valueOf(count));
-                }
-                else {
-                    checkedTextView.setChecked(true);
-                    count = count+1;
-                    Log.e("Count", String.valueOf(count));
-                    NameProduct nameProduct = new NameProduct(expandableListTitle.get(groupPosition), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
-                    nameProductArrayList.add(nameProduct);
-                    arrayListName.add(nameProduct.getNameProduct());
-                    arrayListCatogory.add(nameProduct.getCategory());
-
-                }
-
-                return true;
-            }
-        });
-
-        btnNext = (Button)findViewById(R.id.danhmuc_next);
-
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
@@ -103,19 +68,29 @@ public class CategoryActivity2 extends AppCompatActivity {
         tokenMain = token;
         Log.d("Token catogo", token);
 
+        for (String s: arrayListName) {
+            Log.d("Name catogory", s);
+        }
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
+        expandableListView = (ExpandableListView) findViewById(R.id.expandable_listivew_danhmuc);
+        expandableListDetail = ExpandableListDataPump.getData();
+        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        expandableListAdapter = new CustomExpandableNoCheckBoxListAdapter(this, expandableListTitle, expandableListDetail);
+        expandableListView.setAdapter(expandableListAdapter);
+        nameProductArrayList = new ArrayList<NameProduct>();
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                checkedTextView = v.findViewById(R.id.checkList);
 
-                if (count != 0) {
-
-//                        for (int i=0; i< nameProductArrayList.size(); i++) {
-//                            arrayListName.add(nameProductArrayList.get(i).getNameProduct());
-//                            arrayListCatogory.add(nameProductArrayList.get(i).getCategory());
-//                    }
-//                        ********************************************************************
-                    //gửi data sang activity Detail*************************************************************
+                checkedTextView.setEnabled(false);
+                    checkedTextView.setChecked(true);
+                    count = count+1;
+                    Log.e("Count", String.valueOf(count));
+                    NameProduct nameProduct = new NameProduct(expandableListTitle.get(groupPosition), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                    nameProductArrayList.add(nameProduct);
+                    arrayListName.add(nameProduct.getNameProduct());
+                    arrayListCatogory.add(nameProduct.getCategory());
                     Intent intent1 = new Intent(getApplicationContext(), GiveFor.class);
                     intent1.putExtra("ListName", arrayListName);
                     intent1.putExtra("ListCatogary", arrayListCatogory);
@@ -123,13 +98,45 @@ public class CategoryActivity2 extends AppCompatActivity {
                     intent1.putExtra("address", address);
                     intent1.putExtra("token", token);
                     startActivity(intent1);
-//                        *************************************************************
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Vui lòng chọn ít nhất 1 mục", Toast.LENGTH_SHORT).show();
-                }
+
+
+
+                return true;
             }
         });
+
+//        btnNext = (Button)findViewById(R.id.danhmuc_next);
+
+
+
+//        btnNext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                for (String s: arrayListName) {
+//                    Log.d("Name catogory", s);
+//                }
+//                if (count != 0) {
+//
+////                        for (int i=0; i< nameProductArrayList.size(); i++) {
+////                            arrayListName.add(nameProductArrayList.get(i).getNameProduct());
+////                            arrayListCatogory.add(nameProductArrayList.get(i).getCategory());
+////                    }
+////                        ********************************************************************
+//                    //gửi data sang activity Detail*************************************************************
+//                    Intent intent1 = new Intent(getApplicationContext(), GiveFor.class);
+//                    intent1.putExtra("ListName", arrayListName);
+//                    intent1.putExtra("ListCatogary", arrayListCatogory);
+//                    intent1.putExtra("TypeAuthor", TypeAuthor);
+//                    intent1.putExtra("address", address);
+//                    intent1.putExtra("token", token);
+//                    startActivity(intent1);
+////                        *************************************************************
+//                }
+//                else {
+//                    Toast.makeText(getApplicationContext(), "Vui lòng chọn ít nhất 1 mục", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
     @Override

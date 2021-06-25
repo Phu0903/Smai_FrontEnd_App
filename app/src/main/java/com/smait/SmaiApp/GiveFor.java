@@ -59,6 +59,11 @@ public class GiveFor extends AppCompatActivity {
     ArrayList<PostNewsModel> listName = new ArrayList<>();
     ArrayList<String> listCatogory = new ArrayList<>();
 
+    String realData;
+    String realToken;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,14 +71,16 @@ public class GiveFor extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             TypeAuthor = savedInstanceState.getString("TypeAuthor");
-            Log.d("TypeAuthoronSaveonget", TypeAuthor);
             address = savedInstanceState.getString("address");
             tokenMain = savedInstanceState.getString("token");
+
         }
         else {
             Log.d("savedinstantcestate", "is nulllllll");
         }
 
+        realData = HomeFragment.sendMyDataHome();
+        realToken = realData.split(",")[1];
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_dt);
         toolbar.setTitleTextColor(Color.WHITE);
@@ -91,6 +98,7 @@ public class GiveFor extends AppCompatActivity {
         linearLayout.requestFocus();
         lvNews_New = findViewById(R.id.listView_givefor);
         Intent intent = getIntent();
+        listCatogory = intent.getStringArrayListExtra("ListName");
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             address = bundle.getString("address");
@@ -98,6 +106,8 @@ public class GiveFor extends AppCompatActivity {
             tokenMain = bundle.getString("token");
 
         }
+
+
 
         Retrofit retrofit = RetrofitClient.getRetrofitInstance();
         ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
@@ -114,21 +124,20 @@ public class GiveFor extends AppCompatActivity {
                 }
                 posts = response.body();
 
-                initSearchWidgets();
-                initFilter();
+
 
 
                 adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, posts);
                 lvNews_New.setAdapter(adaptergivfor);
+                initSearchWidgets(posts);
+                initFilter(posts);
                 listCatogory = intent.getStringArrayListExtra("ListName");
                 if (listCatogory != null) {
                     for (String s : listCatogory) {
-                        Log.d("Name catogory", s);
                         for (int i=0;i<posts.size();i++) {
                             List<ProductModel> list = posts.get(i).getNameProduct();
                             for (int j=0;j<list.size();j++) {
                                 String nameCategory = list.get(j).getNameProduct();
-                                Log.d("Đồ khác trẻ em", nameCategory);
                                 if (nameCategory.equals(s)) {
                                     listName.add(posts.get(i));
                                 }
@@ -139,7 +148,11 @@ public class GiveFor extends AppCompatActivity {
                     Log.d("Size list name", String.valueOf(listName.size()));
                     adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, listName);
                     lvNews_New.setAdapter(adaptergivfor);
+                    initSearchWidgets(listName);
+                    initFilter(listName);
                 }
+
+
 
                 lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -191,7 +204,7 @@ public class GiveFor extends AppCompatActivity {
     }
 
 
-    private void initSearchWidgets() {
+    private void initSearchWidgets(List<PostNewsModel> posts) {
         searchView = findViewById(R.id.search);
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -221,7 +234,7 @@ public class GiveFor extends AppCompatActivity {
         });
     }
 
-    private void initFilter() {
+    private void initFilter(List<PostNewsModel> posts) {
         searchableSpinner = findViewById(R.id.searchableSpinner);
 
         try {
@@ -279,15 +292,16 @@ public class GiveFor extends AppCompatActivity {
         outState.putString("token", tokenMain);
         outState.putString("address", address);
 
+
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         TypeAuthor = savedInstanceState.getString("TypeAuthor");
-        Log.d("TypeAuthor on Restore", TypeAuthor);
         address = savedInstanceState.getString("address");
         tokenMain = savedInstanceState.getString("token");
+
     }
 
     public String loadJSONFromAsset() {
@@ -349,6 +363,7 @@ public class GiveFor extends AppCompatActivity {
                 i.putExtra("Token", tokenMain);
                 i.putExtra("message", "OK");
                 startActivity(i);
+                finish();
             }
         });
         alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {

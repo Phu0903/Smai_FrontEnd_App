@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".DetailPostTinDang">
 
 
@@ -31,7 +33,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.denzcoskun.imageslider.ImageSlider
@@ -39,6 +41,8 @@
                 android:layout_height="200dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/slider"
+
+                android:background="@drawable/kesach"
                 app:delay="0"
                 app:period="1000"
                 app:error_image="@drawable/book"
@@ -59,6 +63,7 @@
                     android:fontFamily="@font/open_sans_semibold"
                     android:text="Cần tặng sách cũ cho các bạn có nhu cầu"
                     android:textAllCaps="false"
+                    android:paddingTop="10dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_3"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -104,17 +109,19 @@
                         android:textColor="#2B99CA" />
                 </LinearLayout>
 
+
+
                 <TextView
                     android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans"
-                    android:drawableLeft="@drawable/ic_baseline_location_on_24"
-                    android:drawablePadding="10dp"
-                    android:text="Đ/c: Khu phố 6, phường Linh Trung, quận Thủ Đức, TP HCM"
+                    android:text="Khu phố 6, phường Linh Trung, quận Thủ Đức, TP HCM"
                     android:textAllCaps="false"
                     android:textColor="@color/light_gray"
+                    android:drawablePadding="10dp"
                     android:textSize="@dimen/size_2"
+                    android:drawableLeft="@drawable/ic_baseline_location_on_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/detail_type" />
 
@@ -183,9 +190,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:paddingRight="20dp"
                 android:paddingLeft="20dp"
+
                 android:paddingBottom="20dp"
                 android:orientation="vertical">
                 <Button
@@ -195,11 +203,12 @@
                     android:background="@drawable/straight_line"
                     app:layout_constraintTop_toBottomOf="@+id/address" />
                 <TextView
+
                     android:id="@+id/infor_detail"
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans"
+                    android:layout_marginTop="10dp"
                     android:text="Cần tặng sách cũ cho các bạn có nhu cầu, sách còn mới cứng. Nếu bạn cần
 liên hệ với tôi.\nCảm ơn bạn đã quan tâm!!"
                     android:textAllCaps="false"
@@ -207,25 +216,31 @@ liên hệ với tôi.\nCảm ơn bạn đã quan tâm!!"
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/size_2"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <Button
-                        android:id="@+id/call"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/red"
-                        android:fontFamily="@font/open_sans_semibold"
-                        android:text="Gọi điện"
-                        android:textAllCaps="false"
-                        android:layout_gravity="bottom"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/size_3"/>
-                </LinearLayout>
             </LinearLayout>
 
-
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Gọi điện"
+                android:textAllCaps="false"
+                android:layout_gravity="bottom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_3"/>
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

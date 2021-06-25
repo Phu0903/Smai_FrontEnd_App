@@ -101,7 +101,9 @@ public class DetailPostTangCongDong extends AppCompatActivity {
                 Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                 ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
 
+
                 Call<AccountModel> call = jsonPlaceHolderApi.getPhoneNumberPost(AuthorID);
+                Log.d("Author ID", AuthorID);
 
                 call.enqueue(new Callback<AccountModel>() {
                     @Override
@@ -114,6 +116,7 @@ public class DetailPostTangCongDong extends AppCompatActivity {
                         }
                         else {
                             Log.e("Message", response.message());
+                            Log.d("Phone number", response.body().getPhoneNumber());
                         }
                     }
 

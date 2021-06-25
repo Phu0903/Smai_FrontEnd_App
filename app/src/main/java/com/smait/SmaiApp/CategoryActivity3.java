@@ -19,6 +19,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import com.smait.SmaiApp.Danhmuc.CustomExpandableListAdapter;
+import com.smait.SmaiApp.Danhmuc.CustomExpandableNoCheckBoxListAdapter;
 import com.smait.SmaiApp.Danhmuc.ExpandableListDataPump;
 import com.smait.SmaiApp.Danhmuc.NameProduct;
 
@@ -57,7 +58,7 @@ public class CategoryActivity3 extends AppCompatActivity {
         expandableListView = (ExpandableListView) findViewById(R.id.expandable_listivew_danhmuc);
         expandableListDetail = ExpandableListDataPump.getData();
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+        expandableListAdapter = new CustomExpandableNoCheckBoxListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
 
         nameProductArrayList = new ArrayList<NameProduct>();
@@ -81,33 +82,21 @@ public class CategoryActivity3 extends AppCompatActivity {
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
                 checkedTextView = v.findViewById(R.id.checkList);
+                checkedTextView.setEnabled(false);
 
-
-                if (checkedTextView.isChecked()) {
-                    checkedTextView.setChecked(false);
-                    arrayListName.remove(count-1);
-                    arrayListCatogory.remove(count-1);
-                    count = count-1;
-                    Log.e("Count", String.valueOf(count));
-                }
-                else {
-                    checkedTextView.setChecked(true);
-                    count = count+1;
-                    Log.e("Count", String.valueOf(count));
-                    NameProduct nameProduct = new NameProduct(expandableListTitle.get(groupPosition), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
-                    nameProductArrayList.add(nameProduct);
-                    arrayListName.add(nameProduct.getNameProduct());
-                    arrayListCatogory.add(nameProduct.getCategory());
-                    Intent intent1 = new Intent(getApplicationContext(), Detail2.class);
-                    intent1.putExtra("ListName", arrayListName);
-                    intent1.putExtra("ListCatogary", arrayListCatogory);
-                    intent1.putExtra("TypeAuthor", TypeAuthor);
-                    intent1.putExtra("address", address);
-                    intent1.putExtra("token", token);
-                    startActivity(intent1);
-                }
-
+                NameProduct nameProduct = new NameProduct(expandableListTitle.get(groupPosition), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                nameProductArrayList.add(nameProduct);
+                arrayListName.add(nameProduct.getNameProduct());
+                arrayListCatogory.add(nameProduct.getCategory());
+                Intent intent1 = new Intent(getApplicationContext(), Detail2.class);
+                intent1.putExtra("ListName", arrayListName);
+                intent1.putExtra("ListCatogary", arrayListCatogory);
+                intent1.putExtra("TypeAuthor", TypeAuthor);
+                intent1.putExtra("address", address);
+                intent1.putExtra("token", token);
+                startActivity(intent1);
 
                 return true;
             }
@@ -166,14 +155,6 @@ public class CategoryActivity3 extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-//        switch (item.getItemId()) {
-//            case R.id.button_cancel:
-//                ConfirmCancel();
-//                break;
-//            default:
-//                break;
-//        }
         if (item.getItemId() == R.id.button_cancel) {
             ConfirmCancel();
         }
@@ -195,6 +176,7 @@ public class CategoryActivity3 extends AppCompatActivity {
                 i.putExtra("Token", tokenMain);
                 i.putExtra("message", "OK");
                 startActivity(i);
+                finish();
             }
         });
         alerDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {

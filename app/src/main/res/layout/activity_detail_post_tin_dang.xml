@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+
+    android:fillViewport="true"
     tools:context=".DetailPostTinDang">
 
 

@@ -112,6 +112,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.smait.SmaiApp.MainActivity"
+            android:clearTaskOnLaunch="true"
+            android:alwaysRetainTaskState="false"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

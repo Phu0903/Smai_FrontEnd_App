@@ -218,6 +218,7 @@ public class ConfirmInforPost2 extends AppCompatActivity {
                                         intent1.putExtra("Token", token);
                                         intent1.putExtra("message", "OK");
                                         startActivity(intent1);
+                                        finish();
                                     }
 
                                     @Override
@@ -227,10 +228,12 @@ public class ConfirmInforPost2 extends AppCompatActivity {
                                 });
                             } else {
                                 Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
+                                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent1.putExtra("Token", token);
                                 intent1.putExtra("message", "OK");
                                 intent1.putExtra("Require", "tang");
                                 startActivity(intent1);
+                                finish();
                             }
 
                         }
