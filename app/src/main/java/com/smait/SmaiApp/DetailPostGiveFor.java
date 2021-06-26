@@ -12,10 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.smait.SmaiApp.Model.AccountModel;
+import com.smait.SmaiApp.Model.PostNewsModel;
 import com.smait.SmaiApp.NetWorKing.ApiServices;
 import com.smait.SmaiApp.NetWorKing.RetrofitClient;
 
@@ -32,6 +34,8 @@ public class DetailPostGiveFor extends AppCompatActivity {
 
     TextView tittle, detailType, detailPrice, address, fullName, typeAuthor, inforDetail;
     ImageView productImage;
+    private static ArrayList<String> seenList;
+    String idpost, token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,17 +56,42 @@ public class DetailPostGiveFor extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        seenList = new ArrayList<>();
+        idpost = intent.getStringExtra("idpost");
+
+
+        if (!idpost.equals(null)) {
+            Log.d("IDpost", idpost);
+            seenList.add(idpost);
+        } else {
+            Log.d( "onCreateeeeeee: ", "No idpost");
+        }
+        token = MainActivity.sendMyData();
+        Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+        ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
+
+        Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getHistory("Bearer " + token, seenList);
+        call.enqueue(new Callback<List<PostNewsModel>>() {
+            @Override
+            public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
+                if (response.isSuccessful()) {
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
+
+            }
+        });
 
         String title = intent.getStringExtra("title");
         String detailtype = intent.getStringExtra("detailType");
         String addresss = intent.getStringExtra("address");
         String fullname = intent.getStringExtra("fullName");
-        if (fullname != null) {
-            Log.e("Fullname", fullname);
-        }
-        else {
-            Log.e("FullName", "no full name");
-        }
+
         String infordetail = intent.getStringExtra("inforDetail");
         String typeauthor = intent.getStringExtra("typeAuthor");
         ArrayList<String> listUrl = intent.getStringArrayListExtra("url");

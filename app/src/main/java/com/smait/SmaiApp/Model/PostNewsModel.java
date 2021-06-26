@@ -20,6 +20,18 @@ public class PostNewsModel   {
     private Date createdAt;
     private Date updatedAt;
 
+    public boolean isConfirm() {
+        return Confirm;
+    }
+
+    public void setConfirm(boolean confirm) {
+        Confirm = confirm;
+    }
+
+    private boolean Confirm;
+
+
+
     public String get_id() {
         return _id;
     }

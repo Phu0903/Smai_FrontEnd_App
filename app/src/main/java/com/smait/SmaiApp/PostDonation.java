@@ -201,6 +201,8 @@ public class PostDonation extends AppCompatActivity {
                         for (String s : listUrl) {
                             arrayListurl.add(s);
                         }
+                        String idpost = posts.get(position).get_id();
+                        intent.putExtra("idpost", idpost);
                         intent.putExtra("title", title);
                         intent.putExtra("address", address);
                         intent.putExtra("fullName", fullName);

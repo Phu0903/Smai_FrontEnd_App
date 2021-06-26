@@ -3,11 +3,13 @@ package com.smait.SmaiApp.Model;
 public class UserModel {
     private String FullName;
     private String Birthday;
-    private  String Address;
+    private String Address;
     private String Gender;
     private Integer PhoneNumber;
     private String AccountID;
     private String UserName;
+
+
 
     public String getUrlImage() {
         return UrlImage;

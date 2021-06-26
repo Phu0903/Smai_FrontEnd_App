@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,41 +68,37 @@ public class UpLoadNewsAdapter extends BaseAdapter {
 
 //ngày giờ đăng tin
         Date date1 = arrayNews.get(position).getCreatedAt();
-        SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm"); //format ngày giờ thành dd/mm/yyyy hh:mm
+        SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String sTime = localDateFormat.format(date1);
-        String[] s1 = sTime.split(" ");
 
-//        Log.d("Date up news", sTime);
+        Date datePostNews = null;
+        Date dateNow = null;
+        Date currentDate = new Date();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date1);
+        try {
+            // calculating the difference b/w startDate and endDate
+            String startDate = sTime;
+            String endDate = localDateFormat.format(currentDate);
 
+            datePostNews = localDateFormat.parse(startDate);
+            dateNow = localDateFormat.parse(endDate);
 
-        long currentTime = Calendar.getInstance().getTimeInMillis();
-        long timeUp = calendar.getTimeInMillis();
-        long hourRest = currentTime - timeUp;
-        int hours   = (int) ((hourRest / (1000*60*60)) % 24);
-
-        Date dat1 = Calendar.getInstance().getTime();
-
-        String getHour = "";
-        int day=0;
-        if (hours < 23) {
-            getHour = hours + " h";
-        } else if (hours == 23) {
-            hours = hours + 24;
-
-            if (hours >= 24 && hours < 48) {
-                getHour = "1 ngày";
-            } else if (hours >= 48 && hours < 72) {
-                getHour = "2 ngày";
-            } else if (hours >= 72 && hours < 96) {
-                getHour = "3 ngày";
+            long getDiff = dateNow.getTime() - datePostNews.getTime();
+            TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
+            // using TimeUnit class from java.util.concurrent package
+            long getDaysDiff = TimeUnit.MILLISECONDS.toDays(getDiff);
+            long getHoursDiff = TimeUnit.MILLISECONDS.toHours(getDiff);
+            if (getHoursDiff < 24) {
+                txtDatePost.setText(getHoursDiff + " h");
             } else {
-                getHour = "Hơn 3 ngày";
+                txtDatePost.setText(getDaysDiff + " ngày");
             }
 
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+
         String address = arrayNews.get(position).getAddress();
         String[] mainAddress = address.split(",");
 
@@ -117,11 +114,17 @@ public class UpLoadNewsAdapter extends BaseAdapter {
         TextView txtTypesNews = convertView.findViewById(R.id.tv_typenews);
         TextView note = convertView.findViewById(R.id.tv_note);
         if (arrayNews.get(position).getTypeAuthor().equals("Cá nhân")) {
+
             TextView status = convertView.findViewById(R.id.status);
             TextView typePost = convertView.findViewById(R.id.typePost);
+            if (arrayNews.get(position).isConfirm() == false) {
+                status.setText("Chờ xác thực");
+                status.setTextColor(Color.RED);
+            } else {
+                status.setText("Đang hiển thị");
+                status.setTextColor(Color.GREEN);
+            }
             typePost.setText("Cần xin đồ");
-            status.setText("Chờ xác thực");
-            status.setTextColor(Color.RED);
             txtTypesNews.setText("Danh mục nhân tặng");
             String no = String.valueOf(arrayNews.get(position).getNameProduct().size());
             note.setText(no);
@@ -141,8 +144,6 @@ public class UpLoadNewsAdapter extends BaseAdapter {
             }
         }
 
-        TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
-        txtDatePost.setText(getHour);
 
         List<String> listUrl = arrayNews.get(position).getUrlImage();
 

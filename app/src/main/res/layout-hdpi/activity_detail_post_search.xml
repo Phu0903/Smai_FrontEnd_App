@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    tools:context=".DetailPostSearch">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_dt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Tin đăng"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/slider"
+
+                android:background="@drawable/ic_baseline_image_24"
+                app:delay="0"
+                app:period="1000"
+                app:error_image="@drawable/ic_baseline_image_24"
+                app:placeholder="@drawable/ic_baseline_image_24"/>
+
+            <LinearLayout
+                android:id="@+id/product_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:id="@+id/detail_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Cần tặng sách cũ cho các bạn có nhu cầu"
+                    android:textAllCaps="false"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/detail_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Tin tặng"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/size_2"/>
+
+                    <TextView
+                        android:id="@+id/detail_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans"
+                        android:layout_weight="1"
+                        android:textAlignment="textEnd"
+                        android:text="Miễn phí"
+                        android:textAllCaps="false"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/size_1"/>
+
+                    <Button
+                        android:visibility="gone"
+                        android:id="@+id/popupDanhmuc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Chi tiết"
+                        android:textAllCaps="false"
+                        android:textColor="#2B99CA" />
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Khu phố 6, phường Linh Trung, quận Thủ Đức, TP HCM"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_gray"
+                    android:drawablePadding="10dp"
+                    android:textSize="@dimen/size_2"
+                    android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/detail_type" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/straight_line"
+                    app:layout_constraintTop_toBottomOf="@+id/address" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/user_detail"
+                android:layout_width="match_parent"
+
+                android:layout_height="80dp"
+                app:layout_constraintTop_toBottomOf="@id/product_detail">
+
+                <Button
+                    android:id="@+id/user_image"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/circle"
+                    android:paddingLeft="20dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Leo Messi"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/size_2"/>
+
+                    <TextView
+                        android:id="@+id/user_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10px"
+                        android:fontFamily="@font/open_sans_light"
+                        android:maxWidth="1000px"
+                        android:text="Tổ chức công  nhà chùa hộ "
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/size_1" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+
+                android:paddingBottom="20dp"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/straight_line"
+                    app:layout_constraintTop_toBottomOf="@+id/address" />
+                <TextView
+
+                    android:id="@+id/infor_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:layout_marginTop="10dp"
+                    android:text="Cần tặng sách cũ cho các bạn có nhu cầu, sách còn mới cứng. Nếu bạn cần
+liên hệ với tôi.\nCảm ơn bạn đã quan tâm!!"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:paddingBottom="10dp"
+                    android:textSize="@dimen/size_2"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Gọi điện"
+                android:textAllCaps="false"
+                android:layout_gravity="bottom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_3"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

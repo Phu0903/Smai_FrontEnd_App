@@ -46,6 +46,7 @@
             android:background="@drawable/dt_custom_edit_text"
             android:fontFamily="@font/open_sans_light"
             android:hint="Lời nhắn ..."
+            android:imeOptions="actionNext"
             android:paddingLeft="20px"
             android:textColor="@color/black"
             android:textSize="@dimen/size_2" />

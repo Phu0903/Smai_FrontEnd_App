@@ -158,6 +158,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View view) {
                     if (message.equals("OK")) {
                         Intent intent = new Intent(getContext(), ViewHistory.class);
+                        intent.putExtra("token", token);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getContext(), "Chưa đăng nhập", Toast.LENGTH_SHORT).show();

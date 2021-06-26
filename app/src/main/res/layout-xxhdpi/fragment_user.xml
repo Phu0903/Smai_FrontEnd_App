@@ -61,6 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:textColor="@color/black"
+                        android:text="Nguyễn Anh Khang"
                         android:textSize="@dimen/size_2"
                         android:fontFamily="@font/open_sans" />
 

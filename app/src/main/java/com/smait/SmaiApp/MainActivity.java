@@ -15,9 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private static String realData;
-    public static String sendMyData() {
-        return realData;
-    }
+
     private String myData;
     SharedPreferences sharedPreferences;
     String message, token;
@@ -39,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
         token = intent.getStringExtra("Token");
         isLoged = intent.getStringExtra("ISLOGINED");
         myData = message + "," + token;
-
-        realData = myData;
+        realData = token;
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (message != null) {
 
@@ -56,17 +53,20 @@ public class MainActivity extends AppCompatActivity {
             }
 
             myData = message + "," + token;
-            realData = myData;
+            realData = token;
+
         } else {
             if (sharedPreferences != null) {
                 message = sharedPreferences.getString("message", "");
                 token = sharedPreferences.getString("Token", "");
                 isLoged = sharedPreferences.getString("loged", "");
                 myData = message + "," + token;
+                realData = token;
+
             }
             else {
                 myData="";
-                realData = myData;
+                realData="";
             }
         }
 
@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
     public String getMyData() {
         return myData;
     }
-
+    public static String sendMyData() {
+        return realData;
+    }
 
 }

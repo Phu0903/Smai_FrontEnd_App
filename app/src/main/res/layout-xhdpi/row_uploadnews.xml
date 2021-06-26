@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:id="@+id/cardview_recyclerview"
     android:descendantFocusability="blocksDescendants"
+    android:foreground="?android:attr/selectableItemBackground"
     android:layout_height="wrap_content">
 
 

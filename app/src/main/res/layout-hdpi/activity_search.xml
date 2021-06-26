@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Search">
-
-
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -16,29 +14,27 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="Danh mục">
+            android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginRight="20px"
-                android:layout_marginLeft="20px"
-                android:fontFamily="@font/open_sans"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:hint="Tìm kiếm..."
-                android:inputType="text"
-                android:textColorHint="@color/light_gray"
-                android:paddingStart="20dp"
+                android:id="@+id/search"
+                android:background="@drawable/border_solid_background_white"
+                android:hint="Nhập từ khóa"
                 android:imeOptions="actionSearch"
-                android:background="@drawable/border_radious_4_corners"
-                />
+                android:textColorHint="@color/light_gray"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_1"
+                android:paddingLeft="40px"
+                android:singleLine="true"
+                android:fontFamily="@font/open_sans"
+                android:layout_marginRight="40dp"/>
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

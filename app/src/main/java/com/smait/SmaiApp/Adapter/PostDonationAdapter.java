@@ -13,9 +13,11 @@ import com.smait.SmaiApp.Model.PostNewsModel;
 import com.smait.SmaiApp.Model.ProductModel;
 import com.smait.SmaiApp.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class PostDonationAdapter extends BaseAdapter {
     private static final String DATE_FORMAT = "dd/MM/yyyy";
@@ -53,35 +55,42 @@ public class PostDonationAdapter extends BaseAdapter {
 
         LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //ngày giờ đăng tin
+        convertView = inflater.inflate(myLayout, null);
         Date date1 = arrayNews.get(position).getCreatedAt();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date1);
-        long currentTime = Calendar.getInstance().getTimeInMillis();
-        long timeUp = calendar.getTimeInMillis();
-        long hourRest = currentTime - timeUp;
-        int hours   = (int) ((hourRest / (1000*60*60)) % 24);
-        String getHour = "";
-        if (hours < 24) {
-            getHour = hours + " h";
-        }
-        else if (hours >= 24 && hours < 48) {
-            getHour = "1 ngày";
-        }
-        else if (hours >=48 && hours < 72) {
-            getHour = "2 ngày";
-        }
-        else if (hours >=72 && hours < 96) {
-            getHour = "3 ngày";
-        }
-        else {
-            getHour = "Hơn 3 ngày";
-        }
+        SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String sTime = localDateFormat.format(date1);
 
+        Date datePostNews = null;
+        Date dateNow = null;
+        Date currentDate = new Date();
+
+        try {
+            // calculating the difference b/w startDate and endDate
+            String startDate = sTime;
+            String endDate = localDateFormat.format(currentDate);
+
+            datePostNews = localDateFormat.parse(startDate);
+            dateNow = localDateFormat.parse(endDate);
+
+            long getDiff = dateNow.getTime() - datePostNews.getTime();
+            TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
+            // using TimeUnit class from java.util.concurrent package
+            long getDaysDiff = TimeUnit.MILLISECONDS.toDays(getDiff);
+            long getHoursDiff = TimeUnit.MILLISECONDS.toHours(getDiff);
+            if (getHoursDiff < 24) {
+                txtDatePost.setText(getHoursDiff + " h");
+            } else {
+                txtDatePost.setText(getDaysDiff + " ngày");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         String address = arrayNews.get(position).getAddress();
         String[] mainAddress = address.split(",");
 
-        convertView = inflater.inflate(myLayout, null);
+
 
         TextView txtName = convertView.findViewById(R.id.tv_tittle);
         txtName.setText(arrayNews.get(position).getTitle());
@@ -103,8 +112,8 @@ public class PostDonationAdapter extends BaseAdapter {
         txtTypesNews.setText(nameCatogory);
 
 
-        TextView txtDatePost = convertView.findViewById(R.id.tv_datepost);
-        txtDatePost.setText(getHour);
+
+
 
         List<String> listUrl = arrayNews.get(position).getUrlImage();
         if (listUrl.size() != 0) {

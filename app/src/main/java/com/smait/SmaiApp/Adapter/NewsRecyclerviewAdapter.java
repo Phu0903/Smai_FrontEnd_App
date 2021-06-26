@@ -25,8 +25,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclerviewAdapter.ViewHolder> {
+
 
 
     public NewsRecyclerviewAdapter(Context myContext, List<PostNewsModel> arrayNews) {
@@ -36,6 +38,7 @@ public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclervi
 
     Context myContext;
     List<PostNewsModel> arrayNews;
+
 
 
     @NonNull
@@ -53,28 +56,35 @@ public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclervi
         Date date1 = arrayNews.get(position).getCreatedAt();
         SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String sTime = localDateFormat.format(date1);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date1);
-        long currentTime = Calendar.getInstance().getTimeInMillis();
-        long timeUp = calendar.getTimeInMillis();
-        long hourRest = currentTime - timeUp;
-        int hours   = (int) ((hourRest / (1000*60*60)) % 24);
-        String getHour = "";
-        if (hours < 24) {
-            getHour = hours + " h";
+
+        Date datePostNews = null;
+        Date dateNow = null;
+        Date currentDate = new Date();
+
+        try {
+            // calculating the difference b/w startDate and endDate
+            String startDate = sTime;
+            String endDate = localDateFormat.format(currentDate);
+
+            datePostNews = localDateFormat.parse(startDate);
+            dateNow = localDateFormat.parse(endDate);
+
+            long getDiff = dateNow.getTime() - datePostNews.getTime();
+
+            // using TimeUnit class from java.util.concurrent package
+            long getDaysDiff = TimeUnit.MILLISECONDS.toDays(getDiff);
+            long getHoursDiff = TimeUnit.MILLISECONDS.toHours(getDiff);
+            if (getHoursDiff < 24) {
+                holder.txtDatePost.setText(getHoursDiff + " h");
+            } else {
+                holder.txtDatePost.setText(getDaysDiff + " ngày");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else if (hours >= 24 && hours < 48) {
-            getHour = "1 ngày";
-        }
-        else if (hours >=48 && hours < 72) {
-            getHour = "2 ngày";
-        }
-        else if (hours >=72 && hours < 96) {
-            getHour = "3 ngày";
-        }
-        else {
-            getHour = "Hơn 3 ngày";
-        }
+
+
 
 
         String address = arrayNews.get(position).getAddress();
@@ -95,7 +105,9 @@ public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclervi
             holder.txtTypesNews.setText(nameCatogory);
         }
 
-        holder.txtDatePost.setText(getHour);
+
+
+
 
         List<String> listUrl = arrayNews.get(position).getUrlImage();
 
@@ -109,10 +121,15 @@ public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclervi
                     .into(holder.imgHinh);
         }
 
+
+
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+//                lấy id của bài đăng
+                        String id = arrayNews.get(position).get_id();
 
                         Intent intent = new Intent(myContext, DetailPost.class);
                         PostNewsModel post = arrayNews.get(position);
@@ -125,12 +142,6 @@ public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclervi
                         }
                         String address = post.getAddress();
                         String fullName = post.getNameAuthor();
-                        if (fullName != null) {
-                            Log.d("fullName", fullName);
-                        }
-                        else {
-                            Log.e("Full name", "no fullname");
-                        }
                         String inforDetail = post.getNote();
                         String typeAuthor = post.getTypeAuthor();
                         List<String> listUrl = post.getUrlImage();
@@ -146,6 +157,7 @@ public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclervi
                         intent.putExtra("inforDetail", inforDetail);
                         intent.putExtra("typeAuthor", typeAuthor);
                         intent.putExtra("AuthorID", AuthorID);
+                        intent.putExtra("idpost", id);
                         intent.putStringArrayListExtra("url", arrayListurl);
                         myContext.startActivity(intent);
 
@@ -179,4 +191,6 @@ public class NewsRecyclerviewAdapter extends RecyclerView.Adapter<NewsRecyclervi
             imgHinh = itemView.findViewById(R.id.img_hinh);
         }
     }
+
+
 }

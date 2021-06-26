@@ -26,6 +26,7 @@ import com.smait.SmaiApp.Model.PostNewsModel;
 import com.smait.SmaiApp.NetWorKing.ApiServices;
 import com.smait.SmaiApp.NetWorKing.RetrofitClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -58,6 +59,8 @@ public class HomeFragment extends Fragment {
     String message = "";
     String token ="";
     NewsRecyclerviewAdapter recyclerviewAdapter;
+
+
 
     @Nullable
     @Override
@@ -167,6 +170,7 @@ public class HomeFragment extends Fragment {
 
 //        ******************************************************************************************
 // get data
+
         Retrofit retrofit = RetrofitClient.getRetrofitInstance();
         ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
 

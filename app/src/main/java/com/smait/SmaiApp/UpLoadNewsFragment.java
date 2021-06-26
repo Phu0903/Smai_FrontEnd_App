@@ -132,20 +132,21 @@ public class UpLoadNewsFragment extends Fragment {
                         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Log.d("onResponse: ", "yeu bong beo");
                                 Intent intent = new Intent(getActivity().getBaseContext(), DetailPostTinDang.class);
                                 PostNewsModel post = posts.get(position);
                                 String title = post.getTitle();
 
                                 List<ProductModel> productModel = post.getNameProduct();
                                 ArrayList<String> listNameCategory = new ArrayList<>();
+                                ArrayList<String> listName = new ArrayList<>();
                                 if (productModel.size() != 0) {
                                     String detailType = productModel.get(0).getCategory();
                                     for (int i=0;i<productModel.size();i++) {
                                         listNameCategory.add(productModel.get(i).getCategory());
+                                        listName.add(productModel.get(i).getNameProduct());
                                     }
                                     intent.putExtra("detailType", detailType);
-                                    intent.putStringArrayListExtra("ListName", listNameCategory);
+                                    intent.putStringArrayListExtra("ListName", listName);
                                 }
                                 String address = post.getAddress();
                                 String fullName = post.getNameAuthor();
@@ -200,48 +201,3 @@ public class UpLoadNewsFragment extends Fragment {
 
     }
 }
-/*
-lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                                Log.d("Message", "Bông béooooo");
-                                Intent intent = new Intent(getActivity().getBaseContext(), DetailPostTinDang.class);
-                                PostNewsModel post = posts.get(position);
-                                String title = post.getTitle();
-
-                                List<ProductModel> productModel = post.getNameProduct();
-                                if (productModel.size() != 0) {
-                                    String detailType = productModel.get(0).getCategory();
-                                    intent.putExtra("detailType", detailType);
-                                }
-                                String address = post.getAddress();
-                                String fullName = post.getNameAuthor();
-                                if (fullName != null) {
-                                    Log.d("fullName", fullName);
-                                }
-                                else {
-                                    Log.e("Full name", "no fullname");
-                                }
-                                String inforDetail = post.getNote();
-                                String typeAuthor = post.getTypeAuthor();
-                                List<String> listUrl = post.getUrlImage();
-                                ArrayList<String> arrayListurl = new ArrayList<>();
-                                for (String s: listUrl) {
-                                    arrayListurl.add(s);
-                                }
-                                String AuthorID = post.getAuthorID();
-
-                                intent.putExtra("title", title);
-                                intent.putExtra("address", address);
-                                intent.putExtra("fullName", fullName);
-                                intent.putExtra("inforDetail", inforDetail);
-                                intent.putExtra("typeAuthor", typeAuthor);
-                                intent.putExtra("AuthorID", AuthorID);
-                                intent.putStringArrayListExtra("url", arrayListurl);
-                                getActivity().startActivity(intent);
-
-
-                            }
-                        });
- */

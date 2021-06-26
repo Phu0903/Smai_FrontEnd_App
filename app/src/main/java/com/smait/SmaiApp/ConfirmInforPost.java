@@ -200,7 +200,6 @@ public class ConfirmInforPost extends AppCompatActivity {
             MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", fileList.get(i).getName(), requestFile);
             list.add(body);
         }
-        Log.d("Size list anh: ", String.valueOf(list.size()));
 
         waitingDialog = new SpotsDialog.Builder()
                 .setContext(ConfirmInforPost.this)

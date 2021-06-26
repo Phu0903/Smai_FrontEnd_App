@@ -59,15 +59,8 @@ public class DetailPostTinDang extends AppCompatActivity {
         String detailtype = intent.getStringExtra("detailType");
         String addresss = intent.getStringExtra("address");
         String fullname = intent.getStringExtra("fullName");
-        if (fullname != null) {
-            Log.e("Fullname", fullname);
-        }
-        else {
-            Log.e("FullName", "no full name");
-        }
         String infordetail = intent.getStringExtra("inforDetail");
         String typeauthor = intent.getStringExtra("typeAuthor");
-        Log.d("tặng cộng đồng", typeauthor);
         ArrayList<String> listUrl = intent.getStringArrayListExtra("url");
         String AuthorID = intent.getStringExtra("AuthorID");
 

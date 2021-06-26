@@ -19,101 +19,105 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name="com.smait.SmaiApp.GetNewPassword"></activity>
-        <activity android:name="com.smait.SmaiApp.ForgotPassword" />
+        <activity android:name=".HistoryNews"></activity>
+        <activity android:name=".DetailPostSearch"
+            android:parentActivityName=".Search"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".GetNewPassword" />
+        <activity android:name=".ForgotPassword" />
         <activity
-            android:name="com.smait.SmaiApp.VerifyOTP"
+            android:name=".VerifyOTP"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.PopupCategory"
+            android:name=".PopupCategory"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.CustomTheme" />
         <activity
-            android:name="com.smait.SmaiApp.FilterPostDonation"
+            android:name=".FilterPostDonation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.DetailPostTinDang"
+            android:name=".DetailPostTinDang"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.DetailPostTangCongDong"
-            android:parentActivityName="com.smait.SmaiApp.PostDonation"
+            android:name=".DetailPostTangCongDong"
+            android:parentActivityName=".PostDonation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.DetailPostGiveFor"
-            android:parentActivityName="com.smait.SmaiApp.GiveFor"
+            android:name=".DetailPostGiveFor"
+            android:parentActivityName=".GiveFor"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.ConfirmInforPost2"
+            android:name=".ConfirmInforPost2"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.Detail2"
+            android:name=".Detail2"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.CategoryActivity3"
-            android:parentActivityName="com.smait.SmaiApp.ConfirmAddress"
+            android:name=".CategoryActivity3"
+            android:parentActivityName=".ConfirmAddress"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.ConfirmAddress3"
+            android:name=".ConfirmAddress3"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.CategoryActivity2"
-            android:parentActivityName="com.smait.SmaiApp.ConfirmAddress2"
+            android:name=".CategoryActivity2"
+            android:parentActivityName=".ConfirmAddress2"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.ConfirmAddress2"
+            android:name=".ConfirmAddress2"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.GiveFor"
+            android:name=".GiveFor"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.DetailPost"
-            android:parentActivityName="com.smait.SmaiApp.GiveFor"
+            android:name=".DetailPost"
+            android:parentActivityName=".GiveFor"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.NewpostType"
+            android:name=".NewpostType"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.who_activity"
-            android:parentActivityName="com.smait.SmaiApp.ConfirmAddress3"
+            android:name=".who_activity"
+            android:parentActivityName=".ConfirmAddress3"
             android:screenOrientation="portrait" />
-        <activity android:name="com.smait.SmaiApp.CompleteActivity" />
+        <activity android:name=".CompleteActivity" />
         <activity
-            android:name="com.smait.SmaiApp.ConfirmInforPost"
-            android:parentActivityName="com.smait.SmaiApp.Detail"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.smait.SmaiApp.ViewHistory"
+            android:name=".ConfirmInforPost"
+            android:parentActivityName=".Detail"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.PostDonation"
-            android:parentActivityName="com.smait.SmaiApp.MainActivity"
+            android:name=".ViewHistory"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.Detail"
-            android:parentActivityName="com.smait.SmaiApp.CategoryActivity"
+            android:name=".PostDonation"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.CategoryActivity"
-            android:parentActivityName="com.smait.SmaiApp.who_activity"
+            android:name=".Detail"
+            android:parentActivityName=".CategoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.ConfirmAddress"
+            android:name=".CategoryActivity"
+            android:parentActivityName=".who_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.Account"
+            android:name=".ConfirmAddress"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.Announce"
-            android:parentActivityName="com.smait.SmaiApp.MainActivity"
+            android:name=".Account"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.Search"
-            android:parentActivityName="com.smait.SmaiApp.MainActivity"
+            android:name=".Announce"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.SmaiApp.MainActivity"
-            android:clearTaskOnLaunch="true"
+            android:name=".Search"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
             android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

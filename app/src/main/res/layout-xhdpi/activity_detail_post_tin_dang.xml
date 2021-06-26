@@ -43,8 +43,8 @@
                 android:id="@+id/slider"
                 app:delay="0"
                 app:period="1000"
-                app:error_image="@drawable/book"
-                app:placeholder="@drawable/book1"/>
+                app:error_image="@drawable/ic_baseline_image_24"
+                app:placeholder="@drawable/ic_baseline_image_24"/>
 
             <LinearLayout
                 android:id="@+id/product_detail"

@@ -4,6 +4,7 @@ import com.smait.SmaiApp.Model.AccountModel;
 import com.smait.SmaiApp.Model.PostNewsModel;
 import com.smait.SmaiApp.Model.UserModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -15,7 +16,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiServices {
@@ -24,6 +27,10 @@ public interface ApiServices {
 //lấy tin đăng mới
     @GET("post/getNewpost")
     Call<List<PostNewsModel>> getPost();
+
+//    lấy all post
+    @GET("post/getFullPost")
+    Call<List<PostNewsModel>> getFullPost();
 
 //lấy tin đăng tặng cộng đồng
     //https://smai-back-end.herokuapp.com/post/getPostByTypeAuthor?typeauthor=%7BLoaij
@@ -40,6 +47,14 @@ public interface ApiServices {
 //    lấy số điện thoại tin đăng
     @GET("user/getPhonNumber")
     Call<AccountModel> getPhoneNumberPost(@Query("AuthorID") String authorId);
+
+//    lấy lịch sử xem
+    @PUT("user/updateHistory")
+    Call<List<PostNewsModel>> getHistory(@Header("Authorization") String authHeader, @Body ArrayList<String> Idpost);
+
+    @GET("user/getHistoryPost")
+    Call<List<PostNewsModel>> getHistoryPost(@Header("Authorization") String authHeader);
+
 
 
 //    https://smai-back-end.herokuapp.com/account/login
