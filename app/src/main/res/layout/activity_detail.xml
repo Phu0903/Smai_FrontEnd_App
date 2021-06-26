@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Detail">
+    tools:context="com.smait.quyengop.Detail">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

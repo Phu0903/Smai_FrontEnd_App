@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     android:orientation="vertical"
-    tools:context=".who_activity">
+    tools:context="com.smait.quyengop.who_activity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
     android:background="@color/gray"
     android:gravity="bottom"
     android:orientation="vertical"
-    tools:context=".ConfirmAddress3">
+    tools:context="com.smait.quyengop.ConfirmAddress3">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     android:orientation="vertical"
-    tools:context=".ConfirmInforPost2">
+    tools:context="com.smait.quyengop.ConfirmInforPost2">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

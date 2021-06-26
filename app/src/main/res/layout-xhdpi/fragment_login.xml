@@ -10,7 +10,7 @@
 
     android:id="@+id/lnLogin"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Personal.LoginFragment">
+    tools:context="com.smait.quyengop.Personal.LoginFragment">
 
 
     <LinearLayout

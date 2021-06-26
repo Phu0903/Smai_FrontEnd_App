@@ -54,7 +54,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:cursorVisible="true"
-            android:inputType="number"
+            app:inputType="number"
             android:itemBackground="#65EAEAEA" />
 
 

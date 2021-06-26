@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:id="@+id/linearlayoutGiveFor"
-    tools:context=".GiveFor">
+    tools:context="com.smait.quyengop.GiveFor">
 
     <LinearLayout
         android:layout_width="match_parent"

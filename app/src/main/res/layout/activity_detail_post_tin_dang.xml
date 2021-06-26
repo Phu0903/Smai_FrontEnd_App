@@ -8,7 +8,7 @@
     android:orientation="vertical"
 
     android:fillViewport="true"
-    tools:context=".DetailPostTinDang">
+    tools:context="com.smait.quyengop.DetailPostTinDang">
 
 
     <LinearLayout

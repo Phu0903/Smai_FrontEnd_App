@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".CategoryActivity">
+    tools:context="com.smait.quyengop.CategoryActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
