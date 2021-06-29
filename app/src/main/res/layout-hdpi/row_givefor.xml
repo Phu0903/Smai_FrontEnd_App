@@ -74,9 +74,8 @@
                     android:id="@+id/img_givefor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
                     android:layout_gravity="center"
-                    android:src="@drawable/book1"/>
+                    android:src="@drawable/ic_baseline_image_128"/>
 
             </LinearLayout>
         </LinearLayout>

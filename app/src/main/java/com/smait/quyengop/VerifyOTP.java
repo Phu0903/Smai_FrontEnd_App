@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.safetynet.SafetyNetAppCheckProviderFactory;
 import com.smait.quyengop.Model.AccountModel;
 import com.smait.quyengop.NetWorKing.ApiServices;
 import com.smait.quyengop.NetWorKing.RetrofitClient;
@@ -45,7 +48,16 @@ public class VerifyOTP extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_o_t_p);
 
+
         mAuth = FirebaseAuth.getInstance();
+
+
+        FirebaseApp.initializeApp(/*context=*/ this);
+        FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
+        firebaseAppCheck.installAppCheckProviderFactory(
+                SafetyNetAppCheckProviderFactory.getInstance());
+
+
         pinview = findViewById(R.id.pin_view);
         btnOTP = findViewById(R.id.btn_OTP);
 
@@ -156,6 +168,7 @@ public class VerifyOTP extends AppCompatActivity {
                     String message = accountModel1.getMessage();
                     String tk = accountModel1.getAccessToken();
                     Intent intent = new Intent(VerifyOTP.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.putExtra("message", message);
                     intent.putExtra("Token", tk);
                     intent.putExtra("ISLOGINED", "NO");
@@ -177,40 +190,7 @@ public class VerifyOTP extends AppCompatActivity {
 }
 
 
-/*
-Retrofit retrofit = RetrofitClient.getRetrofitInstance();
-                    ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
-                    AccountModel accountModel = new AccountModel();
-                    accountModel.setPhoneNumber(phonenumber);
-                    Log.d("PhoneNumber", accountModel.getPhoneNumber());
-                    Call<String> call = jsonPlaceHolderApi.checkPhoneNumber(accountModel);
-                    call.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            if (response.isSuccessful()) {
-                                String s = response.body();
-                                Log.d("Boddy", s);
-                                if (s.equals("Oke")) {
-                                    phoneNumber.setError("Số điện thoại chưa đăng ký");
-                                } else {
-                                    btn_SendOTP.setEnabled(true);
-                                    String phone = phonenumber.substring(1, 10);
-                                    sendVerificationCode(phone);
-                                }
 
-                            } else {
-                                Log.d("Message error", response.message());
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-                            Toast.makeText(ForgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.d("sadfsd", String.valueOf(call));
-                            btn_GetOTP.setEnabled(true);
-                        }
-                    });
- */
 
 
 

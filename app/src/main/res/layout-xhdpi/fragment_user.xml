@@ -94,7 +94,7 @@
                     android:background="@drawable/border_red_backround_white"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp">
+                    android:layout_marginRight="10dp">
 
                     <Button
                         android:id="@+id/btn_LILO"
@@ -128,7 +128,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
-                    android:background="#FFFFFF"
                     android:padding="20dp"
                     android:textAllCaps="false"
                     android:textAlignment="viewStart"
@@ -137,6 +136,7 @@
                     android:fontFamily="@font/open_sans"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_2"
+                    android:backgroundTint="@color/white"
                     android:text="Lịch sử xem " />
 
             <LinearLayout
@@ -164,6 +164,7 @@
                     android:layout_weight="1"
                     android:textSize="@dimen/size_2"
                     android:fontFamily="@font/open_sans_semibold"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:background="@color/gray"
                     android:textAlignment="textEnd"
                     android:textColor="#40A6E3" />

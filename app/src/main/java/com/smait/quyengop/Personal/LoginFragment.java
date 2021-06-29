@@ -125,6 +125,7 @@ public class LoginFragment extends Fragment {
 
 
                                 Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.putExtra("message", message);
                                 intent.putExtra("Token", tk);
                                 if (checkBox.isChecked()) {

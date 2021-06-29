@@ -118,7 +118,7 @@ public class Search extends AppCompatActivity {
 
                         List<ProductModel> productModel = post.getNameProduct();
                         if (productModel.size() != 0) {
-                            String detailType = productModel.get(0).getCategory();
+                            String detailType = productModel.get(0).getNameProduct();
                             intent.putExtra("detailType", detailType);
                         }
                         String address = post.getAddress();

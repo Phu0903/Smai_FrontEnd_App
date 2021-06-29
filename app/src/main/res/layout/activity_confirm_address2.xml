@@ -12,19 +12,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/border_radius_4_corner_background_gray"
         android:orientation="vertical"
-        android:paddingBottom="20dp">
+        android:paddingBottom="10dp">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_radius_2_corners_top"
-            android:paddingTop="5px"
-            android:paddingBottom="5px">
+            android:paddingTop="10px"
+            android:paddingBottom="10px">
 
             <TextView
                 android:layout_width="match_parent"
@@ -36,77 +36,104 @@
                 android:fontFamily="@font/open_sans_semibold"/>
         </FrameLayout>
 
-        <TextView
-            android:id="@+id/tv_city"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="@dimen/size_1"
-            android:layout_marginLeft="30px"
-            android:fontFamily="@font/open_sans"
-            android:text="Tỉnh/thành phố*"/>
-        <Spinner
-            android:id="@+id/spinner_country"
-            android:layout_width="match_parent"
-            android:layout_marginTop="5px"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="@dimen/size_1"
-            android:layout_marginLeft="30px"
-            android:fontFamily="@font/open_sans"
-            android:text="Quận/huyện*"/>
-        <Spinner
-            android:id="@+id/spinner_state"
-            android:layout_width="match_parent"
-            android:layout_marginTop="5px"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="@dimen/size_1"
-            android:layout_marginLeft="30px"
-            android:fontFamily="@font/open_sans"
-            android:text="Phường/xã*"/>
-        <Spinner
-            android:id="@+id/spinner_city"
-            android:layout_width="match_parent"
-            android:layout_marginTop="5px"
-            android:layout_height="wrap_content"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"/>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="@dimen/size_1"
-            android:layout_marginLeft="30px"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCity"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/open_sans"
-            android:text="Số nhà/ấp/thôn:"/>
+            style="@style/AddressTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/textview_detailLocation"
+            <AutoCompleteTextView
+                android:id="@+id/autoCity"
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:layout_weight="1"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"
+                android:paddingLeft="40px"
+                android:inputType="none"
+                android:hint="Tỉnh/thành phố"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDistrict"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30px"
-            android:layout_marginRight="30px"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/size_2"
-            android:layout_marginTop="5px"
-            android:singleLine="true"/>
+            style="@style/AddressTextInputLayoutStyle"
+            android:outlineSpotShadowColor="@color/black">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoDistrict"
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"
+                android:hint="Quận/huyện"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCommune"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            style="@style/AddressTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:outlineSpotShadowColor="@color/black"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCommune"
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"
+                android:hint="Phường/xã"
+                android:textColorHint="@color/black"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutLocation"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/DetailAddressTextInputLayoutStyle"
+            android:outlineSpotShadowColor="@color/black"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detailLocation"
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/size_2"
+                android:textColor="@color/black"
+                android:imeOptions="actionDone"
+                android:textCursorDrawable="@null"
+                android:hint="Số nhà/ấp/thôn"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -115,9 +142,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="30px"
-            android:layout_marginRight="30px"
-            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="@color/red"
             android:fontFamily="@font/open_sans_semibold"
             android:text="@string/button_confirm"

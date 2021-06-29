@@ -17,6 +17,8 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:textSize="@dimen/size_3"
+android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:backgroundTint="@color/white"
       />
 
@@ -32,6 +34,8 @@
         android:paddingBottom="15dp"
         android:textSize="@dimen/size_3"
         android:layout_marginTop="-8dp"
+android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:backgroundTint="@color/white"/>
 
     <Button
@@ -46,6 +50,8 @@
         android:paddingBottom="15dp"
         android:textSize="@dimen/size_3"
         android:layout_marginTop="-8dp"
+android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:backgroundTint="@color/white"/>
 
     <Button
@@ -60,6 +66,8 @@
         android:paddingBottom="15dp"
         android:textSize="@dimen/size_3"
         android:layout_marginTop="-8dp"
+android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:backgroundTint="@color/white"/>
 
     <Button
@@ -74,6 +82,8 @@
         android:paddingBottom="15dp"
         android:textSize="@dimen/size_3"
         android:layout_marginTop="-8dp"
+android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:backgroundTint="@color/white"/>
 
 

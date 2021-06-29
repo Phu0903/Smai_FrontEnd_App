@@ -61,7 +61,6 @@ public class GiveforAdapter extends BaseAdapter {
 //        if (arrayNews.get(position).getAddress() != null) {
             String address = arrayNews.get(position).getAddress();
             String[] city = address.split(",");
-            Log.d("address", address);
             if (city.length > 2) {
                 Address.setText(city[city.length - 2] + ", " + city[city.length - 1]);
             } else {
@@ -77,7 +76,6 @@ public class GiveforAdapter extends BaseAdapter {
             List<String> listUrl = arrayNews.get(position).getUrlImage();
             ImageView imageViewgivfor = convertView.findViewById(R.id.img_givefor);
             String url = listUrl.get(0);
-            Log.e("Hinh", url);
             Glide.with(convertView).load(url).placeholder(R.drawable.book1).into(imageViewgivfor);
         } else {
             Log.e("Hinh", "no hinh givefor");

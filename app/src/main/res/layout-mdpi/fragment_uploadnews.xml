@@ -28,8 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:paddingLeft="10px"
+            android:paddingRight="10px"
             android:orientation="horizontal">
 
             <Spinner
@@ -44,7 +44,10 @@
 
             <Button
                 android:id="@+id/create_post"
-                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_marginLeft="10dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:backgroundTint="@color/teal_700"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="53dp"
                 android:layout_weight="1"

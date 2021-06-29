@@ -47,8 +47,8 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="vertical"
-                android:paddingEnd="50px"
-                android:paddingStart="30px"
+                android:paddingEnd="20px"
+                android:paddingStart="20px"
                 android:paddingTop="20px">
 
                 <TextView
@@ -65,8 +65,8 @@
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="50px"
-                    android:paddingBottom="50px"
+                    android:paddingTop="10px"
+                    android:paddingBottom="10px"
                     android:text="Tặng cộng đồng"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_3"
@@ -84,8 +84,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50px"
-                    android:layout_marginBottom="50px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
                     android:orientation="horizontal">
 
                     <TextView
@@ -106,6 +106,7 @@
                         android:background="@color/white"
                         android:fontFamily="@font/open_sans"
                         android:text="Chi tiết"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:textAllCaps="false"
                         android:textColor="#2B99CA" />
 

@@ -277,6 +277,8 @@ public class Detail2 extends AppCompatActivity {
 
             }
         });
-        alerDialog.show();
+        AlertDialog dialog = alerDialog.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(this.getResources().getColor(R.color.teal_700));
     }
 }

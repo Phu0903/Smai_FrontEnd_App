@@ -104,12 +104,12 @@ public class PostDonationAdapter extends BaseAdapter {
         TextView txtTypesNews = convertView.findViewById(R.id.tv_typenews);
         List<ProductModel> productModels = arrayNews.get(0).getNameProduct();
 
+        if (productModels.size() != 0) {
+            ProductModel model1 = productModels.get(0);
+            String nameCatogory = model1.getCategory();
 
-        ProductModel model1 = productModels.get(0);
-        String nameCatogory = model1.getCategory();
-
-        txtTypesNews.setText(nameCatogory);
-
+            txtTypesNews.setText(nameCatogory);
+        }
 
 
 

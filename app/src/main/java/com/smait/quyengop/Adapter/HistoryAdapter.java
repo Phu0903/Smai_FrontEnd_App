@@ -23,17 +23,17 @@ public class HistoryAdapter extends BaseAdapter {
     public HistoryAdapter(Context context, int layout, List<PostNewsModel> newsList) {
         myContext = context;
         myLayout = layout;
-        arrayNews = newsList;
+        arrayNewsHistory = newsList;
     }
 
     Context myContext;
     int myLayout;
-    List<PostNewsModel> arrayNews;
+    List<PostNewsModel> arrayNewsHistory;
 
     @Override
     public int getCount() {
-        if (arrayNews != null) {
-            return arrayNews.size();
+        if (arrayNewsHistory != null) {
+            return arrayNewsHistory.size();
         }
         return 0;
     }
@@ -52,36 +52,42 @@ public class HistoryAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-//ngày giờ đăng tin
-        Date date1 = arrayNews.get(position).getCreatedAt();
-        SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm, dd/MM/yyyy "); //format ngày giờ thành dd/mm/yyyy hh:mm
-        String sTime = localDateFormat.format(date1);
-
-
-        String address = arrayNews.get(position).getAddress();
-        String[] mainAddress = address.split(",");
-
         convertView = inflater.inflate(myLayout, null);
-
+//ngày giờ đăng tin
+        SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm, dd/MM/yyyy "); //format ngày giờ thành dd/mm/yyyy hh:mm
+        Date dateHistory1;
         TextView txtDate = convertView.findViewById(R.id.typePost);
-        txtDate.setText(sTime);
-
+        String sTime;
 
         TextView txtName = convertView.findViewById(R.id.tv_tittle);
-        txtName.setText(arrayNews.get(position).getTitle());
+        txtName.setText(arrayNewsHistory.get(position).getTitle());
+
+
+        if (arrayNewsHistory != null && arrayNewsHistory.size() != 0) {
+            dateHistory1 = arrayNewsHistory.get(position).getCreatedAt();
+
+            sTime = localDateFormat.format(dateHistory1);
+            txtDate.setText(sTime);
+        }
+
+
+
+        String address = arrayNewsHistory.get(position).getAddress();
+        String[] mainAddress = address.split(",");
+
+
 
         TextView txtAddress = convertView.findViewById(R.id.tv_address);
         txtAddress.setText(mainAddress[0] + ", " + mainAddress[1]);
 
         TextView txtStatus = convertView.findViewById(R.id.status);
-        ProductModel productModel = arrayNews.get(position).getNameProduct().get(0);
+        ProductModel productModel = arrayNewsHistory.get(position).getNameProduct().get(0);
         txtStatus.setText(productModel.getCategory());
 
         TextView txtTypeNews = convertView.findViewById(R.id.tv_typenews);
         txtTypeNews.setText(productModel.getNameProduct());
 
-        List<String> listUrl = arrayNews.get(position).getUrlImage();
+        List<String> listUrl = arrayNewsHistory.get(position).getUrlImage();
 
         if (listUrl.size() != 0) {
             String url = listUrl.get(0);

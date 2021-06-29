@@ -19,16 +19,17 @@ public class PostNewsModel   {
     private List<String> urlImage;
     private Date createdAt;
     private Date updatedAt;
+    private boolean confirm;
 
     public boolean isConfirm() {
-        return Confirm;
+        return confirm;
     }
 
-    public void setConfirm(boolean confirm) {
-        Confirm = confirm;
+    public void setConfirm(boolean Confirm) {
+        confirm = Confirm;
     }
 
-    private boolean Confirm;
+
 
 
 

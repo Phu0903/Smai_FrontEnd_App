@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
-            android:paddingLeft="20dp"
+            android:padding="20dp"
             android:text="Quỹ/ Nhóm từ thiện"
             android:textAlignment="viewStart"
             android:fontFamily="@font/open_sans"

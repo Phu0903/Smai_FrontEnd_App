@@ -105,6 +105,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:fontFamily="@font/open_sans"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:text="Chi tiết"
                         android:textAllCaps="false"
                         android:textColor="#2B99CA" />

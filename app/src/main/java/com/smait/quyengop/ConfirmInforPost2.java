@@ -189,14 +189,15 @@ public class ConfirmInforPost2 extends AppCompatActivity {
             MultipartBody.Part body = MultipartBody.Part.createFormData("productImage", fileList.get(i).getName(), requestFile);
             list.add(body);
         }
-        waitingDialog = new SpotsDialog.Builder()
-                .setContext(ConfirmInforPost2.this)
-                .setMessage("Đang đăng bài")
-                .build();
+
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btn_confirm.setEnabled(false);
+                waitingDialog = new SpotsDialog.Builder()
+                        .setContext(ConfirmInforPost2.this)
+                        .setMessage("Đang đăng bài")
+                        .build();
                 waitingDialog.show();
                 Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                 ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
@@ -215,9 +216,11 @@ public class ConfirmInforPost2 extends AppCompatActivity {
                                 call1.enqueue(new Callback<PostNewsModel>() {
                                     @Override
                                     public void onResponse(Call<PostNewsModel> call, Response<PostNewsModel> response) {
+                                        waitingDialog.dismiss();
                                         Intent intent1 = new Intent(getApplicationContext(), CompleteActivity.class);
                                         intent1.putExtra("Token", token);
                                         intent1.putExtra("message", "OK");
+                                        intent1.putExtra("Require", "tang");
                                         startActivity(intent1);
                                         finish();
                                     }
@@ -299,6 +302,8 @@ public class ConfirmInforPost2 extends AppCompatActivity {
 
             }
         });
-        alerDialog.show();
+        AlertDialog dialog = alerDialog.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(this.getResources().getColor(R.color.teal_700));
     }
 }

@@ -127,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
-                    android:background="#FFFFFF"
+                    android:backgroundTint="#FFFFFF"
                     android:padding="20dp"
                     android:textAlignment="viewStart"
                     android:textAllCaps="false"
@@ -163,6 +163,7 @@
                     android:layout_weight="1"
                     android:textSize="@dimen/size_1"
                     android:fontFamily="@font/open_sans_semibold"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textAlignment="textEnd"
                     android:background="@color/gray"
                     android:textColor="#40A6E3" />

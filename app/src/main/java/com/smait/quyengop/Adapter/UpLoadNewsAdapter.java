@@ -64,7 +64,7 @@ public class UpLoadNewsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        convertView = inflater.inflate(myLayout, null);
 //ngày giờ đăng tin
         Date date1 = arrayNews.get(position).getCreatedAt();
         SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -101,7 +101,7 @@ public class UpLoadNewsAdapter extends BaseAdapter {
         String address = arrayNews.get(position).getAddress();
         String[] mainAddress = address.split(",");
 
-        convertView = inflater.inflate(myLayout, null);
+
 
         TextView txtName = convertView.findViewById(R.id.tv_tittle);
         txtName.setText(arrayNews.get(position).getTitle());
@@ -112,16 +112,20 @@ public class UpLoadNewsAdapter extends BaseAdapter {
 
         TextView txtTypesNews = convertView.findViewById(R.id.tv_typenews);
         TextView note = convertView.findViewById(R.id.tv_note);
-        if (arrayNews.get(position).getTypeAuthor().equals("Cá nhân")) {
+        TextView status = convertView.findViewById(R.id.status);
+        TextView typePost = convertView.findViewById(R.id.typePost);
+        if (arrayNews.get(position).getTypeAuthor().equals("Cá nhân") || arrayNews.get(position).getTypeAuthor().equals("Quỹ/Nhóm từ thiện") ||
+                arrayNews.get(position).getTypeAuthor().equals("Tổ chức công ích")) {
 
-            TextView status = convertView.findViewById(R.id.status);
-            TextView typePost = convertView.findViewById(R.id.typePost);
+
             if (arrayNews.get(position).isConfirm() == false) {
                 status.setText("Chờ xác thực");
+                Log.d("Waiting confirm: ", arrayNews.get(position).isConfirm() + "");
                 status.setTextColor(Color.RED);
             } else {
                 status.setText("Đang hiển thị");
-                status.setTextColor(Color.GREEN);
+                status.setTextColor(myContext.getResources().getColor(R.color.teal_700));
+                Log.d("Is confirm: ", arrayNews.get(position).isConfirm() + "");
             }
             typePost.setText("Cần xin đồ");
             txtTypesNews.setText("Danh mục nhân tặng");
@@ -212,7 +216,9 @@ public class UpLoadNewsAdapter extends BaseAdapter {
 
             }
         });
-        alerDialog.show();
+        AlertDialog dialog = alerDialog.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(myContext.getResources().getColor(R.color.teal_700));
     }
 
     public void deleteNews(int position) {
@@ -229,17 +235,7 @@ public class UpLoadNewsAdapter extends BaseAdapter {
             public void onResponse(Call<String> call, Response<String> response) {
 
                 if (response.isSuccessful()) {
-                    AlertDialog.Builder alerDialog = new AlertDialog.Builder(myContext);
-                    alerDialog.setTitle("Thông báo!");
-                    alerDialog.setMessage("Đã xóa thành công");
 
-                    alerDialog.setPositiveButton("Xong", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    });
-                    alerDialog.show();
                 } else {
                     Log.d("Tra ve gì đấy", response.message());
                 }

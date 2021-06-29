@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "994569796237",
+    "project_id": "smaiit",
+    "storage_bucket": "smaiit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994569796237:android:e4064678dfd19870f300c4",
+        "android_client_info": {
+          "package_name": "com.smait.quyengop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994569796237-2o98cuco87hquao1mac0us988ekpg8lq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smait.quyengop",
+            "certificate_hash": "b14561109aa16662ad0b4ffb4e2586e5f29a96e2"
+          }
+        },
+        {
+          "client_id": "994569796237-5bfbnr0vks0gi96huq8r6uf36hugl1mc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGVP5LVf-DKKZLItk82LycR_4pr4EFAzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994569796237-5bfbnr0vks0gi96huq8r6uf36hugl1mc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

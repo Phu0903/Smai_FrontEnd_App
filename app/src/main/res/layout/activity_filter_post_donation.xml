@@ -48,6 +48,6 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:fontFamily="@font/open_sans_semibold"
-        android:textSize="@dimen/size_1"/>
+        android:textSize="@dimen/size_2"/>
 
 </LinearLayout>

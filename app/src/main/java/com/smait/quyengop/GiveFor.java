@@ -58,7 +58,7 @@ public class GiveFor extends AppCompatActivity {
     public static List<PostNewsModel> posts;
     LinearLayout linearLayout;
     ArrayList<PostNewsModel> listName = new ArrayList<>();
-    ArrayList<String> listCatogory = new ArrayList<>();
+    String namePro;
 
     String realData;
     String realToken;
@@ -99,7 +99,9 @@ public class GiveFor extends AppCompatActivity {
         linearLayout.requestFocus();
         lvNews_New = findViewById(R.id.listView_givefor);
         Intent intent = getIntent();
-        listCatogory = intent.getStringArrayListExtra("ListName");
+        namePro = intent.getStringExtra("ListName");
+
+
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             address = bundle.getString("address");
@@ -107,8 +109,6 @@ public class GiveFor extends AppCompatActivity {
             tokenMain = bundle.getString("token");
 
         }
-
-
 
         Retrofit retrofit = RetrofitClient.getRetrofitInstance();
         ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
@@ -128,23 +128,21 @@ public class GiveFor extends AppCompatActivity {
 
 
 
-                adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, posts);
-                lvNews_New.setAdapter(adaptergivfor);
-                initSearchWidgets(posts);
-                initFilter(posts);
-                listCatogory = intent.getStringArrayListExtra("ListName");
-                if (listCatogory != null) {
-                    for (String s : listCatogory) {
-                        for (int i=0;i<posts.size();i++) {
-                            List<ProductModel> list = posts.get(i).getNameProduct();
-                            for (int j=0;j<list.size();j++) {
-                                String nameCategory = list.get(j).getNameProduct();
-                                if (nameCategory.equals(s)) {
-                                    listName.add(posts.get(i));
-                                }
+//                adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, posts);
+//                lvNews_New.setAdapter(adaptergivfor);
+//                initSearchWidgets(posts);
+//                initFilter(posts);
+                if (namePro != null) {
+                    for (int i=0;i<posts.size();i++) {
+                        List<ProductModel> list = posts.get(i).getNameProduct();
+                        for (int j=0;j<list.size();j++) {
+                            String nameCategory = list.get(j).getNameProduct();
+                            if (nameCategory.equals(namePro)) {
+                                listName.add(posts.get(i));
                             }
                         }
                     }
+
 
                     Log.d("Size list name", String.valueOf(listName.size()));
                     adaptergivfor = new GiveforAdapter(GiveFor.this, R.layout.row_givefor, listName);
@@ -164,9 +162,16 @@ public class GiveFor extends AppCompatActivity {
                         String title = post.getTitle();
 
                         List<ProductModel> productModel = post.getNameProduct();
+                        ArrayList<String> listNameCategory = new ArrayList<>();
+                        ArrayList<String> listNamee = new ArrayList<>();
                         if (productModel.size() != 0) {
                             String detailType = productModel.get(0).getCategory();
+                            for (int i=0;i<productModel.size();i++) {
+                                listNameCategory.add(productModel.get(i).getCategory());
+                                listNamee.add(productModel.get(i).getNameProduct());
+                            }
                             intent.putExtra("detailType", detailType);
+                            intent.putStringArrayListExtra("ListName", listNamee);
                         }
                         String address = post.getAddress();
                         String fullName = post.getNameAuthor();
@@ -376,6 +381,8 @@ public class GiveFor extends AppCompatActivity {
 
             }
         });
-        alerDialog.show();
+        AlertDialog dialog = alerDialog.create();
+        dialog.show();
+        dialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setTextColor(this.getResources().getColor(R.color.teal_700));
     }
 }

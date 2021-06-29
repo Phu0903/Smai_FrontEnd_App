@@ -265,15 +265,16 @@ public class ConfirmInforPost extends AppCompatActivity {
         });
 
 
-
         btnPopup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent1 = new Intent(ConfirmInforPost.this, PopupCategory.class);
                 intent1.putExtra("listname", listName);
                 startActivity(intent1);
             }
         });
+
     }
 
     @Override
@@ -323,6 +324,8 @@ public class ConfirmInforPost extends AppCompatActivity {
 
             }
         });
-        alerDialog.show();
+        AlertDialog dialog = alerDialog.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(this.getResources().getColor(R.color.teal_700));
     }
 }

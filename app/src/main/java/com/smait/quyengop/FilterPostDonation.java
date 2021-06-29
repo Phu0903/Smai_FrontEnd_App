@@ -58,6 +58,7 @@ public class FilterPostDonation extends AppCompatActivity {
 
         nameProductArrayList = new ArrayList<NameProduct>();
 
+
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
@@ -104,6 +105,7 @@ public class FilterPostDonation extends AppCompatActivity {
                     intent1.putExtra("Filter", "loc");
                     startActivity(intent1);
                     finish();
+
 //                        *************************************************************
                 }
                 else {

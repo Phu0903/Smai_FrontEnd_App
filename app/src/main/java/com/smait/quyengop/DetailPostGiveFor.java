@@ -30,7 +30,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class DetailPostGiveFor extends AppCompatActivity {
-    Button btnCall;
+    Button btnCall, btnPopup;
 
     TextView tittle, detailType, detailPrice, address, fullName, typeAuthor, inforDetail;
     ImageView productImage;
@@ -73,20 +73,13 @@ public class DetailPostGiveFor extends AppCompatActivity {
         Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getHistory("Bearer " + token, seenList);
         call.enqueue(new Callback<List<PostNewsModel>>() {
             @Override
-            public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
-                if (response.isSuccessful()) {
-
-
-                }
-
-            }
-
+            public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {}
             @Override
-            public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {
-
-            }
+            public void onFailure(Call<List<PostNewsModel>> call, Throwable t) {}
         });
 
+
+        ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
         String title = intent.getStringExtra("title");
         String detailtype = intent.getStringExtra("detailType");
         String addresss = intent.getStringExtra("address");
@@ -99,11 +92,35 @@ public class DetailPostGiveFor extends AppCompatActivity {
 
         tittle.setText(title);
 
-        detailType.setText(detailtype);
+
         address.setText(addresss);
         fullName.setText(fullname);
         inforDetail.setText(infordetail);
-        typeAuthor.setText(typeauthor);
+
+        if (typeauthor.equals("tangcongdong")) {
+            typeAuthor.setText("Cá nhân");
+            detailType.setText(detailtype);
+        }
+        else {
+            typeAuthor.setText(typeauthor);
+            detailType.setText("Danh mục nhân:   " + listName.size());
+            btnPopup.setVisibility(View.VISIBLE);
+            detailPrice.setVisibility(View.GONE);
+
+            btnPopup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent1 = new Intent(DetailPostGiveFor.this, PopupCategory.class);
+                    intent1.putExtra("listname", listName);
+                    startActivity(intent1);
+                }
+            });
+
+        }
+
+
+
 
         ImageSlider imageSlider = findViewById(R.id.slider);
         List<SlideModel> slideModels = new ArrayList<>();
@@ -156,6 +173,7 @@ public class DetailPostGiveFor extends AppCompatActivity {
         typeAuthor = findViewById(R.id.user_type);
         inforDetail = findViewById(R.id.infor_detail);
         btnCall = (Button)findViewById(R.id.call);
+        btnPopup = findViewById(R.id.popupDanhmuc);
     }
 
 

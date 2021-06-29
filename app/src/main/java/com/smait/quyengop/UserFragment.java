@@ -59,13 +59,16 @@ public class UserFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_user, container, false);
 
-
+        fullName = view.findViewById(R.id.textView5);
 //        view History
         btnHistory = (Button) view.findViewById(R.id.view_history);
         sharedPreferences = getActivity().getSharedPreferences("datalogin", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
+        if (sharedPreferences != null) {
+            String fullname = sharedPreferences.getString("fullName", "");
+            fullName.setText(fullname);
+        }
 
 
         setHasOptionsMenu(true);
@@ -113,7 +116,7 @@ public class UserFragment extends Fragment {
         });
 
 
-        fullName = view.findViewById(R.id.textView5);
+
         layoutInfor = view.findViewById(R.id.linearlayout_infor);
         layoutRequired = view.findViewById(R.id.linearlayout_requireUser);
         btnLilo = view.findViewById(R.id.btn_LILO);
@@ -143,6 +146,9 @@ public class UserFragment extends Fragment {
                     if (response.isSuccessful()) {
                         UserModel userModel = response.body();
                         fullName.setText(userModel.getFullName());
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("fullName", fullName.getText().toString());
+                        editor.commit();
                     }
                     else {
                         Log.e("Message", response.message());

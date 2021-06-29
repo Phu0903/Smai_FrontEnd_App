@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:isScrollContainer="false"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.smait.quyengop.Personal.SigninFragment">
 
@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="30dp"
+        android:paddingTop="10dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:orientation="vertical">
@@ -21,43 +21,49 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layouthoten"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            style="@style/Detail"
+            android:backgroundTint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edthoten"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:singleLine="true"
+                android:backgroundTint="@color/white"
                 android:inputType="text"
-                android:completionThreshold="1"
                 android:fontFamily="@font/open_sans"
                 android:hint="Họ tên"
                 android:imeOptions="actionNext"
                 android:textColor="@color/black"
-                android:textColorHint="#D6908B"
+                android:textCursorDrawable="@null"
+                android:textColorHint="@color/teal_700"
                 android:textSize="@dimen/size_3" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutsdt"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:layout_height="wrap_content">
+            style="@style/Detail"
+            android:backgroundTint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtsdt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:completionThreshold="1"
+                android:singleLine="true"
+                android:backgroundTint="@color/white"
+                android:inputType="number"
                 android:maxLength="10"
+                android:textCursorDrawable="@null"
                 android:fontFamily="@font/open_sans"
                 android:hint="Số điện thoại"
-                android:inputType="phone"
+                android:imeOptions="actionNext"
                 android:textColor="@color/black"
-                android:textColorHint="#D6908B"
+                android:textColorHint="@color/teal_700"
                 android:textSize="@dimen/size_3" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -65,20 +71,25 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutmatkhau"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             app:passwordToggleEnabled="true"
-            android:layout_height="wrap_content">
+            style="@style/Detail"
+            android:backgroundTint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtmatkhau"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:singleLine="true"
+                android:backgroundTint="@color/white"
+                android:inputType="textPassword"
                 android:fontFamily="@font/open_sans"
                 android:hint="Mật khẩu"
                 android:imeOptions="actionNext"
-                android:inputType="textPassword"
                 android:textColor="@color/black"
-                android:textColorHint="#D6908B"
+                android:textCursorDrawable="@null"
+                android:textColorHint="@color/teal_700"
                 android:textSize="@dimen/size_3" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -86,22 +97,27 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutmatkhau2"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             app:passwordToggleEnabled="true"
-            android:layout_height="wrap_content">
+            style="@style/Detail"
+            android:backgroundTint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtmatkhau2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:completionThreshold="1"
-                android:fontFamily="@font/open_sans"
-                android:hint="Nhập lại mật khẩu"
-                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:backgroundTint="@color/white"
                 android:inputType="textPassword"
+                android:fontFamily="@font/open_sans"
+                android:hint="Mật khẩu"
+                android:imeOptions="actionNext"
                 android:textColor="@color/black"
-                android:textColorHint="#D6908B"
+                android:textCursorDrawable="@null"
+                android:textColorHint="@color/teal_700"
                 android:textSize="@dimen/size_3" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -113,7 +129,7 @@
                 android:id="@+id/btn_signin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:backgroundTint="#DD484D"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="Đăng ký"

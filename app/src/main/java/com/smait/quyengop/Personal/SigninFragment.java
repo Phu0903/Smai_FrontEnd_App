@@ -37,8 +37,8 @@ public class SigninFragment extends Fragment {
     }
 
     Button btnSignin;
-    TextInputEditText edtHoTen, edtTenTaiKhoan, edtSDT, edtMatKhau, edtDiaChi, edtMatKhau2;
-    TextInputLayout layouthoten, layouttaikhoan, layoutsdt, layoutdiachi, layoutmk, layoutmk2;
+    TextInputEditText edtHoTen, edtSDT, edtMatKhau, edtMatKhau2;
+    TextInputLayout layouthoten, layoutsdt, layoutmk, layoutmk2;
 
 
     @Override
@@ -62,23 +62,20 @@ public class SigninFragment extends Fragment {
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Đăng ký", "Bug gì đấy");
                     Retrofit retrofit = RetrofitClient.getRetrofitInstance();
                     ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
                     String passWord = edtMatKhau.getText().toString();
                     String passWord2 = edtMatKhau2.getText().toString();
                     String phoneNumber = edtSDT.getText().toString();
                     String fullName = edtHoTen.getText().toString();
-                    if (validate(fullName, layouthoten, edtHoTen) == true && validate(passWord, layoutmk, edtMatKhau) == true &&
-                    validate(phoneNumber, layoutsdt, edtSDT) == true == true && validate(passWord2, layoutmk2, edtMatKhau2) == true) {
+                    if (validate(fullName, layouthoten, edtHoTen) == true && validate(phoneNumber, layoutsdt, edtSDT) == true &&
+                            validate(passWord, layoutmk, edtMatKhau) == true && validate(passWord2, layoutmk2, edtMatKhau2) == true) {
 
                         if (phoneNumber.length() != 10) {
                             layoutsdt.setError("Số điện thoại không đúng");
                             return;
                         }
-                        Log.d("Đăng ký2222", "Bug gì đấy");
                         if (passWord.equals(passWord2)) {
-                            Log.d("Đăng k 33333ý", "Bug gì đấy");
                             btnSignin.setEnabled(false);
                             AccountModel accountModel = new AccountModel();
                             accountModel.setPassword(passWord);
@@ -89,7 +86,6 @@ public class SigninFragment extends Fragment {
                             call.enqueue(new Callback<String>() {
                                 @Override
                                 public void onResponse(Call<String> call, Response<String> response) {
-                                    Log.d("Đăng ký444444", "Bug gì đấy");
                                     if (response.isSuccessful()) {
 
                                         if (response.body().equals("Oke")) {
@@ -103,8 +99,6 @@ public class SigninFragment extends Fragment {
                                         } else {
                                             layoutsdt.setError("Số điện thoại đã đăng ký");
                                             btnSignin.setEnabled(true);
-                                            Log.d("Ôi noo", "lỗi chỗ này");
-                                            Log.d("Ca sĩ", response.body());
                                         }
 
 

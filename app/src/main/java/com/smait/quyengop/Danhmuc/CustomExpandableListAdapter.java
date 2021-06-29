@@ -102,24 +102,9 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_item_danhmuc, null);
         }
-        CheckedTextView expandedListTextView = (CheckedTextView) convertView
-                .findViewById(R.id.checkList);
-
-//        expandedListTextView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (!expandedListTextView.isChecked()) {
-//                    expandedListTextView.setChecked(true);
-//                }
-//                else {
-//                    expandedListTextView.setChecked(false);
-//                }
-//            }
-//        });
+        CheckedTextView expandedListTextView = (CheckedTextView) convertView.findViewById(R.id.checkList);
 
         expandedListTextView.setText(expandedListText);
-
-
 
         return convertView;
     }

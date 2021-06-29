@@ -101,6 +101,7 @@ public class HomeFragment extends Fragment {
         btn_tangcongdong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (message.equals("OK")) {
                     Intent intent = new Intent(getContext(), ConfirmAddress.class);
                     intent.putExtra("Token", token);
@@ -221,10 +222,11 @@ public class HomeFragment extends Fragment {
 
 //        open post donations
         btnViewDonation = view.findViewById(R.id.view_donations);
-
+        btnViewDonation.setEnabled(true);
         btnViewDonation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnViewDonation.setEnabled(false);
                 Intent intent = new Intent(getContext(), PostDonation.class);
                 startActivity(intent);
             }

@@ -182,16 +182,11 @@ public class PostDonation extends AppCompatActivity {
 
                         List<ProductModel> productModel = post.getNameProduct();
                         if (productModel.size() != 0) {
-                            String detailType = productModel.get(0).getCategory();
+                            String detailType = productModel.get(0).getNameProduct();
                             intent.putExtra("detailType", detailType);
                         }
                         String address = post.getAddress();
                         String fullName = post.getNameAuthor();
-                        if (fullName != null) {
-                            Log.d("fullName", fullName);
-                        } else {
-                            Log.e("Full name", "no fullname");
-                        }
                         String inforDetail = post.getNote();
                         String typeAuthor = post.getTypeAuthor();
                         List<String> listUrl = post.getUrlImage();

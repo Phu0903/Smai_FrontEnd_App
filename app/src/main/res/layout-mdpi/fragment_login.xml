@@ -28,6 +28,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layouttentaikhoan"
             android:layout_width="match_parent"
+            android:backgroundTint="@color/white"
+            style="@style/Detail"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -35,12 +37,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/size_3"
+                android:backgroundTint="@color/white"
                 android:fontFamily="@font/open_sans"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:imeOptions="actionNext"
+                android:textCursorDrawable="@null"
                 android:textColorHint="#D6908B"
-                android:completionThreshold="1"
                 android:hint="Tài khoản" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -50,6 +53,8 @@
             android:id="@+id/layoutpassword"
             android:layout_width="match_parent"
             android:layout_marginTop="15dp"
+            style="@style/Detail"
+            android:backgroundTint="@color/white"
             app:passwordToggleEnabled="true"
             android:layout_height="wrap_content">
 
@@ -57,12 +62,14 @@
                 android:id="@+id/textView_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
                 android:textColorHint="#D6908B"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:imeOptions="actionDone"
                 android:textSize="@dimen/size_3"
                 android:fontFamily="@font/open_sans"
+                android:textCursorDrawable="@null"
                 android:inputType="textPassword"
                 android:hint="Mật khẩu" />
 

@@ -103,10 +103,11 @@ public class UpLoadNewsFragment extends Fragment {
 
 
                         posts = response.body();
+                        boolean confirm = posts.get(0).isConfirm();
+                        Log.d("Is confirm", confirm + "");
                         adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, posts);
                         lvNews.setAdapter(adapter);
 
-                        Log.d("onResponse: ", "hhhh");
 
                         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
@@ -148,6 +149,7 @@ public class UpLoadNewsFragment extends Fragment {
                                     }
                                     intent.putExtra("detailType", detailType);
                                     intent.putStringArrayListExtra("ListName", listName);
+                                    intent.putStringArrayListExtra("ListCatogory", listNameCategory);
                                 }
                                 String address = post.getAddress();
                                 String fullName = post.getNameAuthor();

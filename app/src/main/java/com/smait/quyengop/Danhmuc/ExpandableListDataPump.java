@@ -43,7 +43,7 @@ public class ExpandableListDataPump {
 
         List<String> luongthucthucpham = new ArrayList<String>();
         luongthucthucpham.add("Lương thực “gạo, mì tôm,…”");
-        luongthucthucpham.add("Da vị “mắm, muối, mì chính,…”");         //rồi
+        luongthucthucpham.add("Gia vị “mắm, muối, mì chín,…”");         //rồi
         luongthucthucpham.add("Bánh kẹo, nước, đồ ăn nhanh,…");
         luongthucthucpham.add("Đồ khác");
 
@@ -53,7 +53,7 @@ public class ExpandableListDataPump {
         noithat.add("Đồ khác");
 
         List<String> noitro = new ArrayList<String>();
-        noitro.add("Chén bát, nồi, xong, chảo,…");
+        noitro.add("Chén bát, nồi, xoong, chảo,…");
         noitro.add("Thau, chậu, thùng phi,..");                             // rồi
         noitro.add("Nồi điện, bếp điện,..");
         noitro.add("Máy lạnh, tủ lạnh, quạt điện…");
@@ -61,13 +61,13 @@ public class ExpandableListDataPump {
 
 
         List<String> dodientu = new ArrayList<String>();
-        dodientu.add("Điện thoại, lap top, máy tính…");                                 // rồi
+        dodientu.add("Điện thoại, laptop, máy tính…");                                 // rồi
         dodientu.add("Tivi, loa, đài");
         dodientu.add("Đồ khác");
 
         List<String> xeco = new ArrayList<String>();
         xeco.add("Xe đạp, ô tô, ...cho trẻ em");
-        xeco.add("Xe đẩy, xe năn,.. người cao tuổi");   //rồi
+        xeco.add("Xe đẩy, xe lăn,.. người cao tuổi");   //rồi
         xeco.add("Xe đạp, xe điện, xe máy");
         xeco.add("Xe khác");
 

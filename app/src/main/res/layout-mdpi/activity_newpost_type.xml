@@ -14,9 +14,11 @@
         android:textAllCaps="false"
         android:textAlignment="viewStart"
         android:paddingLeft="30dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:textSize="@dimen/size_3"
+        android:textSize="@dimen/size_2"
         android:backgroundTint="@color/white"
       />
 
@@ -28,9 +30,11 @@
         android:textAllCaps="false"
         android:textAlignment="viewStart"
         android:paddingLeft="30dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:textSize="@dimen/size_3"
+        android:textSize="@dimen/size_2"
         android:layout_marginTop="-8dp"
         android:backgroundTint="@color/white"/>
 
@@ -39,12 +43,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tặng người nghèo"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:textAllCaps="false"
         android:textAlignment="viewStart"
         android:paddingLeft="30dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:textSize="@dimen/size_3"
+        android:textSize="@dimen/size_2"
         android:layout_marginTop="-8dp"
         android:backgroundTint="@color/white"/>
 
@@ -56,9 +62,11 @@
         android:textAllCaps="false"
         android:textAlignment="viewStart"
         android:paddingLeft="30dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:textSize="@dimen/size_3"
+        android:textSize="@dimen/size_2"
         android:layout_marginTop="-8dp"
         android:backgroundTint="@color/white"/>
 
@@ -67,12 +75,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tặng quyên góp công ích"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:textAllCaps="false"
         android:textAlignment="viewStart"
         android:paddingLeft="30dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:textSize="@dimen/size_3"
+        android:textSize="@dimen/size_2"
         android:layout_marginTop="-8dp"
         android:backgroundTint="@color/white"/>
 

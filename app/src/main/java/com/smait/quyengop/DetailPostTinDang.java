@@ -56,6 +56,7 @@ public class DetailPostTinDang extends AppCompatActivity {
         Intent intent = getIntent();
 
         ArrayList<String> listName = intent.getStringArrayListExtra("ListName");
+        ArrayList<String> listCatogory = intent.getStringArrayListExtra("ListCatogory");
         String title = intent.getStringExtra("title");
         String detailtype = intent.getStringExtra("detailType");
         String addresss = intent.getStringExtra("address");
@@ -74,22 +75,25 @@ public class DetailPostTinDang extends AppCompatActivity {
 
         if (typeauthor.equals("tangcongdong")) {
             typeAuthor.setText("Cá nhân");
-            detailType.setText(detailtype);
+            detailType.setText(listName.get(0));
         }
         else {
             typeAuthor.setText(typeauthor);
             detailType.setText("Danh mục nhân:   " + listName.size());
             btnPopup.setVisibility(View.VISIBLE);
             detailPrice.setVisibility(View.GONE);
+
             btnPopup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Intent intent1 = new Intent(DetailPostTinDang.this, PopupCategory.class);
                     intent1.putExtra("listname", listName);
                     startActivity(intent1);
                 }
-            });
 
+
+            });
 
 
         }

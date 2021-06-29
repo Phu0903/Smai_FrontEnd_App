@@ -107,6 +107,7 @@
                         android:fontFamily="@font/open_sans"
                         android:text="Chi tiết"
                         android:textAllCaps="false"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:textColor="#2B99CA" />
 
 

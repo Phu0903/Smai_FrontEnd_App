@@ -30,9 +30,9 @@
 
             <Button
                 android:id="@+id/btn_search"
-                android:layout_width="wrap_content"
+                android:layout_width="188dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border_radius_2_left_search"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:hint="Tìm kiếm..."
                 android:fontFamily="@font/open_sans"
                 android:paddingStart="10dp"

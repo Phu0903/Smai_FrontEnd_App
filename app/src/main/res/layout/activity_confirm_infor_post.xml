@@ -47,9 +47,9 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="vertical"
-                android:paddingStart="30px"
-                android:paddingEnd="30px"
-                android:paddingTop="20px">
+                android:paddingStart="10px"
+                android:paddingEnd="5px"
+                android:paddingTop="10px">
 
                 <TextView
                     android:id="@+id/textView9"
@@ -84,8 +84,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50px"
-                    android:layout_marginBottom="50px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="10px"
                     android:orientation="horizontal">
 
                     <TextView
@@ -106,6 +106,7 @@
                         android:background="@color/white"
                         android:fontFamily="@font/open_sans"
                         android:text="Chi tiết"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:textAllCaps="false"
                         android:textColor="#2B99CA" />
 
@@ -131,9 +132,9 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="vertical"
-                android:paddingLeft="30px"
+                android:paddingLeft="10px"
                 android:paddingTop="20px"
-                android:paddingRight="50px">
+                android:paddingRight="10px">
 
                 <TextView
                     android:id="@+id/textView17"
@@ -260,8 +261,8 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="vertical"
-                android:paddingLeft="30px"
-                android:paddingRight="50px">
+                android:paddingLeft="10px"
+                android:paddingRight="10px">
 
                 <TextView
                     android:id="@+id/textView23"
