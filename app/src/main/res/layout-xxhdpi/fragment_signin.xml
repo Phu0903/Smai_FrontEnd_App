@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.smait.quyengop.Personal.SigninFragment">
+    tools:context="com.smait.quyengop.Controller.Personal.SigninFragment">
 
 
     <LinearLayout

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/border_radious_4_corners"
-    tools:context="com.smait.quyengop.PopupCategory">
+    tools:context="com.smait.quyengop.Controller.PopupCategory">
 
         <FrameLayout
             android:layout_width="match_parent"

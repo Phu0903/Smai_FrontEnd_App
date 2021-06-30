@@ -19,102 +19,102 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuyenGop">
-        <activity android:name="com.smait.quyengop.DetailPostSearch"
-            android:parentActivityName="com.smait.quyengop.Search"
+        <activity android:name="com.smait.quyengop.Controller.DetailPostSearch"
+            android:parentActivityName="com.smait.quyengop.Controller.Search"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.smait.quyengop.GetNewPassword" />
-        <activity android:name="com.smait.quyengop.ForgotPassword" />
+        <activity android:name="com.smait.quyengop.Controller.GetNewPassword" />
+        <activity android:name="com.smait.quyengop.Controller.ForgotPassword" />
         <activity
-            android:name="com.smait.quyengop.VerifyOTP"
+            android:name="com.smait.quyengop.Controller.VerifyOTP"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.PopupCategory"
+            android:name="com.smait.quyengop.Controller.PopupCategory"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.CustomTheme" />
         <activity
-            android:name="com.smait.quyengop.FilterPostDonation"
+            android:name="com.smait.quyengop.Controller.FilterPostDonation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.DetailPostTinDang"
+            android:name="com.smait.quyengop.Controller.DetailPostTinDang"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.DetailPostTangCongDong"
-            android:parentActivityName="com.smait.quyengop.PostDonation"
+            android:name="com.smait.quyengop.Controller.DetailPostTangCongDong"
+            android:parentActivityName="com.smait.quyengop.Controller.PostDonation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.DetailPostGiveFor"
-            android:parentActivityName="com.smait.quyengop.GiveFor"
+            android:name="com.smait.quyengop.Controller.DetailPostGiveFor"
+            android:parentActivityName="com.smait.quyengop.Controller.GiveFor"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.ConfirmInforPost2"
+            android:name="com.smait.quyengop.Controller.ConfirmInforPost2"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.Detail2"
+            android:name="com.smait.quyengop.Controller.Detail2"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.CategoryActivity3"
-            android:parentActivityName="com.smait.quyengop.ConfirmAddress"
+            android:name="com.smait.quyengop.Controller.CategoryActivity3"
+            android:parentActivityName="com.smait.quyengop.Controller.ConfirmAddress"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.ConfirmAddress3"
+            android:name="com.smait.quyengop.Controller.ConfirmAddress3"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.CategoryActivity2"
-            android:parentActivityName="com.smait.quyengop.ConfirmAddress2"
+            android:name="com.smait.quyengop.Controller.CategoryActivity2"
+            android:parentActivityName="com.smait.quyengop.Controller.ConfirmAddress2"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.ConfirmAddress2"
+            android:name="com.smait.quyengop.Controller.ConfirmAddress2"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.GiveFor"
+            android:name="com.smait.quyengop.Controller.GiveFor"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.DetailPost"
-            android:parentActivityName="com.smait.quyengop.GiveFor"
+            android:name="com.smait.quyengop.Controller.DetailPost"
+            android:parentActivityName="com.smait.quyengop.Controller.GiveFor"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.NewpostType"
+            android:name="com.smait.quyengop.Controller.NewpostType"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.who_activity"
-            android:parentActivityName="com.smait.quyengop.ConfirmAddress3"
+            android:name="com.smait.quyengop.Controller.who_activity"
+            android:parentActivityName="com.smait.quyengop.Controller.ConfirmAddress3"
             android:screenOrientation="portrait" />
-        <activity android:name="com.smait.quyengop.CompleteActivity" />
+        <activity android:name="com.smait.quyengop.Controller.CompleteActivity" />
         <activity
-            android:name="com.smait.quyengop.ConfirmInforPost"
-            android:parentActivityName="com.smait.quyengop.Detail"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.smait.quyengop.ViewHistory"
+            android:name="com.smait.quyengop.Controller.ConfirmInforPost"
+            android:parentActivityName="com.smait.quyengop.Controller.Detail"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.PostDonation"
-            android:parentActivityName="com.smait.quyengop.MainActivity"
+            android:name="com.smait.quyengop.Controller.ViewHistory"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.Detail"
-            android:parentActivityName="com.smait.quyengop.CategoryActivity"
+            android:name="com.smait.quyengop.Controller.PostDonation"
+            android:parentActivityName="com.smait.quyengop.Controller.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.CategoryActivity"
-            android:parentActivityName="com.smait.quyengop.who_activity"
+            android:name="com.smait.quyengop.Controller.Detail"
+            android:parentActivityName="com.smait.quyengop.Controller.CategoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.ConfirmAddress"
+            android:name="com.smait.quyengop.Controller.CategoryActivity"
+            android:parentActivityName="com.smait.quyengop.Controller.who_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.Account"
+            android:name="com.smait.quyengop.Controller.ConfirmAddress"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.Announce"
-            android:parentActivityName="com.smait.quyengop.MainActivity"
+            android:name="com.smait.quyengop.Controller.Account"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.Search"
-            android:parentActivityName="com.smait.quyengop.MainActivity"
+            android:name="com.smait.quyengop.Controller.Announce"
+            android:parentActivityName="com.smait.quyengop.Controller.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.smait.quyengop.MainActivity"
+            android:name="com.smait.quyengop.Controller.Search"
+            android:parentActivityName="com.smait.quyengop.Controller.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.smait.quyengop.Controller.MainActivity"
             android:alwaysRetainTaskState="false"
             android:clearTaskOnLaunch="true"
             android:screenOrientation="portrait">

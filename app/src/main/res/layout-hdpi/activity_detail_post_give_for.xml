@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:fillViewport="true"
-    tools:context="com.smait.quyengop.DetailPostGiveFor">
+    tools:context="com.smait.quyengop.Controller.DetailPostGiveFor">
 
 
     <LinearLayout

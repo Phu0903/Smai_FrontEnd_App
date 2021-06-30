@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:fillViewport="true"
-    tools:context="com.smait.quyengop.DetailPostSearch">
+    tools:context="com.smait.quyengop.Controller.DetailPostSearch">
 
 
     <LinearLayout

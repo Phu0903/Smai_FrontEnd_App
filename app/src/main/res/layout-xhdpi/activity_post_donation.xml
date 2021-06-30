@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/linearlayout"
-    tools:context="com.smait.quyengop.PostDonation"
+    tools:context="com.smait.quyengop.Controller.PostDonation"
     android:background="#E0E0E0">
 
     <com.google.android.material.appbar.AppBarLayout

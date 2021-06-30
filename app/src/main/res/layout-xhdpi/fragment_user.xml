@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/gray"
-    tools:context="com.smait.quyengop.UserFragment">
+    tools:context="com.smait.quyengop.Controller.UserFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,13 +53,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/size_2"
                         android:fontFamily="@font/open_sans" />
@@ -79,7 +81,6 @@
                             android:text="Cá nhân"
                             android:layout_marginRight="0dp"
                             android:textSize="@dimen/size_2"
-                            android:paddingTop="5dp"
                             android:drawablePadding="10dp"
                             android:drawableLeft="@drawable/ic_baseline_person_24"
                             android:fontFamily="@font/open_sans"
