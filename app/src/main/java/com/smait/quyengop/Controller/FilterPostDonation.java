@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckedTextView;
@@ -38,10 +40,16 @@ public class FilterPostDonation extends AppCompatActivity {
     ArrayList<NameProduct> nameProductArrayList;
     ArrayList<String> arrayListName = new ArrayList<>();
     ArrayList<String> arrayListCatogory = new ArrayList<>();
+
+    SharedPreferences preferences;
+    String sPositionItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_post_donation);
+
+        preferences = getSharedPreferences("dataPositionItemChecked", MODE_PRIVATE);
 
         //        toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_anouncement);
@@ -57,6 +65,24 @@ public class FilterPostDonation extends AppCompatActivity {
         expandableListView.setAdapter(expandableListAdapter);
 
         nameProductArrayList = new ArrayList<NameProduct>();
+//
+//        if (preferences != null) {
+//            sPositionItem = preferences.getString("postionItem", "");
+//            if (!sPositionItem.equals(",0")) {
+//                Log.d("String position Item", sPositionItem + " ôi nô, yêu bông");
+//                String[] listPosition = sPositionItem.split(",");
+//                for (int i = 1; i < listPosition.length; i++) {
+//                    String sItem = listPosition[i];
+//                    Log.d("Vị trí item", sItem);
+//                    int item = Integer.parseInt(sItem);
+//                    View view = expandableListView.getChildAt(item);
+//                    CheckedTextView ck = view.findViewById(R.id.checkList);
+//                    ck.setChecked(true);
+//                }
+//            }
+//        }
+
+        CheckedTextView checkedTextView1 = (CheckedTextView) expandableListView.getChildAt(2);
 
 
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -78,6 +104,9 @@ public class FilterPostDonation extends AppCompatActivity {
                     nameProductArrayList.add(nameProduct);
                     arrayListName.add(nameProduct.getNameProduct());
                     arrayListCatogory.add(nameProduct.getCategory());
+                    sPositionItem = sPositionItem + "," + childPosition;
+
+
 
                 }
 
@@ -98,6 +127,9 @@ public class FilterPostDonation extends AppCompatActivity {
 
                 if (count != 0) {
 
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("postionItem", sPositionItem);
+                    editor.commit();
                     //gửi data sang activity Detail*************************************************************
                     Intent intent1 = new Intent(getApplicationContext(), PostDonation.class);
                     intent1.putExtra("ListName", arrayListName);

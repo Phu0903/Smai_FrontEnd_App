@@ -66,22 +66,29 @@ public class GiveFor extends AppCompatActivity {
     String realToken;
 
 
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        TypeAuthor = savedInstanceState.getString("TypeAuthor");
+        address = savedInstanceState.getString("address");
+        tokenMain = savedInstanceState.getString("token");
+        namePro = savedInstanceState.getString("namepro");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_give_for);
 
-        if (savedInstanceState != null) {
-            TypeAuthor = savedInstanceState.getString("TypeAuthor");
-            address = savedInstanceState.getString("address");
-            tokenMain = savedInstanceState.getString("token");
-            namePro = savedInstanceState.getString("namepro");
+        preferences = getSharedPreferences("dataGiveFor", MODE_PRIVATE);
 
-        }
-        else {
-            Log.d("savedinstantcestate", "is nulllllll");
-        }
+        TypeAuthor = preferences.getString("TypeAuthor", TypeAuthor);
+        address = preferences.getString("address", address);
+        tokenMain = preferences.getString("token", tokenMain);
+        namePro = preferences.getString("namepro", namePro);
+
+
+
 
         realData = HomeFragment.sendMyDataHome();
         realToken = realData.split(",")[1];
@@ -103,7 +110,7 @@ public class GiveFor extends AppCompatActivity {
         linearLayout.requestFocus();
         lvNews_New = findViewById(R.id.listView_givefor);
         Intent intent = getIntent();
-        namePro = intent.getStringExtra("ListName");
+
 
 
 
@@ -112,8 +119,20 @@ public class GiveFor extends AppCompatActivity {
             address = bundle.getString("address");
             TypeAuthor = bundle.getString("TypeAuthor");
             tokenMain = bundle.getString("token");
+            namePro = bundle.getString("ListName");
 
         }
+        if (savedInstanceState != null) {
+            TypeAuthor = savedInstanceState.getString("TypeAuthor");
+            address = savedInstanceState.getString("address");
+            tokenMain = savedInstanceState.getString("token");
+            namePro = savedInstanceState.getString("namepro");
+
+        }
+        else {
+            Log.d("savedinstantcestate", "is nulllllll");
+        }
+
 
         Retrofit retrofit = RetrofitClient.getRetrofitInstance();
         ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
@@ -124,12 +143,13 @@ public class GiveFor extends AppCompatActivity {
         call.enqueue(new Callback<List<PostNewsModel>>() {
             @Override
             public void onResponse(Call<List<PostNewsModel>> call, Response<List<PostNewsModel>> response) {
-                if ( !response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_LONG).show();
-                    return;
-                }
+//                if ( !response.isSuccessful()) {
+//                    Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+                Log.d("Are you run in here ?", response.message() + ", ôi nô");
                 posts = response.body();
-
+                Log.d( "Size post: ", posts.size() + "ôi nô, :" + namePro);
 
 
 
@@ -138,6 +158,7 @@ public class GiveFor extends AppCompatActivity {
 //                initSearchWidgets(posts);
 //                initFilter(posts);
                 if (namePro != null) {
+
                     for (int i=0;i<posts.size();i++) {
                         List<ProductModel> list = posts.get(i).getNameProduct();
                         for (int j=0;j<list.size();j++) {
@@ -160,6 +181,13 @@ public class GiveFor extends AppCompatActivity {
                 lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("TypeAuthor", TypeAuthor);
+                        editor.putString("token", tokenMain);
+                        editor.putString("address", address);
+                        editor.putString("namepro", namePro);
+                        editor.commit();
 
                         Intent intent = new Intent(getApplicationContext(), DetailPostGiveFor.class);
                         PostNewsModel post = posts.get(position);
@@ -304,17 +332,11 @@ public class GiveFor extends AppCompatActivity {
         outState.putString("token", tokenMain);
         outState.putString("address", address);
         outState.putString("namepro", namePro);
-
+        Log.d("TypeAuthor", TypeAuthor + ", Token: " + tokenMain + ", Address: " + address + ", Name: " + namePro);
     }
 
-//    @Override
-//    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//        TypeAuthor = savedInstanceState.getString("TypeAuthor");
-//        address = savedInstanceState.getString("address");
-//        tokenMain = savedInstanceState.getString("token");
-//
-//    }
+
+
 
     public String loadJSONFromAsset() {
         String json;

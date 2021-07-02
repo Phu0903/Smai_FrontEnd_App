@@ -102,7 +102,7 @@ public class PostDonationAdapter extends BaseAdapter {
         txtAddress.setText(mainAddress[0] + ", " + mainAddress[1]);
 
         TextView txtTypesNews = convertView.findViewById(R.id.tv_typenews);
-        List<ProductModel> productModels = arrayNews.get(0).getNameProduct();
+        List<ProductModel> productModels = arrayNews.get(position).getNameProduct();
 
         if (productModels.size() != 0) {
             ProductModel model1 = productModels.get(0);

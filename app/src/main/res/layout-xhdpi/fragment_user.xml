@@ -61,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="10dp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/size_2"
                         android:fontFamily="@font/open_sans" />

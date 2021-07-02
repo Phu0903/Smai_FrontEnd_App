@@ -50,7 +50,7 @@ public class UpLoadNewsFragment extends Fragment {
 
 
         spinner = view.findViewById(R.id.spinner_dangtin);
-        String[] paths = {"Tất cả tin đăng", "Tin tặng", "Tin bán"};
+        String[] paths = {"Tất cả tin đăng", "Tin tặng cộng đồng", "Tin cần xin đồ"};
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, paths);
         myAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);
@@ -89,7 +89,8 @@ public class UpLoadNewsFragment extends Fragment {
             // get data
             tvNotLogin.setVisibility(View.GONE);
             lvNews.setVisibility(View.VISIBLE);
-            List<PostNewsModel> postsTinBan = new ArrayList<>();
+            List<PostNewsModel> postsTinTangCongDong = new ArrayList<>();
+            List<PostNewsModel> postsTinCanXinDo = new ArrayList<>();
             Retrofit retrofit = RetrofitClient.getRetrofitInstance();
             ApiServices jsonPlaceHolderApi = retrofit.create(ApiServices.class);
             Call<List<PostNewsModel>> call = jsonPlaceHolderApi.getUserPost("Bearer " + token);
@@ -103,16 +104,27 @@ public class UpLoadNewsFragment extends Fragment {
                         posts = response.body();
                         adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, posts);
                         lvNews.setAdapter(adapter);
+                        for (int i=0;i<posts.size();i++) {
+                            if (posts.get(i).getTypeAuthor().equals("Cá nhân") || posts.get(i).getTypeAuthor().equals("Quỹ/Nhóm từ thiện") ||
+                                    posts.get(i).getTypeAuthor().equals("Tổ chức công ích")) {
+                                postsTinCanXinDo.add(posts.get(i));
+                            } else {
+                                postsTinTangCongDong.add(posts.get(i));
+                            }
+                        }
 
 
                         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                if(paths[position] == "Tin bán") {
-                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, postsTinBan);
+                                if(paths[position] == "Tin tặng cộng đồng") {
+                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, postsTinTangCongDong);
                                     lvNews.setAdapter(adapter);
                                 }
-                                else if (paths[position] == "Tất cả tin đăng" || paths[position] == "Tin tặng") {
+                                else if (paths[position] == "Tin cần xin đồ") {
+                                    adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, postsTinCanXinDo);
+                                    lvNews.setAdapter(adapter);
+                                } else {
                                     adapter = new UpLoadNewsAdapter(getContext(), R.layout.row_uploadnews, posts);
                                     lvNews.setAdapter(adapter);
                                 }

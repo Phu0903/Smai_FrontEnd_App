@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,10 +57,14 @@ public class PostDonation extends AppCompatActivity {
     SearchableSpinner searchableSpinner;
     ArrayList<PostNewsModel> listName = new ArrayList<>();
     ArrayList<String> listCatogory = new ArrayList<>();
+    int count;
+    SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_donation);
+        preferences = getSharedPreferences("countClickFilter", MODE_PRIVATE);
+
 //      listview tin đăng mới
         lvNews_New = findViewById(R.id.listViewNews_New);
         //Toolbar
@@ -121,15 +126,27 @@ public class PostDonation extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        count = preferences.getInt("countClick", 0);
+
         ArrayList<String> arrayLocation = new ArrayList<String>();
         arrayLocation.add("Tỉnh/thành phố");
 
         imgBtnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PostDonation.this, FilterPostDonation.class);
-                startActivity(intent);
-                finish();
+                if (count == 0) {
+                    SharedPreferences.Editor editor = preferences.edit();
+                    count++;
+                    editor.putInt("countClick", count);
+                    Log.d("New filter", "TRue");
+                    Intent intent = new Intent(PostDonation.this, FilterPostDonation.class);
+                    startActivity(intent);
+
+                    finish();
+                } else {
+                    Log.d("No new filter", "falseee");
+                    finish();
+                }
             }
         });
 
@@ -152,6 +169,7 @@ public class PostDonation extends AppCompatActivity {
                 adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
                 lvNews_New.setAdapter(adapter);
                 if (intent != null) {
+
                     String loc =intent.getStringExtra("loc");
                     listCatogory = intent.getStringArrayListExtra("ListName");
                     if (listCatogory != null) {
@@ -209,6 +227,7 @@ public class PostDonation extends AppCompatActivity {
                         startActivity(intent);
 
 
+
                     }
                 });
 
@@ -231,22 +250,23 @@ public class PostDonation extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//
+//        super.onBackPressed();
+//
+//    }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        onBackPressed();
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-
-            finish();
+        finish();
 
         return true;
     }
