@@ -108,9 +108,89 @@ public class PostDonation extends AppCompatActivity {
 
                             PostDonationAdapter adapter1 = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, postsFilter);
                             lvNews_New.setAdapter(adapter1);
+                            lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                    Intent intent = new Intent(getApplicationContext(), DetailPostTangCongDong.class);
+                                    PostNewsModel post = postsFilter.get(position);
+                                    String title = post.getTitle();
+
+                                    List<ProductModel> productModel = post.getNameProduct();
+                                    if (productModel.size() != 0) {
+                                        String detailType = productModel.get(0).getNameProduct();
+                                        intent.putExtra("detailType", detailType);
+                                    }
+                                    String address = post.getAddress();
+                                    String fullName = post.getNameAuthor();
+                                    String inforDetail = post.getNote();
+                                    String typeAuthor = post.getTypeAuthor();
+                                    List<String> listUrl = post.getUrlImage();
+
+                                    String AuthorID = post.getAuthorID();
+
+                                    ArrayList<String> arrayListurl = new ArrayList<>();
+                                    for (String s : listUrl) {
+                                        arrayListurl.add(s);
+                                    }
+                                    String idpost = posts.get(position).get_id();
+                                    intent.putExtra("idpost", idpost);
+                                    intent.putExtra("title", title);
+                                    intent.putExtra("address", address);
+                                    intent.putExtra("fullName", fullName);
+                                    intent.putExtra("inforDetail", inforDetail);
+                                    intent.putExtra("typeAuthor", typeAuthor);
+                                    intent.putExtra("AuthorID", AuthorID);
+                                    intent.putStringArrayListExtra("url", arrayListurl);
+                                    startActivity(intent);
+
+
+
+                                }
+                            });
                         } else {
                             adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
                             lvNews_New.setAdapter(adapter);
+                            lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                    Intent intent = new Intent(getApplicationContext(), DetailPostTangCongDong.class);
+                                    PostNewsModel post = posts.get(position);
+                                    String title = post.getTitle();
+
+                                    List<ProductModel> productModel = post.getNameProduct();
+                                    if (productModel.size() != 0) {
+                                        String detailType = productModel.get(0).getNameProduct();
+                                        intent.putExtra("detailType", detailType);
+                                    }
+                                    String address = post.getAddress();
+                                    String fullName = post.getNameAuthor();
+                                    String inforDetail = post.getNote();
+                                    String typeAuthor = post.getTypeAuthor();
+                                    List<String> listUrl = post.getUrlImage();
+
+                                    String AuthorID = post.getAuthorID();
+
+                                    ArrayList<String> arrayListurl = new ArrayList<>();
+                                    for (String s : listUrl) {
+                                        arrayListurl.add(s);
+                                    }
+                                    String idpost = posts.get(position).get_id();
+                                    intent.putExtra("idpost", idpost);
+                                    intent.putExtra("title", title);
+                                    intent.putExtra("address", address);
+                                    intent.putExtra("fullName", fullName);
+                                    intent.putExtra("inforDetail", inforDetail);
+                                    intent.putExtra("typeAuthor", typeAuthor);
+                                    intent.putExtra("AuthorID", AuthorID);
+                                    intent.putStringArrayListExtra("url", arrayListurl);
+                                    startActivity(intent);
+
+
+
+                                }
+                            });
                         }
                     }
                 }
@@ -168,28 +248,6 @@ public class PostDonation extends AppCompatActivity {
                 posts = response.body();
                 adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, posts);
                 lvNews_New.setAdapter(adapter);
-                if (intent != null) {
-
-                    String loc =intent.getStringExtra("loc");
-                    listCatogory = intent.getStringArrayListExtra("ListName");
-                    if (listCatogory != null) {
-                        for (String s : listCatogory) {
-                            for (int i=0;i<posts.size();i++) {
-                                List<ProductModel> list = posts.get(i).getNameProduct();
-                                for (int j=0;j<list.size();j++) {
-                                    String nameCategory = list.get(j).getNameProduct();
-                                    if (nameCategory.equals(s)) {
-                                        listName.add(posts.get(i));
-                                    }
-                                }
-                            }
-                        }
-
-                        Log.d("Size list name", String.valueOf(listName.size()));
-                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, listName);
-                        lvNews_New.setAdapter(adapter);
-                    }
-                }
                 lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -230,6 +288,68 @@ public class PostDonation extends AppCompatActivity {
 
                     }
                 });
+                if (intent != null) {
+
+                    String loc =intent.getStringExtra("loc");
+                    listCatogory = intent.getStringArrayListExtra("ListName");
+                    if (listCatogory != null) {
+                        for (String s : listCatogory) {
+                            for (int i=0;i<posts.size();i++) {
+                                List<ProductModel> list = posts.get(i).getNameProduct();
+                                for (int j=0;j<list.size();j++) {
+                                    String nameCategory = list.get(j).getNameProduct();
+                                    if (nameCategory.equals(s)) {
+                                        listName.add(posts.get(i));
+                                    }
+                                }
+                            }
+                        }
+
+                        adapter = new PostDonationAdapter(PostDonation.this, R.layout.row_news_listview, listName);
+                        lvNews_New.setAdapter(adapter);
+                        lvNews_New.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                Intent intent = new Intent(getApplicationContext(), DetailPostTangCongDong.class);
+                                PostNewsModel post = listName.get(position);
+                                String title = post.getTitle();
+
+                                List<ProductModel> productModel = post.getNameProduct();
+                                if (productModel.size() != 0) {
+                                    String detailType = productModel.get(0).getNameProduct();
+                                    intent.putExtra("detailType", detailType);
+                                }
+                                String address = post.getAddress();
+                                String fullName = post.getNameAuthor();
+                                String inforDetail = post.getNote();
+                                String typeAuthor = post.getTypeAuthor();
+                                List<String> listUrl = post.getUrlImage();
+
+                                String AuthorID = post.getAuthorID();
+
+                                ArrayList<String> arrayListurl = new ArrayList<>();
+                                for (String s : listUrl) {
+                                    arrayListurl.add(s);
+                                }
+                                String idpost = posts.get(position).get_id();
+                                intent.putExtra("idpost", idpost);
+                                intent.putExtra("title", title);
+                                intent.putExtra("address", address);
+                                intent.putExtra("fullName", fullName);
+                                intent.putExtra("inforDetail", inforDetail);
+                                intent.putExtra("typeAuthor", typeAuthor);
+                                intent.putExtra("AuthorID", AuthorID);
+                                intent.putStringArrayListExtra("url", arrayListurl);
+                                startActivity(intent);
+
+
+
+                            }
+                        });
+                    }
+                }
+
 
             }
 

@@ -39,6 +39,11 @@ public interface ApiServices {
     @GET("post/GetPostByAccountID")
     Call<List<PostNewsModel>> getUserPost(@Header("Authorization") String authHeader);
 
+//    thêm avatar
+    @Multipart
+    @POST("user/profileUser")
+    Call<String> postAvatar(@Header("Authorization") String authHeader, @Part MultipartBody.Part imageUser);
+
 // Thông tin user
     @GET("user/getInForUserByTokenId")
     Call<UserModel> getInforUser(@Header("Authorization") String authHeader);

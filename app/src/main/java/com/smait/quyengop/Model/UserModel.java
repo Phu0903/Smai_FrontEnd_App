@@ -9,6 +9,15 @@ public class UserModel {
     private String AccountID;
     private String UserName;
 
+    public String getUrlIamge() {
+        return urlIamge;
+    }
+
+    public void setUrlIamge(String urlIamge) {
+        this.urlIamge = urlIamge;
+    }
+
+    private String urlIamge;
 
 
     public String getUrlImage() {

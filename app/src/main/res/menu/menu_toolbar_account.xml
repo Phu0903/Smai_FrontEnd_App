@@ -7,6 +7,9 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_settings_24">
         <menu>
+            <item android:id="@+id/editUser"
+                app:showAsAction="always"
+                android:title="Đổi ảnh"/>
             <item android:id="@+id/log_out"
                 app:showAsAction="always"
                 android:title="Đăng xuất"/>

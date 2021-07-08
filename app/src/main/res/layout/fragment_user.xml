@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
     android:orientation="vertical"
+    android:background="@color/gray"
     tools:context="com.smait.quyengop.Controller.UserFragment">
 
     <LinearLayout
@@ -40,31 +40,57 @@
                 android:background="#FFFFFF"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:padding="5dp"
-                    app:srcCompat="@drawable/user"
-                    tools:src="@drawable/user"
-                    tools:srcCompat="@drawable/user" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:id="@+id/linearlayout_infor"
-                    android:visibility="gone"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="match_parent"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/size_2"
-                        android:fontFamily="@font/open_sans" />
+                        app:cardCornerRadius="250dp">
 
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitXY"
+                            android:id="@+id/imageView3"
+                            android:src="@drawable/user"/>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearlayout_infor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="2"
+                            android:textColor="@color/black"
+                            android:text="Nguyễn Anh Khang"
+                            android:textSize="@dimen/size_2"
+                            android:fontFamily="@font/open_sans" />
+
+
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -79,7 +105,8 @@
                             android:layout_height="wrap_content"
                             android:text="Cá nhân"
                             android:layout_marginRight="0dp"
-                            android:textSize="@dimen/size_3"
+                            android:gravity="center"
+                            android:textSize="@dimen/size_1"
                             android:paddingTop="5dp"
                             android:drawablePadding="10dp"
                             android:drawableLeft="@drawable/ic_baseline_person_24"
@@ -95,8 +122,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_red_backround_white"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:layout_marginLeft="30dp">
 
                     <Button
                         android:id="@+id/btn_LILO"
@@ -110,7 +136,10 @@
                         android:textColor="#DD484D"/>
                 </LinearLayout>
 
+
             </LinearLayout>
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -123,21 +152,22 @@
                 android:textSize="@dimen/size_2" />
 
 
-                <Button
-                    android:id="@+id/view_history"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:backgroundTint="#FFFFFF"
-                    android:padding="20dp"
-                    android:textAlignment="viewStart"
-                    android:textAllCaps="false"
-                    android:drawablePadding="10dp"
-                    android:drawableLeft="@drawable/ic_baseline_history_24"
-                    android:fontFamily="@font/open_sans"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/size_2"
-                    android:text="Lịch sử xem " />
+            <Button
+                android:id="@+id/view_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:padding="20dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_baseline_history_24"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_2"
+                android:text="Lịch sử xem " />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -161,13 +191,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0938.51.68.99"
-                    android:hint="0938516899"
                     android:layout_weight="1"
                     android:textSize="@dimen/size_2"
                     android:fontFamily="@font/open_sans_semibold"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:background="@color/gray"
                     android:textAlignment="textEnd"
+                    android:backgroundTint="@color/gray"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textColor="#40A6E3" />
 
             </LinearLayout>

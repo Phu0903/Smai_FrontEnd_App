@@ -17,20 +17,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/search"
-                android:background="@drawable/border_solid_background_white"
-                android:hint="Nhập từ khóa"
-                android:imeOptions="actionSearch"
-                android:textColorHint="@color/light_gray"
-                android:textColor="@color/black"
-                android:textSize="@dimen/size_1"
-                android:paddingLeft="15px"
-                android:singleLine="true"
-                android:fontFamily="@font/open_sans"
-                android:layout_marginRight="40dp"/>
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/search"
+                    android:background="@drawable/border_solid_background_white"
+                    android:hint="Nhập từ khóa"
+                    android:imeOptions="actionSearch"
+                    android:textColorHint="@color/light_gray"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_1"
+                    android:paddingLeft="40px"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:fontFamily="@font/open_sans"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnMic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_baseline_mic_24"/>
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 

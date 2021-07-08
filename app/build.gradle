@@ -76,6 +76,8 @@ dependencies {
 
     implementation 'com.github.GoodieBag:Pinview:v1.4'
 
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.2'
+
 
 
 

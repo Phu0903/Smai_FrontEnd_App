@@ -5,21 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingRight="30dp"
+    android:paddingLeft="30dp"
     android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="30dp">
+        android:orientation="vertical">
 
 
         <ImageView
             android:layout_gravity="center"
             android:id="@+id/imageView6"
-            android:layout_width="100dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="50dp"
+            android:layout_width="60dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -43,7 +44,7 @@
 
         <com.goodiebag.pinview.Pinview
             android:id="@+id/pin_view"
-            app:pinWidth="40dp"
+            app:pinWidth="20dp"
             app:pinHeight="40dp"
             app:pinLength="6"
             app:cursorVisible="false"
